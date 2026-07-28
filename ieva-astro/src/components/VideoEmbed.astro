@@ -1,0 +1,150 @@
+---
+/**
+ * VideoEmbed — stilizēts YouTube embed Ievas brand stilā
+ *
+ * Lazy loading — iframe ielādējas tikai pēc klikšķa uz thumbnail
+ * (ietaupa kontu pārpildi, ātrāka lapas ielāde)
+ *
+ * Props:
+ *   videoId    — YouTube ID (no URL: youtube.com/watch?v=VIDEOID)
+ *   title      — Video nosaukums (a11y + virsraksts)
+ *   thumbnail  — Custom thumbnail URL (opcionāls; ja nav — YouTube maxres)
+ *   duration   — "3:42" formāts (opcionāls)
+ *   label      — Mazais virsraksts virs ("Video skaidrojums")
+ */
+
+interface Props {
+  videoId: string;
+  title: string;
+  thumbnail?: string;
+  duration?: string;
+  label?: string;
+}
+
+const {
+  videoId,
+  title,
+  thumbnail,
+  duration,
+  label = 'Video skaidrojums',
+} = Astro.props;
+
+const thumbUrl = thumbnail ?? `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+---
+
+<figure class="ve" data-video-id={videoId}>
+  <div class="ve-label">{label}{duration && <span class="ve-dur"> · {duration}</span>}</div>
+
+  <div class="ve-frame">
+    <button
+      class="ve-play"
+      type="button"
+      aria-label={`Atskaņot: ${title}`}
+      data-video-id={videoId}
+    >
+      <img
+        src={thumbUrl}
+        alt=""
+        class="ve-thumb"
+        loading="lazy"
+        width="1280"
+        height="720"
+      />
+      <span class="ve-play-btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </span>
+      <span class="ve-title-overlay">{title}</span>
+    </button>
+  </div>
+</figure>
+
+<style>
+.ve {
+  margin: 36px 0;
+  padding: 0;
+}
+.ve-label {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 12px;
+}
+.ve-dur { color: var(--burgundy); }
+
+.ve-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--plum);
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.ve-play {
+  display: block; width: 100%; height: 100%;
+  border: 0; padding: 0; cursor: pointer;
+  position: relative; background: transparent;
+}
+.ve-thumb {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block;
+  transition: filter .25s, transform .35s;
+}
+.ve-play:hover .ve-thumb {
+  filter: brightness(.65);
+  transform: scale(1.03);
+}
+.ve-play-btn {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(132, 24, 62, .92);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s, transform .25s, box-shadow .25s;
+  box-shadow: 0 4px 20px rgba(0,0,0,.3);
+}
+.ve-play-btn svg { width: 32px; height: 32px; margin-left: 4px; }
+.ve-play:hover .ve-play-btn {
+  background: var(--gold);
+  color: var(--plum);
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 6px 28px rgba(0,0,0,.4);
+}
+.ve-title-overlay {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 32px 24px 18px;
+  background: linear-gradient(to top, rgba(42,20,25,.95), transparent);
+  color: var(--cream);
+  font-family: var(--serif); font-style: italic;
+  font-size: 17px; line-height: 1.3;
+  text-align: left;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .ve { margin: 28px 0; }
+  .ve-play-btn { width: 56px; height: 56px; }
+  .ve-play-btn svg { width: 24px; height: 24px; }
+  .ve-title-overlay { font-size: 15px; padding: 24px 16px 14px; }
+}
+</style>
+
+<script>
+  // Lazy load YouTube iframe pēc klikšķa
+  document.querySelectorAll<HTMLButtonElement>('.ve-play').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const videoId = btn.dataset.videoId;
+      if (!videoId) return;
+      const frame = btn.parentElement;
+      if (!frame) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+      iframe.title = btn.getAttribute('aria-label') ?? 'YouTube video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.style.cssText = 'width:100%;height:100%;border:0;display:block;';
+      frame.innerHTML = '';
+      frame.appendChild(iframe);
+    });
+  });
+</script>

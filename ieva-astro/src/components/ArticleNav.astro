@@ -1,0 +1,227 @@
+---
+/**
+ * ArticleNav — sticky "breadcrumb + prev/next" josla.
+ *
+ * Automātiski novietojas ZEM galvenās .nav joslas (mēra augstumu JS).
+ * Izmantot: uztura-abc lapās, bloga rakstos.
+ *
+ * Props:
+ *   breadcrumbs  — ceļš, pēdējais bez href = "tu esi šeit"
+ *   prev         — iepriekšējais raksts (null = nav)
+ *   next         — nākamais raksts (null = nav)
+ */
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface NavItem {
+  href: string;
+  label: string;        // īsais (izmanto pogā)
+  full?: string;        // garais (title tooltip)
+}
+
+interface Props {
+  breadcrumbs: Crumb[];
+  prev?: NavItem | null;
+  next?: NavItem | null;
+}
+
+const { breadcrumbs, prev = null, next = null } = Astro.props;
+
+// Pēdējais breadcrumb = current page (bez href)
+const current = breadcrumbs[breadcrumbs.length - 1];
+---
+
+<div class="anav" id="article-nav" role="navigation" aria-label="Rakstu navigācija">
+  <div class="wrap anav-inner">
+
+    <!-- LEFT -->
+    <div class="anav-side anav-side--left">
+      {prev ? (
+        <a href={prev.href} class="anav-arrow anav-arrow--prev" title={prev.full ?? prev.label}>
+          <span class="anav-chevron" aria-hidden="true">←</span>
+          <span class="anav-arrow-text">
+            <span class="anav-arrow-hint">Iepriekšējā</span>
+            <span class="anav-arrow-label">{prev.label}</span>
+          </span>
+        </a>
+      ) : breadcrumbs.length >= 2 && breadcrumbs[breadcrumbs.length - 2].href ? (
+        /* Ja nav iepriekšējā — back to parent category */
+        <a
+          href={breadcrumbs[breadcrumbs.length - 2].href}
+          class="anav-arrow anav-arrow--prev anav-arrow--cat"
+        >
+          <span class="anav-chevron" aria-hidden="true">←</span>
+          <span class="anav-arrow-text">
+            <span class="anav-arrow-hint">Atpakaļ uz</span>
+            <span class="anav-arrow-label">{breadcrumbs[breadcrumbs.length - 2].label}</span>
+          </span>
+        </a>
+      ) : null}
+    </div>
+
+    <!-- CENTRE: breadcrumb -->
+    <ol class="anav-crumb" aria-label="Ceļš">
+      {breadcrumbs.map((crumb, i) => (
+        <li class="anav-crumb-item">
+          {crumb.href ? (
+            <a href={crumb.href} class="anav-crumb-link">{crumb.label}</a>
+          ) : (
+            <span class="anav-crumb-current" aria-current="page">{crumb.label}</span>
+          )}
+          {i < breadcrumbs.length - 1 && (
+            <span class="anav-crumb-sep" aria-hidden="true">/</span>
+          )}
+        </li>
+      ))}
+    </ol>
+
+    <!-- RIGHT -->
+    <div class="anav-side anav-side--right">
+      {next ? (
+        <a href={next.href} class="anav-arrow anav-arrow--next" title={next.full ?? next.label}>
+          <span class="anav-arrow-text">
+            <span class="anav-arrow-hint">Nākamā</span>
+            <span class="anav-arrow-label">{next.label}</span>
+          </span>
+          <span class="anav-chevron" aria-hidden="true">→</span>
+        </a>
+      ) : (
+        <div class="anav-side--empty"></div>
+      )}
+    </div>
+
+  </div>
+</div>
+
+<style>
+.anav {
+  position: sticky;
+  /* top tiek iestatīts ar JS — izmēra .nav augstumu */
+  top: 0;
+  z-index: 40; /* zem .nav (50), lai nav pārklāšanās */
+  background: rgba(255,248,242,.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+  transition: box-shadow .2s, top .1s;
+}
+.anav.is-scrolled {
+  box-shadow: 0 2px 14px rgba(42,20,25,.07);
+}
+
+.anav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px;
+  height: 50px;
+}
+
+/* ── Breadcrumb ─────────────────────────────── */
+.anav-crumb {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; align-items: center;
+  font-family: var(--sans); font-size: 11.5px;
+  letter-spacing: .06em;
+  white-space: nowrap; overflow: hidden;
+  justify-content: center;
+}
+.anav-crumb-item { display: flex; align-items: center; }
+.anav-crumb-link {
+  color: var(--burgundy);
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s;
+  padding: 2px 0;
+}
+.anav-crumb-link:hover { border-bottom-color: var(--burgundy); }
+.anav-crumb-sep {
+  color: var(--gold); opacity: .6;
+  margin: 0 8px;
+}
+.anav-crumb-current {
+  color: var(--ink); font-weight: 500;
+  overflow: hidden; text-overflow: ellipsis;
+  max-width: 24ch;
+}
+
+/* ── Arrows ─────────────────────────────────── */
+.anav-side { display: flex; min-width: 0; }
+.anav-side--left  { justify-content: flex-start; }
+.anav-side--right { justify-content: flex-end; }
+.anav-side--empty { flex: 1; }
+
+.anav-arrow {
+  display: flex; align-items: center; gap: 8px;
+  padding: 5px 10px; border-radius: 3px;
+  color: var(--ink-soft);
+  transition: background .15s, color .15s;
+  min-width: 0;
+  max-width: 190px;
+}
+.anav-arrow:hover {
+  background: var(--ivory);
+  color: var(--burgundy);
+}
+.anav-chevron {
+  font-size: 15px; flex-shrink: 0;
+  color: var(--gold); line-height: 1;
+  transition: color .15s;
+}
+.anav-arrow:hover .anav-chevron { color: var(--burgundy); }
+
+.anav-arrow-text {
+  display: flex; flex-direction: column; gap: 1px;
+  overflow: hidden; min-width: 0;
+}
+.anav-arrow-hint {
+  font-family: var(--sans); font-size: 9px;
+  letter-spacing: .17em; text-transform: uppercase;
+  color: var(--ink-soft); opacity: .65; line-height: 1;
+}
+.anav-arrow-label {
+  font-size: 13px; font-weight: 500;
+  white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis;
+  color: inherit;
+}
+
+/* ── Mobile (≤ 640px) ───────────────────────── */
+@media (max-width: 640px) {
+  .anav-inner {
+    grid-template-columns: 44px 1fr 44px;
+    height: 46px;
+  }
+  /* Breadcrumb — tikai current page */
+  .anav-crumb-item:not(:last-child) { display: none; }
+  .anav-crumb-current { max-width: none; font-size: 11px; }
+
+  /* Arrows — tikai ikona */
+  .anav-arrow-text { display: none; }
+  .anav-arrow { padding: 5px; max-width: 44px; justify-content: center; }
+  .anav-chevron { font-size: 17px; }
+}
+</style>
+
+<script>
+  // Dinamiskais top — novietojas tieši zem galvenās .nav joslas
+  function setAnavTop() {
+    const siteNav = document.querySelector<HTMLElement>('header.nav, .nav');
+    const anav    = document.getElementById('article-nav');
+    if (!anav) return;
+    const h = siteNav ? siteNav.offsetHeight : 0;
+    anav.style.top = `${h}px`;
+  }
+
+  setAnavTop();
+  window.addEventListener('resize', setAnavTop, { passive: true });
+
+  // Shadow on scroll
+  const anav = document.getElementById('article-nav');
+  if (anav) {
+    window.addEventListener('scroll', () => {
+      anav.classList.toggle('is-scrolled', window.scrollY > 8);
+    }, { passive: true });
+  }
+</script>

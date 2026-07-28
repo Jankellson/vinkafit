@@ -1,0 +1,1129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleNav from '../../components/ArticleNav.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
+
+// ─── NotebookLM-generated multimedia ─────────────────────
+const videoId: string | null      = null;
+const videoTitle: string          = 'Cik reizes dienā ēst — un kāpēc skaitlis nav galvenais';
+const videoDuration: string       = '5:00';
+
+const title = "Ēšanas biežums: 3 vai 6 reizes dienā — fakti un individuālie faktori";
+const description = "Cik reizes dienā ēst? 3 vai 6 — zinātne, vielmaiņas mīts un individuālie faktori, kas izšķir tavu ritmu. Ar personalizatoru, kas iesaka tieši tev.";
+const canonical = "https://ievajekabsone.lv/uztura-abc/esanas-biezums";
+
+const prevArticle = {
+  href:  '/uztura-abc/udens-daudzums',
+  label: 'Ūdens daudzums',
+  full:  'Cik daudz ūdens reāli jādzer dienā: normas, kalkulators un biežākie mīti',
+};
+const nextArticle = {
+  href:  '/uztura-abc/uztura-bogatinatajs',
+  label: 'Uztura bagātinātāji',
+  full:  'Uztura bagātinātāji: kad tie vajadzīgi, kādi un kādās devās',
+};
+
+const tocItems = [
+  { id: "kas-nosaka",       label: "Kas patiesībā nosaka ēdienreižu skaitu" },
+  { id: "metabolisms-mits", label: "Vai biežāka ēšana \"uzkurina\" vielmaiņu" },
+  { id: "tris-vs-sesas",    label: "3 vai 6 reizes: kam der katrs ritms" },
+  { id: "faktori",          label: "Individuālie faktori, kas izšķir" },
+  { id: "uzkodu-slazds",    label: "Biežas ēšanas slazds: nemanāmās kalorijas" },
+  { id: "praktiski",        label: "Kā izvēlēties savu ritmu" },
+  { id: "faq",              label: "Bieži uzdotie jautājumi" },
+];
+
+const faqItems = [
+  {
+    q: "Vai biežāka ēšana paātrina vielmaiņu?",
+    a: "Nē. Uztura termiskais efekts — enerģija, ko organisms patērē ēdiena sagremošanai — ir aptuveni 10% no apēstā neatkarīgi no tā, vai to sadali 3 vai 6 reizēs (Bellisle, 1997). Sešas mazas maltītes nesadedzina vairāk nekā trīs lielākas ar to pašu kaloriju daudzumu. Vielmaiņu nosaka kopējais uzturs un aktivitāte, ne ēdienreižu skaits."
+  },
+  {
+    q: "Cik reizes dienā ēst, lai zaudētu svaru?",
+    a: "Tik reizes, cik tev ļauj noturēt kopējo kaloriju deficītu bez pārēšanās. Meta-analīze (Schoenfeld, 2015) neatrada nozīmīgu atšķirību svara zaudēšanā starp biežu un retu ēšanu. Ja tevi moka izsalkums, 4–5 mazākas reizes palīdz noturēt sāta sajūtu. Ja izsalkums netraucē, 3 sātīgas reizes samazina uzkodu skaitu un nemanāmās kalorijas."
+  },
+  {
+    q: "Vai ir slikti ēst tikai 2 reizes dienā?",
+    a: "Daudziem cilvēkiem nav, ja abās reizēs uzņem pietiekami uzturvielu un olbaltumvielu. Tomēr ne visiem tas der: ja starp ēdienreizēm krīt cukura līmenis, trīc rokas vai parādās stiprs izsalkums, tas ir signāls, ka pārtraukumi ir par gariem. Tad labāk pievienot vēl vienu ēdienreizi."
+  },
+  {
+    q: "Vai jāēd ik pēc 3 stundām?",
+    a: "Tas nav obligāts noteikums. \"Ik pēc 3 stundām\" nāk no kultūrisma un der tiem, kas mērķtiecīgi sadala lielu olbaltumvielu daudzumu. Veselam pieaugušajam pietiek sekot izsalkumam un sāta sajūtai, ne pulkstenim. Galvenais ir kopējais uzturs dienas garumā."
+  },
+  {
+    q: "Vai uzkodas starp ēdienreizēm ir sliktas?",
+    a: "Pašas par sevi — nē. Jautājums ir, kas tā ir un cik bieži. Auglis, jogurts vai sauja riekstu starp pusdienām un vakariņām var noturēt sāta sajūtu. Bet biežas uzkodas \"neko daudz\" mēdz nemanāmi pievienot 300–500 kcal dienā — un tieši šie sīkumi izšķir rezultātu."
+  },
+  {
+    q: "Vai vakarā ēst ir kaitīgi?",
+    a: "Pati ēšana vakarā nekaitē — svaru nosaka kopējās dienas kalorijas, ne pulksteņa rādītājs. Problēma rodas, ja vakarā regulāri pārēdas vai tieši pirms gulētiešanas apēd smagu, trekn maltīti. Divas vārītas olas septiņos vakarā ir pavisam kas cits nekā cepti kartupeļi ar bekonu vienpadsmitos."
+  }
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "url": canonical,
+      "datePublished": "2026-06-09",
+      "dateModified": "2026-06-09",
+      "author": {
+        "@type": "Person",
+        "name": "Ieva Jēkabsone",
+        "@id": "https://ievajekabsone.lv/#ieva",
+        "jobTitle": "Uztura konsultante",
+        "url": "https://ievajekabsone.lv/par-mani"
+      },
+      "publisher": { "@type": "Person", "name": "Ieva Jēkabsone", "@id": "https://ievajekabsone.lv/#ieva" },
+      "image": "https://ievajekabsone.lv/images/raksti/esanas-biezums/esanas-biezums-hero.webp",
+      "inLanguage": "lv",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": canonical }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqItems.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Sākums", "item": "https://ievajekabsone.lv/" },
+        { "@type": "ListItem", "position": 2, "name": "Uztura ABC", "item": "https://ievajekabsone.lv/uztura-abc" },
+        { "@type": "ListItem", "position": 3, "name": "Ēšanas biežums", "item": canonical }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title={`${title} | Ieva Jēkabsone`}
+  description={description}
+  canonical={canonical}
+  ogImage="/images/raksti/esanas-biezums/esanas-biezums-og.webp"
+  jsonLd={jsonLd}
+  activeNav="uztura-abc"
+>
+
+  <ArticleNav
+    breadcrumbs={[
+      { label: 'Sākums',     href: '/' },
+      { label: 'Uztura ABC', href: '/uztura-abc' },
+      { label: 'Ēšanas biežums' },
+    ]}
+    prev={prevArticle}
+    next={nextArticle}
+  />
+
+  <!-- ══ ARTICLE HERO — ŽURNĀLA VĀKS ═══════════════════════════ -->
+  <section class="ip-cover">
+    <div class="ip-cover-media">
+      <img
+        class="ip-cover-img"
+        src="/images/raksti/esanas-biezums/esanas-biezums-hero.webp"
+        alt="Pulkstenis blakus sabalansētam šķīvim — ēdienreižu ritma ilustrācija"
+        width="1200" height="630"
+        loading="eager"
+      />
+      <div class="ip-cover-scrim" aria-hidden="true"></div>
+      <div class="ip-cover-inner wrap">
+        <div class="ip-eyebrow">Uztura pamati · Bloks 05</div>
+        <h1>Ēšanas biežums: 3 vai 6 reizes dienā — <em>fakti</em> un individuālie faktori</h1>
+        <p class="ip-lede">
+          "Ēd biežāk, lai uzkurinātu vielmaiņu" — tā nav patiesība. Cik reizes ēst, ir atkarīgs no
+          tava mērķa, izsalkuma un dienas ritma, ne no maģiska skaitļa. Te ir fakti un veids, kā atrast savējo.
+        </p>
+      </div>
+    </div>
+
+    <!-- Light strip below: quick answer + stats -->
+    <div class="ip-cover-strip">
+      <div class="wrap">
+        <div class="ip-quickans">
+          <div class="ip-quickans-label">Īsā atbilde</div>
+          <p>
+            Viena pareizā skaitļa nav. <strong>3 sātīgas</strong> vai <strong>4–5 mazākas</strong> reizes —
+            abas der, ja kopējais uzturs ir kārtībā. Biežāka ēšana vielmaiņu nepaātrina. Izšķir
+            <strong>tavs izsalkums, darba ritms, mērķis un cukura līmenis</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MAIN LAYOUT: TOC + CONTENT ═══════════════════════════ -->
+  <div class="ip-wrap wrap">
+
+    <!-- LEFT: sidebar — Ieva card (static) + sticky TOC -->
+    <aside class="ip-sidebar" aria-label="Satura rādītājs">
+
+      <!-- STATIC: Ieva info card — scrolls away -->
+      <div class="ip-toc-ieva">
+        <img
+          src="/assets/images/ieva-portrait.webp"
+          alt="Ieva Jēkabsone"
+          class="ip-toc-ieva-img"
+          width="80" height="80"
+        />
+        <div class="ip-toc-ieva-name">Ieva Jēkabsone</div>
+        <div class="ip-toc-ieva-role">Uztura konsultante</div>
+        <p class="ip-toc-ieva-bio">
+          Palīdzu saprast, kas uzturā kaitē un kas palīdz.
+          Bez stingrām diētām un vienas "pareizās" formulas visiem.
+        </p>
+        <div class="ip-toc-socials">
+          <a href="https://www.instagram.com/ieva.jekabsone/" target="_blank" rel="noopener"
+             class="ip-toc-social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100089137514285" target="_blank" rel="noopener"
+             class="ip-toc-social" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@ieva.jekabson" target="_blank" rel="noopener"
+             class="ip-toc-social" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.73a4.85 4.85 0 0 1-1.01-.04z"/>
+            </svg>
+          </a>
+        </div>
+        <a href="/pakalpojumi" class="ip-toc-cta">Piesakies konsultācijai →</a>
+      </div>
+
+      <!-- STICKY: table of contents only -->
+      <div class="ip-toc">
+        <div class="ip-toc-inner">
+          <div class="ip-toc-label">Saturs</div>
+          <nav>
+            <ol class="ip-toc-list">
+              {tocItems.map(item => (
+                <li><a href={`#${item.id}`} class="ip-toc-link">{item.label}</a></li>
+              ))}
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- RIGHT: article content -->
+    <article class="ip-content">
+
+      <!-- ─── TL;DR (LLM citation-bait) ──────────── -->
+      <div class="ip-tldr">
+        <span class="ip-tldr-label">Īsumā</span>
+        <p>
+          Viena pareizā ēdienreižu skaita nav. Biežāka ēšana vielmaiņu neuzkurina — ēdiena sagremošanai
+          aiziet ap 10% no apēstā neatkarīgi no reižu skaita (Bellisle, 1997). Izšķir kopējais uzturs un
+          tavs ritms: izsalkums, darba grafiks, mērķis un cukura līmenis. 3 sātīgas vai 4–5 mazākas reizes —
+          abas der, ja kopējais ir kārtībā.
+        </p>
+      </div>
+
+      <!-- ─── Key Takeaways ─────────────────────── -->
+      <aside class="ip-takeaways" aria-label="Galvenās atziņas">
+        <h2>💡 Galvenās atziņas</h2>
+        <ul>
+          <li>Biežāka ēšana nepaātrina vielmaiņu — uztura termiskais efekts ir ~10% neatkarīgi no reižu skaita.</li>
+          <li>Meta-analīze (Schoenfeld, 2015) neatrada nozīmīgu atšķirību svarā starp biežu un retu ēšanu.</li>
+          <li>Svaru nosaka kopējās dienas kalorijas, ne ēdienreižu skaits vai laiks.</li>
+          <li>Izsalkums, darba ritms, mērķis un cukura līmenis izšķir, kurš ritms der tev.</li>
+          <li>Muskuļiem olbaltumvielas vērts sadalīt pa 4 reizēm (~20–40 g katrā) — ISSN.</li>
+          <li>Biežas uzkodas "neko daudz" var nemanāmi pievienot 300–500 kcal dienā.</li>
+          <li>Labākais ritms ir tas, kuru tu spēj noturēt ilgtermiņā.</li>
+        </ul>
+      </aside>
+
+      <!-- ─── Section 1 ─────────────────────────── -->
+      <h2 id="kas-nosaka">Kas patiesībā nosaka ēdienreižu skaitu</h2>
+
+      <p class="ip-answer">
+        Ēdienreižu skaitu nosaka nevis kāds universāls noteikums, bet tavs kopējais uzturs un dzīvesveids:
+        cik daudz un ko apēd dienā, kad jūti izsalkumu, kāds ir tavs darba ritms un mērķis. Trīs vai sešas
+        reizes — tas ir ietvars, ne maģisks slēdzis. Galvenais paliek apēstā kopums, ne sadalījuma reižu skaits.
+      </p>
+
+      <p>
+        Iedomājies divus cilvēkus ar vienādu dienas uzturu — 2000 kcal un pietiekami olbaltumvielu. Viens
+        to sadala trīs sātīgās maltītēs, otrs — piecās mazākās. Svara un veselības ziņā starp viņiem nav
+        principiālas atšķirības. Atšķiras tikai sajūta dienas laikā: cik sāts, cik daudz enerģijas, cik viegli
+        noturēt ritmu.
+      </p>
+
+      <p>
+        Tieši tāpēc atbilde uz "cik reizes ēst" gandrīz vienmēr ir "atkarīgs no tevis". Tas nav izvairīšanās —
+        tā ir godīgākā atbilde. Skaitlis, kas der maiņu darbā strādājošam, neder cilvēkam ar regulāru biroja
+        dienu. Tālāk skatāmies, kas tieši to maina.
+      </p>
+
+      <!-- SVG diagram: same energy, two rhythms -->
+      <figure class="ip-figure">
+        <figcaption class="ip-figure-cap">Tā pati dienas enerģija — divi ritmi</figcaption>
+        <svg viewBox="0 0 640 230" role="img" xmlns="http://www.w3.org/2000/svg">
+          <title>Diena ar 3 ēdienreizēm pret 4–5 ēdienreizēm: tās pašas kopējās kalorijas, sadalītas citādi</title>
+          <!-- baseline axis -->
+          <line x1="70" y1="115" x2="610" y2="115" stroke="rgba(60,18,32,.18)" stroke-width="1"/>
+          <!-- hour labels -->
+          <g font-family="system-ui, sans-serif" font-size="11" fill="rgba(42,20,25,.55)" text-anchor="middle">
+            <text x="70" y="208">6:00</text>
+            <text x="208" y="208">10:00</text>
+            <text x="346" y="208">14:00</text>
+            <text x="484" y="208">18:00</text>
+            <text x="610" y="208">22:00</text>
+          </g>
+          <!-- Row 1: 3 meals -->
+          <text x="70" y="55" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#3c1220">3 reizes</text>
+          <g>
+            <circle cx="138" cy="70" r="17" fill="#84183e"/>
+            <circle cx="346" cy="70" r="19" fill="#84183e"/>
+            <circle cx="509" cy="70" r="17" fill="#84183e"/>
+            <text x="138" y="105" font-family="system-ui, sans-serif" font-size="10" fill="rgba(42,20,25,.6)" text-anchor="middle">brokastis</text>
+            <text x="346" y="105" font-family="system-ui, sans-serif" font-size="10" fill="rgba(42,20,25,.6)" text-anchor="middle">pusdienas</text>
+            <text x="509" y="105" font-family="system-ui, sans-serif" font-size="10" fill="rgba(42,20,25,.6)" text-anchor="middle">vakariņas</text>
+          </g>
+          <!-- Row 2: 4-5 meals -->
+          <text x="70" y="150" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#3c1220">4–5 reizes</text>
+          <g fill="#d9a85a">
+            <circle cx="138" cy="165" r="12"/>
+            <circle cx="242" cy="165" r="10"/>
+            <circle cx="346" cy="165" r="12"/>
+            <circle cx="450" cy="165" r="10"/>
+            <circle cx="540" cy="165" r="12"/>
+          </g>
+          <text x="610" y="150" font-family="system-ui, sans-serif" font-size="11" fill="rgba(42,20,25,.45)" text-anchor="end">= tās pašas kcal</text>
+        </svg>
+        <p class="ip-figure-note">Lielāki vai mazāki "kumosi" — kopējā enerģija paliek tā pati. Ritms maina sajūtu, ne rezultātu.</p>
+      </figure>
+
+      {/* ─── Video Explainer (pēc 1. sekcijas) ── */}
+      {videoId && (
+        <VideoEmbed
+          videoId={videoId}
+          title={videoTitle}
+          duration={videoDuration}
+          label="Video skaidrojums"
+        />
+      )}
+
+      <!-- ─── Section 2 ─────────────────────────── -->
+      <h2 id="metabolisms-mits">Vai biežāka ēšana "uzkurina" vielmaiņu</h2>
+
+      <p class="ip-answer">
+        Nē. Ideja, ka sešas mazas maltītes "uztur uguni kurinātu", ir mīts. Enerģija, ko organisms patērē
+        ēdiena sagremošanai (uztura termiskais efekts), ir aptuveni 10% no apēstā — un tā ir proporcionāla
+        kopējam apjomam, ne reižu skaitam (Bellisle, 1997). Trīs lielākas maltītes dod tieši to pašu termisko
+        efektu, ko sešas mazas ar tādu pašu kaloriju daudzumu.
+      </p>
+
+      <p>
+        Saprasim mehānismu. Katru reizi, kad paēd, organisms iztērē nedaudz enerģijas, lai sagremotu pārtiku.
+        Olbaltumvielām šis efekts ir lielākais — ap 20–30% no to enerģijas. Bet svarīgi: kopējais efekts ir
+        saistīts ar to, cik daudz apēd, ne cik reizēs to sadali. Sadalot vienu un to pašu uzturu sīkāk, katras
+        ēdienreizes efekts kļūst mazāks. Summa paliek tā pati.
+      </p>
+
+      <p>
+        Uz 2026. gada jūniju zinātne par šo ir vienisprātis. Plaša meta-analīze (Schoenfeld, 2015) salīdzināja
+        biežu un retu ēšanu un neatrada nozīmīgu atšķirību svara zaudēšanā vai ķermeņa sastāvā, ja kopējās
+        kalorijas un olbaltumvielas bija vienādas. Vielmaiņu nosaka muskuļu masa, aktivitāte un kopējais uzturs —
+        ne ēdienreižu grafiks.
+      </p>
+
+      <div class="ip-callout ip-callout--insight">
+        <div class="ip-callout-icon">📊</div>
+        <div>
+          Kāpēc mīts ir tik dzīvotspējīgs? Daļēji tāpēc, ka biežāka ēšana <strong>daļai cilvēku</strong>
+          tiešām palīdz — bet ne caur vielmaiņu, bet caur sāta sajūtu un mazāku pārēšanos vakarā. Tas ir
+          reāls ieguvums, tikai cita iemesla dēļ.
+        </div>
+      </div>
+
+      <!-- ─── Section 3 ─────────────────────────── -->
+      <h2 id="tris-vs-sesas">3 vai 6 reizes: kam der katrs ritms</h2>
+
+      <p class="ip-answer">
+        Trīs ēdienreizes der tiem, kas labi panes pārtraukumus, grib vienkāršu ritmu un kontrolēt kopējās
+        kalorijas ar mazāku uzkodu skaitu. Biežākas, 4–6 reizes, der tiem, kam ātri uzmācas izsalkums, kas
+        mērķtiecīgi vairo muskuļus vai kam jānotur stabils cukura līmenis. Neviens ritms nav "pareizāks" —
+        der tas, kuru spēj noturēt.
+      </p>
+
+      <div class="ip-table-wrap">
+        <table class="ip-table">
+          <thead>
+            <tr>
+              <th>Ritms</th>
+              <th>Kam mēdz derēt</th>
+              <th>Uz ko uzmanīties</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2–3 reizes</td>
+              <td>Labi panes izsalkumu; grib vienkāršību; mazāk uzkodu reižu</td>
+              <td>Katrā reizē jāuzņem pietiekami olbaltumvielu un uzturvielu</td>
+            </tr>
+            <tr>
+              <td>4–5 reizes</td>
+              <td>Ātri uzmācas izsalkums; vairo muskuļus; nestabils cukura līmenis</td>
+              <td>Vieglāk "nemanot" pārsniegt kopējās kalorijas</td>
+            </tr>
+            <tr>
+              <td>6 reizes</td>
+              <td>Sportisti ar lielu olbaltumvielu mērķi; specifiski stāvokļi</td>
+              <td>Reti vajadzīgs ikdienā; prasa plānošanu</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Pievērs uzmanību: tabulā nav rindas "veselīgākais". Tā nav tāpēc, ka tādas nav. Veselīgs ir tas ritms,
+        kas tev ļauj ēst kvalitatīvi, justies sātam un noturēt to mēnešiem, ne dienām.
+      </p>
+
+      <figure class="ip-figure ip-figure--infographic">
+        <figcaption class="ip-figure-cap">Ēdienreižu biežums: kuram der 3, kuram — 4–5 reizes dienā</figcaption>
+        <img
+          src="/images/raksti/esanas-biezums/3-vai-4-5-edienreizes-diena-kuram-der-katrs-ritms.svg"
+          alt="Infografika par ēdienreižu biežumu: 3 reizes dienā der cilvēkiem, kas labi panes pārtraukumus starp ēšanām, vēlas vienkāršāku ritmu vai kuru mērķis ir svara zaudēšana; 4–5 reizes dienā der tiem, kam ātri uzmācas izsalkums, kas regulāri sporto un vairo muskuļus, vai kam ir nestabils cukura līmenis asinīs. Abos gadījumos svarīgākās ir kopējās dienas kalorijas un olbaltumvielas, ne ēdienreižu skaits. Autore: Ieva Jēkabsone, uztura konsultante — ievajekabsone.lv"
+          width="800"
+          height="480"
+          loading="lazy"
+        />
+        <p class="ip-figure-note">
+          Lielāki apļi kreisajā pusē = sātīgākas maltītes; mazāki labajā = biežākas, mazākas porcijas.
+          Kopējā enerģija abos variantos paliek tā pati.
+        </p>
+      </figure>
+
+      <!-- ─── Section 4 ─────────────────────────── -->
+      <h2 id="faktori">Individuālie faktori, kas izšķir</h2>
+
+      <p class="ip-answer">
+        Četras lietas izšķir tavu ritmu vairāk nekā jebkurš noteikums grāmatā: izsalkuma sajūta, cukura līmeņa
+        stabilitāte, mērķis ar fizisko aktivitāti un darba ritms. Tieši tāpēc viens plāns visiem nestrādā.
+        Lūk, kā katrs no tiem maina tavu ritmu.
+      </p>
+
+      <div class="ip-factgrid">
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">🍽️</span>
+          <h3>Izsalkuma sajūta</h3>
+          <p>Ja izsalkums uzmācas jau pēc 3–4 stundām, biežākas mazākas ēdienreizes palīdz neielaisties pārēšanā vakarā. Ja mierīgi iztur līdz vakaram — gari pārtraukumi netraucē.</p>
+        </div>
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">📉</span>
+          <h3>Cukura līmenis</h3>
+          <p>Ja starp ēdienreizēm krīt enerģija, trīc rokas vai velk uz saldo, gari pārtraukumi neder. Ar insulīna rezistenci vienmērīgs ritms ar olbaltumvielām katrā reizē notur stabilāku līmeni. Vairāk — <a href="/uztura-abc/insulina-rezistence">par insulīna rezistenci</a>.</p>
+        </div>
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">💪</span>
+          <h3>Mērķis un sports</h3>
+          <p>Ja vairo muskuļus vai regulāri sporto, olbaltumvielas vērts sadalīt pa 4 reizēm (~20–40 g katrā, ISSN). Ja mērķis ir zaudēt svaru un izsalkums netraucē — retākas, sātīgas maltītes ir vieglāk vadāmas.</p>
+        </div>
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">🕐</span>
+          <h3>Darba un miega ritms</h3>
+          <p>Neregulārs grafiks vai maiņu darbs maina visu. Tad par skaitli svarīgāks ir sagatavots ēdiens līdzi — lai nesanāk "neko visu dienu, tad viss vakarā".</p>
+        </div>
+      </div>
+
+      <!-- Ieva E-E-A-T note -->
+      <div class="ieva-note">
+        <div class="ieva-note-head">
+          <img
+            src="/assets/images/ieva-consultant-portrait.webp"
+            alt="Ieva Jēkabsone"
+            class="ieva-note-avatar ieva-note-avatar--lg"
+            width="72" height="72"
+          />
+          <div>
+            <div class="label">Autores piezīme</div>
+            <h4>Ieva Jēkabsone</h4>
+          </div>
+        </div>
+        <p>
+          Kad klients jautā, cik reizes ēst, es vispirms nejautāju par pulksteni. Es jautāju, kad viņam
+          uzmācas izsalkums un kad krīt enerģija. Cilvēks ar nestabilu cukura līmeni un cilvēks, kas mierīgi
+          iztur līdz vakaram, nevar sekot vienam plānam. Sāku ar to ritmu, kuru cilvēks reāli spēj noturēt —
+          jo plāns, ko nevar ieturēt, nav plāns.
+        </p>
+        <span class="sig">Ieva</span>
+      </div>
+
+      <!-- ─── Section 6 ─────────────────────────── -->
+      <h2 id="uzkodu-slazds">Biežas ēšanas slazds: nemanāmās kalorijas</h2>
+
+      <p class="ip-answer">
+        Galvenais biežas ēšanas risks nav vielmaiņa, bet kaloriju uzkrāšanās nemanot. Katra papildu ēdienreize
+        ir vēl viena reize izdarīt izvēli — un uzkodas "neko daudz" mēdz pievienot 300–500 kcal dienā. Tieši šie
+        sīkumi izšķir, vai svars kustas vai stāv uz vietas.
+      </p>
+
+      <figure class="ip-infographic">
+        <img
+          src="/images/raksti/esanas-biezums/esanas-biezums-uzkodu-kalorijas-infografika.webp"
+          alt="Infografika 'Nemanāmās kalorijas': flat-lay foto ar kafiju ar pienu (~70 kcal), diviem cepumiem (~140 kcal), sauju riekstu (~170 kcal) un šokolādi (~85 kcal) — kopā aptuveni 465 kcal jeb vēl viena neierakstīta ēdienreize dienā no uzkodām starp maltītēm. Autore: Ieva Jēkabsone, uztura konsultante — ievajekabsone.lv"
+          width="1080" height="810"
+          loading="lazy"
+        />
+        <figcaption>
+          Katra uzkoda atsevišķi šķiet nenozīmīga. Saskaitot kopā — kafija ar pienu, pāris cepumi, sauja riekstu,
+          daži šokolādes gabaliņi — sanāk ap 450–500 kcal: vesela neierakstīta ēdienreize. (Vērtības aptuvenas.)
+        </figcaption>
+      </figure>
+
+      <p>
+        Klasiskais piemērs no prakses: cilvēks ir pārliecināts, ka ēd maz, bet svars nekrīt. Sākam pierakstīt —
+        un izrādās, ka starp maltītēm ir kafija ar pienu, pāris cepumi pie tās, sauja riekstu pie datora. Katrs
+        sīkums atsevišķi šķiet nenozīmīgs. Kopā tie ir vēl viena ēdienreize, tikai neierakstīta.
+      </p>
+
+      <p>
+        Tas nenozīmē, ka uzkodas jāizslēdz. Tas nozīmē — ja izvēlies biežāku ritmu, plāno arī uzkodas, ne ļauj
+        tām notikt pašām. Auglis, jogurts vai dārzeņi ar olbaltumvielu avotu ir uzkoda ar mērķi. Sauja "kaut kā"
+        garām ejot — tā ir tā neierakstītā ēdienreize.
+      </p>
+
+      <div class="ip-callout ip-callout--warning">
+        <div class="ip-callout-icon">⚠️</div>
+        <div>
+          <strong>Mazais tests:</strong> nedēļu pieraksti pilnīgi visu, ko apēd un izdzer — arī "sīkumus".
+          Daudziem tieši šeit atklājas, kāpēc rezultāta nav. Ne tāpēc, ka ēd par daudz maltīšu, bet tāpēc, ka
+          starplaikos ir vairāk, nekā šķiet.
+        </div>
+      </div>
+
+      <!-- ─── Section 7 ─────────────────────────── -->
+      <h2 id="praktiski">Kā izvēlēties savu ritmu</h2>
+
+      <p class="ip-answer">
+        Sāc ar 3 sātīgām ēdienreizēm kā pamatu, tad pielāgo pēc sajūtas: ja starp tām moka izsalkums vai krīt
+        enerģija, pievieno 1–2 plānotas uzkodas. Ja jūties labi, neko nemaini. Pārbaudi ritmu pēc trim lietām —
+        sāta sajūtas, enerģijas dienas laikā un tā, vai to spēj noturēt regulāri.
+      </p>
+
+      <ol class="ip-steps">
+        <li>
+          <strong>Sāc ar pamatu.</strong> Trīs ēdienreizes ar olbaltumvielām katrā — vienkārši un labi vadāmi.
+        </li>
+        <li>
+          <strong>Klausies ķermenī, ne pulkstenī.</strong> Pievieno ēdienreizi tur, kur reāli uzmācas izsalkums, ne pēc grafika.
+        </li>
+        <li>
+          <strong>Plāno uzkodas.</strong> Ja izvēlies biežāk, sagatavo uzkodas iepriekš — lai tās ir izvēle, ne nejaušība.
+        </li>
+        <li>
+          <strong>Vērtē pēc trim mēriem.</strong> Sāts, enerģija, noturība. Ja visi trīs ir kārtībā, tavs ritms ir pareizais.
+        </li>
+      </ol>
+
+      <p>
+        Un galvenais — tas ir saistīts ar pārējo uzturu. Kā sadalīt šķīvi katrā ēdienreizē, skaties
+        <a href="/uztura-abc/skivja-metode">šķīvja metodes rakstā</a>, bet cik olbaltumvielu, tauku un ogļhidrātu
+        vajag kopā — <a href="/uztura-abc/makrouzturvielas">makrouzturvielu rakstā</a>.
+      </p>
+
+      <!-- ─── Internal links ─────────────────────── -->
+      <div class="ip-related">
+        <div class="ip-related-label">Saistītās tēmas</div>
+        <div class="ip-related-links">
+          <a href="/uztura-abc/skivja-metode" class="ip-related-link">
+            <span class="ip-related-arrow">→</span>
+            Šķīvja metode: kā sadalīt katru ēdienreizi
+          </a>
+          <a href="/uztura-abc/makrouzturvielas" class="ip-related-link">
+            <span class="ip-related-arrow">→</span>
+            Makrouzturvielas: olbaltumvielas, tauki un ogļhidrāti
+          </a>
+          <a href="/uztura-abc/udens-daudzums" class="ip-related-link">
+            <span class="ip-related-arrow">→</span>
+            Cik daudz ūdens reāli jādzer dienā
+          </a>
+          <a href="/uztura-abc/insulina-rezistence" class="ip-related-link">
+            <span class="ip-related-arrow">→</span>
+            Insulīna rezistence: simptomi un uztura risinājumi
+          </a>
+        </div>
+      </div>
+
+      <!-- ─── FAQ ───────────────────────────────── -->
+      <h2 id="faq">Bieži uzdotie jautājumi</h2>
+
+      <div class="faq-list" style="margin-top: 0; border-top: 1px solid var(--rule);">
+        {faqItems.map((item) => (
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              <span>{item.q}</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner"><p>{item.a}</p></div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- ─── Sources ───────────────────────────── -->
+      <div class="ip-sources">
+        <div class="ip-sources-label">Avoti un atsauces</div>
+        <ol class="ip-sources-list">
+          <li>Bellisle F., McDevitt R., Prentice A.M. <em>Meal frequency and energy balance.</em> British Journal of Nutrition, 1997. <a href="https://pubmed.ncbi.nlm.nih.gov/9155494/" target="_blank" rel="noopener">pubmed.ncbi.nlm.nih.gov</a></li>
+          <li>Schoenfeld B.J., Aragon A.A., Krieger J.W. <em>Effects of meal frequency on weight loss and body composition: a meta-analysis.</em> Nutrition Reviews, 2015. <a href="https://pubmed.ncbi.nlm.nih.gov/25788909/" target="_blank" rel="noopener">pubmed.ncbi.nlm.nih.gov</a></li>
+          <li>Jäger R. et al. <em>ISSN Position Stand: Protein and Exercise.</em> J Int Soc Sports Nutr, 2017. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5477153/" target="_blank" rel="noopener">ncbi.nlm.nih.gov</a></li>
+          <li>Harvard T.H. Chan School of Public Health. <em>The Nutrition Source — Meal timing and frequency.</em> <a href="https://nutritionsource.hsph.harvard.edu/" target="_blank" rel="noopener">nutritionsource.hsph.harvard.edu</a></li>
+        </ol>
+        <p class="ip-sources-updated">Pēdējo reizi atjaunots: 2026-06-09 · Autore: Ieva Jēkabsone</p>
+      </div>
+
+      <!-- ─── CTA ───────────────────────────────── -->
+      <div class="article-cta">
+        <div class="article-cta-inner">
+          <h3>Zini faktus. <em>Kā salikt savu ritmu praksē?</em></h3>
+          <p>
+            Vispārīgie principi ir sākums, bet tavs izsalkums, darba ritms un veselības stāvoklis ir individuāli.
+            Konsultācijā kopā izveidojam ēdienreižu ritmu, kas der tieši tev — un kuru tu spēj noturēt.
+          </p>
+          <a href="/pakalpojumi" class="btn btn-primary">Apskatīt konsultācijas <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- ─── Article prev/next footer ──────────────── -->
+      <footer class="ip-nav-footer">
+        {prevArticle ? (
+          <a href={prevArticle.href} class="ip-nav-card ip-nav-card--prev">
+            <span class="ip-nav-arrow">←</span>
+            <div class="ip-nav-card-text">
+              <span class="ip-nav-hint">Iepriekšējā</span>
+              <span class="ip-nav-title">{prevArticle.full ?? prevArticle.label}</span>
+            </div>
+          </a>
+        ) : (
+          <a href="/uztura-abc" class="ip-nav-card ip-nav-card--back">
+            <span class="ip-nav-arrow">←</span>
+            <div class="ip-nav-card-text">
+              <span class="ip-nav-hint">Visi raksti</span>
+              <span class="ip-nav-title">Uztura ABC</span>
+            </div>
+          </a>
+        )}
+        {nextArticle ? (
+          <a href={nextArticle.href} class="ip-nav-card ip-nav-card--next">
+            <div class="ip-nav-card-text">
+              <span class="ip-nav-hint">Nākamā tēma</span>
+              <span class="ip-nav-title">{nextArticle.full ?? nextArticle.label}</span>
+            </div>
+            <span class="ip-nav-arrow">→</span>
+          </a>
+        ) : (
+          <a href="/uztura-abc" class="ip-nav-card ip-nav-card--back" style="border-right:0; border-left:3px solid var(--gold);">
+            <div class="ip-nav-card-text">
+              <span class="ip-nav-hint">Nākamā tēma</span>
+              <span class="ip-nav-title">Drīzumā — atgriezies pie visiem rakstiem</span>
+            </div>
+            <span class="ip-nav-arrow">→</span>
+          </a>
+        )}
+      </footer>
+
+    </article><!-- /.ip-content -->
+  </div><!-- /.ip-wrap -->
+
+</BaseLayout>
+
+<!-- ══ SCOPED STYLES ══════════════════════════════════════════ -->
+<style>
+
+/* ─── Hero — ŽURNĀLA VĀKS ───────────────────────────────── */
+.ip-cover { background: var(--cream); }
+.ip-cover-media {
+  position: relative;
+  width: 100%;
+  min-height: clamp(380px, 52vw, 580px);
+  display: flex; align-items: flex-end;
+  overflow: hidden;
+}
+.ip-cover-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center right;
+  display: block;
+}
+.ip-cover-scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(30,8,15,.85) 0%, rgba(30,8,15,.58) 42%, rgba(30,8,15,.06) 78%),
+    linear-gradient(0deg, rgba(30,8,15,.55) 0%, rgba(30,8,15,0) 45%);
+}
+.ip-cover-inner {
+  position: relative;
+  width: 100%;
+  padding-top: clamp(40px,6vw,72px);
+  padding-bottom: clamp(36px,5vw,60px);
+}
+.ip-cover .ip-eyebrow {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: .26em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.ip-cover .ip-eyebrow::after { content: ""; height: 1px; width: 46px; background: var(--gold); opacity: .75; }
+.ip-cover h1 {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(32px,4.6vw,60px); line-height: 1.06;
+  color: var(--cream); margin: 0 0 18px; letter-spacing: -.02em;
+  max-width: 20ch;
+  text-shadow: 0 2px 26px rgba(0,0,0,.4);
+}
+.ip-cover h1 em { color: var(--gold); font-style: italic; }
+.ip-cover .ip-lede {
+  font-size: clamp(15px,1.25vw,18px); line-height: 1.6;
+  color: rgba(255,248,242,.92); max-width: 48ch; margin: 0;
+  text-shadow: 0 1px 16px rgba(0,0,0,.35);
+}
+
+/* Light strip below cover — quick answer + stats */
+.ip-cover-strip {
+  background: var(--ivory);
+  border-bottom: 1px solid var(--rule-gold);
+  padding: clamp(24px,3vw,38px) 0;
+}
+
+.ip-quickans {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--burgundy);
+  padding: 18px 24px; margin: 0;
+  box-shadow: 0 4px 18px rgba(60,18,32,.05);
+}
+.ip-quickans-label {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--burgundy); margin-bottom: 8px;
+}
+.ip-quickans p { margin: 0; font-size: 15.5px; color: var(--ink); line-height: 1.6; }
+
+
+/* ─── Two-column layout ────────────────────────────────── */
+.ip-wrap {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: clamp(32px,4vw,56px);
+  align-items: start;
+  padding-top: clamp(48px,6vw,80px);
+  padding-bottom: clamp(64px,8vw,100px);
+}
+
+.ip-sidebar { align-self: stretch; }
+
+/* ─── TOC ─────────────────────────────────────────────── */
+.ip-toc { position: sticky; top: 116px; margin-top: 20px; }
+.ip-toc-inner {
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 24px;
+}
+.ip-toc-label {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 16px;
+}
+.ip-toc-list { list-style: none; padding: 0; margin: 0; }
+.ip-toc-list li { border-bottom: 1px solid var(--rule); }
+.ip-toc-link {
+  display: block; padding: 10px 0;
+  font-size: 13px; line-height: 1.4; color: var(--ink-soft);
+  transition: color .2s;
+}
+.ip-toc-link:hover,
+.ip-toc-link.active { color: var(--burgundy); }
+.ip-toc-link.active { font-weight: 600; }
+
+/* ─── TOC Ieva sidebar card ──────────────────────────── */
+.ip-toc-ieva {
+  margin-top: 24px; padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 6px;
+}
+.ip-toc-ieva-img {
+  width: 88px; height: 88px;
+  border-radius: 50%; object-fit: cover; object-position: center 15%;
+  border: 3px solid var(--gold);
+  margin-bottom: 4px;
+}
+.ip-toc-ieva-name {
+  font-family: var(--serif); font-style: italic;
+  font-size: 17px; color: var(--plum);
+}
+.ip-toc-ieva-role {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.ip-toc-ieva-bio {
+  font-size: 12.5px; color: var(--ink-soft);
+  line-height: 1.55; margin: 4px 0 8px;
+}
+.ip-toc-socials {
+  display: flex; gap: 8px; justify-content: center;
+  margin-bottom: 12px;
+}
+.ip-toc-social {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--cream); border: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-soft); transition: background .15s, color .15s;
+}
+.ip-toc-social:hover { background: var(--burgundy); color: #fff; border-color: var(--burgundy); }
+.ip-toc-social svg { width: 16px; height: 16px; }
+.ip-toc-cta {
+  display: block; width: 100%;
+  padding: 10px 14px; text-align: center;
+  background: var(--burgundy); color: #fff;
+  font-family: var(--sans); font-size: 12px;
+  letter-spacing: .1em; text-transform: uppercase;
+  transition: background .15s;
+  border-radius: 2px;
+}
+.ip-toc-cta:hover { background: var(--plum); }
+
+/* ─── Article content ─────────────────────────────────── */
+.ip-content {
+  font-size: clamp(16px,1.1vw,18px);
+  line-height: 1.78;
+  color: var(--ink);
+  max-width: 820px;
+}
+.ip-content p { margin: 0 0 22px; }
+.ip-content h2 {
+  font-family: var(--serif); font-style: normal; font-weight: 600;
+  font-size: clamp(26px,2.6vw,36px);
+  line-height: 1.2; margin: 72px 0 22px;
+  color: var(--plum);
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--burgundy);
+  position: relative;
+}
+.ip-content h2::before {
+  content: "";
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 60px; height: 2px;
+  background: var(--gold);
+}
+.ip-content h2 em { color: var(--burgundy); font-style: italic; }
+.ip-content a { color: var(--burgundy); border-bottom: 1px solid var(--burgundy); }
+
+/* ─── TL;DR ───────────────────────────────────────────── */
+.ip-tldr {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--gold);
+  padding: 20px 24px;
+  margin: 0 0 28px;
+}
+.ip-tldr-label {
+  display: inline-block;
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--burgundy); margin-bottom: 8px;
+}
+.ip-tldr p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--ink); }
+
+/* ─── Key Takeaways ───────────────────────────────────── */
+.ip-takeaways {
+  background: #fbf7ef;
+  border: 1px solid var(--rule);
+  padding: 26px 28px;
+  margin: 0 0 40px;
+  border-radius: 3px;
+}
+.ip-takeaways h2 {
+  font-family: var(--serif); font-style: normal; font-weight: 600;
+  font-size: 20px; margin: 0 0 14px; color: var(--plum);
+  border: 0; padding: 0;
+}
+.ip-takeaways h2::before { display: none; }
+.ip-takeaways ul { margin: 0; padding-left: 22px; }
+.ip-takeaways li { font-size: 15px; line-height: 1.6; margin-bottom: 9px; color: var(--ink); }
+
+/* ─── CITE clear-answer block ─────────────────────────── */
+.ip-answer {
+  background: rgba(132,24,62,.05);
+  border-left: 3px solid var(--burgundy);
+  padding: 16px 22px;
+  margin: 0 0 24px !important;
+  font-size: clamp(15px,1.05vw,17px);
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+/* ─── Figure / SVG diagram ───────────────────────────── */
+.ip-figure {
+  margin: 32px 0; padding: 24px 28px;
+  background: #fff; border: 1px solid var(--rule);
+}
+.ip-figure-cap {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--burgundy); margin-bottom: 16px;
+}
+.ip-figure svg { width: 100%; height: auto; display: block; }
+.ip-figure-note { font-size: 12.5px; color: var(--ink-soft); margin: 14px 0 0; font-style: italic; }
+
+/* ─── Callout boxes ──────────────────────────────────── */
+.ip-callout {
+  display: flex; gap: 16px; padding: 20px 24px;
+  margin: 28px 0; border-radius: 2px;
+  font-size: 15px; line-height: 1.6;
+}
+.ip-callout--tip { background: #e8f5e5; border-left: 3px solid #6aaa64; }
+.ip-callout--insight { background: #eef3fb; border-left: 3px solid #5a7fc7; }
+.ip-callout--warning { background: #fff4e5; border-left: 3px solid #e8a020; }
+.ip-callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.ip-callout a { color: var(--burgundy); border-bottom: 1px solid currentColor; }
+.ip-callout strong { color: var(--plum); }
+
+/* ─── Fact-card grid ─────────────────────────────────── */
+.ip-factgrid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 16px; margin: 28px 0;
+}
+.ip-factcard {
+  background: #fff; border: 1px solid var(--rule);
+  border-top: 3px solid var(--gold);
+  padding: 22px 24px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.ip-factcard-icon { font-size: 26px; line-height: 1; }
+.ip-factcard h3 {
+  font-family: var(--serif); font-style: normal; font-weight: 600;
+  font-size: 19px; color: var(--plum); margin: 0;
+}
+.ip-factcard p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+.ip-factcard a { color: var(--burgundy); border-bottom: 1px solid var(--burgundy); }
+
+/* ─── Foto-infografika (pilna platuma) ───────────────── */
+.ip-infographic { margin: 36px 0; }
+.ip-infographic img {
+  width: 100%; height: auto; display: block;
+  border-radius: 4px; border: 1px solid var(--rule);
+}
+.ip-infographic figcaption {
+  font-size: 12.5px; color: var(--ink-soft); font-style: italic;
+  margin-top: 12px; line-height: 1.55;
+}
+
+/* ─── Image + text split row ─────────────────────────── */
+.ip-split {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(20px,3vw,40px); align-items: center;
+  margin: 36px 0;
+}
+.ip-split--reverse .ip-split-media { order: 2; }
+.ip-split-media { margin: 0; }
+.ip-split-media img {
+  width: 100%; height: auto; display: block;
+  border-radius: 4px; border: 1px solid var(--rule);
+}
+.ip-split-media figcaption {
+  font-size: 12px; color: var(--ink-soft); font-style: italic;
+  margin-top: 10px; line-height: 1.5;
+}
+.ip-split-body h3 {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(20px,2.2vw,26px); color: var(--plum); margin: 0 0 12px;
+}
+.ip-split-body p { margin: 0 0 14px; }
+.ip-split-body p:last-child { margin-bottom: 0; }
+
+/* ─── Comparison table ───────────────────────────────── */
+.ip-table-wrap { overflow-x: auto; margin: 28px 0; border: 1px solid var(--rule); }
+.ip-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.ip-table th, .ip-table td {
+  padding: 14px 18px; text-align: left;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.ip-table th {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--cream); background: var(--plum);
+  font-weight: 500;
+}
+.ip-table th:first-child { background: var(--burgundy); }
+.ip-table tr:nth-child(even) td { background: #fff; }
+.ip-table td:first-child { color: var(--burgundy); font-weight: 600; font-family: var(--sans); }
+.ip-table td { color: var(--ink); }
+
+/* ─── Steps (ordered) ────────────────────────────────── */
+.ip-steps { list-style: none; counter-reset: step; padding: 0; margin: 24px 0; }
+.ip-steps li {
+  counter-increment: step;
+  position: relative; padding: 14px 0 14px 56px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 15.5px; line-height: 1.6;
+}
+.ip-steps li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 12px;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-style: italic; font-size: 18px;
+  color: var(--cream); background: var(--burgundy);
+  border-radius: 50%;
+}
+.ip-steps li strong { color: var(--plum); }
+
+
+/* ─── Related links ──────────────────────────────────── */
+.ip-related { background: #fff; padding: 24px 28px; margin: 48px 0 0; border: 1px solid var(--rule); }
+.ip-related-label {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 16px;
+}
+.ip-related-links { display: flex; flex-direction: column; gap: 2px; }
+.ip-related-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px dashed var(--rule);
+  font-size: 15px; color: var(--plum); transition: color .2s;
+}
+.ip-related-link:last-child { border-bottom: 0; }
+.ip-related-link:hover { color: var(--burgundy); }
+.ip-related-arrow { color: var(--gold); font-size: 18px; flex-shrink: 0; }
+
+/* ─── Sources ────────────────────────────────────────── */
+.ip-sources { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--rule); }
+.ip-sources-label {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 16px;
+}
+.ip-sources-list { padding: 0; margin: 0; list-style: none; counter-reset: sources; }
+.ip-sources-list li {
+  counter-increment: sources;
+  position: relative; padding: 12px 0 12px 40px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13.5px; line-height: 1.65; color: var(--ink);
+}
+.ip-sources-list li::before {
+  content: counter(sources, decimal-leading-zero);
+  position: absolute; left: 0; top: 12px;
+  font-family: var(--serif); font-style: italic;
+  font-size: 18px; color: var(--burgundy);
+}
+.ip-sources-list a { color: var(--burgundy); border-bottom: 1px solid currentColor; }
+.ip-sources-updated { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); margin-top: 12px; letter-spacing: .05em; }
+
+/* ─── Prev / Next article footer ─────────────────────── */
+.ip-nav-footer {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  margin-top: 64px; padding-top: 32px; border-top: 2px solid var(--rule);
+}
+.ip-nav-card {
+  display: flex; align-items: center; gap: 16px;
+  padding: 24px 22px; background: #fff;
+  border: 1px solid var(--rule); text-decoration: none;
+  transition: background .15s, border-color .15s; min-width: 0;
+}
+.ip-nav-card:hover { background: var(--cream); border-color: var(--gold); }
+.ip-nav-card--prev { border-left: 3px solid var(--gold); }
+.ip-nav-card--next { border-left: 3px solid var(--gold); justify-content: space-between; }
+.ip-nav-card--back { border-right: 3px solid var(--rule); }
+.ip-nav-arrow { font-size: 22px; color: var(--gold); flex-shrink: 0; transition: transform .2s; }
+.ip-nav-card--prev:hover .ip-nav-arrow { transform: translateX(-3px); }
+.ip-nav-card--next:hover .ip-nav-arrow { transform: translateX(3px); }
+.ip-nav-card-text { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.ip-nav-hint {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.ip-nav-title {
+  font-family: var(--serif); font-size: 15px; line-height: 1.35;
+  color: var(--plum);
+  overflow: hidden; text-overflow: ellipsis;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  transition: color .15s;
+}
+.ip-nav-card:hover .ip-nav-title { color: var(--burgundy); }
+
+/* ─── Responsive ─────────────────────────────────────── */
+@media (max-width: 860px) {
+  .ip-cover-strip-grid { grid-template-columns: 1fr; }
+  .ip-cover h1 { max-width: none; }
+}
+@media (max-width: 1024px) {
+  .ip-wrap { grid-template-columns: 1fr; }
+  .ip-sidebar { display: none; }
+  .ip-nav-footer { grid-template-columns: 1fr; gap: 2px; }
+}
+@media (max-width: 640px) {
+  .ip-light-inputs { grid-template-columns: 1fr; }
+  .ip-nav-card { padding: 18px 16px; gap: 12px; }
+  .ip-nav-title { font-size: 14px; }
+}
+</style>
+
+<script>
+  // Dinamisks TOC top — zem .nav + article-nav
+  function setTocTop() {
+    const anav = document.getElementById('article-nav');
+    const toc  = document.querySelector<HTMLElement>('.ip-toc');
+    if (!toc) return;
+    if (anav) {
+      const anavTop    = parseFloat(anav.style.top) || 0;
+      const anavHeight = anav.offsetHeight;
+      toc.style.top = `${anavTop + anavHeight + 12}px`;
+    } else {
+      const nav = document.querySelector<HTMLElement>('header.nav, .nav');
+      toc.style.top = `${(nav ? nav.offsetHeight : 0) + 12}px`;
+    }
+  }
+  setTocTop();
+  window.addEventListener('resize', setTocTop, { passive: true });
+
+  // FAQ accordion
+  document.querySelectorAll<HTMLElement>('.faq-item').forEach(item => {
+    const btn = item.querySelector<HTMLButtonElement>('.faq-q');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Sticky TOC — highlight active section on scroll
+  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.ip-toc-link');
+  const headings = document.querySelectorAll<HTMLElement>('.ip-content h2[id]');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          tocLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    },
+    { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+  );
+  headings.forEach(h => observer.observe(h));
+
+</script>

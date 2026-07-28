@@ -1,0 +1,93 @@
+---
+import SEOHead from '../components/SEOHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/globals.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  type?: string;
+  jsonLd?: object | object[];
+  noindex?: boolean;
+  activeNav?: string;
+  minimalNav?: boolean;
+  noNav?: boolean;
+  noFooter?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  type,
+  jsonLd,
+  noindex,
+  activeNav,
+  minimalNav,
+  noNav,
+  noFooter,
+} = Astro.props;
+
+const GA_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
+---
+
+<!DOCTYPE html>
+<html lang="lv">
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      type={type}
+      jsonLd={jsonLd}
+      noindex={noindex}
+    />
+
+    {/* Google Analytics 4 — tikai ja GA_ID uzstādīts */}
+    {GA_ID && GA_ID !== 'G-XXXXXXXXXX' && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+        <script define:vars={{ GA_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){ dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', GA_ID, { anonymize_ip: true });
+        </script>
+      </>
+    )}
+
+    {/* Microsoft Clarity — tikai ja CLARITY_ID uzstādīts */}
+    {CLARITY_ID && CLARITY_ID !== 'your_clarity_id_here' && (
+      <script define:vars={{ CLARITY_ID }}>
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", CLARITY_ID);
+      </script>
+    )}
+  </head>
+  <body>
+    {!noNav && !minimalNav && <Header activeNav={activeNav} />}
+    {minimalNav && (
+      <header class="nav">
+        <div class="wrap nav-inner">
+          <a href="/" class="logo" aria-label="Ieva Jēkabsone — sākumlapa">
+            <span class="logo-mark">Ieva Jēkabsone</span>
+            <span class="logo-sub">Uztura konsultante · LV</span>
+          </a>
+        </div>
+      </header>
+    )}
+    <main>
+      <slot />
+    </main>
+    {!noFooter && <Footer />}
+  </body>
+</html>

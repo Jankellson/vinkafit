@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const services = [
+  { href: '/pakalpojumi/sakuma-konsultacija', label: 'Sākuma konsultācija', price: '49 €', text: 'Izrunājam tavu situāciju un nosakām nākamo soli.', image: '/assets/images/ieva-konsultacija-kafejnica.webp', alt: 'Ieva Jēkabsone sarunā konsultācijas laikā' },
+  { href: '/pakalpojumi/30-dienu-uztura-programma', label: '30 dienu programma', price: '249 €', text: 'Konkrēts starts ar ēdienkartēm, konsultācijām un skaidru ritmu.', image: '/assets/images/ieva-krasaine-virtuve.webp', alt: 'Ieva Jēkabsone virtuvē ar svaigiem produktiem' },
+  { href: '/pakalpojumi/90-dienu-uztura-programma', label: '90 dienu programma', price: '549 €', text: 'Trīs mēneši, lai izveidotu sistēmu, ko vari turpināt pati.', image: '/assets/images/ieva-gramatuve.webp', alt: 'Ieva Jēkabsone plāno uztura programmu' },
+  { href: '/pakalpojumi/vip-uztura-atbalsts', label: 'VIP uztura atbalsts', price: '1500 € / 6 mēneši', text: 'Prioritāra pieejamība un praktisks atbalsts reālās dzīves situācijās.', image: '/assets/images/ieva-consultant-portrait.webp', alt: 'Ieva Jēkabsone VIP uztura atbalstam' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': services.map((service) => ({
+    '@type': 'Service',
+    provider: { '@id': 'https://ievajekabsone.lv/#ieva' },
+    name: service.label,
+    offers: { '@type': 'Offer', priceCurrency: 'EUR', url: `https://ievajekabsone.lv${service.href}` },
+    description: service.text,
+  })),
+};
+---
+
+<BaseLayout title="Uztura pakalpojumi — Ieva Jēkabsone" description="Sākuma uztura konsultācija, 30 vai 90 dienu programma un VIP uztura atbalsts. Izvēlies sadarbības dziļumu, kas der tavai situācijai." canonical="https://ievajekabsone.lv/pakalpojumi" jsonLd={jsonLd} activeNav="pakalpojumi">
+  <Breadcrumbs items={[{ label: 'Sākums', href: '/' }, { label: 'Pakalpojumi' }]} />
+
+  <section class="offer-hero">
+    <div class="wrap offer-hero-grid">
+      <div>
+        <p class="offer-kicker">Pakalpojumi</p>
+        <h1>Nevis vēl viena diēta. <em>Plāns, kas iederas tavā ikdienā.</em></h1>
+        <p class="lede">Sākam ar tavu situāciju, mērķiem un paradumiem. Tad izvēlamies sadarbības dziļumu, kas palīdz ieviest pārmaiņas reālajā dzīvē.</p>
+        <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-primary">Pieteikt sākuma konsultāciju — 49 € <span class="arrow">→</span></a>
+      </div>
+      <figure class="offer-hero-photo"><img src="/assets/images/ieva-relaxed.webp" alt="Ieva Jēkabsone sarunā ar klienti" /></figure>
+    </div>
+  </section>
+
+  <section class="offer-index">
+    <div class="wrap">
+      <div class="offer-index-intro">
+        <p class="offer-kicker">Izvēlies savu nākamo soli</p>
+        <h2>Viena skaidra ieeja. <em>Četri sadarbības līmeņi.</em></h2>
+      </div>
+      <div class="offer-index-list">
+        {services.map((service, index) => (
+          <article class="offer-index-item">
+            <img src={service.image} alt={service.alt} loading="lazy" />
+            <div class="offer-index-copy">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3><a href={service.href}>{service.label}</a></h3>
+              <p>{service.text}</p>
+            </div>
+            <div class="offer-index-action"><strong>{service.price}</strong><a href={service.href}>Skatīt piedāvājumu <span aria-hidden="true">→</span></a></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="offer-note-section">
+    <div class="wrap offer-note">
+      <p class="offer-kicker">Kā izvēlēties</p>
+      <h2>Ja neesi droša, ar ko sākt, <em>sāc ar konsultāciju.</em></h2>
+      <p>49 € konsultācija dod laiku izrunāt mērķus, paradumus, dzīvesveidu un pašsajūtu. Ja 24 stundu laikā izvēlies programmu, šo summu ieskaitu tās cenā.</p>
+      <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-ghost">Uzzināt par sākuma konsultāciju <span class="arrow">→</span></a>
+    </div>
+  </section>
+</BaseLayout>

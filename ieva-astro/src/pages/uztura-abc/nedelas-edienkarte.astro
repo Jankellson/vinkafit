@@ -1,0 +1,1083 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleNav from '../../components/ArticleNav.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
+
+// ─── NotebookLM-generated multimedia ─────────────────────
+const videoId: string | null      = null;
+const videoTitle: string          = 'Kā saplānot nedēļas ēdienkarti, kas tiešām strādā';
+const videoDuration: string       = '5:00';
+
+const title = "Nedēļas ēdienkartes plānošana: struktūra, principi un praktiski piemēri";
+const description = "Kā saplānot nedēļas ēdienkarti, kas tiešām strādā? Skeleta princips, 5 noteikumi ilgtspējai, praktisks dienas piemērs, iepirkumu saraksts un meal-prep — bez stingrām diētām.";
+const canonical = "https://ievajekabsone.lv/uztura-abc/nedelas-edienkarte";
+
+const prevArticle = {
+  href:  '/uztura-abc/uztura-bogatinatajs',
+  label: 'Uztura bagātinātāji',
+  full:  'Uztura bagātinātāji: kad tie vajadzīgi, kādi un kādās devās',
+};
+const nextArticle = null;
+
+const tocItems = [
+  { id: "kapec-planot",   label: "Kāpēc nedēļas plāns strādā" },
+  { id: "struktura",      label: "Struktūra: skelets, ne stingrs grafiks" },
+  { id: "principi",       label: "5 principi, kas notur plānu" },
+  { id: "piemers",        label: "Praktisks piemērs: viena diena" },
+  { id: "iepirkums",      label: "No plāna uz iepirkumu un meal-prep" },
+  { id: "kludas",         label: "Biežākās kļūdas, kas plānu sagrauj" },
+  { id: "faq",            label: "Bieži uzdotie jautājumi" },
+];
+
+const faqItems = [
+  {
+    q: "Cik laika aizņem nedēļas ēdienkartes saplānošana?",
+    a: "Kad ir gatavs skelets, parasti 15–20 minūtes nedēļā. Pirmā reize ir garāka, jo top tava personīgā “maltīšu bibliotēka” — 5–6 brokastu, 6–8 pusdienu un vakariņu varianti, ko vari rotēt. Pēc tam plānošana ir izvēle no zināmā, ne katras reizes izgudrošana no nulles. Tieši tāpēc skelets ietaupa laiku, ne tērē to."
+  },
+  {
+    q: "Vai katru dienu jāēd kaut kas atšķirīgs?",
+    a: "Nē, un tas pat traucē. Daudzveidība ir svarīga uzturvielu dēļ, bet 21 pilnīgi atšķirīga maltīte nedēļā ir iemesls, kāpēc plāni sabrūk — tas ir par sarežģītu. Reālistisks plāns atkārto dažas pamata maltītes un mainās detaļās: tā pati olu brokastu bāze ar citiem dārzeņiem, tas pats graudu–olbaltumvielu–dārzeņu šķīvis ar citu gaļu vai zivi."
+  },
+  {
+    q: "Vai plānošana der, ja gribu zaudēt svaru?",
+    a: "Jā, tā ir viena no praktiskākajām lietām. Plānošana ir saistīta ar daudzveidīgāku uzturu un labāku diētas kvalitāti (Ducrot, 2017). Kad ēdiens ir saplānots, tu retāk nonāc situācijā “mājās nekā nav” un ej pēc ātrā risinājuma. Tieši šie neplānotie brīži parasti pievieno tās nemanāmās kalorijas, kuru dēļ svars stāv."
+  },
+  {
+    q: "Kā saplānot, ja ģimenē ēd dažādi?",
+    a: "Plāno vienu kopīgu bāzi un pielāgo detaļas. Piemēram, visiem tas pats cepta vista ar dārzeņiem, bet bērniem klāt makaroni, pieaugušajiem — vairāk dārzeņu un mazāk graudu. Tā tu negatavo trīs atsevišķas maltītes, bet katrs dabū to, kas der. Šķīvja princips šeit ir ērtākais rāmis — sk. rakstu par šķīvja metodi."
+  },
+  {
+    q: "Vai meal-prep nozīmē visu nedēļu ēst vienu un to pašu?",
+    a: "Nē. Meal-prep nav obligāti gatavot 7 vienādas kastītes. Var sagatavot tikai sastāvdaļas — uzvārīt graudus, sacept gaļu, sagriezt dārzeņus — un katru dienu salikt citādi. Tā ēdiens ir svaigāks un mazāk apnīk, bet smagais darbs jau ir padarīts. Sagatavo bāzi, saliec katru dienu."
+  },
+  {
+    q: "Ko darīt, ja kādu dienu plāns izjūk?",
+    a: "Neko dramatisku — plāns ir ietvars, ne eksāmens. Ja kāda diena sanāk citādi vai ir restorāns ar draugiem, tas neizjauc nedēļu. Atgriezies pie plāna nākamajā maltītē. Tieši doma “es jau tāpat sabojāju, ēdīšu līdz pirmdienai” ir tā, kas plānus īsti sagrauj, ne viena neplānota maltīte."
+  }
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "url": canonical,
+      "datePublished": "2026-06-14",
+      "dateModified": "2026-06-14",
+      "author": {
+        "@type": "Person",
+        "name": "Ieva Jēkabsone",
+        "@id": "https://ievajekabsone.lv/#ieva",
+        "jobTitle": "Uztura konsultante",
+        "url": "https://ievajekabsone.lv/par-mani"
+      },
+      "publisher": { "@type": "Person", "name": "Ieva Jēkabsone", "@id": "https://ievajekabsone.lv/#ieva" },
+      "image": "https://ievajekabsone.lv/images/raksti/nedelas-edienkarte/nedelas-edienkarte-hero.webp",
+      "inLanguage": "lv",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": canonical }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqItems.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Sākums", "item": "https://ievajekabsone.lv/" },
+        { "@type": "ListItem", "position": 2, "name": "Uztura ABC", "item": "https://ievajekabsone.lv/uztura-abc" },
+        { "@type": "ListItem", "position": 3, "name": "Nedēļas ēdienkarte", "item": canonical }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title={`${title} | Ieva Jēkabsone`}
+  description={description}
+  canonical={canonical}
+  ogImage="/images/raksti/nedelas-edienkarte/nedelas-edienkarte-og.webp"
+  jsonLd={jsonLd}
+  activeNav="uztura-abc"
+>
+
+  <ArticleNav
+    breadcrumbs={[
+      { label: 'Sākums',     href: '/' },
+      { label: 'Uztura ABC', href: '/uztura-abc' },
+      { label: 'Nedēļas ēdienkarte' },
+    ]}
+    prev={prevArticle}
+    next={nextArticle}
+  />
+
+  <!-- ══ ARTICLE HERO — ŽURNĀLA VĀKS ═══════════════════════════ -->
+  <section class="ip-cover">
+    <div class="ip-cover-media">
+      <img
+        class="ip-cover-img"
+        src="/images/raksti/nedelas-edienkarte/nedelas-edienkarte-hero.webp"
+        alt="Nedēļas ēdienkartes plānošana — meal-prep trauciņi ar sabalansētām maltītēm, piezīmju burtnīca un svaiga pārtika"
+        width="1200" height="630"
+        loading="eager"
+      />
+      <div class="ip-cover-scrim" aria-hidden="true"></div>
+      <div class="ip-cover-inner wrap">
+        <div class="ip-eyebrow">Uztura pamati · Bloks 07</div>
+        <h1>Nedēļas ēdienkartes plānošana: <em>struktūra</em>, principi un piemēri</h1>
+        <p class="ip-lede">
+          Plāns nav par to, lai katra diena būtu citāda un perfekta. Tas ir par to, lai vakarā nebūtu
+          jautājuma “ko ēst” un mājās nebūtu “nekā nav”. Te ir skelets, kas atkārtojas, un principi, kas
+          to notur ilgtermiņā.
+        </p>
+      </div>
+    </div>
+
+    <!-- Light strip below: quick answer + stats -->
+    <div class="ip-cover-strip">
+      <div class="wrap">
+        <div class="ip-quickans">
+          <div class="ip-quickans-label">Īsā atbilde</div>
+          <p>
+            Labs nedēļas plāns ir <strong>skelets, ne 21 atšķirīga maltīte</strong>: daži pamata ēdieni,
+            ko rotē un maina detaļās. Katrā ēdienreizē — olbaltumvielas, dārzeņi un graudi pēc
+            <a href="/uztura-abc/skivja-metode">šķīvja principa</a>. Plānošana ir saistīta ar labāku uztura
+            kvalitāti (Ducrot, 2017), jo izslēdz neplānotos “mājās nekā nav” brīžus.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MAIN LAYOUT: TOC + CONTENT ═══════════════════════════ -->
+  <div class="ip-wrap wrap">
+
+    <!-- LEFT: sidebar — Ieva card (static) + sticky TOC -->
+    <aside class="ip-sidebar" aria-label="Satura rādītājs">
+
+      <!-- STATIC: Ieva info card — scrolls away -->
+      <div class="ip-toc-ieva">
+        <img
+          src="/assets/images/ieva-portrait.webp"
+          alt="Ieva Jēkabsone"
+          class="ip-toc-ieva-img"
+          width="80" height="80"
+        />
+        <div class="ip-toc-ieva-name">Ieva Jēkabsone</div>
+        <div class="ip-toc-ieva-role">Uztura konsultante</div>
+        <p class="ip-toc-ieva-bio">
+          Palīdzu saprast, kas uzturā kaitē un kas palīdz.
+          Bez stingrām diētām un vienas "pareizās" formulas visiem.
+        </p>
+        <div class="ip-toc-socials">
+          <a href="https://www.instagram.com/ieva.jekabsone/" target="_blank" rel="noopener"
+             class="ip-toc-social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100089137514285" target="_blank" rel="noopener"
+             class="ip-toc-social" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@ieva.jekabson" target="_blank" rel="noopener"
+             class="ip-toc-social" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.73a4.85 4.85 0 0 1-1.01-.04z"/>
+            </svg>
+          </a>
+        </div>
+        <a href="/pakalpojumi" class="ip-toc-cta">Piesakies konsultācijai →</a>
+      </div>
+
+      <!-- STICKY: table of contents only -->
+      <div class="ip-toc">
+        <div class="ip-toc-inner">
+          <div class="ip-toc-label">Saturs</div>
+          <nav>
+            <ol class="ip-toc-list">
+              {tocItems.map(item => (
+                <li><a href={`#${item.id}`} class="ip-toc-link">{item.label}</a></li>
+              ))}
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- RIGHT: article content -->
+    <article class="ip-content">
+
+      <!-- ─── TL;DR (LLM citation-bait) ──────────── -->
+      <div class="ip-tldr">
+        <span class="ip-tldr-label">Īsumā</span>
+        <p>
+          Strādājošs nedēļas plāns ir skelets, ne stingrs grafiks: daži pamata ēdieni, ko rotē un maina
+          detaļās, nevis 21 atšķirīga maltīte. Katrā ēdienreizē saliec olbaltumvielas, dārzeņus un graudus
+          pēc šķīvja principa. Iekļauj arī to, kas garšo — aizliegumi sabrūk, pielāgošana paliek. Plānošana
+          ir saistīta ar daudzveidīgāku un kvalitatīvāku uzturu (Ducrot, 2017), jo izslēdz neplānotos
+          “mājās nekā nav” brīžus, kas pievieno tās nemanāmās kalorijas.
+        </p>
+      </div>
+
+      <!-- ─── Key Takeaways ─────────────────────── -->
+      <aside class="ip-takeaways" aria-label="Galvenās atziņas">
+        <h2>💡 Galvenās atziņas</h2>
+        <ul>
+          <li>Plāno skeletu, ne katru maltīti no nulles — daži pamata ēdieni, ko atkārto.</li>
+          <li>Katrā ēdienreizē: olbaltumvielas + dārzeņi + graudi (šķīvja princips).</li>
+          <li>Iekļauj iecienīto — aizliegumi sabrūk, pielāgošana paliek.</li>
+          <li>Plānošana saistīta ar labāku uztura kvalitāti un daudzveidību (Ducrot, 2017).</li>
+          <li>Meal-prep var būt tikai sastāvdaļu sagatavošana, ne 7 vienādas kastītes.</li>
+          <li>No plāna izriet iepirkumu saraksts — mazāk impulsa pirkumu, mazāk izniekota ēdiena.</li>
+          <li>Viena izjukusi diena nesagrauj nedēļu — atgriezies nākamajā maltītē.</li>
+        </ul>
+      </aside>
+
+      <!-- ─── Section 1 ─────────────────────────── -->
+      <h2 id="kapec-planot">Kāpēc nedēļas plāns strādā</h2>
+
+      <p class="ip-answer">
+        Nedēļas plāns strādā tāpēc, ka tas izņem lēmumu no brīža, kad esi visnogurušākais un izsalkušākais —
+        vakarā pie ledusskapja. Kad ēdiens ir izdomāts iepriekš, tu retāk nonāc situācijā “mājās nekā nav” un
+        retāk ej pēc ātrā risinājuma. Pētījumi rāda, ka maltīšu plānošana ir saistīta ar daudzveidīgāku
+        uzturu, labāku diētas kvalitāti un veselīgāku ķermeņa svaru (Ducrot, 2017).
+      </p>
+
+      <p>
+        Padomā, kad ēdiens parasti “aiziet greizi”. Reti tas notiek tāpēc, ka cilvēks apzināti izvēlas slikti.
+        Tas notiek tāpēc, ka nav plāna: bija garš darba dienas, mājās nav ko ēst, un ātrākais risinājums
+        nav arī labākais. Plāns nav par disciplīnu — tas ir par to, lai labā izvēle būtu arī vieglākā izvēle.
+      </p>
+
+      <p>
+        Otrs ieguvums ir mierīgāka galva. “Ko vārīt?” ir jautājums, kas atkārtojas septiņas reizes nedēļā un
+        nogurdina. Kad atbilde jau ir uz lapas, tā enerģija paliek brīva citām lietām. Tieši tāpēc plāns nav
+        ierobežojums — tas ir atvieglojums.
+      </p>
+
+      {/* ─── Video Explainer (pēc 1. sekcijas) ── */}
+      {videoId && (
+        <VideoEmbed
+          videoId={videoId}
+          title={videoTitle}
+          duration={videoDuration}
+          label="Video skaidrojums"
+        />
+      )}
+
+      <!-- ─── Section 2 ─────────────────────────── -->
+      <h2 id="struktura">Struktūra: skelets, ne stingrs grafiks</h2>
+
+      <p class="ip-answer">
+        Labākais plāns nav 21 atšķirīga maltīte nedēļā — tas ir skelets, kas atkārtojas. Izvēlies dažas
+        pamata maltītes katrai ēdienreizei un rotē tās, mainot tikai detaļas: dārzeņu, olbaltumvielu avotu,
+        garšvielu. Tā plāns ir gana daudzveidīgs uzturvielu ziņā, bet pietiekami vienkāršs, lai to reāli
+        ievērotu.
+      </p>
+
+      <p>
+        Iedomājies to kā “maltīšu bibliotēku”. Tev ir 5–6 brokastu varianti, ko tu jau zini un kas garšo;
+        6–8 pusdienu un vakariņu varianti; pāris uzkodas. Nedēļas plāns ir vienkārši izvēle no šīs
+        bibliotēkas, ne katras dienas izgudrošana no jauna. Tāds skelets atkārtojas, bet ne apnīk — jo
+        detaļas mainās.
+      </p>
+
+      <!-- SVG: week skeleton grid -->
+      <figure class="ip-figure">
+        <figcaption class="ip-figure-cap">Skeleta princips: viena bāze, dažādas detaļas</figcaption>
+        <svg viewBox="0 0 660 250" role="img" xmlns="http://www.w3.org/2000/svg">
+          <title>Nedēļas ēdienkartes skelets: trīs ēdienreižu bāzes (brokastis, pusdienas, vakariņas) atkārtojas septiņas dienas, mainot tikai detaļas — dārzeņu, olbaltumvielu avotu un garšvielas</title>
+          <!-- row labels -->
+          <g font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#84183e" text-anchor="end">
+            <text x="86" y="78">Brokastis</text>
+            <text x="86" y="138">Pusdienas</text>
+            <text x="86" y="198">Vakariņas</text>
+          </g>
+          <!-- day headers -->
+          <g font-family="system-ui, sans-serif" font-size="11" fill="rgba(42,20,25,.55)" text-anchor="middle">
+            <text x="120" y="42">P</text><text x="190" y="42">O</text><text x="260" y="42">T</text>
+            <text x="330" y="42">C</text><text x="400" y="42">Pk</text><text x="470" y="42">S</text><text x="540" y="42">Sv</text>
+          </g>
+          <!-- Row 1: breakfast base burgundy, vary tone -->
+          <g>
+            {[120,190,260,330,400,470,540].map((x, i) => (
+              <rect x={x-26} y="58" width="52" height="30" rx="4" fill="#84183e" opacity={0.55 + (i % 3) * 0.18}/>
+            ))}
+          </g>
+          <!-- Row 2: lunch base plum -->
+          <g>
+            {[120,190,260,330,400,470,540].map((x, i) => (
+              <rect x={x-26} y="118" width="52" height="30" rx="4" fill="#3c1220" opacity={0.5 + ((i+1) % 3) * 0.2}/>
+            ))}
+          </g>
+          <!-- Row 3: dinner base gold -->
+          <g>
+            {[120,190,260,330,400,470,540].map((x, i) => (
+              <rect x={x-26} y="178" width="52" height="30" rx="4" fill="#d9a85a" opacity={0.55 + ((i+2) % 3) * 0.18}/>
+            ))}
+          </g>
+          <text x="540" y="238" font-family="system-ui, sans-serif" font-size="10.5" fill="rgba(42,20,25,.5)" text-anchor="end">viena bāze · dažādi toņi = dažādas detaļas</text>
+        </svg>
+        <p class="ip-figure-note">Katra rinda = viena ēdienreizes bāze, kas atkārtojas visu nedēļu. Mainās tikai detaļas, ne viss ēdiens.</p>
+      </figure>
+
+      <!-- ─── Section 3 ─────────────────────────── -->
+      <h2 id="principi">5 principi, kas notur plānu</h2>
+
+      <p class="ip-answer">
+        Plāns sabrūk nevis tāpēc, ka cilvēkam trūkst gribasspēka, bet tāpēc, ka tas ir par stingru, par
+        sarežģītu vai bez tā, kas garšo. Pieci principi to maina: balansē katru šķīvi, iekļauj iecienīto,
+        domā par sīkumiem, plāno reālistiski un atstāj vietu elastībai. Šie principi padara plānu tādu, ko
+        var ievērot mēnešiem, ne dienām.
+      </p>
+
+      <div class="ip-factgrid">
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">🍽️</span>
+          <h3>1 · Balansē katru šķīvi</h3>
+          <p>Katrā ēdienreizē olbaltumvielas, dārzeņi un graudi. Tas ir vienkāršākais kvalitātes rāmis — sk. <a href="/uztura-abc/skivja-metode">šķīvja metodi</a>. Olbaltumvielas katrā reizē notur sāta sajūtu.</p>
+        </div>
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">🍫</span>
+          <h3>2 · Iekļauj iecienīto</h3>
+          <p>Plānā jābūt vietai tam, kas garšo — saldējumam, kūkai, čipšiem mērenās devās. Aizliegums strādā mēnesi, tad cilvēks “norauj”. Pielāgošana paliek.</p>
+        </div>
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">🥄</span>
+          <h3>3 · Sīkumi skaitās</h3>
+          <p>Eļļa pannā, mērces, uzkodas pie kafijas — tās ir kalorijas, ko plāns palīdz ieraudzīt. Sešas ēdamkarotes eļļas salātos ir 600 kcal. Gurķis vai salātlapa — nē.</p>
+        </div>
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">⏱️</span>
+          <h3>4 · Plāno reālistiski</h3>
+          <p>Ja darba dienā nav laika gatavot, neplāno trīs kursu vakariņas. Liec ātras maltītes darbdienās un sarežģītākas brīvdienās. Plāns, ko nevar izpildīt, nav plāns.</p>
+        </div>
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">🔄</span>
+          <h3>5 · Atstāj elastību</h3>
+          <p>Atstāj 1–2 “brīvas” maltītes nedēļā restorānam vai pārpalikumiem. Tā plāns iztur saskari ar reālo dzīvi un nesabrūk pie pirmās izmaiņas.</p>
+        </div>
+      </div>
+
+      <div class="ip-callout ip-callout--insight">
+        <div class="ip-callout-icon">💡</div>
+        <div>
+          Ja sver svaru vai skaiti kalorijas iesācēja posmā, plāns to padara vieglu — tu jau iepriekš zini,
+          kas būs šķīvī. Vēlāk, kad ir izpratne, var plānot tikai pēc šķīvja principa bez skaitīšanas. Vairāk —
+          <a href="/uztura-abc/makrouzturvielas">makrouzturvielu rakstā</a>.
+        </div>
+      </div>
+
+      <!-- ─── Section 4 ─────────────────────────── -->
+      <h2 id="piemers">Praktisks piemērs: viena diena</h2>
+
+      <p class="ip-answer">
+        Lūk, kā izskatās viena sabalansēta diena pēc šiem principiem. Tā nav “pareizā” diena, kas der visiem —
+        porcijas un produkti atkarīgi no tava mērķa un aktivitātes. Bet struktūra ir tā pati, ko vari pārnest
+        uz savu uzturu: katrā ēdienreizē olbaltumvielas, dārzeņi un graudi, ar vietu uzkodai un iecienītajam.
+      </p>
+
+      <div class="ip-table-wrap">
+        <table class="ip-table">
+          <thead>
+            <tr>
+              <th>Ēdienreize</th>
+              <th>Piemērs</th>
+              <th>Kas ir šķīvī</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Brokastis</td>
+              <td>Olu kultenis ar dārzeņiem, pilngraudu maize</td>
+              <td>Olbaltumvielas + dārzeņi + graudi</td>
+            </tr>
+            <tr>
+              <td>Pusdienas</td>
+              <td>Cepta vista, grūbas, ceptu dārzeņu maisījums</td>
+              <td>½ dārzeņi, ¼ olbaltumvielas, ¼ graudi</td>
+            </tr>
+            <tr>
+              <td>Uzkoda</td>
+              <td>Jogurts ar ogām un sauju riekstu</td>
+              <td>Olbaltumvielas + augļi + labie tauki</td>
+            </tr>
+            <tr>
+              <td>Vakariņas</td>
+              <td>Cepts lasis, vārīti kartupeļi, svaigi salāti</td>
+              <td>Olbaltumvielas + graudi + dārzeņi</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Pamani, cik atkārtojas struktūra: katrā rindā ir olbaltumvielu avots, dārzeņi un graudu/cietes avots.
+        Nedēļas griezumā tu vari mainīt vistu pret cūkgaļu, lasi pret skumbriju, grūbas pret rīsiem — un
+        skelets paliek tas pats. Tieši tas padara plānošanu ātru.
+      </p>
+
+      <!-- Ieva E-E-A-T note -->
+      <div class="ieva-note">
+        <div class="ieva-note-head">
+          <img
+            src="/assets/images/ieva-consultant-portrait.webp"
+            alt="Ieva Jēkabsone"
+            class="ieva-note-avatar ieva-note-avatar--lg"
+            width="72" height="72"
+          />
+          <div>
+            <div class="label">Autores piezīme</div>
+            <h4>Ieva Jēkabsone</h4>
+          </div>
+        </div>
+        <p>
+          Kad strādāju ar klientu, mēs nesastādām perfektu plānu uz papīra, ko viņš nekad neievēros. Mēs
+          sākam ar to, ko viņš jau ēd un kas garšo, un no tā veidojam skeletu. Ja no rīta gribas cīsiņus —
+          labi, atrodam kvalitatīvākus ar vairāk gaļas un sabalansējam pārējo dienu. Tā ir pielāgošana, ne
+          aizliegums. Plāns, kurā nav vietas tavai dzīvei un tavām garšām, ir plāns, ko tu pametīsi pēc
+          divām nedēļām. Es labāk veidoju tādu, ko tu vari ievērot gadu.
+        </p>
+        <span class="sig">Ieva</span>
+      </div>
+
+      <!-- ─── Section 5 ─────────────────────────── -->
+      <h2 id="iepirkums">No plāna uz iepirkumu un meal-prep</h2>
+
+      <p class="ip-answer">
+        Kad plāns ir gatavs, no tā tieši izriet iepirkumu saraksts — tu pērc tieši to, kas vajadzīgs maltītēm,
+        ne to, kas izskatās labi veikalā. Tas samazina impulsa pirkumus un izniekoto ēdienu. Meal-prep ir
+        nākamais solis: sagatavo sastāvdaļas iepriekš, lai darbdienā maltīte saliekas dažās minūtēs.
+      </p>
+
+      <ol class="ip-steps">
+        <li>
+          <strong>Izraksti sastāvdaļas no plāna.</strong> Ej cauri nedēļas maltītēm un pieraksti, kas vajadzīgs — tas ir tavs iepirkumu saraksts.
+        </li>
+        <li>
+          <strong>Pārbaudi, kas jau ir.</strong> Pirms iepirkuma paskaties skapī un ledusskapī — daļa jau būs mājās. Mazāk dublētu pirkumu.
+        </li>
+        <li>
+          <strong>Sagatavo bāzi, ne visu.</strong> Uzvāri graudus, sacep gaļu vai zivi, sagriez dārzeņus. Katru dienu saliec citādi — svaigāk un mazāk apnīk.
+        </li>
+        <li>
+          <strong>Glabā gatavu olbaltumvielu avotu.</strong> Vārītas olas, biezpiens, gatava vista ledusskapī nozīmē, ka sabalansēta maltīte ir minūšu attālumā, ne stundas.
+        </li>
+      </ol>
+
+      <div class="ip-callout ip-callout--tip">
+        <div class="ip-callout-icon">🛒</div>
+        <div>
+          Praktisks triks: kārto iepirkumu sarakstu pa veikala zonām (dārzeņi, gaļa/zivs, piena produkti,
+          pamatkrājums), ne pa maltītēm. Tā tu izej veikalu vienu reizi, ne staigā šurpu turpu — un retāk
+          iekrīt impulsa pirkumos pie kases.
+        </div>
+      </div>
+
+      <!-- ─── Section 6 ─────────────────────────── -->
+      <h2 id="kludas">Biežākās kļūdas, kas plānu sagrauj</h2>
+
+      <p class="ip-answer">
+        Plāni parasti neizdodas ne gribasspēka trūkuma dēļ, bet tāpēc, ka tie ir uzbūvēti nereāli. Pārāk
+        ambiciozs, pārāk vienveidīgs vai bez vietas dzīvei — tie ir trīs biežākie iemesli, kāpēc labi domāts
+        plāns nokļūst miskastē trešdienā. Lūk, ko mainīt.
+      </p>
+
+      <div class="ip-factgrid">
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">🎯</span>
+          <h3>Par ambiciozs</h3>
+          <p>21 jauna recepte, kuras visas prasa stundu un eksotiskas sastāvdaļas. Risinājums: sāc ar 5–6 vienkāršām maltītēm, ko jau proti, un pievieno jaunas pamazām.</p>
+        </div>
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">😐</span>
+          <h3>Par vienveidīgs</h3>
+          <p>Tā pati vistas krūtiņa ar brokoļiem septiņas dienas — līdz tā riebjas. Risinājums: atkārto bāzi, bet mainī garšvielas, mērces un dārzeņus, lai negaršo vienādi.</p>
+        </div>
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">🚫</span>
+          <h3>Bez vietas dzīvei</h3>
+          <p>Plāns, kurā nav ne restorāna, ne iecienītā, ne brīvas dienas. Pirmā novirze rada sajūtu “es sabojāju”. Risinājums: ieplāno elastību jau no sākuma.</p>
+        </div>
+        <div class="ip-factcard">
+          <span class="ip-factcard-icon" aria-hidden="true">💧</span>
+          <h3>Aizmirsti dzērieni un sīkumi</h3>
+          <p>Plāno ēdienu, bet aizmirst, ka sulas, kafija ar sīrupu un uzkodas arī skaitās. Risinājums: ieplāno arī tos — sk. <a href="/uztura-abc/udens-daudzums">ūdens un dzērienu rakstu</a>.</p>
+        </div>
+      </div>
+
+      <p>
+        Un atceries galveno: viena izjukusi maltīte vai diena nesagrauj nedēļu. To sagrauj doma “es jau tāpat
+        sabojāju, ēdīšu līdz pirmdienai”. Plāns ir ietvars, ne eksāmens — atgriezies pie tā nākamajā maltītē,
+        ne nākampirmdien.
+      </p>
+
+      <!-- ─── Internal links ─────────────────────── -->
+      <div class="ip-related">
+        <div class="ip-related-label">Saistītās tēmas</div>
+        <div class="ip-related-links">
+          <a href="/uztura-abc/skivja-metode" class="ip-related-link">
+            <span class="ip-related-arrow">→</span>
+            Šķīvja metode: kā sabalansēt katru ēdienreizi
+          </a>
+          <a href="/uztura-abc/makrouzturvielas" class="ip-related-link">
+            <span class="ip-related-arrow">→</span>
+            Makrouzturvielas: olbaltumvielas, tauki un ogļhidrāti
+          </a>
+          <a href="/uztura-abc/esanas-biezums" class="ip-related-link">
+            <span class="ip-related-arrow">→</span>
+            Ēšanas biežums: cik reizes dienā ēst
+          </a>
+          <a href="/uztura-abc/uztura-bogatinatajs" class="ip-related-link">
+            <span class="ip-related-arrow">→</span>
+            Uztura bagātinātāji: kad tie vajadzīgi un kādās devās
+          </a>
+        </div>
+      </div>
+
+      <!-- ─── FAQ ───────────────────────────────── -->
+      <h2 id="faq">Bieži uzdotie jautājumi</h2>
+
+      <div class="faq-list" style="margin-top: 0; border-top: 1px solid var(--rule);">
+        {faqItems.map((item) => (
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              <span>{item.q}</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner"><p>{item.a}</p></div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- ─── Sources ───────────────────────────── -->
+      <div class="ip-sources">
+        <div class="ip-sources-label">Avoti un atsauces</div>
+        <ol class="ip-sources-list">
+          <li>Ducrot P. et al. <em>Meal planning is associated with food variety, diet quality and body weight status in a large sample of French adults.</em> International Journal of Behavioral Nutrition and Physical Activity, 2017. <a href="https://ijbnpa.biomedcentral.com/articles/10.1186/s12966-017-0461-7" target="_blank" rel="noopener">ijbnpa.biomedcentral.com</a></li>
+          <li>Harvard T.H. Chan School of Public Health. <em>The Healthy Eating Plate.</em> <a href="https://nutritionsource.hsph.harvard.edu/healthy-eating-plate/" target="_blank" rel="noopener">nutritionsource.hsph.harvard.edu</a></li>
+          <li>World Health Organization. <em>Healthy diet — Fact sheet.</em> <a href="https://www.who.int/news-room/fact-sheets/detail/healthy-diet" target="_blank" rel="noopener">who.int</a></li>
+          <li>EFSA. <em>Dietary Reference Values for nutrients — Summary report.</em> 2017. <a href="https://www.efsa.europa.eu/en/supporting/pub/e15121" target="_blank" rel="noopener">efsa.europa.eu</a></li>
+        </ol>
+        <p class="ip-sources-updated">Pēdējo reizi atjaunots: 2026-06-14 · Autore: Ieva Jēkabsone</p>
+      </div>
+
+      <!-- ─── CTA ───────────────────────────────── -->
+      <div class="article-cta">
+        <div class="article-cta-inner">
+          <h3>Gribi plānu, kas der <em>tieši tev?</em></h3>
+          <p>
+            Skelets un principi ir sākums, bet tavs mērķis, aktivitāte, garšas un dienas ritms ir individuāli.
+            Konsultācijā kopā izveidojam nedēļas struktūru, kas der tavai dzīvei — un kuru tu reāli spēj ievērot.
+          </p>
+          <a href="/pakalpojumi" class="btn btn-primary">Apskatīt konsultācijas <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- ─── Article prev/next footer ──────────────── -->
+      <footer class="ip-nav-footer">
+        {prevArticle ? (
+          <a href={prevArticle.href} class="ip-nav-card ip-nav-card--prev">
+            <span class="ip-nav-arrow">←</span>
+            <div class="ip-nav-card-text">
+              <span class="ip-nav-hint">Iepriekšējā</span>
+              <span class="ip-nav-title">{prevArticle.full ?? prevArticle.label}</span>
+            </div>
+          </a>
+        ) : (
+          <a href="/uztura-abc" class="ip-nav-card ip-nav-card--back">
+            <span class="ip-nav-arrow">←</span>
+            <div class="ip-nav-card-text">
+              <span class="ip-nav-hint">Visi raksti</span>
+              <span class="ip-nav-title">Uztura ABC</span>
+            </div>
+          </a>
+        )}
+        {nextArticle ? (
+          <a href={nextArticle.href} class="ip-nav-card ip-nav-card--next">
+            <div class="ip-nav-card-text">
+              <span class="ip-nav-hint">Nākamā tēma</span>
+              <span class="ip-nav-title">{nextArticle.full ?? nextArticle.label}</span>
+            </div>
+            <span class="ip-nav-arrow">→</span>
+          </a>
+        ) : (
+          <a href="/uztura-abc" class="ip-nav-card ip-nav-card--back" style="border-right:0; border-left:3px solid var(--gold);">
+            <div class="ip-nav-card-text">
+              <span class="ip-nav-hint">Nākamā tēma</span>
+              <span class="ip-nav-title">Drīzumā — atgriezies pie visiem rakstiem</span>
+            </div>
+            <span class="ip-nav-arrow">→</span>
+          </a>
+        )}
+      </footer>
+
+    </article><!-- /.ip-content -->
+  </div><!-- /.ip-wrap -->
+
+</BaseLayout>
+
+<!-- ══ SCOPED STYLES ══════════════════════════════════════════ -->
+<style>
+
+/* ─── Hero — ŽURNĀLA VĀKS ───────────────────────────────── */
+.ip-cover { background: var(--cream); }
+.ip-cover-media {
+  position: relative;
+  width: 100%;
+  min-height: clamp(380px, 52vw, 580px);
+  display: flex; align-items: flex-end;
+  overflow: hidden;
+}
+.ip-cover-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center right;
+  display: block;
+}
+.ip-cover-scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(30,8,15,.85) 0%, rgba(30,8,15,.58) 42%, rgba(30,8,15,.06) 78%),
+    linear-gradient(0deg, rgba(30,8,15,.55) 0%, rgba(30,8,15,0) 45%);
+}
+.ip-cover-inner {
+  position: relative;
+  width: 100%;
+  padding-top: clamp(40px,6vw,72px);
+  padding-bottom: clamp(36px,5vw,60px);
+}
+.ip-cover .ip-eyebrow {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: .26em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.ip-cover .ip-eyebrow::after { content: ""; height: 1px; width: 46px; background: var(--gold); opacity: .75; }
+.ip-cover h1 {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(32px,4.6vw,60px); line-height: 1.06;
+  color: var(--cream); margin: 0 0 18px; letter-spacing: -.02em;
+  max-width: 20ch;
+  text-shadow: 0 2px 26px rgba(0,0,0,.4);
+}
+.ip-cover h1 em { color: var(--gold); font-style: italic; }
+.ip-cover .ip-lede {
+  font-size: clamp(15px,1.25vw,18px); line-height: 1.6;
+  color: rgba(255,248,242,.92); max-width: 48ch; margin: 0;
+  text-shadow: 0 1px 16px rgba(0,0,0,.35);
+}
+
+/* Light strip below cover — quick answer + stats */
+.ip-cover-strip {
+  background: var(--ivory);
+  border-bottom: 1px solid var(--rule-gold);
+  padding: clamp(24px,3vw,38px) 0;
+}
+
+.ip-quickans {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--burgundy);
+  padding: 18px 24px; margin: 0;
+  box-shadow: 0 4px 18px rgba(60,18,32,.05);
+}
+.ip-quickans-label {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--burgundy); margin-bottom: 8px;
+}
+.ip-quickans p { margin: 0; font-size: 15.5px; color: var(--ink); line-height: 1.6; }
+.ip-quickans a { color: var(--burgundy); border-bottom: 1px solid var(--burgundy); }
+
+
+/* ─── Two-column layout ────────────────────────────────── */
+.ip-wrap {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: clamp(32px,4vw,56px);
+  align-items: start;
+  padding-top: clamp(48px,6vw,80px);
+  padding-bottom: clamp(64px,8vw,100px);
+}
+
+.ip-sidebar { align-self: stretch; }
+
+/* ─── TOC ─────────────────────────────────────────────── */
+.ip-toc { position: sticky; top: 116px; margin-top: 20px; }
+.ip-toc-inner {
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 24px;
+}
+.ip-toc-label {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 16px;
+}
+.ip-toc-list { list-style: none; padding: 0; margin: 0; }
+.ip-toc-list li { border-bottom: 1px solid var(--rule); }
+.ip-toc-link {
+  display: block; padding: 10px 0;
+  font-size: 13px; line-height: 1.4; color: var(--ink-soft);
+  transition: color .2s;
+}
+.ip-toc-link:hover,
+.ip-toc-link.active { color: var(--burgundy); }
+.ip-toc-link.active { font-weight: 600; }
+
+/* ─── TOC Ieva sidebar card ──────────────────────────── */
+.ip-toc-ieva {
+  margin-top: 24px; padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 6px;
+}
+.ip-toc-ieva-img {
+  width: 88px; height: 88px;
+  border-radius: 50%; object-fit: cover; object-position: center 15%;
+  border: 3px solid var(--gold);
+  margin-bottom: 4px;
+}
+.ip-toc-ieva-name {
+  font-family: var(--serif); font-style: italic;
+  font-size: 17px; color: var(--plum);
+}
+.ip-toc-ieva-role {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.ip-toc-ieva-bio {
+  font-size: 12.5px; color: var(--ink-soft);
+  line-height: 1.55; margin: 4px 0 8px;
+}
+.ip-toc-socials {
+  display: flex; gap: 8px; justify-content: center;
+  margin-bottom: 12px;
+}
+.ip-toc-social {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--cream); border: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-soft); transition: background .15s, color .15s;
+}
+.ip-toc-social:hover { background: var(--burgundy); color: #fff; border-color: var(--burgundy); }
+.ip-toc-social svg { width: 16px; height: 16px; }
+.ip-toc-cta {
+  display: block; width: 100%;
+  padding: 10px 14px; text-align: center;
+  background: var(--burgundy); color: #fff;
+  font-family: var(--sans); font-size: 12px;
+  letter-spacing: .1em; text-transform: uppercase;
+  transition: background .15s;
+  border-radius: 2px;
+}
+.ip-toc-cta:hover { background: var(--plum); }
+
+/* ─── Article content ─────────────────────────────────── */
+.ip-content {
+  font-size: clamp(16px,1.1vw,18px);
+  line-height: 1.78;
+  color: var(--ink);
+  max-width: 820px;
+}
+.ip-content p { margin: 0 0 22px; }
+.ip-content h2 {
+  font-family: var(--serif); font-style: normal; font-weight: 600;
+  font-size: clamp(26px,2.6vw,36px);
+  line-height: 1.2; margin: 72px 0 22px;
+  color: var(--plum);
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--burgundy);
+  position: relative;
+}
+.ip-content h2::before {
+  content: "";
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 60px; height: 2px;
+  background: var(--gold);
+}
+.ip-content h2 em { color: var(--burgundy); font-style: italic; }
+.ip-content a { color: var(--burgundy); border-bottom: 1px solid var(--burgundy); }
+
+/* ─── TL;DR ───────────────────────────────────────────── */
+.ip-tldr {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--gold);
+  padding: 20px 24px;
+  margin: 0 0 28px;
+}
+.ip-tldr-label {
+  display: inline-block;
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--burgundy); margin-bottom: 8px;
+}
+.ip-tldr p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--ink); }
+
+/* ─── Key Takeaways ───────────────────────────────────── */
+.ip-takeaways {
+  background: #fbf7ef;
+  border: 1px solid var(--rule);
+  padding: 26px 28px;
+  margin: 0 0 40px;
+  border-radius: 3px;
+}
+.ip-takeaways h2 {
+  font-family: var(--serif); font-style: normal; font-weight: 600;
+  font-size: 20px; margin: 0 0 14px; color: var(--plum);
+  border: 0; padding: 0;
+}
+.ip-takeaways h2::before { display: none; }
+.ip-takeaways ul { margin: 0; padding-left: 22px; }
+.ip-takeaways li { font-size: 15px; line-height: 1.6; margin-bottom: 9px; color: var(--ink); }
+
+/* ─── CITE clear-answer block ─────────────────────────── */
+.ip-answer {
+  background: rgba(132,24,62,.05);
+  border-left: 3px solid var(--burgundy);
+  padding: 16px 22px;
+  margin: 0 0 24px !important;
+  font-size: clamp(15px,1.05vw,17px);
+  line-height: 1.65;
+  color: var(--ink);
+}
+.ip-answer a { color: var(--burgundy); border-bottom: 1px solid var(--burgundy); }
+
+/* ─── Figure / SVG diagram ───────────────────────────── */
+.ip-figure {
+  margin: 32px 0; padding: 24px 28px;
+  background: #fff; border: 1px solid var(--rule);
+}
+.ip-figure-cap {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--burgundy); margin-bottom: 16px;
+}
+.ip-figure svg { width: 100%; height: auto; display: block; }
+.ip-figure-note { font-size: 12.5px; color: var(--ink-soft); margin: 14px 0 0; font-style: italic; }
+
+/* ─── Callout boxes ──────────────────────────────────── */
+.ip-callout {
+  display: flex; gap: 16px; padding: 20px 24px;
+  margin: 28px 0; border-radius: 2px;
+  font-size: 15px; line-height: 1.6;
+}
+.ip-callout--tip { background: #e8f5e5; border-left: 3px solid #6aaa64; }
+.ip-callout--insight { background: #eef3fb; border-left: 3px solid #5a7fc7; }
+.ip-callout--warning { background: #fff4e5; border-left: 3px solid #e8a020; }
+.ip-callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.ip-callout a { color: var(--burgundy); border-bottom: 1px solid currentColor; }
+.ip-callout strong { color: var(--plum); }
+
+/* ─── Fact-card grid ─────────────────────────────────── */
+.ip-factgrid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 16px; margin: 28px 0;
+}
+.ip-factcard {
+  background: #fff; border: 1px solid var(--rule);
+  border-top: 3px solid var(--gold);
+  padding: 22px 24px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.ip-factcard-icon { font-size: 26px; line-height: 1; }
+.ip-factcard h3 {
+  font-family: var(--serif); font-style: normal; font-weight: 600;
+  font-size: 19px; color: var(--plum); margin: 0;
+}
+.ip-factcard p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+.ip-factcard a { color: var(--burgundy); border-bottom: 1px solid var(--burgundy); }
+
+/* ─── Comparison table ───────────────────────────────── */
+.ip-table-wrap { overflow-x: auto; margin: 28px 0; border: 1px solid var(--rule); }
+.ip-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.ip-table th, .ip-table td {
+  padding: 14px 18px; text-align: left;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.ip-table th {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--cream); background: var(--plum);
+  font-weight: 500;
+}
+.ip-table th:first-child { background: var(--burgundy); }
+.ip-table tr:nth-child(even) td { background: #fff; }
+.ip-table td:first-child { color: var(--burgundy); font-weight: 600; font-family: var(--sans); }
+.ip-table td { color: var(--ink); }
+
+/* ─── Steps (ordered) ────────────────────────────────── */
+.ip-steps { list-style: none; counter-reset: step; padding: 0; margin: 24px 0; }
+.ip-steps li {
+  counter-increment: step;
+  position: relative; padding: 14px 0 14px 56px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 15.5px; line-height: 1.6;
+}
+.ip-steps li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 12px;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-style: italic; font-size: 18px;
+  color: var(--cream); background: var(--burgundy);
+  border-radius: 50%;
+}
+.ip-steps li strong { color: var(--plum); }
+
+
+/* ─── Related links ──────────────────────────────────── */
+.ip-related { background: #fff; padding: 24px 28px; margin: 48px 0 0; border: 1px solid var(--rule); }
+.ip-related-label {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 16px;
+}
+.ip-related-links { display: flex; flex-direction: column; gap: 2px; }
+.ip-related-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px dashed var(--rule);
+  font-size: 15px; color: var(--plum); transition: color .2s;
+}
+.ip-related-link:last-child { border-bottom: 0; }
+.ip-related-link:hover { color: var(--burgundy); }
+.ip-related-arrow { color: var(--gold); font-size: 18px; flex-shrink: 0; }
+
+/* ─── Sources ────────────────────────────────────────── */
+.ip-sources { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--rule); }
+.ip-sources-label {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 16px;
+}
+.ip-sources-list { padding: 0; margin: 0; list-style: none; counter-reset: sources; }
+.ip-sources-list li {
+  counter-increment: sources;
+  position: relative; padding: 12px 0 12px 40px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13.5px; line-height: 1.65; color: var(--ink);
+}
+.ip-sources-list li::before {
+  content: counter(sources, decimal-leading-zero);
+  position: absolute; left: 0; top: 12px;
+  font-family: var(--serif); font-style: italic;
+  font-size: 18px; color: var(--burgundy);
+}
+.ip-sources-list a { color: var(--burgundy); border-bottom: 1px solid currentColor; }
+.ip-sources-updated { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); margin-top: 12px; letter-spacing: .05em; }
+
+/* ─── Prev / Next article footer ─────────────────────── */
+.ip-nav-footer {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  margin-top: 64px; padding-top: 32px; border-top: 2px solid var(--rule);
+}
+.ip-nav-card {
+  display: flex; align-items: center; gap: 16px;
+  padding: 24px 22px; background: #fff;
+  border: 1px solid var(--rule); text-decoration: none;
+  transition: background .15s, border-color .15s; min-width: 0;
+}
+.ip-nav-card:hover { background: var(--cream); border-color: var(--gold); }
+.ip-nav-card--prev { border-left: 3px solid var(--gold); }
+.ip-nav-card--next { border-left: 3px solid var(--gold); justify-content: space-between; }
+.ip-nav-card--back { border-right: 3px solid var(--rule); }
+.ip-nav-arrow { font-size: 22px; color: var(--gold); flex-shrink: 0; transition: transform .2s; }
+.ip-nav-card--prev:hover .ip-nav-arrow { transform: translateX(-3px); }
+.ip-nav-card--next:hover .ip-nav-arrow { transform: translateX(3px); }
+.ip-nav-card-text { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.ip-nav-hint {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.ip-nav-title {
+  font-family: var(--serif); font-size: 15px; line-height: 1.35;
+  color: var(--plum);
+  overflow: hidden; text-overflow: ellipsis;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  transition: color .15s;
+}
+.ip-nav-card:hover .ip-nav-title { color: var(--burgundy); }
+
+/* ─── Responsive ─────────────────────────────────────── */
+@media (max-width: 860px) {
+  .ip-cover h1 { max-width: none; }
+  .ip-factgrid { grid-template-columns: 1fr; }
+}
+@media (max-width: 1024px) {
+  .ip-wrap { grid-template-columns: 1fr; }
+  .ip-sidebar { display: none; }
+  .ip-nav-footer { grid-template-columns: 1fr; gap: 2px; }
+}
+@media (max-width: 640px) {
+  .ip-nav-card { padding: 18px 16px; gap: 12px; }
+  .ip-nav-title { font-size: 14px; }
+}
+</style>
+
+<script>
+  // Dinamisks TOC top — zem .nav + article-nav
+  function setTocTop() {
+    const anav = document.getElementById('article-nav');
+    const toc  = document.querySelector<HTMLElement>('.ip-toc');
+    if (!toc) return;
+    if (anav) {
+      const anavTop    = parseFloat(anav.style.top) || 0;
+      const anavHeight = anav.offsetHeight;
+      toc.style.top = `${anavTop + anavHeight + 12}px`;
+    } else {
+      const nav = document.querySelector<HTMLElement>('header.nav, .nav');
+      toc.style.top = `${(nav ? nav.offsetHeight : 0) + 12}px`;
+    }
+  }
+  setTocTop();
+  window.addEventListener('resize', setTocTop, { passive: true });
+
+  // FAQ accordion
+  document.querySelectorAll<HTMLElement>('.faq-item').forEach(item => {
+    const btn = item.querySelector<HTMLButtonElement>('.faq-q');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Sticky TOC — highlight active section on scroll
+  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.ip-toc-link');
+  const headings = document.querySelectorAll<HTMLElement>('.ip-content h2[id]');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          tocLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    },
+    { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+  );
+  headings.forEach(h => observer.observe(h));
+
+</script>

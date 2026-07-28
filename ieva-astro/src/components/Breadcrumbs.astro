@@ -1,0 +1,111 @@
+---
+/**
+ * Breadcrumbs — universāls breadcrumb komponents ar JSON-LD schema.
+ *
+ * Lietošana:
+ *   <Breadcrumbs items={[
+ *     { label: 'Sākums', href: '/' },
+ *     { label: 'Uztura ABC', href: '/uztura-abc' },
+ *     { label: 'Asinsanalīzes' }  // pēdējais — bez href
+ *   ]} />
+ */
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string; // pēdējais elements bez href = "tu esi šeit"
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+const siteUrl = 'https://ievajekabsone.lv';
+
+// Schema.org BreadcrumbList JSON-LD priekš SEO
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, idx) => ({
+    "@type": "ListItem",
+    "position": idx + 1,
+    "name": item.label,
+    ...(item.href ? { "item": `${siteUrl}${item.href}` } : {})
+  }))
+};
+---
+
+<nav class="breadcrumbs" aria-label="Lapas atrašanās vieta">
+  <div class="wrap">
+    <ol>
+      {items.map((item, idx) => (
+        <li class="bc-item">
+          {item.href ? (
+            <a href={item.href}>{item.label}</a>
+          ) : (
+            <span aria-current="page">{item.label}</span>
+          )}
+          {idx < items.length - 1 && (
+            <span class="bc-sep" aria-hidden="true">/</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+<style>
+  .breadcrumbs {
+    padding: 24px 0 0;
+    background: transparent;
+  }
+  .breadcrumbs ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+  }
+  .bc-item {
+    display: flex;
+    align-items: center;
+  }
+  .breadcrumbs a {
+    color: var(--burgundy);
+    text-decoration: none;
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .breadcrumbs a:hover {
+    border-bottom-color: var(--burgundy);
+  }
+  .breadcrumbs [aria-current="page"] {
+    color: var(--ink);
+    font-weight: 500;
+    padding: 4px 0;
+  }
+  .bc-sep {
+    color: var(--gold);
+    opacity: 0.7;
+    margin: 0 12px;
+    font-weight: 400;
+  }
+  @media (max-width: 640px) {
+    .breadcrumbs ol {
+      font-size: 11.5px;
+    }
+    .bc-sep {
+      margin: 0 8px;
+    }
+  }
+</style>

@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: '30 dienu uztura programma',
+  provider: { '@id': 'https://ievajekabsone.lv/#ieva' },
+  offers: { '@type': 'Offer', price: '249', priceCurrency: 'EUR', url: 'https://ievajekabsone.lv/pakalpojumi/30-dienu-uztura-programma' },
+  description: 'Personalizēts 30 dienu uztura plāns ar konsultācijām, ēdienkartēm un atbalstu.'
+};
+---
+
+<BaseLayout title="30 dienu uztura plāns svara zaudēšanai | Ieva Jēkabsone" description="Personalizēta 30 dienu uztura programma ar ēdienkartēm, receptēm, porcijām, konsultācijām un praktisku atbalstu." canonical="https://ievajekabsone.lv/pakalpojumi/30-dienu-uztura-programma" jsonLd={jsonLd} activeNav="pakalpojumi">
+  <Breadcrumbs items={[{ label: 'Sākums', href: '/' }, { label: 'Pakalpojumi', href: '/pakalpojumi' }, { label: '30 dienu programma' }]} />
+
+  <section class="service-hero sales-hero">
+    <div class="wrap service-hero-grid">
+      <div>
+        <p class="offer-kicker">30 dienu uztura programma · 249 €</p>
+        <h1>Viens mēnesis, lai beigtu minēt, <em>ko ēst katru dienu.</em></h1>
+        <p class="lede">Personīgs 30 dienu uztura plāns ar konkrētām ēdienkartēm, receptēm, porcijām un atbalstu. Piemērots, ja gribi sākt skaidri, bet neesi gatava trīs mēnešu sadarbībai.</p>
+        <a class="btn btn-primary" href="/kontakti?paka=30-dienu-programma">Pieteikt sākuma konsultāciju — 49 € <span class="arrow">→</span></a>
+      </div>
+      <figure class="service-photo service-photo--hero"><img src="/assets/images/ieva-krasaine-virtuve.webp" alt="Ieva Jēkabsone virtuvē veido praktisku uztura plānu" /></figure>
+    </div>
+  </section>
+
+  <section class="sales-situation">
+    <div class="wrap sales-situation-grid">
+      <div><p class="offer-kicker">Vai šis ir tev?</p><h2>Tu negribi vēl vienu PDF, kas <em>paliek mapē.</em></h2></div>
+      <div><p>Tev var būt mērķis samazināt svaru, uzlabot ēšanas ritmu vai vienkārši atgūt kontroli pār ikdienas izvēlēm. Taču bez konkrēta plāna katra diena atkal sākas ar vienu un to pašu jautājumu: ko ēst?</p><p>Šeit nav universālas ēdienkartes. Ir starts, kas balstās tavā situācijā un dod pietiekami skaidru struktūru nākamajām 30 dienām.</p></div>
+    </div>
+  </section>
+
+  <section class="sales-process">
+    <div class="wrap"><p class="offer-kicker">Kā notiek sadarbība</p><h2>Trīs sarunas. Viens <em>konkrēts starts.</em></h2><div class="sales-steps"><article><span>1</span><h3>Sākuma konsultācija</h3><p>Pārrunājam tavus mērķus, paradumus, ritmu un to, kas līdz šim nav strādājis.</p></article><article><span>2</span><h3>Plāns tavām 30 dienām</h3><p>Pēc vajadzības pārskatām analīžu rādītājus uztura un dzīvesveida kontekstā un vienojamies par plāna prioritātēm.</p></article><article><span>3</span><h3>Noslēguma konsultācija</h3><p>Izvērtējam, kas derēja tavā ikdienā, un nosakām, ko turpināt tālāk.</p></article></div></div>
+  </section>
+
+  <section class="service-content"><div class="wrap service-two-col"><figure class="service-photo"><img src="/assets/images/ieva-darza-maltite.webp" alt="Sabalanēta maltīte ikdienai" /></figure><div><p class="offer-kicker">Ko saņemsi</p><h2>Gatavu struktūru, kuru vari <em>reāli izmantot.</em></h2><ul class="service-list"><li>3 konsultācijas: sākuma, plāna un noslēguma</li><li>30 konkrētu dienu ēdienkartes ar receptēm, porcijām un iepirkumu sarakstiem</li><li>Praktiski uztura un dzīvesveida ieteikumi</li><li>Viena saskaņota plāna korekcija</li><li>Reizi nedēļā viens apvienots ziņojums ar novērojumiem un līdz 3 jautājumiem</li><li>Viena atbilde rakstiski vai balss ziņā 2 darba dienu laikā</li></ul></div></div></section>
+
+  <section class="sales-fit"><div class="wrap sales-fit-grid"><div><p class="offer-kicker">Laba izvēle, ja</p><h2>Vajag īsu, bet <em>konkrētu startu.</em></h2><ul class="service-list"><li>Gribi redzēt, kā personalizēts plāns iederas tavā dzīvē</li><li>Vēlies sakārtot nākamo mēnesi, neplānot visu pusgadu</li><li>Tev ir svarīgi ēst normāli, nevis sekot striktiem aizliegumiem</li></ul></div><div class="sales-fit-note"><p class="offer-kicker">Izvēlies 90 dienas, ja</p><p>Tev vajag vairāk laika paradumu nostiprināšanai, trīs secīgus plāna posmus un regulārus kontrolpunktus. 30 dienas dod startu; 90 dienas dod laiku sistēmu nostiprināt.</p><a href="/pakalpojumi/90-dienu-uztura-programma">Skatīt 90 dienu programmu <span aria-hidden="true">→</span></a></div></div></section>
+
+  <section class="sales-price"><div class="wrap sales-price-inner"><div><p class="offer-kicker">Cena un nākamais solis</p><h2>30 dienu programma — <em>249 €.</em></h2><p>Vispirms piesakies 49 € sākuma konsultācijai. Ja 24 stundu laikā izvēlies 30 dienu programmu, konsultācijas maksu ieskaitu cenā, un programmas atlikums ir 200 €.</p></div><a class="btn btn-primary" href="/kontakti?paka=30-dienu-programma">Sākt ar konsultāciju <span class="arrow">→</span></a></div></section>
+
+  <section class="sales-faq"><div class="wrap"><p class="offer-kicker">Bieži jautājumi</p><h2>Viss svarīgais <em>pirms pieteikšanās.</em></h2><div class="sales-faq-list"><details><summary>Vai programma ir tikai svara samazināšanai?</summary><p>Nē. Tā ir piemērota arī tad, ja gribi sakārtot ēšanas paradumus, ikdienas ritmu vai saprast, kā veidot sev piemērotākas maltītes.</p></details><details><summary>Vai analīzes ir obligātas?</summary><p>Nē. Sākam ar to informāciju, kas tev jau ir. Ja ir iesniegti analīžu rezultāti, tos apskatām uztura un dzīvesveida kontekstā.</p></details><details><summary>Vai 30 dienās viss būs atrisināts?</summary><p>Nē. 30 dienas ir konkrēts starts. Ja tev svarīgi nostiprināt paradumus ilgākā laikā, piemērotāka var būt 90 dienu programma.</p></details></div><p class="service-disclaimer">Asinsanalīžu rezultāti tiek apskatīti tikai uztura un dzīvesveida kontekstā. Pakalpojums neietver diagnozes noteikšanu, ārstēšanu vai medikamentu nozīmēšanu.</p></div></section>
+</BaseLayout>

@@ -1,0 +1,448 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Kontakti — Ieva Jēkabsone",
+  "url": "https://ievajekabsone.lv/kontakti",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://ievajekabsone.lv/#ieva",
+    "name": "Ieva Jēkabsone",
+    "email": "info@ievajekabsone.lv",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rīga",
+      "addressCountry": "LV"
+    }
+  }
+};
+
+const faqs = [
+  {
+    q: "Kā notiek konsultācija?",
+    a: "Tiešsaistē — Zoom videozvans. Pēc pieteikuma nosūtīšu saiti ar brīvā laika izvēli. Klātienes tikšanās nav pieejama."
+  },
+  {
+    q: "Vai varu atcelt vai pārcelt konsultāciju?",
+    a: "Jā — ja paziņo vismaz 24 stundas iepriekš. Vēlāka atcelšana vai neierašanās netiek atmaksāta. Pārcelšana iespējama vienu reizi bez maksas."
+  },
+  {
+    q: "Vai konsultācija aizstāj ārstu vai dietologu?",
+    a: "Nē. Uztura konsultants sniedz izglītojošu un atbalstošu pakalpojumu — ne medicīnisku diagnozi vai ārstēšanu. Ja ir aktīva slimība, konsultāciju var kombinēt ar ārsta norādījumiem, bet ne aizstāt tos."
+  },
+  {
+    q: "Neesmu pārliecināta — vai man vajag konsultāciju?",
+    a: "Tieši tam ir sākuma konsultācija (49 €). Pastāsti savu situāciju — kopā noskaidrojam, vai un kā varu palīdzēt. Ja 24 stundu laikā izvēlies programmu, 49 € ieskaitu tās cenā."
+  },
+  {
+    q: "Vai konsultācija der grūtniecēm vai barojošām māmiņām?",
+    a: "Grūtniecēm — tikai ar ārsta atļauju un konsultācija ir informatīva, ne medicīniska. Barojošām māmiņām — jā, ar individuālu pieeju, kas ņem vērā papildu vajadzības."
+  },
+  {
+    q: "Kādi rezultāti var sagaidīt?",
+    a: "Atkarīgs no mērķa. Tipiskākais: labāka enerģija 2–4 nedēļās. Svara izmaiņas — individuālas, parasti redzamas 4–8 nedēļās ar regulāru sadarbību. Neesmu treneris ar garantijām — esmu speciālists ar procesu."
+  },
+];
+---
+
+<BaseLayout
+  title="Kontakti — Ieva Jēkabsone, uztura konsultante"
+  description="Piesakies uztura konsultācijai. Sazināšos 24 stundu laikā. E-pasts: info@ievajekabsone.lv."
+  canonical="https://ievajekabsone.lv/kontakti"
+  jsonLd={jsonLd}
+  activeNav="kontakti"
+>
+
+  <!-- HERO -->
+  <section class="page-hero page-hero--compact">
+    <div class="wrap">
+      <div class="eyebrow">Kontakti</div>
+      <h1>Aizpildi formu — <em>sazināšos 24 stundu laikā.</em></h1>
+      <p class="lede">
+        Pirms uzdod sev "vai vērts?" — vienkārši uzraksti. Atbildu personīgi
+        visiem, neatkarīgi no tā, vai turpināsim sadarbību vai ne.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT GRID -->
+  <section class="contact">
+    <div class="wrap contact-grid">
+
+      <!-- LEFT: info -->
+      <div class="contact-info">
+        <div class="eyebrow" style="margin-bottom:16px;">Tieši pa taisno</div>
+
+        <!-- Social icons — prominent, top position -->
+        <div class="social-icons-row">
+          <a href="https://www.instagram.com/ieva.jekabsone/" target="_blank" rel="noopener" class="social-btn social-btn--instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="white" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="white" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2" fill="white"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100089137514285" target="_blank" rel="noopener" class="social-btn social-btn--facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@ieva.jekabsone" target="_blank" rel="noopener" class="social-btn social-btn--tiktok" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/></svg>
+          </a>
+        </div>
+
+        <ul class="contact-details">
+          <li>
+            <span class="label">E-pasts</span>
+            <span class="value"><a href="mailto:info@ievajekabsone.lv">info@ievajekabsone.lv</a></span>
+          </li>
+          <li>
+            <span class="label">Atrašanās</span>
+            <span class="value">Rīga · <em>online visā pasaulē</em></span>
+          </li>
+          <li>
+            <span class="label">Valodas</span>
+            <span class="value">Latviešu · Krievu</span>
+          </li>
+          <li>
+            <span class="label">Atbilde</span>
+            <span class="value">24 h darbdienās</span>
+          </li>
+        </ul>
+
+        <blockquote class="contact-quote">
+          <p>"Es atsakos no nemotivētiem klientiem. Bet, ja tu raksti — es tev atbildu. Vienmēr."</p>
+          <cite>Ieva</cite>
+        </blockquote>
+      </div>
+
+      <!-- RIGHT: form -->
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="contact-form-inner">
+          <h2>Sazinies ar mani</h2>
+          <p class="note">Aizpildi formu — sazināšos 24 stundu laikā.</p>
+
+          <div class="contact-form-fields" id="contactFields">
+
+            <div class="field">
+              <label for="c-name">Vārds *</label>
+              <input id="c-name" name="name" type="text" placeholder="Tavs vārds" required />
+            </div>
+
+            <div class="field">
+              <label for="c-email">E-pasts *</label>
+              <input id="c-email" name="email" type="email" placeholder="tavs@piemers.lv" required />
+            </div>
+
+            <div class="field">
+              <label for="c-phone">Tālrunis <span class="field-optional">(nav obligāts)</span></label>
+              <input id="c-phone" name="phone" type="tel" placeholder="+371 ..." />
+            </div>
+
+            <div class="field">
+              <label for="c-service">Par ko vēlies sarunāt?</label>
+              <select id="c-service" name="service">
+                <option value="sakuma-konsultacija">Sākuma konsultācija · 49 €</option>
+                <option value="30-dienu-programma">30 dienu programma · 249 €</option>
+                <option value="90-dienu-programma">90 dienu programma · 549 €</option>
+                <option value="vip-uztura-atbalsts">VIP uztura atbalsts · 1500 € / 6 mēneši</option>
+                <option value="cits">Cits jautājums</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="c-message">Pastāsti īsi par savu situāciju *</label>
+              <textarea id="c-message" name="message" placeholder="Kāda ir tava lielākā cīņa šobrīd? Ko esi mēģinājusi? Ko gribi sasniegt?" required></textarea>
+            </div>
+
+            <!-- Consents -->
+            <div class="consent-block">
+              <!-- Primary consent — checking this auto-checks the hidden two below -->
+              <label class="consent-row">
+                <input type="checkbox" id="c-consent-rules" name="consent_rules" required />
+                <span>Esmu izlasījusi un piekrītu <a href="/noteikumi" target="_blank">noteikumiem</a> un <a href="/privatums" target="_blank">privātuma politikai</a>, esmu 18+, saprotu, ka konsultācijas nav medicīniska palīdzība, un piekrītu pakalpojuma uzsākšanai pirms 14 dienu atteikuma termiņa beigām. *</span>
+              </label>
+
+              <!-- Hidden — auto-checked by JS when primary is checked -->
+              <input type="checkbox" id="c-consent-age" name="consent_age" style="display:none" />
+              <input type="checkbox" id="c-consent-service" name="consent_service" style="display:none" />
+
+              <label class="consent-row">
+                <input type="checkbox" id="c-consent-newsletter" name="consent_newsletter" />
+                <span>Vēlos saņemt newsletter ar jauniem rakstiem. <em class="consent-optional">(neobligāts)</em></span>
+              </label>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Nosūtīt ziņu <span class="arrow">→</span></button>
+            <p class="form-privacy">
+              Tava informācija paliek pie manis. Bez surogātpasta. Bez trešajām pusēm.
+            </p>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="contact-faq">
+    <div class="wrap">
+      <div class="contact-faq-head">
+        <div class="eyebrow">Biežāk uzdotie jautājumi</div>
+        <h2>Atbildes uz visiem "bet kā…"</h2>
+      </div>
+
+      <div class="faq-list">
+        {faqs.map((item, i) => (
+          <details class="faq-item" name="faq">
+            <summary class="faq-q">
+              <span>{item.q}</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="faq-a">
+              <p>{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <p class="faq-footer">
+        Neatradi atbildi? <a href="mailto:info@ievajekabsone.lv">Uzraksti tieši →</a>
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  // Auto-check hidden consent fields when primary consent is checked
+  const primary = document.getElementById('c-consent-rules') as HTMLInputElement | null;
+  const hidden1 = document.getElementById('c-consent-age') as HTMLInputElement | null;
+  const hidden2 = document.getElementById('c-consent-service') as HTMLInputElement | null;
+  if (primary && hidden1 && hidden2) {
+    // Set initial state
+    hidden1.checked = primary.checked;
+    hidden2.checked = primary.checked;
+    primary.addEventListener('change', () => {
+      hidden1.checked = primary.checked;
+      hidden2.checked = primary.checked;
+    });
+  }
+
+  // Form success state
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const h2 = form.querySelector('h2');
+      const note = form.querySelector('p.note');
+      const fields = document.getElementById('contactFields');
+      if (h2) h2.textContent = 'Paldies!';
+      if (note) note.textContent = 'Saņēmu tavu ziņu. Atbildēšu 24 stundu laikā uz norādīto e-pastu.';
+      if (fields) (fields as HTMLElement).style.display = 'none';
+    });
+  }
+
+  // Pre-select service from URL ?paka=
+  const params = new URLSearchParams(window.location.search);
+  const paka = params.get('paka');
+  if (paka) {
+    const sel = document.getElementById('c-service') as HTMLSelectElement | null;
+    if (sel) sel.value = paka;
+  }
+</script>
+
+<style>
+/* ── Contact details list ── */
+.contact-details { list-style: none; padding: 0; margin: 0 0 28px; }
+.contact-details li {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 8px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(132,24,62,0.07);
+  font-size: 15px;
+}
+.contact-details li:last-child { border-bottom: none; }
+.contact-details .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  font-weight: 700;
+}
+.contact-details .value { color: var(--ink); }
+.contact-details .value a { color: var(--ink); border-bottom: 1px solid rgba(132,24,62,0.25); text-decoration: none; }
+.contact-details .value a:hover { color: var(--burgundy); border-color: var(--burgundy); }
+.contact-details em { font-style: italic; color: var(--ink-soft); }
+
+/* ── Social icon buttons (branded colors) ── */
+.social-icons-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.social-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.social-btn:hover { transform: translateY(-2px); opacity: 0.88; }
+.social-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+.social-btn--instagram {
+  background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.social-btn--facebook { background: #1877F2; }
+.social-btn--tiktok   { background: #010101; }
+
+/* ── Contact quote ── */
+.contact-quote {
+  margin: 0;
+  padding: 20px 0 0;
+  border-top: 1px solid rgba(132,24,62,0.09);
+}
+.contact-quote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  line-height: 1.55;
+  margin: 0 0 8px;
+}
+.contact-quote cite {
+  font-family: var(--script);
+  font-size: 30px;
+  color: var(--burgundy);
+  font-style: normal;
+}
+
+/* ── Consent block tweaks ── */
+.consent-more {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--burgundy);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  margin-left: 4px;
+  opacity: 0.7;
+}
+.consent-more:hover { opacity: 1; }
+.consent-optional { font-size: 12px; color: var(--ink-soft); }
+.field-optional { font-size: 12px; color: var(--ink-soft); font-weight: 400; }
+.form-privacy { font-size: 12px; color: var(--ink-soft); margin: 14px 0 0; text-align: center; }
+
+/* ════════════ FAQ SECTION ════════════ */
+.contact-faq {
+  background: var(--ivory);
+  padding: 64px 0 72px;
+}
+
+.contact-faq-head {
+  margin-bottom: 40px;
+}
+.contact-faq-head .eyebrow { margin-bottom: 12px; }
+.contact-faq-head h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0;
+}
+.contact-faq-head h2 em { color: var(--burgundy); }
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(132,24,62,0.10);
+  max-width: 800px;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(132,24,62,0.10);
+  overflow: visible;
+}
+
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 4px;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--ink);
+  list-style: none;
+  transition: color 0.18s ease;
+  user-select: none;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q:hover { color: var(--burgundy); }
+
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(132,24,62,0.3);
+  border-radius: 50%;
+  position: relative;
+  transition: border-color 0.18s ease, transform 0.22s ease;
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--burgundy);
+  border-radius: 2px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+.faq-icon::before { width: 10px; height: 1.5px; }
+.faq-icon::after  { width: 1.5px; height: 10px; transition: transform 0.22s ease, opacity 0.22s ease; }
+
+details[open] .faq-icon { border-color: var(--burgundy); }
+details[open] .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+details[open] .faq-q { color: var(--burgundy); }
+
+.faq-a {
+  padding: 8px 56px 40px 4px;
+  overflow: visible;
+  height: auto;
+  max-height: none;
+}
+.faq-a p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--ink-soft);
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.faq-footer {
+  margin-top: 36px;
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+.faq-footer a {
+  color: var(--burgundy);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(132,24,62,0.25);
+}
+.faq-footer a:hover { border-color: var(--burgundy); }
+
+@media (max-width: 600px) {
+  .contact-details li { grid-template-columns: 1fr; gap: 2px; }
+  .faq-q { font-size: 16px; padding: 16px 4px; }
+}
+</style>

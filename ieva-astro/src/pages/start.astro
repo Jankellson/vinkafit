@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Bezmaksas ceļvedis — 5 uztura kļūdas sievietēm 30–50 | Ieva Jēkabsone"
+  description="Lejupielādē bezmaksas PDF ceļvedi — 5 uztura kļūdas, ko sievietes 30–50 pieļauj (un kā tās labot). Sūtīšu uz tavu e-pastu."
+  canonical="https://ievajekabsone.lv/start"
+  noindex={true}
+  noNav={true}
+  noFooter={true}
+>
+
+  <section class="start-page">
+    <div class="start-inner">
+
+      <!-- LEFT — saturs -->
+      <div>
+        <a href="/" class="start-logo">
+          <span class="logo-mark">Ieva Jēkabsone</span>
+          <span class="logo-sub">Uztura konsultante · LV</span>
+        </a>
+
+        <h1>5 uztura kļūdas, ko sievietes 30–50 pieļauj <em>(un kā tās labot).</em></h1>
+
+        <p class="start-lede">
+          Bezmaksas ceļvedis — 8 minūtes lasīšanai. Sūtīšu tieši uz tavu e-pastu.
+        </p>
+
+        <ul class="start-benefits">
+          <li><span class="check">—</span> Kāpēc svars atgriežas pat pie "pareizas" ēšanas</li>
+          <li><span class="check">—</span> Ko tavi asins rādītāji saka par tavu metabolismu</li>
+          <li><span class="check">—</span> Trīs konkrēti soļi, ko vari sākt jau šonedēļ</li>
+          <li><span class="check">—</span> Kāpēc kalorijas nav vienīgais, kas svarīgs</li>
+        </ul>
+
+        <div class="start-author">
+          <img src="/assets/images/ieva-relaxed.webp" alt="Ieva Jēkabsone" />
+          <span>
+            <strong>Ieva Jēkabsone</strong><br>
+            ITEC sertificēta uztura konsultante
+          </span>
+        </div>
+      </div>
+
+      <!-- RIGHT — forma -->
+      <form class="start-form" id="startForm">
+        <h2>Saņem savu ceļvedi</h2>
+        <p class="note">Bez surogātpasta. Atrakstīties 1 klikšķī.</p>
+
+        <div class="field">
+          <label for="s-name">Vārds</label>
+          <input id="s-name" name="name" type="text" placeholder="Tavs vārds" required />
+        </div>
+
+        <div class="field">
+          <label for="s-email">E-pasts</label>
+          <input id="s-email" name="email" type="email" placeholder="tavs@piemers.lv" required />
+        </div>
+
+        <button class="btn btn-primary" type="submit">Nosūtīt man ceļvedi <span class="arrow">→</span></button>
+
+        <p class="fine">
+          Reģistrējoties piekrīti <a href="/privatums" style="color:var(--burgundy);">privātuma politikai</a>.<br>
+          Pievienosies 2 000+ sievietēm newsletter sarakstā.
+        </p>
+      </form>
+
+    </div>
+  </section>
+
+  <div class="start-back">
+    <a href="/">← Atgriezties uz sākumlapu</a>
+  </div>
+
+</BaseLayout>
+
+<script>
+  const form = document.getElementById('startForm') as HTMLFormElement | null;
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.location.href = '/paldies-abonentam';
+    });
+  }
+</script>

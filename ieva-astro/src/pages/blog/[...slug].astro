@@ -1,0 +1,239 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleNav from '../../components/ArticleNav.astro';
+import {
+  sanityClient,
+  ALL_SLUGS_QUERY,
+  POST_BY_SLUG_QUERY,
+  urlForSafe,
+} from '../../lib/sanity';
+import { portableTextToHtml } from '../../lib/portableText';
+import type { SanityBlogPost } from '../../lib/sanity';
+
+const sanityConfigured =
+  import.meta.env.PUBLIC_SANITY_PROJECT_ID &&
+  import.meta.env.PUBLIC_SANITY_PROJECT_ID !== 'placeholder' &&
+  import.meta.env.PUBLIC_SANITY_PROJECT_ID !== 'YOUR_PROJECT_ID';
+
+export async function getStaticPaths() {
+  const mdPosts = await getCollection('blog', ({ data }) => !data.draft);
+  const mdPaths = mdPosts.map((post) => ({
+    params: { slug: post.id },
+    props: { mdPost: post, sanityPost: null },
+  }));
+
+  // Pieveno Sanity slug-us ja konfigurēts
+  const isSanityOn =
+    import.meta.env.PUBLIC_SANITY_PROJECT_ID &&
+    import.meta.env.PUBLIC_SANITY_PROJECT_ID !== 'placeholder' &&
+    import.meta.env.PUBLIC_SANITY_PROJECT_ID !== 'YOUR_PROJECT_ID';
+
+  let sanityPaths: ReturnType<typeof mdPosts.map> = [];
+  if (isSanityOn) {
+    try {
+      const slugs = await sanityClient.fetch<Array<{ slug: string }>>(ALL_SLUGS_QUERY);
+      const mdSlugSet = new Set(mdPosts.map((p) => p.id));
+      sanityPaths = slugs
+        .filter((s) => !mdSlugSet.has(s.slug)) // Sanity aizstāj Markdown ar to pašu slug
+        .map((s) => ({
+          params: { slug: s.slug },
+          props: { mdPost: null, sanityPost: s.slug },
+        }));
+    } catch {
+      // Sanity nav pieejams
+    }
+  }
+
+  // Sanity posts ar to pašu slug kā Markdown: nomainīt Markdown ar Sanity
+  if (isSanityOn) {
+    try {
+      const slugs = await sanityClient.fetch<Array<{ slug: string }>>(ALL_SLUGS_QUERY);
+      const sanitySlugSet = new Set(slugs.map((s) => s.slug));
+      return [
+        ...mdPaths.map((p) =>
+          sanitySlugSet.has(p.params.slug)
+            ? { ...p, props: { mdPost: null, sanityPost: p.params.slug } }
+            : p
+        ),
+        ...sanityPaths,
+      ];
+    } catch {
+      return [...mdPaths, ...sanityPaths];
+    }
+  }
+
+  return [...mdPaths, ...sanityPaths];
+}
+
+const { mdPost, sanityPost: sanitySlug } = Astro.props;
+const { slug } = Astro.params;
+
+// ─── Ielādē saturu ──────────────────────────────────────────────────────────
+
+let title = '';
+let description = '';
+let pubDate = new Date();
+let category = '';
+let tags: string[] = [];
+let author = 'Ieva Jēkabsone';
+let imageUrl = '';
+let imageAlt = '';
+let bodyHtml = '';
+let Content: ((_: unknown) => unknown) | null = null;
+
+if (sanityConfigured && sanitySlug) {
+  // Ielādē no Sanity
+  const post = await sanityClient.fetch<SanityBlogPost>(POST_BY_SLUG_QUERY, { slug: sanitySlug });
+  if (post) {
+    title = post.title;
+    description = post.description;
+    pubDate = new Date(post.pubDate);
+    category = post.category ?? '';
+    tags = post.tags ?? [];
+    author = post.author ?? 'Ieva Jēkabsone';
+    imageUrl = post.image ? (urlForSafe(post.image)?.width(1100).url() ?? '') : '';
+    imageAlt = (post.imageAlt ?? post.title) ?? '';
+    bodyHtml = portableTextToHtml(post.body as Parameters<typeof portableTextToHtml>[0]);
+  }
+} else if (mdPost) {
+  // Ielādē no Markdown
+  const rendered = await render(mdPost);
+  Content = rendered.Content as unknown as ((_: unknown) => unknown);
+  title = mdPost.data.title;
+  description = mdPost.data.description;
+  pubDate = new Date(mdPost.data.pubDate);
+  category = mdPost.data.category ?? '';
+  tags = mdPost.data.tags ?? [];
+  author = mdPost.data.author ?? 'Ieva Jēkabsone';
+  imageUrl = mdPost.data.image ?? '';
+  imageAlt = mdPost.data.imageAlt ?? mdPost.data.title;
+}
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('lv-LV', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": pubDate.toISOString(),
+  "dateModified": pubDate.toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": author,
+    "@id": "https://ievajekabsone.lv/#ieva"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Ieva Jēkabsone",
+    "@id": "https://ievajekabsone.lv/#ieva"
+  },
+  "image": imageUrl
+    ? (imageUrl.startsWith('http') ? imageUrl : `https://ievajekabsone.lv${imageUrl}`)
+    : "https://ievajekabsone.lv/assets/images/og-ieva.jpg",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://ievajekabsone.lv/blog/${slug}`
+  }
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={`https://ievajekabsone.lv/blog/${slug}`}
+  ogImage={imageUrl || undefined}
+  type="article"
+  jsonLd={jsonLd}
+  activeNav="blog"
+>
+
+  <ArticleNav
+    breadcrumbs={[
+      { label: 'Sākums', href: '/' },
+      { label: 'Blogs',  href: '/blog' },
+      { label: title },
+    ]}
+    prev={null}
+    next={null}
+  />
+
+  <article class="article">
+    <div class="wrap">
+
+      <header class="article-head">
+        <div class="article-meta">
+          {category && <span class="cat">{category}</span>}
+          {category && <span class="dot"></span>}
+          <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+          <span class="dot"></span>
+          <span>{author}</span>
+        </div>
+        <h1>{title}</h1>
+        <p class="lede">{description}</p>
+      </header>
+
+      {imageUrl && (
+        <div class="article-hero frame photo">
+          <img
+            src={imageUrl}
+            alt={imageAlt}
+            width="1100"
+            height="619"
+            loading="eager"
+          />
+        </div>
+      )}
+
+      <div class="article-body">
+        {Content
+          ? <Content />
+          : <Fragment set:html={bodyHtml} />
+        }
+      </div>
+
+      <!-- Ieva's signature CTA -->
+      <div class="article-cta">
+        <div class="article-cta-inner">
+          <h3>Vai šis skan kā tava situācija?</h3>
+          <p>Sākuma konsultācija — 49 €. Pastāsti savu situāciju, un kopā noskaidrosim, ar ko sākt.</p>
+          <a href="/kontakti" class="btn btn-primary">Piesakies konsultācijai <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <footer class="article-foot">
+        {tags.length > 0 && (
+          <span>
+            Tagi:&nbsp;
+            {tags.map((tag, i) => (
+              <span>{i > 0 ? ', ' : ''}{tag}</span>
+            ))}
+          </span>
+        )}
+        <a href="/blog">← Atpakaļ uz blogu</a>
+      </footer>
+
+    </div>
+  </article>
+
+</BaseLayout>
+
+<script>
+  // Scroll reveal for article sections
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.article-body > *').forEach(el => {
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+  }
+</script>

@@ -1,0 +1,421 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://ievajekabsone.lv/#ieva",
+    "name": "Ieva Jēkabsone",
+    "givenName": "Ieva",
+    "familyName": "Jēkabsone",
+    "jobTitle": "Uztura konsultante",
+    "description": "ITEC sertificēta uztura konsultante. Specializācija: sievietes 30–50, asinsanalīžu un uztura saistība.",
+    "url": "https://ievajekabsone.lv/",
+    "email": "info@ievajekabsone.lv",
+    "knowsLanguage": ["lv", "ru", "en"],
+    "workLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rīga",
+        "addressCountry": "LV"
+      }
+    },
+    "hasCredential": [
+      {"@type": "EducationalOccupationalCredential", "name": "ITEC starptautiski atzīts sertifikāts nutrioloģijā"},
+      {"@type": "EducationalOccupationalCredential", "name": "Specializācija: uzturs un hormoni"},
+      {"@type": "EducationalOccupationalCredential", "name": "Specializācija: zarnu mikrobioms un uzturs"},
+      {"@type": "EducationalOccupationalCredential", "name": "Specializācija: asinsanalīžu interpretācija uztura kontekstā"},
+      {"@type": "EducationalOccupationalCredential", "name": "C kategorijas trenera sertifikāts (LTTC)"}
+    ],
+    "sameAs": [
+      "https://www.instagram.com/ieva.jekabsone/",
+      "https://www.facebook.com/profile.php?id=100089137514285",
+      "https://www.tiktok.com/@ieva.jekabson"
+    ]
+  }
+};
+---
+
+<BaseLayout
+  title="Par mani — Ieva Jēkabsone, uztura konsultante"
+  description="Ieva Jēkabsone — ITEC sertificēta uztura konsultante sievietēm 30–50. Asinsanalīžu un uztura saistība, individuāla pieeja, izglītība ne diētas. Rīga, online visā Latvijā."
+  canonical="https://ievajekabsone.lv/par-mani"
+  jsonLd={jsonLd}
+  activeNav="par-mani"
+>
+
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="eyebrow">Par mani</div>
+      <h1>Tu meklē kādu, kurš <em>saprot ne tikai uzturu, bet arī tevi.</em></h1>
+      <p class="lede">
+        Es esmu Ieva Jēkabsone — ITEC sertificēta uztura konsultante. Šajā lapā pastāstīšu,
+        kā strādāju, kāpēc uzsveru tieši asinsanalīzes un kāpēc nestrādāju ar ikvienu, kas raksta.
+      </p>
+    </div>
+  </section>
+
+  <!-- EMPATHY -->
+  <section class="about-empathy">
+    <div class="wrap">
+      <div class="section-head" style="max-width:760px;">
+        <div class="eyebrow">Pieņemu, ka</div>
+        <h2 class="section-title" style="margin-top:20px;">Tu esi nokļuvusi šajā lapā <em>kāda iemesla dēļ.</em></h2>
+        <p class="lede" style="margin-top:24px;">
+          Pirms stāstu par sevi — vēlos atzīt, ko, visticamāk, sajūti tieši tagad. Jo, ja
+          nesaprotu tevi, neviens sertifikāts pasaulē nepalīdzēs.
+        </p>
+      </div>
+
+      <ul class="empathy-list">
+        <li>
+          <span class="empathy-num">/01</span>
+          <p>Esi <strong>izmēģinājusi vairākas pieejas</strong> — un katra reize beigusies ar to, ka rezultāti pazūd, tiklīdz pārstāj sekot plānam.</p>
+        </li>
+        <li>
+          <span class="empathy-num">/02</span>
+          <p>Tev <strong>nav skaidrs, kam ticēt</strong> — viens speciālists saka vienu, otrs pretējo, internetā pretrunīga informācija.</p>
+        </li>
+        <li>
+          <span class="empathy-num">/03</span>
+          <p>Tu jūti, ka <strong>ar ķermeni kaut kas mainās</strong> — enerģija krīt, svars stāv, miega kvalitāte pasliktinās — bet ārsts saka "viss ir robežās".</p>
+        </li>
+        <li>
+          <span class="empathy-num">/04</span>
+          <p>Tu negribi <strong>vēl vienu PDF failu</strong> ar gatavu ēdienkarti. Tu gribi kādu, kurš paskatās tieši uz tavu situāciju.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- INTRO / PORTRAIT -->
+  <section class="about-intro">
+    <div class="wrap">
+      <div class="about-intro-grid">
+
+        <div class="figure frame photo" style="--obj: center 15%;">
+          <div class="corner-marks"></div>
+          <img src="/assets/images/ieva-cooking.webp" alt="Ieva Jēkabsone virtuvē" />
+        </div>
+
+        <div>
+          <div class="eyebrow" style="margin-bottom:24px;">Iepazīsimies</div>
+          <p class="pullquote">
+            "Es neiesaku diētas. <em>Es meklēju cēloņus.</em>"
+          </p>
+
+          <p>
+            Mans darbs nesākas ar to, ko tev ēst. Tas sākas ar jautājumiem:
+            <em>kāpēc tieši tu, kāpēc tieši tagad un kas tavā ķermenī notiek tā, ka līdzšinējās pieejas nav strādājušas.</em>
+          </p>
+
+          <p>
+            Strādāju ar sievietēm vecumā no 30 līdz 50 gadiem. Manas pamatkompetences ir
+            divas: <strong>uztura un dzīvesveida saistība ar asinsanalīžu rādītājiem</strong>
+            un <strong>individuāls plāns, kas pielāgojas tavai ikdienai</strong> — ne otrādi.
+          </p>
+
+          <p>
+            Šajā darbā man svarīgs ir viens princips: <em>mans mērķis ir, lai tu mani vairs nevajadzētu.</em>
+            Es nemēģinu radīt atkarību no konsultanta. Es mācu tev saprast pašai.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="story">
+    <div class="wrap">
+      <div class="section-head" style="max-width:760px;">
+        <div class="eyebrow">Mans ceļš</div>
+        <h2 class="section-title" style="margin-top:20px;">Trīs atklājumi, kas <em>mainīja virzienu.</em></h2>
+        <p class="lede" style="margin-top:20px;">
+          Stāstu īsi, jo svarīgāka nav mana biogrāfija — bet tas, kāpēc strādāju tieši tā, kā strādāju.
+        </p>
+      </div>
+
+      <div class="story-grid">
+        <div class="story-step">
+          <span class="chapter">Nodaļa 01 · Sākums</span>
+          <h3>Sporta zāle, kas neuzvarēja</h3>
+          <p>
+            Treniņi trīs reizes nedēļā. Apzināta ēšana. Un tomēr — rezultāti tikai daļa
+            no tā, ko biju cerējusi. Sapratu vienu lietu: tas, ko es ēdu, ir 80 % no vienādojuma.
+            Treniņi ir tikai pārējie 20 %.
+          </p>
+        </div>
+
+        <div class="story-step">
+          <span class="chapter">Nodaļa 02 · Izglītība</span>
+          <h3>ITEC — zinātne, ne minējumi</h3>
+          <p>
+            Lēmums mācīties nopietni. ITEC starptautiskā programma deva ne tikai sertifikātu —
+            tā deva ietvaru, kā saprast, kāpēc ķermenis reaģē tieši tā, kā tas reaģē. Tas
+            mainīja visu.
+          </p>
+        </div>
+
+        <div class="story-step">
+          <span class="chapter">Nodaļa 03 · Atklājums</span>
+          <h3>Asinsanalīzes kā karte</h3>
+          <p>
+            Kad sāku skatīties klienšu asinsanalīzes kopā ar viņu dzīvesveidu, sapratu —
+            tieši šeit slēpjas tie "kāpēc", uz kuriem citi konsultanti vienkārši neatbild.
+            Tā dzima mana pieeja.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section class="method">
+    <div class="wrap">
+      <div class="section-head" style="max-width:760px;">
+        <div class="eyebrow">Mana metode</div>
+        <h2 class="section-title" style="margin-top:20px;">Kā es <em>patiesībā strādāju</em> ar klientēm.</h2>
+        <p class="lede" style="margin-top:20px;">
+          Bez šabloniem, bez gatavām tabulām. Bet ar struktūru, kas atkārtojas.
+        </p>
+      </div>
+
+      <ol class="method-list">
+        <li>
+          <div class="num">01</div>
+          <div>
+            <h3>Sākam ar tavu situāciju, ne ar manu metodi</h3>
+            <p>Pirmajā sarunā uzdodu jautājumus, ko, iespējams, neviens iepriekš nav uzdevis: par tavu miegu, stresu, ikdienas ritmu, vēsturi ar diētām, attieksmi pret ēdienu. Bez šī konteksta jebkurš plāns ir minējums.</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">02</div>
+          <div>
+            <h3>Ja vajag — skatāmies datus</h3>
+            <p>VIP paketē izvērtēju tavas asinsanalīzes uztura kontekstā. Tas nav medicīniska diagnoze — bet konkrēts ieskats, kas tavā metabolismā notiek <em>šobrīd</em>: insulīna jutība, dzelzs depo (feritīns), D vitamīns, vairogdziedzeris, iekaisuma marķieri.</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">03</div>
+          <div>
+            <h3>Plāns, kas pielāgojas tavai dzīvei</h3>
+            <p>Es neuzdodu tev pielāgoties manai sistēmai. Mēs kopā veidojam tavu sistēmu — tādu, kas der tavam darbam, ģimenei, budžetam un gaumei. Tāpēc tā paliek arī tad, kad sadarbība beigusies.</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">04</div>
+          <div>
+            <h3>Mācu, kāpēc — ne tikai ko</h3>
+            <p>Katrā ieteikumā skaidroju pamatojumu. Tāpēc pēc mēneša tu pati zini, kāpēc tev jāēd vairāk olbaltumvielu brokastīs vai kāpēc jāatturas no kafijas tukšā dūšā. Tā tu kļūsti neatkarīga.</p>
+          </div>
+        </li>
+        <li>
+          <div class="num">05</div>
+          <div>
+            <h3>Atbalsts ir struktūrēts, ne nepārtraukts</h3>
+            <p>Pēc konsultācijas tev ir konkrēts laiks (atkarībā no paketes — 2 nedēļas vai mēnesis), kad raksti jautājumus e-pastā un saņem atbildes. Tas dod drošību, bet nepadara tevi atkarīgu no manis.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- NOT FOR -->
+  <section class="not-for-section">
+    <div class="wrap">
+      <div class="not-for-grid">
+        <div>
+          <div class="eyebrow">Godīga saruna</div>
+          <h2 class="section-title" style="margin-top:20px;">Ar ko es <em>nestrādāju.</em></h2>
+          <p class="lede" style="margin-top:20px;">
+            Pirms tu raksti — gribu būt godīga. Mans laiks ir ierobežots, un es to izmantoju
+            labāk, ja strādāju ar sievietēm, kuras ir <strong>tiešām gatavas</strong>.
+            Šeit — kad mēs <em>nebūsim</em> piemērotas.
+          </p>
+        </div>
+
+        <ul class="not-for-list">
+          <li>
+            <span class="x-mark">×</span>
+            <p><strong>Ja meklē ātru maģiju</strong> — "uz vasaru –10 kg" vai 7 dienu detoks. Nestrādāju ar šādiem mērķiem, jo tie nav reāli un nav veselīgi.</p>
+          </li>
+          <li>
+            <span class="x-mark">×</span>
+            <p><strong>Ja gribi tikai PDF failu</strong> ar gatavu ēdienkarti, bez sarunas un bez darba pie sevis. Mans process prasa tavu iesaisti.</p>
+          </li>
+          <li>
+            <span class="x-mark">×</span>
+            <p><strong>Ja meklē kādu, kurš pateiks tikai to, ko gribi dzirdēt</strong>. Es dažreiz pasaku godīgi neērtas lietas — tāpēc strādāju.</p>
+          </li>
+          <li>
+            <span class="x-mark">×</span>
+            <p><strong>Ja tev ir akūta medicīniska problēma</strong>, kas prasa ārsta uzraudzību. Es neaizstāju ārstu — es papildinu uztura kontekstā.</p>
+          </li>
+        </ul>
+      </div>
+
+      <p class="not-for-tagline">
+        Bet, ja esi nogurusi no šabloniem un gatava darīt darbu — <em>tieši ar tādām sievietēm mans darbs strādā vislabāk.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section class="credentials">
+    <div class="wrap">
+      <div class="section-head" style="max-width:760px;">
+        <div class="eyebrow">Izglītība un sertifikāti</div>
+        <h2 class="section-title" style="margin-top:20px;">Mans darbs balstās <em>uz reāliem dokumentiem.</em></h2>
+        <p class="lede" style="margin-top:20px;">
+          Septiņi sertifikāti — no plašā ITEC pamata līdz šaurām specializācijām hormonu,
+          mikrobioma un asinsanalīžu jomā. Visi dokumenti pieejami pārbaudei.
+        </p>
+      </div>
+
+      <div class="cert-grid">
+        <figure class="cert-card">
+          <img src="/assets/images/certificates/ieva-jekabsone-nutrition-certificate.webp" alt="ITEC sertifikāts nutrioloģijā" loading="lazy" />
+          <figcaption>
+            <strong>ITEC nutrioloģijā</strong>
+            <span>Starptautiski atzīts pamata sertifikāts</span>
+          </figcaption>
+        </figure>
+
+        <figure class="cert-card">
+          <img src="/assets/images/certificates/nutrition-consultant-certificate.webp" alt="Uztura konsultanta sertifikāts" loading="lazy" />
+          <figcaption>
+            <strong>Uztura konsultante</strong>
+            <span>Padziļināts kvalifikācijas dokuments</span>
+          </figcaption>
+        </figure>
+
+        <figure class="cert-card">
+          <img src="/assets/images/certificates/ieva-jekabsone-bloodwork-certificate.webp" alt="Asinsanalīžu interpretācijas sertifikāts" loading="lazy" />
+          <figcaption>
+            <strong>Asinsanalīzes un uzturs</strong>
+            <span>Specializācija laboratorisko rādītāju interpretācijā</span>
+          </figcaption>
+        </figure>
+
+        <figure class="cert-card">
+          <img src="/assets/images/certificates/ieva-jekabsone-food-hormones-certificate.webp" alt="Uztura un hormonu sertifikāts" loading="lazy" />
+          <figcaption>
+            <strong>Uzturs un hormoni</strong>
+            <span>Specializācija sievietēm 30–50 vecuma grupā</span>
+          </figcaption>
+        </figure>
+
+        <figure class="cert-card">
+          <img src="/assets/images/certificates/ieva-jekabsone-microbiome-certificate.webp" alt="Zarnu mikrobioma sertifikāts" loading="lazy" />
+          <figcaption>
+            <strong>Zarnu mikrobioms</strong>
+            <span>Saistība ar uzturu un veselību</span>
+          </figcaption>
+        </figure>
+
+        <figure class="cert-card">
+          <img src="/assets/images/certificates/ieva-jekabsone-fitness-certificate.webp" alt="C kategorijas trenera sertifikāts LTTC" loading="lazy" />
+          <figcaption>
+            <strong>C kategorijas treneris</strong>
+            <span>Latvijas Trenažieru un trenera centra (LTTC) sertifikāts</span>
+          </figcaption>
+        </figure>
+
+        <figure class="cert-card">
+          <img src="/assets/images/certificates/ieva-jekabsone-health-course.webp" alt="Veselīga uztura kurss" loading="lazy" />
+          <figcaption>
+            <strong>Veselīga uztura kurss</strong>
+            <span>Papildizglītība (Gogo school, Miin, LMacademy, SPA school)</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="cert-note">
+        * Vairāki agrāk izsniegtie sertifikāti ir uz iepriekšējo uzvārdu — <em>Vinka.</em>
+        Pēc laulības Latvijā uzvārds tika nomainīts; izglītības saturs un kvalifikācija paliek nemainīgi.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section class="principles">
+    <div class="wrap">
+      <div class="section-head" style="max-width:760px;">
+        <div class="eyebrow">Manas vērtības</div>
+        <h2 class="section-title" style="margin-top:20px;">Trīs lietas, kurās <em>nepiekāpjos.</em></h2>
+      </div>
+
+      <div class="principles-grid">
+
+        <div class="principle">
+          <div class="num">01</div>
+          <h3>Precizitāte, ne minējumi</h3>
+          <p>
+            Lēmumus pieņemam, balstoties uz reāliem datiem — tavu ikdienu, paradumiem un,
+            ja vajag, analīžu rādītājiem. Nekad "vienas izmēra" ieteikumi.
+          </p>
+        </div>
+
+        <div class="principle">
+          <div class="num">02</div>
+          <h3>Partnerība ar atbildību</h3>
+          <p>
+            Es uzņemos atbildību par savu padomu kvalitāti. Tu uzņemies atbildību par
+            darbu pie sevis. Ja neesi gatava — saku to godīgi un atkāpjos.
+          </p>
+        </div>
+
+        <div class="principle">
+          <div class="num">03</div>
+          <h3>Izglītība, ne atkarība</h3>
+          <p>
+            Es nedodu tikai zivi — es mācu makšķerēt. Pēc darba ar mani tu zini <em>kāpēc</em>
+            kaut kas tev jādara, un laika gaitā kļūsti pilnībā patstāvīga.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST SIGNAL -->
+  <section class="trust-signal">
+    <div class="wrap trust-signal-inner">
+      <div class="eyebrow center">Godīga saruna</div>
+      <h2 style="margin-top:22px;">Tu, iespējams, <em>pat nevajadzētu pirkt.</em></h2>
+
+      <div class="ornament">
+        <span class="dot"></span><span class="bar"></span><span class="dot"></span>
+      </div>
+
+      <div class="trust-signal-body">
+        <p>Visu, ko zinu, es publiskoju. Blogā, Instagram, Uztura ABC sadaļā — bez maksas.</p>
+        <p>Konsultācija ir tām, kuras grib kādu, kurš domā tieši ar viņām.</p>
+        <p>Izvēle ir tava.</p>
+      </div>
+
+      <a href="/pakalpojumi" class="btn btn-gold">Apskatīt pakalpojumus <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final">
+    <div class="wrap final-inner">
+      <span class="script">Gatava sākt?</span>
+      <h2>Pieteikt sākuma konsultāciju. <em>49 €.</em></h2>
+      <p>30 minūtes, kas maina kontekstu. Sazināšos 24 stundu laikā.</p>
+
+      <div class="final-ctas">
+        <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-primary">Pieteikt konsultāciju — 49 € <span class="arrow">→</span></a>
+        <a href="/pakalpojumi" class="btn btn-ghost">Apskatīt pakalpojumus</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

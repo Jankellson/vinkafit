@@ -1,0 +1,101 @@
+---
+interface Props {
+  activeNav?: string;
+}
+const { activeNav } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Sākums', key: 'sakums' },
+  { href: '/par-mani', label: 'Par mani', key: 'par-mani' },
+  { href: '/uztura-abc', label: 'Uztura ABC', key: 'uztura-abc' },
+  { href: '/blog', label: 'Blogs', key: 'blog' },
+  { href: '/kontakti', label: 'Kontakti', key: 'kontakti' },
+];
+
+const serviceLinks = [
+  { href: '/pakalpojumi', label: 'Visi pakalpojumi' },
+  { href: '/pakalpojumi/sakuma-konsultacija', label: 'Sākuma konsultācija', detail: '49 €' },
+  { href: '/pakalpojumi/30-dienu-uztura-programma', label: '30 dienu programma', detail: '249 €' },
+  { href: '/pakalpojumi/90-dienu-uztura-programma', label: '90 dienu programma', detail: '549 €' },
+  { href: '/pakalpojumi/vip-uztura-atbalsts', label: 'VIP uztura atbalsts', detail: '1500 € / 6 mēneši' },
+];
+---
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="Ieva Jēkabsone — sākumlapa">
+      <span class="logo-mark">Ieva Jēkabsone</span>
+      <span class="logo-sub">Uztura konsultante</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Galvenā navigācija">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class={activeNav === link.key ? 'active' : ''}
+        >
+          {link.label}
+        </a>
+      ))}
+      <details class="nav-services">
+        <summary class={activeNav === 'pakalpojumi' ? 'active' : ''}>Pakalpojumi <span aria-hidden="true">⌄</span></summary>
+        <div class="nav-services-menu">
+          {serviceLinks.map((link, index) => (
+            <a href={link.href} class={index === 0 ? 'nav-services-all' : ''}>
+              <span>{link.label}</span>{link.detail && <small>{link.detail}</small>}
+            </a>
+          ))}
+        </div>
+      </details>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-primary">Sākuma konsultācija <span class="arrow">→</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Atvērt izvēlni" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 7h18M3 12h18M3 17h18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="wrap">
+      <ul>
+        {navLinks.map(link => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+        <li>
+          <details class="mobile-services">
+            <summary>Pakalpojumi <span aria-hidden="true">+</span></summary>
+            <div>
+              {serviceLinks.map(link => <a href={link.href}>{link.label}</a>)}
+            </div>
+          </details>
+        </li>
+      </ul>
+      <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-primary">Sākuma konsultācija — 49 € <span class="arrow">→</span></a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+      })
+    );
+  }
+</script>

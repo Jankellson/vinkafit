@@ -1,0 +1,341 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+/**
+ * UZTURA ABC — visu rakstu indekss.
+ * Kategorijas: vienkāršākās → sarežģītākās (kā grāmatas nodaļas).
+ * available: false → "Drīzumā". Mainīt uz true + reālo href kad raksts gatavs.
+ */
+
+interface Article {
+  title: string;
+  href: string;
+  available: boolean;
+}
+
+interface Category {
+  title: string;
+  slug: string;
+  description: string;
+  icon: 'utensils' | 'sparkles' | 'activity' | 'heart' | 'droplet' | 'leaf';
+  articles: Article[];
+}
+
+const categories: Category[] = [
+  {
+    slug: 'uztura-pamati',
+    title: 'Uztura pamati',
+    description: 'Laba vieta, kur sākt — neatkarīgi no tā, vai esi diētu veterāne vai tikai sāc domāt par uzturu. Šķīvja metode, makrouzturvielas, etiķetes, hidratācija, ēdienkartes plānošana. Šīs zināšanas ir stabils pamats — tās nemainās atkarībā no tā, kura mode ir šogad aktuāla.',
+    icon: 'utensils',
+    articles: [
+      { title: 'Šķīvja metode: princips, proporcijas un kā to lietot ikdienā', href: '/uztura-abc/skivja-metode', available: true },
+      { title: 'Makrouzturvielas: olbaltumvielas, tauki un ogļhidrāti — normas un avoti', href: '/uztura-abc/makrouzturvielas', available: true },
+      { title: 'Pārtikas etiķetes: kā lasīt sastāvdaļu sarakstu, E vielas un uzturvērtību', href: '/uztura-abc/partikas-etiketes', available: true },
+      { title: 'Ūdens daudzums dienā: normas, mīti un kā saprast savu vajadzību', href: '/uztura-abc/udens-daudzums', available: true },
+      { title: 'Ēšanas biežums: 3 vai 6 reizes dienā — fakti un individuālie faktori', href: '/uztura-abc/esanas-biezums', available: true },
+      { title: 'Uztura bagātinātāji: kad tie vajadzīgi, kādi un kādās devās', href: '/uztura-abc/uztura-bogatinatajs', available: true },
+      { title: 'Nedēļas ēdienkartes plānošana: struktūra, principi un praktiski piemēri', href: '/uztura-abc/nedelas-edienkarte', available: true },
+      { title: 'Cukura aizstājēji: stīvija, eritrols, ksilitols — salīdzinājums un drošas devas', href: '/uztura-abc/cukura-aizstataji', available: false },
+      { title: 'Šķiedra uzturā: dienas norma, avoti un ietekme uz gremošanu', href: '/uztura-abc/skiedra-uzturs', available: false },
+      { title: 'Omega-3 taukskābes: avoti, norma un kad nepieciešami papildinātāji', href: '/uztura-abc/omega-3', available: false },
+    ],
+  },
+  {
+    slug: 'uztura-miti',
+    title: 'Uztura mīti un fakti',
+    description: 'Katru gadu parādās jauna "revolucionāra" diēta. Detoks, glutens, superfoods, diētas pēc asinsgrupas — lielākā daļa no tā ir mārketings, ne zinātne. Šajā sadaļā izšķiru faktus no mītiem, lai tu vairs netērētu naudu lietām, kas nestrādā.',
+    icon: 'sparkles',
+    articles: [
+      { title: 'Tauki un svars: vai piesātinātie tauki tiešām veicina aptaukošanos', href: '/uztura-abc/tauki-svars', available: false },
+      { title: 'Detoks diētas: ko zinātne saka un ko aknas dara bez maksas', href: '/uztura-abc/detoks-dietas', available: false },
+      { title: 'Glutens un laktoze: nepanesam ība, jutīgums un kam tiešām jāizvairās', href: '/uztura-abc/glutens-laktoze', available: false },
+      { title: 'Superfoods: acaí, spirulīna, matcha — uzturvērtība un zinātniskie pierādījumi', href: '/uztura-abc/superfoods', available: false },
+      { title: 'Keto un paleo diētas: principi, ieguvumi, riski un pierādījumi', href: '/uztura-abc/keto-paleo', available: false },
+      { title: 'Kafija, šokolāde un sarkanvīns: ietekme uz veselību un drošas devas', href: '/uztura-abc/kafija-sokolade-vins', available: false },
+      { title: 'Bio un organic pārtika: atšķirības, ieguvumi un vai augstākā cena ir pamatota', href: '/uztura-abc/bio-organic', available: false },
+      { title: 'Alkohols un uzturs: ietekme uz svaru, metabolismu un uzturvielām', href: '/uztura-abc/alkohols-uzturs', available: false },
+      { title: 'Sāls un veselība: dienas norma, mīti un kad tiešām jāsamazina', href: '/uztura-abc/sals-veseliba', available: false },
+    ],
+  },
+  {
+    slug: 'svars-metabolisms',
+    title: 'Svars un metabolisms',
+    description: 'Yo-yo efekts, metabolisma palēnināšanās, proteīns, gavēšana, hormoni — viss tas, ko reklāmas neizskaidro. Šeit nav "ēd mazāk, kusties vairāk" padomu — ir izskaidrojumi, kāpēc tas nestrādā un kas strādā.',
+    icon: 'activity',
+    articles: [
+      { title: 'Yo-yo efekts: cēloņi, mehānisms un kā pārtraukt svara svārstības', href: '/uztura-abc/yo-yo-efekts', available: false },
+      { title: 'Metabolisms: kā tas darbojas, kas to palēnina un kā uzlabot', href: '/uztura-abc/metabolisms', available: false },
+      { title: 'Proteīna norma dienā: aprēķins, avoti un biežās kļūdas', href: '/uztura-abc/proteina-norma', available: false },
+      { title: 'Kaloriju deficīts: princips, ierobežojumi un kāpēc vien tas nestrādā', href: '/uztura-abc/kaloriju-deficits', available: false },
+      { title: 'Intermitējoša gavēšana: veidi, ieguvumi, riski un kam neder', href: '/uztura-abc/intermitejosa-gavesana', available: false },
+      { title: 'Hormoni un svars: kā hormonālas izmaiņas ietekmē metabolismu', href: '/uztura-abc/hormoni-svars', available: false },
+      { title: 'Kortizols un svars: kā hronisks stress ietekmē tauku uzkrāšanos', href: '/uztura-abc/kortizols-svars', available: false },
+      { title: 'Miegs un svars: kā miega kvalitāte ietekmē metabolismu un apetīti', href: '/uztura-abc/miegs-svars', available: false },
+    ],
+  },
+  {
+    slug: 'uzturs-veseliba',
+    title: 'Uzturs un veselība',
+    description: 'Uzturs nav tikai svars — tas ietekmē enerģiju, miegu, ādu, garastāvokli un hormonus. Zarnu mikrobioms, imunitāte, emocionālā ēšana, sirds veselība. Bez dramatisma, ar zinātni.',
+    icon: 'heart',
+    articles: [
+      { title: 'Zarnu mikrobioms: funkcijas, ietekme uz veselību un kā uzlabot ar uzturu', href: '/uztura-abc/zarnu-mikrobioms', available: false },
+      { title: 'Emocionālā ēšana: cēloņi, bioloģiskais mehānisms un kā ar to strādāt', href: '/uztura-abc/emocionala-esana', available: false },
+      { title: 'Hronisks nogurums un uzturs: cēloņi, deficīti un kā uzlabot enerģiju', href: '/uztura-abc/hronisks-nogurums', available: false },
+      { title: 'Uzturs un miegs: kādi produkti uzlabo miega kvalitāti un kādi traucē', href: '/uztura-abc/uzturs-miegs', available: false },
+      { title: 'Estrogēns, progesterons un uzturs: kā hormonālas izmaiņas maina uztura vajadzības', href: '/uztura-abc/estrogens-uzturs', available: false },
+      { title: 'Uzturs menopauzes laikā: simptomi, ieteikumi un kādi produkti palīdz', href: '/uztura-abc/menopauze-uzturs', available: false },
+      { title: 'Ādas veselība un uzturs: kādi produkti uzlabo ādas stāvokli no iekšpuses', href: '/uztura-abc/ada-uzturs', available: false },
+      { title: 'Aknu veselība un uzturs: kā atbalstīt aknas ikdienā bez detoksiem', href: '/uztura-abc/aknu-veseliba', available: false },
+      { title: 'B12 deficīts: simptomi, cēloņi, norma analīzēs un kā novērst', href: '/uztura-abc/b12-deficits', available: false },
+      { title: 'Probiotika un prebiotika: atšķirības, avoti un kā lietot efektīvi', href: '/uztura-abc/probiotika-prebiotika', available: false },
+      { title: 'Imunitāte un uzturs: kādi produkti un vielas atbalsta imūnsistēmu', href: '/uztura-abc/imunitates-uzturs', available: false },
+      { title: 'Sirds veselība un uzturs: kādi produkti aizsargā un kādi kaitē', href: '/uztura-abc/sirds-veseliba', available: false },
+    ],
+  },
+  {
+    slug: 'asinsanalyzes',
+    title: 'Asinsanalīzes un uzturs',
+    description: 'Ārsts saka "viss normāli" — bet tu jūties slikti. Bieži vien atbilde ir asinsanalīzēs, ko ārsts nepaskaidro. Šeit mācīšu lasīt savus rādītājus, saprast, kas ir "normāli" un kas — "optimāli", un kā uzturs šo mainīt.',
+    icon: 'droplet',
+    articles: [
+      { title: 'Paaugstināts holesterīns: normas, veidi un kā uzturs ietekmē rādītājus', href: '/uztura-abc/holesterins', available: false },
+      { title: 'Insulīna rezistence: simptomi, cēloņi, analīzes un uztura risinājumi', href: '/uztura-abc/insulina-rezistence', available: false },
+      { title: 'Feritīns: norma analīzēs, zema feritīna simptomi un kā celt dzelzs ar uzturu', href: '/uztura-abc/feritins', available: false },
+      { title: 'D vitamīna deficīts: simptomi, norma analīzēs un kā novērst', href: '/uztura-abc/d-vitamins', available: false },
+      { title: 'Vairogdziedzera analīzes: TSH, T3, T4 — normas un ko tās nozīmē', href: '/uztura-abc/vairogdziedzeris-analize', available: false },
+      { title: 'HbA1c: norma, ko nozīmē paaugstināts rādītājs un kā uzturs to ietekmē', href: '/uztura-abc/hba1c', available: false },
+      { title: 'CRP un iekaisuma marķieri: norma, cēloņi un kā uzturs samazina iekaisumu', href: '/uztura-abc/crp-iekaisms', available: false },
+      { title: 'Hormonu analīzes: kādas veikt, ko skatīties un ko prasīt ārstam', href: '/uztura-abc/hormonu-analize', available: false },
+      { title: 'Magnija deficīts: simptomi, norma analīzēs un labākie avoti uzturā', href: '/uztura-abc/magnijs-deficits', available: false },
+      { title: 'Normāli vs optimāli rādītāji: kāpēc "robežās" nenozīmē "labi"', href: '/uztura-abc/normali-vs-optimali', available: false },
+      { title: 'Folāts (B9): norma analīzēs, deficīta simptomi un avoti uzturā', href: '/uztura-abc/folats-b9', available: false },
+      { title: 'Homocisteīns: ko nozīmē paaugstināts rādītājs un kā to samazināt', href: '/uztura-abc/homocisteins', available: false },
+    ],
+  },
+  {
+    slug: 'vegana-uzturs',
+    title: 'Vegāna un veģetāriešu uzturs',
+    description: 'Augu valsts uzturs var būt pilnvērtīgs — ja zini, ko kontrolēt. Šajā sadaļā — deficīti, olbaltumvielu avoti, vajadzīgie papildinātāji un asinsanalīzes, kas jāpārbauda regulāri.',
+    icon: 'leaf',
+    articles: [
+      { title: 'Vegāna uzturs: kādi deficīti draud un kā tos novērst', href: '/uztura-abc/vegana-uzturs', available: false },
+      { title: 'Proteīns veģetāriešu uzturā: avoti, norma un kombinēšana', href: '/uztura-abc/vegetarietis-proteins', available: false },
+      { title: 'Uztura bagātinātāji vegāniem: B12, D vitamīns, omega-3 un dzelzs', href: '/uztura-abc/vegana-bogatinatajs', available: false },
+      { title: 'Asinsanalīzes vegāniem: kādus rādītājus regulāri pārbaudīt', href: '/uztura-abc/vegana-asinsanalize', available: false },
+    ],
+  },
+];
+
+const totalArticles = categories.reduce((sum, c) => sum + c.articles.length, 0);
+
+const icons: Record<string, string> = {
+  droplet:   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>`,
+  activity:  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.5.5 0 0 1-.96 0L9.24 2.18a.5.5 0 0 0-.96 0l-2.35 8.36A2 2 0 0 1 4 12H2"/></svg>`,
+  utensils:  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>`,
+  heart:     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>`,
+  sparkles:  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg>`,
+  leaf:      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>`,
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Uztura ABC — Zināšanu bāze",
+  "url": "https://ievajekabsone.lv/uztura-abc",
+  "description": "Uztura zināšanu bāze latviski — no pamatiem līdz asinsanalīzēm. Bez maksas.",
+  "author": { "@type": "Person", "@id": "https://ievajekabsone.lv/#ieva" },
+  "inLanguage": "lv",
+};
+---
+
+<BaseLayout
+  title="Uztura ABC — Bezmaksas Zināšanu Bāze | Ieva Jēkabsone"
+  description="Uztura zināšanu bāze latviski: pamati, mīti, svars un metabolisms, veselība, asinsanalīzes. {totalArticles} raksti, loģiska secība no sākuma. Bez maksas."
+  canonical="https://ievajekabsone.lv/uztura-abc"
+  jsonLd={jsonLd}
+  activeNav="uztura-abc"
+>
+
+  <Breadcrumbs items={[
+    { label: 'Sākums', href: '/' },
+    { label: 'Uztura ABC' }
+  ]} />
+
+  <!-- HERO -->
+  <section class="page-hero page-hero--compact">
+    <div class="wrap">
+      <div class="eyebrow">Uztura ABC</div>
+      <h1>Viss, ko gribi zināt — <em>vienā vietā.</em></h1>
+      <p class="lede">
+        {totalArticles} raksti. 6 tēmas. Loģiska secība no uztura pamatiem līdz
+        asinsanalīžu izpratnei — lasi kā grāmatu vai atver tieši to tēmu, kas tevi
+        šobrīd uztrauc.
+      </p>
+      <div class="abc-stats">
+        <span class="abc-stat"><strong>{categories.length}</strong> nodaļas</span>
+        <span class="abc-stat-sep">·</span>
+        <span class="abc-stat"><strong>{totalArticles}</strong> raksti</span>
+        <span class="abc-stat-sep">·</span>
+        <span class="abc-stat">Bez maksas · Bez reģistrēšanās</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE INDEX — full-width strips -->
+  <div class="abc-index">
+    {categories.map((cat, catIdx) => (
+      <div class={`abc-strip ${catIdx % 2 === 0 ? 'abc-strip--ivory' : 'abc-strip--cream'}`} id={cat.slug}>
+        <div class="wrap abc-strip-inner">
+
+          <!-- LEFT: category info -->
+          <div class="abc-cat-left">
+            <div class="abc-cat-num">0{catIdx + 1}</div>
+            <div class="abc-cat-icon" set:html={icons[cat.icon]} aria-hidden="true" />
+            <h2 class="abc-cat-title">{cat.title}</h2>
+            <p class="abc-cat-desc">{cat.description}</p>
+            <div class="abc-cat-count">{cat.articles.length} raksti</div>
+          </div>
+
+          <!-- RIGHT: article list -->
+          <ul class="abc-article-list" aria-label={`Raksti: ${cat.title}`}>
+            {cat.articles.map((art) => (
+              <li class="abc-article-item">
+                {art.available ? (
+                  <a href={art.href} class="abc-article-link">
+                    <span>{art.title}</span>
+                    <span class="abc-arrow" aria-hidden="true">→</span>
+                  </a>
+                ) : (
+                  <div class="abc-article-pending">
+                    <span class="abc-article-title-muted">{art.title}</span>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- ══ SEO / ABOUT THIS RESOURCE ═══════════════════════════ -->
+  <section class="abc-seo">
+    <div class="wrap abc-seo-inner">
+
+      <div class="eyebrow">Par šo zināšanu bāzi</div>
+      <h2 class="abc-seo-title">Uztura zināšanas latviski — bez modes diētām un brīnumsolījumiem</h2>
+
+      <div class="abc-seo-body">
+        <p>
+          Uztura ABC ir bezmaksas zināšanu bāze latviešu valodā, kurā soli pa solim izskaidroti
+          uztura pamati — no šķīvja metodes un makrouzturvielām līdz asinsanalīžu izpratnei. Katrs
+          raksts ir veidots kā mācību materiāls: ar skaidru atbildi sākumā, konkrētiem piemēriem,
+          devām un atsaucēm uz primārajiem avotiem (PVO, EFSA, NIH, Hārvarda). Mērķis ir vienkāršs —
+          lai tu saproti, kas uzturā tiešām palīdz un kas ir tikai mārketings.
+        </p>
+
+        <h3>Kam šī lapa ir domāta</h3>
+        <p>
+          Šī zināšanu bāze ir domāta ikvienam, kurš grib saprast uzturu bez stingrām diētām un bez
+          maksas. Tā noder, ja vēlies zaudēt vai noturēt svaru, sakārtot ēšanas paradumus, izprast savas
+          asinsanalīzes vai vienkārši atšķirt faktus no interneta mītiem. Saturs ir neitrāls un derīgs
+          plašam cilvēku lokam — sievietēm un vīriešiem, sportistiem, vegāniem un ģimenēm. Tev nav
+          jābūt iepriekšējām zināšanām: raksti sakārtoti no vienkāršākā uz sarežģītāko, tāpēc vari sākt
+          no paša sākuma vai atvērt tieši to tēmu, kas tevi šobrīd uztrauc.
+        </p>
+
+        <h3>Ko šeit atradīsi</h3>
+        <p>
+          Saturs ir sadalīts sešās tēmās: <strong>uztura pamati</strong> (šķīvja metode,
+          makrouzturvielas, etiķetes, ūdens, ēdienreižu biežums, uztura bagātinātāji, ēdienkartes
+          plānošana), <strong>uztura mīti un fakti</strong> (detokss, glutens, keto, superfoods),
+          <strong>svars un metabolisms</strong> (yo-yo efekts, kaloriju deficīts, hormoni, miegs),
+          <strong>uzturs un veselība</strong> (zarnu mikrobioms, emocionālā ēšana, imunitāte),
+          <strong>asinsanalīzes</strong> (holesterīns, feritīns, D vitamīns, vairogdziedzeris) un
+          <strong>vegāna uzturs</strong>. Katra tēma aug pakāpeniski, un raksti ir savstarpēji saistīti,
+          lai tu varētu sekot dabīgam zināšanu pavedienam.
+        </p>
+
+        <h3>Kā vislabāk to lietot</h3>
+        <p>
+          Ja tikai sāc, izlasi vispirms <a href="/uztura-abc/skivja-metode">šķīvja metodi</a> un
+          <a href="/uztura-abc/makrouzturvielas">makrouzturvielas</a> — tās ir pamats, uz kura balstās
+          viss pārējais. Pēc tam vari pāriet pie tēmas, kas tev aktuāla, piemēram,
+          <a href="/uztura-abc/nedelas-edienkarte">nedēļas ēdienkartes plānošanas</a> vai
+          <a href="/uztura-abc/uztura-bogatinatajs">uztura bagātinātājiem</a>. Katra raksta beigās ir
+          saistīto tēmu saraksts, kas palīdz turpināt. Šīs zināšanas nemainās atkarībā no tā, kura diēta
+          ir šogad modē — tās ir stabils pamats, uz kura veidot savus paradumus.
+        </p>
+
+        <h3>Kāpēc šim saturam var uzticēties</h3>
+        <p>
+          Visus rakstus veido <a href="/par-mani">Ieva Jēkabsone</a>, uztura konsultante, kura
+          ikdienā strādā ar reāliem klientiem. Pieeja ir zinātnē balstīta un pret modes diētām: katrs
+          skaitlis un apgalvojums ir pārbaudīts un papildināts ar atsauci uz primāro avotu. Šeit nav
+          brīnumdiētu, aizliegumu sarakstu vai ātru risinājumu solījumu — ir godīga, praktiska
+          informācija, ko vari pielietot savā dzīvē. Ja saproti, ka vajag arī individuālu pieeju savai
+          situācijai, vari <a href="/pakalpojumi">pieteikties konsultācijai</a>.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="abc-newsletter">
+    <div class="wrap">
+      <div class="abc-newsletter-inner">
+        <div>
+          <h3>Uzzini, kad parādās jauns raksts.</h3>
+          <p>Publicēju pakāpeniski — bez steigas, bet regulāri. Pievienojies newsletter un lasi pirmā.</p>
+        </div>
+        <a href="/#start" class="btn btn-primary">Pievienoties <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust-signal">
+    <div class="wrap trust-signal-inner">
+      <div class="eyebrow center">Kāpēc bez maksas</div>
+      <h2 style="margin-top:16px;">Mana pārliecība ir vienkārša.</h2>
+      <div class="ornament">
+        <span class="dot"></span><span class="bar"></span><span class="dot"></span>
+      </div>
+      <div class="trust-signal-body">
+        <p>Pamata zināšanām nav jābūt rezervētām tikai tām, kuras var atļauties konsultāciju.</p>
+        <p>Ja daudz iemācīsies no šī satura un netiksies ar mani — labi.</p>
+        <p>Ja sapratīsi, ka vajag individuālu pieeju — arī labi.</p>
+      </div>
+      <a href="/pakalpojumi" class="btn btn-gold" style="margin-top:28px;">
+        Apskatīt konsultācijas <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <style>
+    .abc-seo { background: var(--ivory); padding: clamp(56px,7vw,96px) 0; border-top: 1px solid var(--rule); }
+    .abc-seo-inner { max-width: 820px; }
+    .abc-seo-title {
+      font-family: var(--serif); font-weight: 600;
+      font-size: clamp(24px,3vw,38px); line-height: 1.18;
+      color: var(--plum); margin: 14px 0 0;
+    }
+    .abc-seo-body { margin-top: 28px; }
+    .abc-seo-body p {
+      font-size: clamp(15px,1.05vw,17px); line-height: 1.8;
+      color: var(--ink); margin: 0 0 22px;
+    }
+    .abc-seo-body h3 {
+      font-family: var(--serif); font-weight: 600;
+      font-size: clamp(19px,2vw,24px); color: var(--burgundy);
+      margin: 36px 0 12px;
+    }
+    .abc-seo-body strong { color: var(--plum); }
+    .abc-seo-body a { color: var(--burgundy); border-bottom: 1px solid var(--burgundy); }
+  </style>
+
+</BaseLayout>

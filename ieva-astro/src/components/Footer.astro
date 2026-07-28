@@ -1,0 +1,80 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="/" class="logo">
+          <span class="logo-mark">Ieva Jēkabsone</span>
+          <span class="logo-sub">Uztura konsultante</span>
+        </a>
+        <p class="footer-tag">Sava ķermeņa lietošanas instrukcija.</p>
+
+        <div class="footer-newsletter">
+          <label for="nl-email">Pievienojies newsletter</label>
+          <form id="footerNewsletterForm">
+            <input id="nl-email" type="email" placeholder="tavs@e-pasts.lv" required />
+            <button type="submit">Pievienoties</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Pakalpojumi</h4>
+        <ul>
+          <li><a href="/pakalpojumi/sakuma-konsultacija">Sākuma konsultācija · 49 €</a></li>
+          <li><a href="/pakalpojumi/30-dienu-uztura-programma">30 dienu programma · 249 €</a></li>
+          <li><a href="/pakalpojumi/90-dienu-uztura-programma">90 dienu programma · 549 €</a></li>
+          <li><a href="/pakalpojumi/vip-uztura-atbalsts">VIP uztura atbalsts</a></li>
+          <li><a href="/par-mani">Par mani</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Saturs</h4>
+        <ul>
+          <li><a href="/uztura-abc">Uztura ABC</a></li>
+          <li><a href="/blog">Blogs</a></li>
+          <li><a href="/start">Bezmaksas ceļvedis</a></li>
+          <li><a href="/kontakti">Kontakti</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Kontakti</h4>
+        <ul>
+          <li><a href="mailto:info@ievajekabsone.lv">info@ievajekabsone.lv</a></li>
+          <li><a href="https://www.instagram.com/ieva.jekabsone/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@ieva.jekabson" target="_blank" rel="noopener">TikTok</a></li>
+          <li><a href="https://www.facebook.com/profile.php?id=100089137514285" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {year} Ieva Jēkabsone · ievajekabsone.lv</span>
+      <div class="lang">
+        <a href="/" class="active">LV</a>
+        <a href="#">RU</a>
+        <span style="opacity:.4">|</span>
+        <a href="/privatums">Privātums</a>
+        <a href="/noteikumi">Noteikumi</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('footerNewsletterForm') as HTMLFormElement | null;
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button');
+      if (btn) btn.textContent = 'Paldies →';
+    });
+  }
+</script>

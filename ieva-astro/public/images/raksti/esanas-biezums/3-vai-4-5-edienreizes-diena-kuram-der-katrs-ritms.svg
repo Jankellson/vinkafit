@@ -1,0 +1,205 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <title>3 vai 4–5 ēdienreizes dienā: kuram der katrs ritms — ēdienreižu biežuma infografika, ievajekabsone.lv</title>
+
+  <!-- ══ BACKGROUNDS ══ -->
+  <rect width="800" height="500" fill="#fcfbf7"/>
+  <!-- Dark top header -->
+  <rect width="800" height="64" fill="#2a1419"/>
+  <!-- Left panel: deep burgundy -->
+  <rect x="0" y="67" width="400" height="376" fill="#84183e"/>
+  <!-- Right panel: warm cream stays -->
+  <!-- Gold stripe -->
+  <rect y="64" width="800" height="3" fill="#ebc07e"/>
+  <!-- Center divider accent -->
+  <line x1="400" y1="67" x2="400" y2="443" stroke="#ebc07e" stroke-width="2" opacity="0.5"/>
+
+  <!-- ══ HEADER ══ -->
+  <text x="400" y="27"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-style="italic"
+    font-size="18.5"
+    fill="#fcfbf7">Ēdienreižu biežums: 3 vai 4–5 reizes dienā</text>
+  <text x="400" y="50"
+    text-anchor="middle"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="10"
+    letter-spacing="2.5"
+    fill="#ebc07e">KURAM DER KATRS RITMS · IEVAJEKABSONE.LV</text>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- LEFT COLUMN — dark burgundy, cream text   -->
+  <!-- ══════════════════════════════════════════ -->
+
+  <!-- Giant decorative "3" -->
+  <text x="105" y="178"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-style="italic"
+    font-size="116"
+    fill="#ebc07e"
+    opacity="0.92">3</text>
+
+  <!-- "×  ēdienreizes" -->
+  <text x="230" y="148"
+    font-family="Georgia, serif"
+    font-style="italic"
+    font-size="38"
+    fill="rgba(252,251,247,0.55)">×</text>
+  <text x="230" y="178"
+    font-family="Georgia, serif"
+    font-style="italic"
+    font-size="24"
+    fill="rgba(252,251,247,0.70)">ēdienreizes</text>
+  <text x="230" y="200"
+    font-family="Arial, sans-serif"
+    font-size="11"
+    letter-spacing="2"
+    fill="rgba(235,192,126,0.55)">DIENĀ</text>
+
+  <!-- 3 plate icons (large circles = sātīgas maltītes) -->
+  <!-- Plate A -->
+  <circle cx="96"  cy="234" r="22" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"/>
+  <circle cx="96"  cy="234" r="13" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <!-- Plate B -->
+  <circle cx="152" cy="234" r="22" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"/>
+  <circle cx="152" cy="234" r="13" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <!-- Plate C -->
+  <circle cx="208" cy="234" r="22" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"/>
+  <circle cx="208" cy="234" r="13" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <!-- "sātīgas" label -->
+  <text x="152" y="268"
+    text-anchor="middle"
+    font-family="Arial, sans-serif"
+    font-size="9"
+    letter-spacing="1.5"
+    fill="rgba(235,192,126,0.55)">SĀTĪGAS MALTĪTES</text>
+
+  <!-- Gold divider -->
+  <line x1="20" y1="280" x2="378" y2="280" stroke="#ebc07e" stroke-width="1" opacity="0.35"/>
+
+  <!-- DER label -->
+  <text x="20" y="300"
+    font-family="Arial, sans-serif"
+    font-size="9"
+    letter-spacing="2.5"
+    fill="#ebc07e">DER, JA:</text>
+
+  <!-- Bullets — short dash + text -->
+  <rect x="20" y="312" width="16" height="1.5" fill="#ebc07e" opacity="0.65"/>
+  <text x="44" y="316" font-family="Arial, sans-serif" font-size="12.5" fill="rgba(252,251,247,0.9)">Labi panes pārtraukumus</text>
+
+  <rect x="20" y="332" width="16" height="1.5" fill="#ebc07e" opacity="0.65"/>
+  <text x="44" y="336" font-family="Arial, sans-serif" font-size="12.5" fill="rgba(252,251,247,0.9)">Grib vienkāršāku ritmu</text>
+
+  <rect x="20" y="352" width="16" height="1.5" fill="#ebc07e" opacity="0.65"/>
+  <text x="44" y="356" font-family="Arial, sans-serif" font-size="12.5" fill="rgba(252,251,247,0.9)">Mērķis — svara zaudēšana</text>
+
+  <rect x="20" y="372" width="16" height="1.5" fill="#ebc07e" opacity="0.65"/>
+  <text x="44" y="376" font-family="Arial, sans-serif" font-size="12.5" fill="rgba(252,251,247,0.9)">Izsalkums starp maltītēm netraucē</text>
+
+  <!-- Warning box -->
+  <rect x="20" y="398" width="360" height="34" rx="2" fill="rgba(0,0,0,0.22)"/>
+  <text x="32" y="411" font-family="Arial, sans-serif" font-size="9" letter-spacing="1.5" fill="rgba(235,192,126,0.6)">UZMANIES:</text>
+  <text x="32" y="426" font-family="Arial, sans-serif" font-size="11.5" fill="rgba(252,251,247,0.7)">Katrā reizē pietiekami olbaltumvielu</text>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- RIGHT COLUMN — cream, burgundy text       -->
+  <!-- ══════════════════════════════════════════ -->
+
+  <!-- Giant decorative "4–5" -->
+  <text x="510" y="178"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-style="italic"
+    font-size="82"
+    fill="#84183e"
+    opacity="0.82">4–5</text>
+
+  <!-- "×  ēdienreizes" -->
+  <text x="624" y="148"
+    font-family="Georgia, serif"
+    font-style="italic"
+    font-size="38"
+    fill="rgba(90,58,64,0.4)">×</text>
+  <text x="624" y="178"
+    font-family="Georgia, serif"
+    font-style="italic"
+    font-size="24"
+    fill="rgba(90,58,64,0.6)">ēdienreizes</text>
+  <text x="624" y="200"
+    font-family="Arial, sans-serif"
+    font-size="11"
+    letter-spacing="2"
+    fill="rgba(132,24,62,0.4)">DIENĀ</text>
+
+  <!-- 5 plate icons (smaller circles = mazākas porcijas) -->
+  <circle cx="426" cy="234" r="16" fill="rgba(132,24,62,0.06)" stroke="#84183e" stroke-width="1.5" opacity="0.45"/>
+  <circle cx="426" cy="234" r="9"  fill="rgba(132,24,62,0.08)" stroke="#84183e" stroke-width="0.8" opacity="0.3"/>
+
+  <circle cx="460" cy="234" r="16" fill="rgba(132,24,62,0.06)" stroke="#84183e" stroke-width="1.5" opacity="0.45"/>
+  <circle cx="460" cy="234" r="9"  fill="rgba(132,24,62,0.08)" stroke="#84183e" stroke-width="0.8" opacity="0.3"/>
+
+  <circle cx="494" cy="234" r="16" fill="rgba(132,24,62,0.06)" stroke="#84183e" stroke-width="1.5" opacity="0.45"/>
+  <circle cx="494" cy="234" r="9"  fill="rgba(132,24,62,0.08)" stroke="#84183e" stroke-width="0.8" opacity="0.3"/>
+
+  <circle cx="528" cy="234" r="16" fill="rgba(132,24,62,0.06)" stroke="#84183e" stroke-width="1.5" opacity="0.45"/>
+  <circle cx="528" cy="234" r="9"  fill="rgba(132,24,62,0.08)" stroke="#84183e" stroke-width="0.8" opacity="0.3"/>
+
+  <circle cx="562" cy="234" r="16" fill="rgba(132,24,62,0.06)" stroke="#84183e" stroke-width="1.5" opacity="0.45"/>
+  <circle cx="562" cy="234" r="9"  fill="rgba(132,24,62,0.08)" stroke="#84183e" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- "mazākas" label -->
+  <text x="494" y="262"
+    text-anchor="middle"
+    font-family="Arial, sans-serif"
+    font-size="9"
+    letter-spacing="1.5"
+    fill="rgba(90,58,64,0.45)">MAZĀKAS PORCIJAS</text>
+
+  <!-- Divider -->
+  <line x1="420" y1="280" x2="778" y2="280" stroke="#84183e" stroke-width="1" opacity="0.18"/>
+
+  <!-- DER label -->
+  <text x="420" y="300"
+    font-family="Arial, sans-serif"
+    font-size="9"
+    letter-spacing="2.5"
+    fill="#84183e">DER, JA:</text>
+
+  <!-- Bullets -->
+  <rect x="420" y="312" width="16" height="1.5" fill="#84183e" opacity="0.55"/>
+  <text x="444" y="316" font-family="Arial, sans-serif" font-size="12.5" fill="#2a1419">Ātri uzmācas izsalkums</text>
+
+  <rect x="420" y="332" width="16" height="1.5" fill="#84183e" opacity="0.55"/>
+  <text x="444" y="336" font-family="Arial, sans-serif" font-size="12.5" fill="#2a1419">Sporto, vairo muskuļus</text>
+
+  <rect x="420" y="352" width="16" height="1.5" fill="#84183e" opacity="0.55"/>
+  <text x="444" y="356" font-family="Arial, sans-serif" font-size="12.5" fill="#2a1419">Nestabils cukura līmenis</text>
+
+  <rect x="420" y="372" width="16" height="1.5" fill="#84183e" opacity="0.55"/>
+  <text x="444" y="376" font-family="Arial, sans-serif" font-size="12.5" fill="#2a1419">Olbaltumvielas jāsadala pa dienu</text>
+
+  <!-- Warning box -->
+  <rect x="420" y="398" width="360" height="34" rx="2" fill="#f0eee9"/>
+  <text x="432" y="411" font-family="Arial, sans-serif" font-size="9" letter-spacing="1.5" fill="#84183e" opacity="0.65">UZMANIES:</text>
+  <text x="432" y="426" font-family="Arial, sans-serif" font-size="11.5" fill="#5a3a40">Uzkodas var pievienot 300–500 kcal nemanot</text>
+
+  <!-- ══ BOTTOM BAR ══ -->
+  <rect y="443" width="800" height="3" fill="#ebc07e" opacity="0.5"/>
+  <rect y="446" width="800" height="54" fill="#2a1419"/>
+  <text x="400" y="470"
+    text-anchor="middle"
+    font-family="Georgia, serif"
+    font-style="italic"
+    font-size="13.5"
+    fill="rgba(252,251,247,0.82)">Svarīgākais: kopējās kalorijas un olbaltumvielas — ne reižu skaits</text>
+  <text x="400" y="490"
+    text-anchor="middle"
+    font-family="Arial, sans-serif"
+    font-size="10"
+    letter-spacing="0.5"
+    fill="#ebc07e"
+    opacity="0.65">Schoenfeld, 2015 · Bellisle, 1997 · ievajekabsone.lv/uztura-abc/esanas-biezums</text>
+
+</svg>

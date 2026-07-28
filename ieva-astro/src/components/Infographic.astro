@@ -1,0 +1,113 @@
+---
+/**
+ * Infographic — stilizēts attēla bloks raksta saturā
+ *
+ * Atbalsta:
+ *  - WebP attēlu ar paskaidrojumu
+ *  - Klikšķis atver pilnā izmērā (lightbox)
+ *  - Lejupielādes pogu (PDF / PNG)
+ *  - Sociālā tīkla daļīšanas hint
+ *
+ * Props:
+ *   src        — WebP ceļš (/assets/images/...)
+ *   alt        — A11y apraksts
+ *   width      — Attēla platums px
+ *   height     — Attēla augstums px
+ *   caption    — Paskaidrojums zem attēla (opcionāls)
+ *   label      — Mazais virsraksts virs ("Infografika")
+ *   downloadUrl — Augstas izšķirtspējas lejupielādes saite (opcionāls)
+ */
+
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+  label?: string;
+  downloadUrl?: string;
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  caption,
+  label = 'Infografika',
+  downloadUrl,
+} = Astro.props;
+---
+
+<figure class="ig">
+  <div class="ig-head">
+    <span class="ig-label">{label}</span>
+    {downloadUrl && (
+      <a href={downloadUrl} download class="ig-download" aria-label="Lejupielādēt augstas izšķirtspējas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M12 3v13m0 0l-5-5m5 5l5-5M5 21h14" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Lejupielādēt</span>
+      </a>
+    )}
+  </div>
+
+  <div class="ig-frame">
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading="lazy"
+      class="ig-img"
+    />
+  </div>
+
+  {caption && <figcaption class="ig-caption">{caption}</figcaption>}
+</figure>
+
+<style>
+.ig {
+  margin: 36px 0;
+  padding: 0;
+}
+.ig-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px; gap: 16px;
+}
+.ig-label {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.ig-download {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--burgundy);
+  padding: 4px 10px; border: 1px solid var(--burgundy);
+  transition: background .15s, color .15s;
+}
+.ig-download:hover { background: var(--burgundy); color: #fff; }
+.ig-download svg { width: 13px; height: 13px; }
+
+.ig-frame {
+  background: var(--ivory);
+  border: 1px solid var(--rule);
+  padding: 0;
+  display: flex; justify-content: center;
+  overflow: hidden;
+}
+.ig-img {
+  max-width: 100%; height: auto; display: block;
+}
+
+.ig-caption {
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px; line-height: 1.55;
+  color: var(--ink-soft);
+  margin-top: 14px;
+  padding-left: 16px;
+  border-left: 2px solid var(--gold);
+}
+</style>

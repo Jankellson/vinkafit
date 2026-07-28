@@ -1,0 +1,76 @@
+{
+  "vards": "Ieva Jēkabsone",
+  "tips": "personīgais zīmols — uztura konsultante (ITEC sertificēta)",
+  "valodas": ["lv", "ru"],
+  "pozicija": "Zinātnē balstīta uztura konsultante, kas māca pielāgot, ne aizliegt — ilgtspējīgi paradumi un sava ķermeņa izpratne, nevis kārtējā diēta vai ātrs rezultāts.",
+  "klienta_metafora": "Kļūsti par sava ķermeņa ekspertu — sistēma, kas māca, nevis nosaka.",
+  "balss": {
+    "dari": [
+      "mācīšana, ne pārliecināšana (Ieva ir skolotāja)",
+      "godīga: saka 'es nezinu', kur nezina",
+      "empātiska, ne pamācoša",
+      "zinātnē balstīta, anti-modes",
+      "siltums un humors"
+    ],
+    "nedari": [
+      "sarkasms ar klientiem ('es ar klientiem nerunāju sarkastiski')",
+      "aizliegumi (vienmēr pielāgošana un proporcijas)",
+      "ātra rezultāta solījumi ('ar ātru rezultātu mēs vispār nestrādāsim')",
+      "nezinātnisks/modes saturs",
+      "pārspīlēta pārliecība"
+    ]
+  },
+  "lapa": {
+    "h1": "skat. src/pages/index.astro (.hero-h1)",
+    "subheadline": "Kļūsti par sava ķermeņa ekspertu — ar sistēmu, kas māca, nevis nosaka.",
+    "primarais_cta": "Pieteikties konsultācijai"
+  },
+  "krasas": {
+    "cream": "#fcfbf7",
+    "ivory": "#f0eee9",
+    "cream-deep": "#e6e2d9",
+    "burgundy": "#84183e",
+    "burgundy-dk": "#5e0f2b",
+    "plum": "#3c1220",
+    "gold": "#ebc07e",
+    "gold-soft": "#d9a85a",
+    "ink": "#2a1419",
+    "ink-soft": "#5a3a40"
+  },
+  "fonti": {
+    "serif": "Playfair Display",
+    "sans": "Plus Jakarta Sans",
+    "script": "Alex Brush",
+    "mono": "JetBrains Mono"
+  },
+  "estetika": "Warm + Scientific · Burgundy / Cream / Gold. Serifs virsrakstiem, mono eyebrow-iem, silts krēms fons.",
+  "kontakti": {
+    "epasts": "info@ievajekabsone.lv",
+    "vieta": "tiešsaiste (online)",
+    "online": true
+  },
+  "domens": "https://ievajekabsone.lv",
+  "cenas": {
+    "iepazisanas_konsultacija": "€35 / 30 min",
+    "konsultacija_plans": "€65",
+    "vip_pakete": "€125 (asinsanalīžu pārskats + 2 konsultācijas)"
+  },
+  "ierobezojumi": [
+    "saturs = mācīšana, ne pārdošana",
+    "nekādu nezinātnisku apgalvojumu — ja nezina, jautā Ievai, neizdomā"
+  ],
+  "atvertie_jautajumi": [],
+  "dokumenti": {
+    "klienta_brifs": "klients/0A-Klienta-Brifs.md",
+    "dzila_atklasana": "klients/0B-Dzila-Atklasana.md",
+    "pozicija_balss": "klients/IEVA-POZICIJA.md",
+    "produkti_strategija": "klients/PRODUKTI-STRATEGIJA.md",
+    "unikalais_lenkis": "strategija/3-Unikalais-Lenkis.md",
+    "zimola_plans": "strategija/4-Zimola-Plans.md",
+    "seo": "strategija/seo/00-INDEX.md",
+    "marketinga_strategija": "strategija/6-Marketinga-Strategija.md",
+    "majaslapas_strategija": "strategija/7-Majaslapas-Strategija.md",
+    "customer_journey": "strategija/8-Customer-Journey-Map.md",
+    "astro_projekts": "ieva-astro/"
+  }
+}

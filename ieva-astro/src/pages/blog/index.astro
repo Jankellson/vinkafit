@@ -1,0 +1,143 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { sanityClient, ALL_POSTS_QUERY, urlForSafe } from '../../lib/sanity';
+import type { SanityBlogPost } from '../../lib/sanity';
+
+// ─── Ielādē rakstus no abiem avotiem ────────────────────────────────────────
+
+// 1. Markdown (lokālie faili)
+const mdPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// 2. Sanity (tikai ja PROJECT_ID ir uzstādīts)
+const sanityConfigured =
+  import.meta.env.PUBLIC_SANITY_PROJECT_ID &&
+  import.meta.env.PUBLIC_SANITY_PROJECT_ID !== 'placeholder' &&
+  import.meta.env.PUBLIC_SANITY_PROJECT_ID !== 'YOUR_PROJECT_ID';
+
+let sanityPosts: SanityBlogPost[] = [];
+if (sanityConfigured) {
+  try {
+    sanityPosts = await sanityClient.fetch<SanityBlogPost[]>(ALL_POSTS_QUERY);
+  } catch {
+    // Sanity nav pieejams — izmanto tikai Markdown
+  }
+}
+
+// Normalizē uz kopēju tipu
+interface NormalPost {
+  slug: string;
+  title: string;
+  description: string;
+  pubDate: Date;
+  category: string;
+  image?: string;
+  imageAlt?: string;
+  source: 'sanity' | 'markdown';
+}
+
+const sanityNorm: NormalPost[] = sanityPosts.map((p) => ({
+  slug: p.slug.current,
+  title: p.title,
+  description: p.description,
+  pubDate: new Date(p.pubDate),
+  category: p.category ?? '',
+  image: p.image ? (urlForSafe(p.image)?.width(800).url() ?? undefined) : undefined,
+  imageAlt: p.imageAlt ?? p.title,
+  source: 'sanity',
+}));
+
+const mdNorm: NormalPost[] = mdPosts.map((p) => ({
+  slug: p.id,
+  title: p.data.title,
+  description: p.data.description,
+  pubDate: new Date(p.data.pubDate),
+  category: p.data.category ?? '',
+  image: p.data.image,
+  imageAlt: p.data.imageAlt ?? p.data.title,
+  source: 'markdown',
+}));
+
+// Apvieno — Sanity posts aizstāj Markdown posts ar to pašu slug
+const sanitySlugSet = new Set(sanityNorm.map((p) => p.slug));
+const merged: NormalPost[] = [
+  ...sanityNorm,
+  ...mdNorm.filter((p) => !sanitySlugSet.has(p.slug)),
+].sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('lv-LV', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout
+  title="Blogs — Uztura zinātne bez žargona | Ieva Jēkabsone"
+  description="Praktiski raksti par uzturu, metabolismu un veselību no ITEC sertificētas uztura konsultantes Ievas Jēkabsones."
+  canonical="https://ievajekabsone.lv/blog"
+  activeNav="blog"
+>
+
+  <Breadcrumbs items={[
+    { label: 'Sākums', href: '/' },
+    { label: 'Blogs' }
+  ]} />
+
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="eyebrow">Blogs</div>
+      <h1>Uztura zinātne <em>bez žargona.</em></h1>
+      <p class="lede">
+        Praktiski raksti par to, kā ēšana ietekmē tavu enerģiju, svaru un pašsajūtu.
+        Bez dietoloģijas diktāta — ar bioloģijas palīdzību.
+      </p>
+    </div>
+  </section>
+
+  <section class="related" style="background: var(--cream);">
+    <div class="wrap">
+      {merged.length === 0 ? (
+        <div style="text-align:center; padding: 80px 0;">
+          <p style="font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--ink-soft);">
+            Raksti drīz parādīsies.
+          </p>
+          <a href="/" class="btn btn-ghost" style="margin-top: 32px;">Atpakaļ uz sākumu</a>
+        </div>
+      ) : (
+        <div class="related-grid">
+          {merged.map(post => (
+            <a href={`/blog/${post.slug}`} class="post-card">
+              {post.image && (
+                <div class="thumb">
+                  <img src={post.image} alt={post.imageAlt ?? post.title} loading="lazy" />
+                </div>
+              )}
+              <div class="body">
+                <span class="cat">{post.category}</span>
+                <h3>{post.title}</h3>
+                <p>{post.description}</p>
+                <span class="read">
+                  {formatDate(post.pubDate)} →
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Lead magnet CTA -->
+  <section class="final">
+    <div class="wrap final-inner">
+      <span class="script">Sāc šeit</span>
+      <h2>Bezmaksas ceļvedis — <em>5 uztura kļūdas.</em></h2>
+      <p>8 minūtes lasīšanai. Nosūtīšu tieši uz tavu e-pastu.</p>
+      <div class="final-ctas">
+        <a href="/#start" class="btn btn-primary">Saņemt ceļvedi <span class="arrow">→</span></a>
+        <a href="/kontakti" class="btn btn-ghost">Piesakies konsultācijai</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

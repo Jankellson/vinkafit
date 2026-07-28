@@ -1,0 +1,637 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://ievajekabsone.lv/#ieva",
+      "name": "Ieva Jēkabsone",
+      "jobTitle": "Uztura konsultante",
+      "description": "ITEC sertificēta uztura konsultante Latvijā. Individuāla, zinātnē balstīta pieeja uzturam: pielāgošana, nevis aizliegumi. Palīdz saprast arī asinsanalīžu un uztura saistību.",
+      "url": "https://ievajekabsone.lv/",
+      "email": "info@ievajekabsone.lv",
+      "sameAs": [
+        "https://www.instagram.com/ieva.jekabsone/",
+        "https://www.facebook.com/profile.php?id=100089137514285",
+        "https://www.tiktok.com/@ieva.jekabson"
+      ],
+      "image": "https://ievajekabsone.lv/assets/images/ieva-consultant-portrait.webp",
+      "knowsLanguage": ["lv", "ru", "en"]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://ievajekabsone.lv/#business",
+      "name": "Ieva Jēkabsone — Uztura konsultācijas",
+      "description": "Individuālas uztura konsultācijas un plāni tiešsaistē latviešu un krievu valodā. ITEC sertificēta uztura konsultante Latvijā.",
+      "url": "https://ievajekabsone.lv/",
+      "email": "info@ievajekabsone.lv",
+      "founder": { "@id": "https://ievajekabsone.lv/#ieva" },
+      "areaServed": ["Rīga", "Latvija"],
+      "priceRange": "49 €–1500 €",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rīga",
+        "addressCountry": "LV"
+      },
+      "sameAs": [
+        "https://www.instagram.com/ieva.jekabsone/",
+        "https://www.facebook.com/profile.php?id=100089137514285"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Vai šis ir kārtējais PDF plāns ar pārtikas tabulu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nē. Mans darbs sākas no tevis — tavas situācijas, paradumiem un, ja vajag, asinsanalīžu rādītājiem. Neviena gatava tabula nevar aizstāt individuālu pieeju."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cik ilgi pirms rezultātiem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enerģijas uzlabošanās — bieži jau 2–4 nedēļās. Svara izmaiņas — 2–3 mēneši (reāli, stabili, ilgtermiņa). Solu sistēmu, nevis ātru maģiju."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cik maksā un kā pieteikties?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sākuma konsultācija maksā 49 €. Personalizēta uztura programma pieejama 30 dienām par 249 € vai 90 dienām par 549 €. VIP uztura atbalsts maksā 1500 € par 6 mēnešiem."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Ieva Jēkabsone — Uztura konsultante Latvijā"
+  description="Individuāla uztura sistēma, kas māca saprast savu ķermeni — ne kārtējā diēta. Uztura konsultācijas tiešsaistē latviešu un krievu valodā ar Ievu Jēkabsoni."
+  canonical="https://ievajekabsone.lv/"
+  jsonLd={jsonLd}
+  activeNav="sakums"
+>
+
+  <!-- ═══ 1 · HERO ═══ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+
+      <div class="hero-text">
+        <div class="hero-meta">
+          <span class="dot"></span>
+          <span>Uztura konsultante · Tiešsaistē · LV / RU</span>
+        </div>
+        <h1 class="hero-h1">
+          Izkāp no <em>tievēšanas karuseļa.</em>
+        </h1>
+        <p class="hero-tagline">Kļūsti par sava ķermeņa ekspertu — ar sistēmu, kas māca, nevis nosaka.</p>
+
+        <p class="lede">
+          Individuāls darbs ar tavu ķermeni, paradumiem un, ja vajag, analīžu rādītājiem —
+          ilgtermiņa rezultātam, nevis kārtējai diētai.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-primary">
+            Pieteikt sākuma konsultāciju — 49 € <span class="arrow">→</span>
+          </a>
+          <a href="#start" class="btn-link">Iegūsti bezmaksas ceļvedi ↓</a>
+        </div>
+      </div>
+
+      <div class="hero-portrait-wrap">
+        <img
+          src="/assets/images/ieva-consultant-portrait.webp"
+          alt="Ieva Jēkabsone — uztura konsultante"
+          width="400"
+          height="533"
+          loading="eager"
+        />
+        <div class="hero-tag">
+          <span class="script">Ieva</span>
+          Tavs ķermenis. Tavi rādītāji.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ 2 · TRUST STRIP ═══ -->
+  <div class="trust-strip">
+    <div class="wrap trust-strip-inner">
+      <div class="trust-item"><span class="num">01</span><span>ITEC sertifikāts</span></div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><span class="num">02</span><span>Vairāk nekā 50 klienti</span></div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><span class="num">03</span><span>Sistēma, ne diēta</span></div>
+      <div class="trust-sep"></div>
+      <div class="trust-item"><span class="num">04</span><span>Saprot tavas asinsanalīzes</span></div>
+    </div>
+  </div>
+
+  <!-- ═══ 3 · STAKES ═══ -->
+  <section class="stakes">
+    <div class="wrap">
+      <div class="stakes-grid">
+
+        <div class="stakes-left">
+          <div class="eyebrow">Skan pazīstami?</div>
+          <h2 class="section-title" style="margin-top:20px;">Izmēģināts ir <em>viss</em> — un tomēr tu atkal esi sākumā.</h2>
+          <p class="lede" style="margin-top:24px;">
+            Vaina nav tavā gribasspēkā. Vienkārši neviens vēl nav paskatījies
+            tieši uz tavu ķermeni — bioloģiju, ikdienu, analīžu rādītājiem.
+          </p>
+        </div>
+
+        <ul class="stakes-list">
+          <li class="stake">
+            <span class="stake-num">/01</span>
+            <div class="stake-body"><p><strong>Svars atgriežas</strong> pēc katras diētas — jo nekas nav mainījies pamatā.</p></div>
+          </li>
+          <li class="stake">
+            <span class="stake-num">/02</span>
+            <div class="stake-body"><p><strong>Ārsts saka „ēdiet veselīgāk”</strong>, bet nepaskaidro, kāpēc tavi asins rādītāji ir tieši tādi.</p></div>
+          </li>
+          <li class="stake">
+            <span class="stake-num">/03</span>
+            <div class="stake-body"><p><strong>Diētas nomaina cita citu</strong> — kaloriju skaitīšana, badošanās, keto — bez paliekoša rezultāta.</p></div>
+          </li>
+          <li class="stake">
+            <span class="stake-num">/04</span>
+            <div class="stake-body"><p><strong>Ēdiens kļuvis par ienaidnieku</strong> — un pēc katras maltītes seko vainas sajūta.</p></div>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 4 · VALUE PROPOSITION ═══ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head" style="max-width:720px;">
+        <div class="eyebrow">Ar manu sistēmu</div>
+        <h2 class="section-title" style="margin-top:20px;">Tu iegūsti <em>„lietošanas instrukciju”</em> tieši savam ķermenim.</h2>
+      </div>
+
+      <div class="value-grid">
+        <div class="value-card">
+          <span class="value-kicker">01</span>
+          <span class="value-icon" aria-hidden="true">
+            <!-- lupa: izpratne, kāpēc -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="10" cy="10" r="5.8"/>
+              <path d="M14.4 14.4 L19.5 19.5"/>
+              <path d="M10 7.6 a2.4 2.4 0 0 1 2.4 2.4"/>
+            </svg>
+          </span>
+          <h3>Izpratne, kāpēc</h3>
+          <p>Ne minējumi, bet fakti — kāpēc svars neatkāpjas, kāpēc enerģija zema, kāpēc rādītāji ir tieši tādi.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-kicker">02</span>
+          <span class="value-icon" aria-hidden="true">
+            <!-- pirksta nospiedums: individuāls plāns -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6.2 6.4 A7.6 7.6 0 0 1 19.6 11.4 c0 2.6-.4 5.1-1.2 7.4"/>
+              <path d="M4.4 9.6 a7.7 7.7 0 0 0 -.2 1.8 c0 2.8 1 5.4 2.6 7.4"/>
+              <path d="M12 7.6 a3.9 3.9 0 0 1 3.9 3.8 c0 2.9-.5 5.7-1.6 8.2"/>
+              <path d="M8.1 11.4 a3.9 3.9 0 0 1 .9-2.5"/>
+              <path d="M8.6 14.6 c.4 2.1-.1 4.3-1.2 6"/>
+              <path d="M12 11.3 c.4 3-.2 6-1.7 8.6"/>
+            </svg>
+          </span>
+          <h3>Individuāls plāns</h3>
+          <p>Tieši tavam ķermenim, ritmam un ikdienai. Ne vispārīga tabula. Ne PDF šablons.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-kicker">03</span>
+          <span class="value-icon" aria-hidden="true">
+            <!-- kompass: rīki neatkarībai -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="8.2"/>
+              <path d="M15.4 8.6 L13.5 13.5 L8.6 15.4 L10.5 10.5 Z"/>
+            </svg>
+          </span>
+          <h3>Rīki neatkarībai</h3>
+          <p>Lai ikdienas izvēles turpmāk izdarītu droši — bez mūžīgas atkarības no konsultanta.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-kicker">04</span>
+          <span class="value-icon" aria-hidden="true">
+            <!-- bļoda ar tvaiku: miers ap ēdienu -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 13 h16 a8 8 0 0 1 -16 0 Z"/>
+              <path d="M9.5 4 c0 1.4-1.2 1.8-1.2 3.2"/>
+              <path d="M13.7 4 c0 1.4-1.2 1.8-1.2 3.2"/>
+            </svg>
+          </span>
+          <h3>Miers ap ēdienu</h3>
+          <p>Pārstāj cīnīties ar sevi katrā maltītē. Sāc saprast — un dzīvot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 5 · GUIDE (Ieva) ═══ -->
+  <section class="guide">
+    <div class="wrap">
+      <div class="guide-grid">
+
+        <div style="position:relative;">
+          <div class="guide-image frame photo" style="--obj: center 18%;">
+            <img src="/assets/images/ieva-salad.webp" alt="Ieva pie galda" width="480" height="600" loading="lazy" />
+          </div>
+          <span class="guide-sig">Ieva</span>
+        </div>
+
+        <div class="guide-body">
+          <div class="eyebrow" style="margin-bottom:24px;">Tavs ceļvedis</div>
+
+          <p class="pullquote">
+            „Kad cilvēki atnāk pie manis, viņi bieži saka vienu un to pašu:
+            <em>'man neviens vēl nav izskaidrojis, kāpēc.'</em>”
+          </p>
+
+          <p><strong>Es neiesaku diētas. Es meklēju cēloņus.</strong></p>
+
+          <p>
+            Esmu Ieva Jēkabsone — uztura konsultante ar ITEC sertifikātu. Savā darbā
+            es apvienoju uztura zinātni ar konkrētiem datiem par tavu ķermeni — lai
+            saprastu ne tikai <em>ko ēst</em>, bet <em>kāpēc tieši tev vajag tieši to</em>.
+          </p>
+
+          <p>
+            Esmu strādājusi ar ļoti dažādiem cilvēkiem — un katram plāns izskatās citādi,
+            jo sākas no viņa ķermeņa, nevis no šablona. Pamatzināšanas daru pieejamas
+            brīvi — Uztura ABC sadaļā un blogā. Bet tava personīgā sistēma sākas no tevis.
+            Es mācu, ne nosaku.
+          </p>
+
+          <div class="guide-credentials">
+            <ul>
+              <li><span class="tick">✓</span> ITEC sertificēta uztura konsultante</li>
+              <li><span class="tick">✓</span> Vairāk nekā 50 klienti individuālajā darbā</li>
+              <li><span class="tick">✓</span> Asinsanalīžu un uztura saistības specializācija</li>
+              <li><span class="tick">✓</span> C kategorijas trenera sertifikāts</li>
+            </ul>
+          </div>
+
+          <a href="/par-mani" class="btn btn-ghost" style="margin-top:32px;">Uzzini vairāk par mani <span class="arrow">→</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 6 · PLAN ═══ -->
+  <section class="plan">
+    <div class="wrap">
+      <div class="section-head" style="text-align:center; max-width:720px; margin-left:auto; margin-right:auto;">
+        <div class="eyebrow center">Kā tas darbojas</div>
+        <h2 class="section-title" style="margin-top:20px; color:var(--cream);">Trīs soļi <em style="color:var(--gold);font-style:italic;">no apjukuma uz izpratni.</em></h2>
+      </div>
+
+      <div class="plan-steps">
+
+        <div class="plan-step">
+          <div class="num">Solis 01</div>
+          <h3>Sākuma konsultācija</h3>
+          <p>Pastāsti savu situāciju. Es uzklausīšu un uzdošu jautājumus, ko tev neviens iepriekš nav uzdevis. 30 minūtes, kas maina skatu uz lietām.</p>
+        </div>
+
+        <div class="plan-step">
+          <div class="num">Solis 02</div>
+          <h3>Tavs personīgais plāns</h3>
+          <p>Individuāla sistēma — tavam ķermenim, tavam ritmam, tavai ikdienai. Ne kopēta tabula. Ne sezonas šablons.</p>
+        </div>
+
+        <div class="plan-step">
+          <div class="num">Solis 03</div>
+          <h3>Neatkarība</h3>
+          <p>Iegūsti zināšanas un rīkus, lai šī būtu pēdējā „tievēšanas” reize — bez mūžīgiem konsultantiem un karuseļiem.</p>
+        </div>
+
+      </div>
+
+      <div class="plan-cta">
+        <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-primary">Pieteikt sākuma konsultāciju — 49 € <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 7 · SERVICES ═══ -->
+  <section class="services">
+    <div class="wrap">
+      <div class="section-head" style="max-width:720px;">
+        <div class="eyebrow">Pakalpojumi</div>
+        <h2 class="section-title" style="margin-top:20px;">Izvēlies savu <em>pirmo soli.</em></h2>
+        <p class="lede" style="margin-top:20px;">
+          Sāc ar konsultāciju, pēc tam izvēlies programmas dziļumu, kas atbilst tavam mērķim.
+        </p>
+      </div>
+
+      <div class="services-grid">
+
+        <article class="service-card">
+          <div class="service-label">01 · Sākuma konsultācija</div>
+          <h3>Skaidrība par nākamo soli</h3>
+          <div class="price">49 €</div>
+          <ul>
+            <li>Mērķu, uztura, dzīvesveida un pašsajūtas pārrunāšana</li>
+            <li>Skaidrs nākamais solis</li>
+            <li>49 € ieskaita programmas cenā, ja izvēlies to 24 stundu laikā</li>
+          </ul>
+          <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-ghost">Uzzināt vairāk <span class="arrow">→</span></a>
+        </article>
+
+        <article class="service-card featured">
+          <span class="service-tag">Ievas ieteiktā izvēle</span>
+          <div class="service-label">02 · Personalizēta programma</div>
+          <h3>90 dienu uztura sistēma</h3>
+          <div class="price">549 € <small>/ 90 dienas</small></div>
+          <ul>
+            <li>3 secīgi 30 dienu posmi ar pielāgojumiem</li>
+            <li>5 konsultācijas un 12 nedēļu atbalsts</li>
+            <li>Konkrētas ēdienkartes, receptes un iepirkumu saraksti</li>
+          </ul>
+          <a href="/pakalpojumi" class="btn btn-ghost">Apskatīt programmas <span class="arrow">→</span></a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-label">03 · VIP uztura atbalsts</div>
+          <h3>Seši mēneši kopā</h3>
+          <div class="price">1500 € <small>/ 6 mēneši</small></div>
+          <ul>
+            <li>6 secīgi plāni un līdz 8 konsultācijām</li>
+            <li>Prioritāra saziņa un 2 korekcijas mēnesī</li>
+            <li>Pieejams tikai 3 klientiem</li>
+          </ul>
+          <a href="/pakalpojumi/vip-uztura-atbalsts" class="btn btn-ghost">Uzzināt vairāk <span class="arrow">→</span></a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 8 · TESTIMONIALS ═══ -->
+  <section class="testimonials">
+    <div class="wrap">
+      <div class="section-head" style="max-width:720px;">
+        <div class="eyebrow">Klienti</div>
+        <h2 class="section-title" style="margin-top:20px;">Cilvēki, kuri <em>izkāpa no karuseļa.</em></h2>
+      </div>
+
+      <div class="test-grid">
+
+        <div class="test-image frame photo" style="--obj: center 20%;">
+          <img src="/assets/images/ieva-relaxed.webp" alt="Ieva ar kafiju" width="480" height="600" loading="lazy" />
+        </div>
+
+        <div class="test-stack">
+
+          <div class="test-card">
+            <blockquote>
+              Darbs ar Ievu palīdzēja man izmainīt ne tikai uzturu, bet arī dzīvesveidu.
+              Jūtos kā tāda versija par sevi, par kādu vienmēr sapņoju.
+            </blockquote>
+            <div class="test-meta">Ginta · 36 g.</div>
+          </div>
+
+          <div class="test-card">
+            <blockquote>
+              Tas bija kā saņemt lietošanas instrukciju savam ķermenim. Beidzot esmu
+              atradis līdzsvaru, kas turas, un saprotu, kā mans ķermenis strādā.
+            </blockquote>
+            <div class="test-meta">Mārtiņš · 44 g.</div>
+          </div>
+
+          <div class="test-card">
+            <blockquote>
+              Beidzot kāds izskaidroja manas asinsanalīzes un saistīja tās ar to,
+              kā jūtos katru dienu. Pirmā reize, kad sajutu, ka kāds tiešām skatās.
+            </blockquote>
+            <div class="test-meta">Anete · 39 g.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <p style="margin-top:32px; font-size:13px; color:var(--ink-soft); font-style:italic; text-align:center; max-width:780px; margin-left:auto; margin-right:auto;">
+        <strong>* Atsauksmju paziņojums:</strong> šobrīd rādītās atsauksmes ir <em>demonstrācijas piemēri</em>, kas balstīti uz tipiskām klientu situācijām. Reālas atsauksmes ar pilnu vārdu un rakstisku piekrišanu pievienosim pakāpeniski. Rezultāti ir individuāli.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ 9 · FAQ ═══ -->
+  <section class="faq">
+    <div class="wrap">
+      <div class="faq-grid">
+
+        <div>
+          <div class="eyebrow">Biežākie jautājumi</div>
+          <h2 class="section-title" style="margin-top:20px;">Pirms tu raksti — <em>paskaties šeit.</em></h2>
+          <p class="lede" style="margin-top:20px;">
+            Ja jautājums paliek neatbildēts, raksti man tieši — atbildu personīgi.
+          </p>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Vai šis ir kārtējais PDF plāns ar pārtikas tabulu?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              Nē. Mans darbs sākas no tevis — tavas situācijas, paradumiem un, ja vajag,
+              asinsanalīžu rādītājiem. Neviena gatava tabula nevar aizstāt to.
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Vai konsultācija notiek tiešsaistē vai klātienē?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              Tiešsaistē — video zvans, tāpēc varam strādāt neatkarīgi no atrašanās vietas.
+              Konsultācijas notiek latviešu vai krievu valodā.
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Cik ilgi pirms rezultātiem?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              Enerģijas uzlabošanās bieži jau 2–4 nedēļās, kad ķermenis saņem, ko vajag.
+              Svara izmaiņas — 2–3 mēneši (reāli, stabili, ilgtermiņa). Nesolu ātru
+              "maģiju" — solu sistēmu.
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Man ir specifiska veselības problēma — vai tu strādā ar to?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              Holesterīns, insulīna rezistence, vairogdziedzeris, hormonu izmaiņas —
+              jā, ar šiem strādāju bieži. Iepazīšanās konsultācijā pastāsti savu
+              situāciju, un es pateikšu godīgi, vai varu palīdzēt.
+            </div></div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Cik maksā un kā pieteikties?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">
+              Sākuma konsultācija maksā 49 €. Personalizēta programma pieejama 30 dienām par 249 € vai 90 dienām par 549 €. VIP uztura atbalsts maksā 1500 € par 6 mēnešiem.
+              Izvēlies piedāvājumu <a href="/pakalpojumi">pakalpojumu lapā</a> —
+              sazināšos 24 stundu laikā.
+            </div></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 10 · TRUST SIGNAL / GODĪGA SARUNA ═══ -->
+  <section class="trust-signal">
+    <div class="wrap trust-signal-inner">
+      <div class="eyebrow center">Godīga saruna</div>
+      <h2 style="margin-top:22px;">Zināšanas ir brīvas. <em>Tava sistēma — tas ir darbs.</em></h2>
+
+      <div class="ornament">
+        <span class="dot"></span><span class="bar"></span><span class="dot"></span>
+      </div>
+
+      <div class="trust-signal-body">
+        <p>Pamatus — kas un kāpēc — daru pieejamus brīvi. Uztura ABC, blogs, vēstkopa: ar to vari sākt jau šodien.</p>
+        <p>Bet zināt nav tas pats, kas izdarīt. Gatavus plānus, rīkus un tavu personīgo sistēmu es veidoju tieši tev — tas ir mans darbs.</p>
+        <p>Konsultācija ir tad, kad gribi kādu, kas domā tieši ar tevi.</p>
+        <p>Izvēle ir tava.</p>
+      </div>
+
+      <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-top:32px;">
+        <a href="/uztura-abc" class="btn btn-gold">Lasīt Uztura ABC <span class="arrow">→</span></a>
+        <a href="/blog" class="btn btn-ghost">Apskatīt blogu <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 11 · LEAD MAGNET ═══ -->
+  <section class="leadmag" id="start">
+    <div class="wrap leadmag-inner">
+
+      <div>
+        <div class="eyebrow">Sāc šeit — bez maksas</div>
+        <h2 class="section-title" style="margin-top:20px;">5 uztura kļūdas, kuru dēļ svars stāv uz vietas <em>(un kā tās labot).</em></h2>
+        <p class="lede" style="margin-top:20px;">
+          Bezmaksas ceļvedis — 8 minūtes lasīšanai. Nosūtīšu tieši uz tavu e-pastu.
+        </p>
+
+        <ul class="leadmag-benefits">
+          <li><span class="check">—</span> Kāpēc svars atgriežas pat pie "pareizas" ēšanas</li>
+          <li><span class="check">—</span> Ko tavi asins rādītāji saka par tavu metabolismu</li>
+          <li><span class="check">—</span> 3 konkrēti soļi, ko sākt jau šonedēļ</li>
+        </ul>
+      </div>
+
+      <form class="leadmag-form" id="leadmagForm">
+        <div class="leadmag-form-inner">
+          <div class="leadmag-cover">PDF · 24 lpp. · LV</div>
+          <h3>Saņem savu ceļvedi</h3>
+          <p class="note">Bez surogātpasta. Atrakstīties 1 klikšķī.</p>
+
+          <div class="field">
+            <label for="lm-name">Vārds</label>
+            <input id="lm-name" name="name" type="text" placeholder="Tavs vārds" required />
+          </div>
+
+          <div class="field">
+            <label for="lm-email">E-pasts</label>
+            <input id="lm-email" name="email" type="email" placeholder="tavs@piemers.lv" required />
+          </div>
+
+          <button class="btn btn-primary" type="submit">Nosūtīt man ceļvedi <span class="arrow">→</span></button>
+        </div>
+      </form>
+
+    </div>
+  </section>
+
+  <!-- ═══ 12 · FINAL CTA ═══ -->
+  <section class="final">
+    <div class="wrap final-inner">
+      <span class="script">Sāksim?</span>
+      <h2>Pieteikt sākuma konsultāciju. <em>49 €.</em></h2>
+      <p>Sazināšos 24 stundu laikā. Bez surogātpasta. Atbildēšu personīgi.</p>
+
+      <div class="final-ctas">
+        <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-primary">Pieteikt konsultāciju — 49 € <span class="arrow">→</span></a>
+        <a href="#start" class="btn btn-ghost">Vispirms bezmaksas ceļvedis</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script>
+  // FAQ accordion
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const q = item.querySelector('.faq-q');
+    if (!q) return;
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => o.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+      q.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+  // Open first FAQ by default
+  faqItems[0]?.classList.add('open');
+  const firstQ = faqItems[0]?.querySelector('.faq-q');
+  if (firstQ) firstQ.setAttribute('aria-expanded', 'true');
+
+  // Scroll reveal
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('section').forEach(s => {
+      s.classList.add('reveal');
+      io.observe(s);
+    });
+  }
+
+  // Lead magnet form
+  const lmForm = document.getElementById('leadmagForm') as HTMLFormElement | null;
+  if (lmForm) {
+    lmForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = lmForm.querySelector('button');
+      if (btn) btn.textContent = 'Paldies — pārbaudi e-pastu →';
+    });
+  }
+</script>

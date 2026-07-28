@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Paldies! — Pārbaudi e-pastu | Ieva Jēkabsone"
+  description="Paldies! Ceļvedis jau ceļā uz tavu e-pastu. Pārbaudi pastkasti (un arī mēstuļu mapi)."
+  noindex={true}
+  minimalNav={true}
+  noFooter={true}
+>
+
+  <section class="thanks-page">
+    <div class="wrap">
+      <div class="thanks-icon">✉</div>
+      <h1>Paldies! Ceļvedis <em>jau ceļā.</em></h1>
+      <p>Pārbaudi savu pastkasti — e-pasts pienāks dažu minūšu laikā.</p>
+      <p style="color:var(--ink-soft);">
+        Ja neredzi to ienākošajās ziņās, paskaties <strong>mēstuļu (spam) mapē</strong> —
+        dažreiz pirmais e-pasts no jauna sūtītāja tur iekrīt. Pievieno mani kontaktiem, lai turpmākie nāktu tieši galvenajā pastkastē.
+      </p>
+
+      <div class="thanks-next">
+        <a href="/blog/5-uztura-kludas">→ Pa to laiku — lasi raksta versiju mājaslapā</a>
+        <a href="/uztura-abc">→ Apskatīt Uztura ABC</a>
+        <a href="/">← Atgriezties sākumlapā</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
