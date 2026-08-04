@@ -2,142 +2,76 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleNav from '../../components/ArticleNav.astro';
-import {
-  sanityClient,
-  ALL_SLUGS_QUERY,
-  POST_BY_SLUG_QUERY,
-  urlForSafe,
-} from '../../lib/sanity';
-import { portableTextToHtml } from '../../lib/portableText';
-import type { SanityBlogPost } from '../../lib/sanity';
-
-const sanityConfigured =
-  import.meta.env.PUBLIC_SANITY_PROJECT_ID &&
-  import.meta.env.PUBLIC_SANITY_PROJECT_ID !== 'placeholder' &&
-  import.meta.env.PUBLIC_SANITY_PROJECT_ID !== 'YOUR_PROJECT_ID';
 
 export async function getStaticPaths() {
-  const mdPosts = await getCollection('blog', ({ data }) => !data.draft);
-  const mdPaths = mdPosts.map((post) => ({
+  const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+    (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+  );
+
+  return posts.map((post, i) => ({
     params: { slug: post.id },
-    props: { mdPost: post, sanityPost: null },
+    props: {
+      post,
+      // Jaunāks = iepriekšējais sarakstā, vecāks = nākamais
+      prev: posts[i - 1] ?? null,
+      next: posts[i + 1] ?? null,
+    },
   }));
-
-  // Pieveno Sanity slug-us ja konfigurēts
-  const isSanityOn =
-    import.meta.env.PUBLIC_SANITY_PROJECT_ID &&
-    import.meta.env.PUBLIC_SANITY_PROJECT_ID !== 'placeholder' &&
-    import.meta.env.PUBLIC_SANITY_PROJECT_ID !== 'YOUR_PROJECT_ID';
-
-  let sanityPaths: ReturnType<typeof mdPosts.map> = [];
-  if (isSanityOn) {
-    try {
-      const slugs = await sanityClient.fetch<Array<{ slug: string }>>(ALL_SLUGS_QUERY);
-      const mdSlugSet = new Set(mdPosts.map((p) => p.id));
-      sanityPaths = slugs
-        .filter((s) => !mdSlugSet.has(s.slug)) // Sanity aizstāj Markdown ar to pašu slug
-        .map((s) => ({
-          params: { slug: s.slug },
-          props: { mdPost: null, sanityPost: s.slug },
-        }));
-    } catch {
-      // Sanity nav pieejams
-    }
-  }
-
-  // Sanity posts ar to pašu slug kā Markdown: nomainīt Markdown ar Sanity
-  if (isSanityOn) {
-    try {
-      const slugs = await sanityClient.fetch<Array<{ slug: string }>>(ALL_SLUGS_QUERY);
-      const sanitySlugSet = new Set(slugs.map((s) => s.slug));
-      return [
-        ...mdPaths.map((p) =>
-          sanitySlugSet.has(p.params.slug)
-            ? { ...p, props: { mdPost: null, sanityPost: p.params.slug } }
-            : p
-        ),
-        ...sanityPaths,
-      ];
-    } catch {
-      return [...mdPaths, ...sanityPaths];
-    }
-  }
-
-  return [...mdPaths, ...sanityPaths];
 }
 
-const { mdPost, sanityPost: sanitySlug } = Astro.props;
+const { post, prev, next } = Astro.props;
 const { slug } = Astro.params;
 
-// ─── Ielādē saturu ──────────────────────────────────────────────────────────
+const { Content } = await render(post);
 
-let title = '';
-let description = '';
-let pubDate = new Date();
-let category = '';
-let tags: string[] = [];
-let author = 'Ieva Jēkabsone';
-let imageUrl = '';
-let imageAlt = '';
-let bodyHtml = '';
-let Content: ((_: unknown) => unknown) | null = null;
-
-if (sanityConfigured && sanitySlug) {
-  // Ielādē no Sanity
-  const post = await sanityClient.fetch<SanityBlogPost>(POST_BY_SLUG_QUERY, { slug: sanitySlug });
-  if (post) {
-    title = post.title;
-    description = post.description;
-    pubDate = new Date(post.pubDate);
-    category = post.category ?? '';
-    tags = post.tags ?? [];
-    author = post.author ?? 'Ieva Jēkabsone';
-    imageUrl = post.image ? (urlForSafe(post.image)?.width(1100).url() ?? '') : '';
-    imageAlt = (post.imageAlt ?? post.title) ?? '';
-    bodyHtml = portableTextToHtml(post.body as Parameters<typeof portableTextToHtml>[0]);
-  }
-} else if (mdPost) {
-  // Ielādē no Markdown
-  const rendered = await render(mdPost);
-  Content = rendered.Content as unknown as ((_: unknown) => unknown);
-  title = mdPost.data.title;
-  description = mdPost.data.description;
-  pubDate = new Date(mdPost.data.pubDate);
-  category = mdPost.data.category ?? '';
-  tags = mdPost.data.tags ?? [];
-  author = mdPost.data.author ?? 'Ieva Jēkabsone';
-  imageUrl = mdPost.data.image ?? '';
-  imageAlt = mdPost.data.imageAlt ?? mdPost.data.title;
-}
+const title = post.data.title;
+const description = post.data.description;
+const pubDate = new Date(post.data.pubDate);
+const category = post.data.category ?? '';
+const tags = post.data.tags ?? [];
+const author = post.data.author ?? 'Ieva Jēkabsone';
+const imageUrl = post.data.image ?? '';
+const imageAlt = post.data.imageAlt ?? post.data.title;
 
 const formatDate = (date: Date) =>
   date.toLocaleDateString('lv-LV', { year: 'numeric', month: 'long', day: 'numeric' });
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": title,
-  "description": description,
-  "datePublished": pubDate.toISOString(),
-  "dateModified": pubDate.toISOString(),
-  "author": {
-    "@type": "Person",
-    "name": author,
-    "@id": "https://ievajekabsone.lv/#ieva"
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "datePublished": pubDate.toISOString(),
+    "dateModified": pubDate.toISOString(),
+    "author": {
+      "@type": "Person",
+      "name": author,
+      "@id": "https://ievajekabsone.lv/#ieva"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Ieva Jēkabsone",
+      "@id": "https://ievajekabsone.lv/#ieva"
+    },
+    "image": imageUrl
+      ? (imageUrl.startsWith('http') ? imageUrl : `https://ievajekabsone.lv${imageUrl}`)
+      : "https://ievajekabsone.lv/assets/images/og-ieva.webp",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://ievajekabsone.lv/blog/${slug}`
+    }
   },
-  "publisher": {
-    "@type": "Person",
-    "name": "Ieva Jēkabsone",
-    "@id": "https://ievajekabsone.lv/#ieva"
-  },
-  "image": imageUrl
-    ? (imageUrl.startsWith('http') ? imageUrl : `https://ievajekabsone.lv${imageUrl}`)
-    : "https://ievajekabsone.lv/assets/images/og-ieva.jpg",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": `https://ievajekabsone.lv/blog/${slug}`
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Sākums", "item": "https://ievajekabsone.lv/" },
+      { "@type": "ListItem", "position": 2, "name": "Blogs", "item": "https://ievajekabsone.lv/blog" },
+      { "@type": "ListItem", "position": 3, "name": title, "item": `https://ievajekabsone.lv/blog/${slug}` }
+    ]
   }
-};
+];
 ---
 
 <BaseLayout
@@ -156,8 +90,8 @@ const jsonLd = {
       { label: 'Blogs',  href: '/blog' },
       { label: title },
     ]}
-    prev={null}
-    next={null}
+    prev={prev ? { label: prev.data.title, href: `/blog/${prev.id}` } : null}
+    next={next ? { label: next.data.title, href: `/blog/${next.id}` } : null}
   />
 
   <article class="article">
@@ -188,10 +122,7 @@ const jsonLd = {
       )}
 
       <div class="article-body">
-        {Content
-          ? <Content />
-          : <Fragment set:html={bodyHtml} />
-        }
+        <Content />
       </div>
 
       <!-- Ieva's signature CTA -->

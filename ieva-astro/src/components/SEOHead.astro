@@ -13,14 +13,22 @@ const {
   title,
   description,
   canonical = Astro.url.toString(),
-  ogImage = '/assets/images/og-ieva.jpg',
+  ogImage = '/assets/images/og-ieva.webp',
   type = 'website',
   jsonLd,
   noindex = false,
 } = Astro.props;
 
 const siteName = 'Ieva Jēkabsone';
-const fullTitle = title.includes('Ieva') ? title : `${title} | ${siteName}`;
+
+// Zīmola piedēkli pievieno tikai tad, ja tas neaizdzen title pāri Google
+// apcirpuma robežai (~60 rakstz.). Garam virsrakstam pats virsraksts ir
+// vērtīgāks par zīmola vārdu, kuru meklētājs tāpat neredzēs.
+const suffix = ` | ${siteName}`;
+const fullTitle =
+  title.includes('Ieva') || title.length + suffix.length > 60
+    ? title
+    : `${title}${suffix}`;
 ---
 
 <!-- Primary meta -->

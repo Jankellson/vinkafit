@@ -2,31 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { sanityClient, ALL_POSTS_QUERY, urlForSafe } from '../../lib/sanity';
-import type { SanityBlogPost } from '../../lib/sanity';
 
-// ─── Ielādē rakstus no abiem avotiem ────────────────────────────────────────
-
-// 1. Markdown (lokālie faili)
-const mdPosts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-// 2. Sanity (tikai ja PROJECT_ID ir uzstādīts)
-const sanityConfigured =
-  import.meta.env.PUBLIC_SANITY_PROJECT_ID &&
-  import.meta.env.PUBLIC_SANITY_PROJECT_ID !== 'placeholder' &&
-  import.meta.env.PUBLIC_SANITY_PROJECT_ID !== 'YOUR_PROJECT_ID';
-
-let sanityPosts: SanityBlogPost[] = [];
-if (sanityConfigured) {
-  try {
-    sanityPosts = await sanityClient.fetch<SanityBlogPost[]>(ALL_POSTS_QUERY);
-  } catch {
-    // Sanity nav pieejams — izmanto tikai Markdown
-  }
-}
-
-// Normalizē uz kopēju tipu
 interface NormalPost {
   slug: string;
   title: string;
@@ -35,46 +11,47 @@ interface NormalPost {
   category: string;
   image?: string;
   imageAlt?: string;
-  source: 'sanity' | 'markdown';
 }
 
-const sanityNorm: NormalPost[] = sanityPosts.map((p) => ({
-  slug: p.slug.current,
-  title: p.title,
-  description: p.description,
-  pubDate: new Date(p.pubDate),
-  category: p.category ?? '',
-  image: p.image ? (urlForSafe(p.image)?.width(800).url() ?? undefined) : undefined,
-  imageAlt: p.imageAlt ?? p.title,
-  source: 'sanity',
-}));
-
-const mdNorm: NormalPost[] = mdPosts.map((p) => ({
-  slug: p.id,
-  title: p.data.title,
-  description: p.data.description,
-  pubDate: new Date(p.data.pubDate),
-  category: p.data.category ?? '',
-  image: p.data.image,
-  imageAlt: p.data.imageAlt ?? p.data.title,
-  source: 'markdown',
-}));
-
-// Apvieno — Sanity posts aizstāj Markdown posts ar to pašu slug
-const sanitySlugSet = new Set(sanityNorm.map((p) => p.slug));
-const merged: NormalPost[] = [
-  ...sanityNorm,
-  ...mdNorm.filter((p) => !sanitySlugSet.has(p.slug)),
-].sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
+const merged: NormalPost[] = (await getCollection('blog', ({ data }) => !data.draft))
+  .map((p) => ({
+    slug: p.id,
+    title: p.data.title,
+    description: p.data.description,
+    pubDate: new Date(p.data.pubDate),
+    category: p.data.category ?? '',
+    image: p.data.image,
+    imageAlt: p.data.imageAlt ?? p.data.title,
+  }))
+  .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
 
 const formatDate = (date: Date) =>
   date.toLocaleDateString('lv-LV', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Ievas Jēkabsones blogs",
+  "url": "https://ievajekabsone.lv/blog",
+  "description": "Praktiski raksti par uzturu, metabolismu un veselību.",
+  "author": { "@type": "Person", "@id": "https://ievajekabsone.lv/#ieva" },
+  "inLanguage": "lv",
+  "blogPost": merged.map((p) => ({
+    "@type": "BlogPosting",
+    "headline": p.title,
+    "description": p.description,
+    "datePublished": p.pubDate.toISOString(),
+    "url": `https://ievajekabsone.lv/blog/${p.slug}`,
+    "author": { "@type": "Person", "@id": "https://ievajekabsone.lv/#ieva" }
+  }))
+};
 ---
 
 <BaseLayout
   title="Blogs — Uztura zinātne bez žargona | Ieva Jēkabsone"
   description="Praktiski raksti par uzturu, metabolismu un veselību no ITEC sertificētas uztura konsultantes Ievas Jēkabsones."
   canonical="https://ievajekabsone.lv/blog"
+  jsonLd={jsonLd}
   activeNav="blog"
 >
 
@@ -84,13 +61,23 @@ const formatDate = (date: Date) =>
   ]} />
 
   <section class="page-hero">
-    <div class="wrap">
-      <div class="eyebrow">Blogs</div>
-      <h1>Uztura zinātne <em>bez žargona.</em></h1>
-      <p class="lede">
-        Praktiski raksti par to, kā ēšana ietekmē tavu enerģiju, svaru un pašsajūtu.
-        Bez dietoloģijas diktāta — ar bioloģijas palīdzību.
-      </p>
+    <div class="wrap blog-hero-grid">
+      <div>
+        <div class="eyebrow">Blogs</div>
+        <h1>Uztura zinātne <em>bez žargona.</em></h1>
+        <p class="lede">
+          Praktiski raksti par to, kā ēšana ietekmē tavu enerģiju, svaru un pašsajūtu.
+          Bez dietoloģijas diktāta — ar bioloģijas palīdzību.
+        </p>
+      </div>
+
+      <figure class="side-photo" style="--ar: 3/4; --obj: center 30%; margin-top:0;">
+        <img
+          src="/assets/images/ieva-jekabsone-sabalansets-pusdienu-skivis-virtuve.webp"
+          alt="Ieva Jēkabsone virtuvē pasniedz sabalansētas pusdienas ar lasi, dārzeņiem un kvinoju — praktiski raksti par ikdienas ēšanas situācijām"
+          width="1023" height="1537" loading="eager"
+        />
+      </figure>
     </div>
   </section>
 

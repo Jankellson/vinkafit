@@ -16,4 +16,4 @@
 | Off-page, lokālā SEO, AEO/GEO | [`seo/06-OffPage-Local-AEO.md`](seo/06-OffPage-Local-AEO.md) |
 | Prioritātes, ceļvedis, KPI | [`seo/07-Prioritates.md`](seo/07-Prioritates.md) |
 
-Konkurentu digitālie produkti → [`1-Konkurenti.md`](1-Konkurenti.md) · Vecā pilnā versija (arhīvs) → [`5-SEO-Strategija_OLD-2026-06-10.md`](5-SEO-Strategija_OLD-2026-06-10.md)
+Konkurentu digitālie produkti → [`1-Konkurenti.md`](1-Konkurenti.md)

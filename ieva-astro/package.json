@@ -12,13 +12,12 @@
     "astro": "astro",
     "gen:image": "node scripts/generate-image.mjs",
     "gen:og": "node scripts/generate-og.mjs",
-    "gen:infographic": "node scripts/generate-infographic.mjs"
+    "gen:infographic": "node scripts/generate-infographic.mjs",
+    "check:images": "node scripts/check-images.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.5",
     "@astrojs/sitemap": "^3.7.2",
-    "@sanity/client": "^7.22.0",
-    "@sanity/image-url": "^2.1.1",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "astro": "^6.3.7",

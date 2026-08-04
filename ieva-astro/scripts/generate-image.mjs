@@ -8,7 +8,7 @@
  * Flags:
  *   --prompt    Image prompt (REQUIRED)
  *   --slug      Article slug, e.g. "skivja-metode" (REQUIRED)
- *   --type      hero | inline | decorative (default: hero)
+ *   --type      hero | inline | decorative | cover | social | story (default: hero)
  *   --name      Filename descriptor without .webp, e.g. "darzenu-proporcijas" (optional; defaults by type)
  *   --model     OpenRouter model id (optional; auto-picks based on whether prompt mentions text)
  *   --alt       Alt text in target language (RECOMMENDED — needed for SEO)
@@ -26,12 +26,13 @@ import path from 'node:path';
 import sharp from 'sharp';
 
 // --- CLI parsing -----------------------------------------------------------
-const args = Object.fromEntries(
-  process.argv.slice(2).reduce((acc, val, i, arr) => {
+const rawArgs = process.argv.slice(2);
+const args = rawArgs.some((arg) => arg.startsWith('--'))
+  ? Object.fromEntries(rawArgs.reduce((acc, val, i, arr) => {
     if (val.startsWith('--')) acc.push([val.slice(2), arr[i + 1]]);
     return acc;
-  }, [])
-);
+  }, []))
+  : Object.fromEntries(['slug', 'type', 'name', 'alt', 'model', 'prompt'].map((key, i) => [key, rawArgs[i]]));
 
 const { prompt, slug, type = 'hero', name, alt = '' } = args;
 let { model } = args;
@@ -46,6 +47,9 @@ const TYPE_DEFAULTS = {
   hero:       { width: 1200, height: 630, maxKB: 120, defaultName: 'hero',     loading: 'eager' },
   inline:     { width: 800,  height: 600, maxKB: 80,  defaultName: 'inline',   loading: 'lazy'  },
   decorative: { width: 600,  height: 400, maxKB: 60,  defaultName: 'visual',   loading: 'lazy'  },
+  cover:      { width: 1200, height: 1800, maxKB: 220, defaultName: 'cover',   loading: 'eager' },
+  social:     { width: 1080, height: 1350, maxKB: 180, defaultName: 'social',  loading: 'lazy'  },
+  story:      { width: 1080, height: 1920, maxKB: 220, defaultName: 'story',   loading: 'lazy'  },
 };
 const cfg = TYPE_DEFAULTS[type];
 if (!cfg) {

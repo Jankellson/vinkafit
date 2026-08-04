@@ -1,7 +1,11 @@
 # Ievas Jēkabsones mājaslapa — projekta noteikumi
 
-Astro + Tailwind + Sanity. Latviešu valoda. SEO un YMYL (Your Money Your Life)
+Astro + Tailwind. Latviešu valoda. SEO un YMYL (Your Money Your Life)
 veselības saturs.
+
+> ⚠️ **Sanity CMS izņemts 2026-07-28.** Emuāra raksti dzīvo TIKAI Markdown failos
+> `src/content/blog/`. Jaunam rakstam — jauns `.md` fails, **slugs obligāti ASCII**
+> (bez ā/ē/ž utt., citādi URL salūzt). Neatjauno Sanity, nepievieno CMS atkarības.
 
 > 🚪 **Šī mape = TIKAI mājaslapa (kods).** Stāvoklis, stratēģija un lēmumi ir mātes mapē.
 > **Sāc ar `../00-SAKUMS.md`** (priekšdurvis: kur esam / kas tālāk / kur ko meklēt).
@@ -159,6 +163,32 @@ saturu, atjauno `tocItems`, `faqItems`, `jsonLd.datePublished/Modified`.
 - **Latviešu valoda:** pirms commit invocē `latviesu-valoda` skill;
   diakritiskās zīmes obligātas saturā; slug-os strip uz ASCII.
 - **Lapu pārbaude:** `npm run build` jāiet caur bez kļūdām pirms commit.
+- **Attēlu saišu pārbaude:** `npm run check:images` OBLIGĀTI pirms katra commit. Foto dzīvo TIKAI
+  git — ja kāds tos izdzēš no darba mapes, kods turpina uz tiem norādīt un lapā parādās tukši
+  kvadrāti. Šī kļūda atkārtojusies divreiz (2026-07-28, 2026-07-29).
+- **Zīmola ikonas** (`public/assets/images/ieva-*-ikona.webp`) — burgundijas + zelta līnijzīmējumi,
+  caurspīdīgs fons, 200 px. Lieto TĀS, nevis Lucide/Feather/inline SVG: ģeneriskā ikonu bibliotēka ir
+  viens no redzamākajiem "AI uzbūvētas lapas" signāliem. CSS klases (`globals.css` → "ZĪMOLA IKONAS
+  UN FOTO BLOKI"):
+  - `.bicon` — kaila ikona, izmērs caur `--bi`
+  - `.bicon-disc` — ikona uz krēma diska (tumšiem foniem)
+  - `.side-photo` — asimetrisks vertikāls foto teksta sekcijā (`--ar`, `--obj`)
+  - `.photo-stack` — mazāks attēls, kas pārklāj galvenā stūri
+  - `.photo-band` + `.band-track` — pilna platuma fotojosla, kas pārtrauc teksta ritmu
+  - `.dayline` + `.dayline-track` — soļi/maltītes ar attēlu, laiku, virsrakstu un paskaidrojumu
+  - `.phero` — iekšējo lapu hero (teksts + `.phero-facts` josla pa kreisi, attēls pa labi)
+- **Attēls bez paraksta ir dekorācija.** Ja nevari uzrakstīt vienu teikumu, ko attēls paskaidro,
+  tas nav vajadzīgs. Bilžu rinda bez parakstiem tika noraidīta ("ļoti neloģiska") — tāpēc
+  eksistē `.dayline`. Nekādu uzlīmju/plāksnīšu VIRS fotogrāfijām; paraksts iet zem vai blakus.
+- **Attēls sekcijā nedrīkst radīt tukšu vietu.** Ja teksta kolonna ir īsa, foto liec kā atsevišķu
+  pilna augstuma kolonnu (`align-self: stretch` + `img { position: absolute; inset: 0 }`), nevis
+  bloku zem teksta. Pēc izmaiņas izmēri jāpārbauda: `getBoundingClientRect().height` abām kolonnām.
+- **Layout ritms:** ne vairāk kā 2 pēc kārtas "bilde pa kreisi / teksts pa labi" sekcijas — trešo
+  pārtrauc ar `.dayline`, ikonu rindu vai teksta pauzi.
+- ⚠️ **Pārlūka ekrānuzņēmumi neatveido lapas apakšu** (Playwright pilnas lapas uzņēmums pārtrūkst
+  ap 10 000 px; `.reveal` animācija ar `opacity:0` vēl nav nostrādājusi). Pirms uzņēmuma injicē
+  `.reveal{opacity:1!important;transform:none!important}`, un garām lapām pārbaudi izkārtojumu
+  ar DOM mērījumiem, ne acīm.
 
 ---
 

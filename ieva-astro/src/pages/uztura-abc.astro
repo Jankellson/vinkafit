@@ -18,16 +18,19 @@ interface Category {
   title: string;
   slug: string;
   description: string;
-  icon: 'utensils' | 'sparkles' | 'activity' | 'heart' | 'droplet' | 'leaf';
+  /** Ievas zīmola ikona: datnes nosaukums + aprakstošs alt teksts. */
+  icon: { src: string; alt: string };
   articles: Article[];
 }
+
+const ICON = (name: string, alt: string) => ({ src: `/assets/images/ieva-uztura-${name}-ikona.webp`, alt });
 
 const categories: Category[] = [
   {
     slug: 'uztura-pamati',
     title: 'Uztura pamati',
     description: 'Laba vieta, kur sākt — neatkarīgi no tā, vai esi diētu veterāne vai tikai sāc domāt par uzturu. Šķīvja metode, makrouzturvielas, etiķetes, hidratācija, ēdienkartes plānošana. Šīs zināšanas ir stabils pamats — tās nemainās atkarībā no tā, kura mode ir šogad aktuāla.',
-    icon: 'utensils',
+    icon: ICON('sabalansets-skivis', 'Šķīvis ar lapām un labības vārpu — uztura pamati: šķīvja metode, makrouzturvielas, etiķetes un ūdens daudzums'),
     articles: [
       { title: 'Šķīvja metode: princips, proporcijas un kā to lietot ikdienā', href: '/uztura-abc/skivja-metode', available: true },
       { title: 'Makrouzturvielas: olbaltumvielas, tauki un ogļhidrāti — normas un avoti', href: '/uztura-abc/makrouzturvielas', available: true },
@@ -45,7 +48,7 @@ const categories: Category[] = [
     slug: 'uztura-miti',
     title: 'Uztura mīti un fakti',
     description: 'Katru gadu parādās jauna "revolucionāra" diēta. Detoks, glutens, superfoods, diētas pēc asinsgrupas — lielākā daļa no tā ir mārketings, ne zinātne. Šajā sadaļā izšķiru faktus no mītiem, lai tu vairs netērētu naudu lietām, kas nestrādā.',
-    icon: 'sparkles',
+    icon: ICON('sezonals-ediena-ritms', 'Saule pār augļu zaru — uztura mīti un fakti: detoks, glutens, keto un superfoods bez mārketinga'),
     articles: [
       { title: 'Tauki un svars: vai piesātinātie tauki tiešām veicina aptaukošanos', href: '/uztura-abc/tauki-svars', available: false },
       { title: 'Detoks diētas: ko zinātne saka un ko aknas dara bez maksas', href: '/uztura-abc/detoks-dietas', available: false },
@@ -62,7 +65,7 @@ const categories: Category[] = [
     slug: 'svars-metabolisms',
     title: 'Svars un metabolisms',
     description: 'Yo-yo efekts, metabolisma palēnināšanās, proteīns, gavēšana, hormoni — viss tas, ko reklāmas neizskaidro. Šeit nav "ēd mazāk, kusties vairāk" padomu — ir izskaidrojumi, kāpēc tas nestrādā un kas strādā.',
-    icon: 'activity',
+    icon: ICON('ilgtermina-progress', 'Kāpnes ar augošu stiebru — svars un metabolisms: yo-yo efekts, kaloriju deficīts, hormoni un miegs'),
     articles: [
       { title: 'Yo-yo efekts: cēloņi, mehānisms un kā pārtraukt svara svārstības', href: '/uztura-abc/yo-yo-efekts', available: false },
       { title: 'Metabolisms: kā tas darbojas, kas to palēnina un kā uzlabot', href: '/uztura-abc/metabolisms', available: false },
@@ -78,7 +81,7 @@ const categories: Category[] = [
     slug: 'uzturs-veseliba',
     title: 'Uzturs un veselība',
     description: 'Uzturs nav tikai svars — tas ietekmē enerģiju, miegu, ādu, garastāvokli un hormonus. Zarnu mikrobioms, imunitāte, emocionālā ēšana, sirds veselība. Bez dramatisma, ar zinātni.',
-    icon: 'heart',
+    icon: ICON('sirds-veseliba', 'Anatomiska sirds ar lapu zariem — uzturs un veselība: zarnu mikrobioms, imunitāte, enerģija un sirds veselība'),
     articles: [
       { title: 'Zarnu mikrobioms: funkcijas, ietekme uz veselību un kā uzlabot ar uzturu', href: '/uztura-abc/zarnu-mikrobioms', available: false },
       { title: 'Emocionālā ēšana: cēloņi, bioloģiskais mehānisms un kā ar to strādāt', href: '/uztura-abc/emocionala-esana', available: false },
@@ -98,7 +101,7 @@ const categories: Category[] = [
     slug: 'asinsanalyzes',
     title: 'Asinsanalīzes un uzturs',
     description: 'Ārsts saka "viss normāli" — bet tu jūties slikti. Bieži vien atbilde ir asinsanalīzēs, ko ārsts nepaskaidro. Šeit mācīšu lasīt savus rādītājus, saprast, kas ir "normāli" un kas — "optimāli", un kā uzturs šo mainīt.',
-    icon: 'droplet',
+    icon: ICON('asinsanalizu-konteksts', 'Asinsanalīžu mēģene ar auga zariņu — asinsanalīzes un uzturs: holesterīns, feritīns, D vitamīns un vairogdziedzeris'),
     articles: [
       { title: 'Paaugstināts holesterīns: normas, veidi un kā uzturs ietekmē rādītājus', href: '/uztura-abc/holesterins', available: false },
       { title: 'Insulīna rezistence: simptomi, cēloņi, analīzes un uztura risinājumi', href: '/uztura-abc/insulina-rezistence', available: false },
@@ -118,7 +121,7 @@ const categories: Category[] = [
     slug: 'vegana-uzturs',
     title: 'Vegāna un veģetāriešu uzturs',
     description: 'Augu valsts uzturs var būt pilnvērtīgs — ja zini, ko kontrolēt. Šajā sadaļā — deficīti, olbaltumvielu avoti, vajadzīgie papildinātāji un asinsanalīzes, kas jāpārbauda regulāri.',
-    icon: 'leaf',
+    icon: ICON('sezonas-darzeni', 'Burkāns, tomāts un garšaugi — vegāna un veģetāriešu uzturs: deficīti, olbaltumvielu avoti un uztura bagātinātāji'),
     articles: [
       { title: 'Vegāna uzturs: kādi deficīti draud un kā tos novērst', href: '/uztura-abc/vegana-uzturs', available: false },
       { title: 'Proteīns veģetāriešu uzturā: avoti, norma un kombinēšana', href: '/uztura-abc/vegetarietis-proteins', available: false },
@@ -129,15 +132,6 @@ const categories: Category[] = [
 ];
 
 const totalArticles = categories.reduce((sum, c) => sum + c.articles.length, 0);
-
-const icons: Record<string, string> = {
-  droplet:   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>`,
-  activity:  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.5.5 0 0 1-.96 0L9.24 2.18a.5.5 0 0 0-.96 0l-2.35 8.36A2 2 0 0 1 4 12H2"/></svg>`,
-  utensils:  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>`,
-  heart:     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>`,
-  sparkles:  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg>`,
-  leaf:      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>`,
-};
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -151,8 +145,8 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title="Uztura ABC — Bezmaksas Zināšanu Bāze | Ieva Jēkabsone"
-  description="Uztura zināšanu bāze latviski: pamati, mīti, svars un metabolisms, veselība, asinsanalīzes. {totalArticles} raksti, loģiska secība no sākuma. Bez maksas."
+  title="Uztura ABC — bezmaksas zināšanu bāze | Ieva Jēkabsone"
+  description={`Uztura zināšanu bāze latviski: pamati, svars un metabolisms, veselība, asinsanalīzes. ${totalArticles} raksti loģiskā secībā. Bez maksas.`}
   canonical="https://ievajekabsone.lv/uztura-abc"
   jsonLd={jsonLd}
   activeNav="uztura-abc"
@@ -164,22 +158,34 @@ const jsonLd = {
   ]} />
 
   <!-- HERO -->
-  <section class="page-hero page-hero--compact">
-    <div class="wrap">
-      <div class="eyebrow">Uztura ABC</div>
-      <h1>Viss, ko gribi zināt — <em>vienā vietā.</em></h1>
-      <p class="lede">
-        {totalArticles} raksti. 6 tēmas. Loģiska secība no uztura pamatiem līdz
-        asinsanalīžu izpratnei — lasi kā grāmatu vai atver tieši to tēmu, kas tevi
-        šobrīd uztrauc.
-      </p>
-      <div class="abc-stats">
-        <span class="abc-stat"><strong>{categories.length}</strong> nodaļas</span>
-        <span class="abc-stat-sep">·</span>
-        <span class="abc-stat"><strong>{totalArticles}</strong> raksti</span>
-        <span class="abc-stat-sep">·</span>
-        <span class="abc-stat">Bez maksas · Bez reģistrēšanās</span>
+  <section class="phero">
+    <div class="wrap phero-grid">
+
+      <div class="phero-text">
+        <div class="eyebrow">Uztura ABC</div>
+        <h1>Viss, ko gribi zināt par uzturu, <em>vienā vietā.</em></h1>
+        <p class="lede">
+          {totalArticles} raksti. 6 tēmas. Loģiska secība no uztura pamatiem līdz
+          asinsanalīžu izpratnei — lasi kā grāmatu vai atver tieši to tēmu, kas tevi
+          šobrīd uztrauc.
+        </p>
+
+        <ul class="phero-facts">
+          <li><strong>{categories.length}</strong><span>nodaļas loģiskā secībā</span></li>
+          <li><strong>{totalArticles}</strong><span>raksti ar atsaucēm uz avotiem</span></li>
+          <li><strong>0 €</strong><span>bez maksas, bez reģistrēšanās</span></li>
+        </ul>
       </div>
+
+      <figure class="phero-photo" style="--obj: center 45%;">
+        <img
+          src="/assets/images/ieva-jekabsone-uztura-pieraksti-kafejnica.webp"
+          alt="Ieva Jēkabsone kafejnīcā raksta uztura piezīmes blociņā — Uztura ABC ir viņas darba zināšanu bāze, pierakstīta latviski"
+          width="1023" height="1537" loading="eager"
+        />
+        <figcaption><span class="script">Ieva</span> Pamati, kas nemainās katru sezonu.</figcaption>
+      </figure>
+
     </div>
   </section>
 
@@ -192,7 +198,9 @@ const jsonLd = {
           <!-- LEFT: category info -->
           <div class="abc-cat-left">
             <div class="abc-cat-num">0{catIdx + 1}</div>
-            <div class="abc-cat-icon" set:html={icons[cat.icon]} aria-hidden="true" />
+            <div class="abc-cat-icon">
+              <img src={cat.icon.src} alt={cat.icon.alt} width="200" height="200" loading="lazy" />
+            </div>
             <h2 class="abc-cat-title">{cat.title}</h2>
             <p class="abc-cat-desc">{cat.description}</p>
             <div class="abc-cat-count">{cat.articles.length} raksti</div>

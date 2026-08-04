@@ -26,6 +26,15 @@ maksas = pielāgošana / gatavs darbs (kā tieši man). Sk. `klients/PRODUKTI-ST
 (Nano Banana Pro ēdiena foto + latviešu teksts virsū). 3 infografiku stili + image-SEO dokumentēti
 `ieva-astro/CLAUDE.md`. Noteikums: raksts ≠ teksts blāķis (dažādi layouti). Pirmā: `esanas-biezums` "Nemanāmās kalorijas".
 
+🖼️ **Vizuālais slānis ieviests (2026-07-29):** Ievas 15 zīmola ikonas (burgundija + zelts) aizstāj
+ģeneriskās SVG ikonas sākumlapā, Uztura ABC, `par-mani` un pakalpojumu lapās; ēdiena un Ievas foto
+ielikti sekcijās, kas bija tikai teksts. Jaunas CSS klases `globals.css`: `.bicon`, `.bicon-disc`,
+`.side-photo`, `.photo-stack`, `.photo-band`. Attēlu mape 23 MB → 4,7 MB. Salabotas 6 salauztas
+bilžu saites (t.sk. trūkstošais OG attēls). Detaļas `STATUSS.md` (2026-07-29 vakars).
+
+⚠️ **Attēlu likums:** `ieva-astro` foto dzīvo TIKAI git. Pirms commit palaid pārbaudi, vai katrs
+`/assets/images/...` `src/` mapē atbilst reālam failam — šī kļūda atkārtojusies divreiz (07-28, 07-29).
+
 ## 2. Kas tālāk (prioritāšu secībā — pilns saraksts `STATUSS.md`)
 
 > **Pretparalīzes likums:** pēc šīs tīrīšanas — NEKĀDA meta/sistēmas darba, kamēr nav
@@ -74,7 +83,8 @@ _BACKUP-pirms-reorg_2026-06-03/  ← pilna kopija pirms šīs pārkārtošanas (
 | ❌ Novecojis (arhīvā) | `arhivs/KONTEKSTS`, `START-HERE`, `PROJEKTS`, `Website-text-OLD`, `website-prototype` | WordPress, vinkafit.lv, Ieva Vinka — vēsturiski |
 
 **Konkrētie konflikti, ko ņemt vērā:**
-- **Platforma:** Astro (publiskā) + **Sanity** (CMS/saturs) + **Systeme.io** (biznesa backend: produkti, e-pasts, checkout). NE WordPress.
+- **Platforma:** Astro (publiskā) + **Systeme.io** (biznesa backend: produkti, e-pasts, checkout). NE WordPress.
+  ⚠️ **Sanity izņemts 2026-07-28** (sk. `LEMUMI.md`) — saturs dzīvo Markdown failos repo, CMS nav. Kur vecos dokumentos rakstīts "Astro + Sanity", lasi "Astro + Markdown".
 - **Domēns/zīmols:** **ievajekabsone.lv** (NE vinkafit.lv / @vinkafit / "Ieva Vinka").
 - **Filozofija:** produkti = prioritāte; "viss bez maksas" leņķis tiek noņemts.
 
@@ -84,8 +94,8 @@ _BACKUP-pirms-reorg_2026-06-03/  ← pilna kopija pirms šīs pārkārtošanas (
    (cenas vēl nebija pārdomātas). → Cenu + piedāvājuma struktūra jāveido no jauna ar **Hormozi** metodi.
 2. **"Viss bez maksas" — JĀ, ņem nost.** Vajadzīgi digitālie produkti; "viss bezmaksas" tiem pretrunā.
    Robeža paliek: bezmaksas = zināšanas + lead magnets; maksas = pielāgošana / gatavi produkti.
-3. **Systeme.io PALIEK** (produkti, mārketings, e-pasts, checkout). Sanity = TIKAI CMS (blogs/saturs).
-   → `strategija/7-Majaslapas` arhitektūra (Astro + Sanity + Systeme.io) ir pareiza.
+3. **Systeme.io PALIEK** (produkti, mārketings, e-pasts, checkout).
+   ~~Sanity = TIKAI CMS (blogs/saturs).~~ → **Atcelts 2026-07-28: Sanity izņemts, blogs = Markdown repo.**
 
 ⛔ **Produkts #1 bloķēts:** nav source failu — atgūt no vecās platformas. Tāpēc darām nebloķētos uzdevumus.
 

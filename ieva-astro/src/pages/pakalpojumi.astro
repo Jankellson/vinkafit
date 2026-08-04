@@ -3,10 +3,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 
 const services = [
-  { href: '/pakalpojumi/sakuma-konsultacija', label: 'Sākuma konsultācija', price: '49 €', text: 'Izrunājam tavu situāciju un nosakām nākamo soli.', image: '/assets/images/ieva-konsultacija-kafejnica.webp', alt: 'Ieva Jēkabsone sarunā konsultācijas laikā' },
-  { href: '/pakalpojumi/30-dienu-uztura-programma', label: '30 dienu programma', price: '249 €', text: 'Konkrēts starts ar ēdienkartēm, konsultācijām un skaidru ritmu.', image: '/assets/images/ieva-krasaine-virtuve.webp', alt: 'Ieva Jēkabsone virtuvē ar svaigiem produktiem' },
-  { href: '/pakalpojumi/90-dienu-uztura-programma', label: '90 dienu programma', price: '549 €', text: 'Trīs mēneši, lai izveidotu sistēmu, ko vari turpināt pati.', image: '/assets/images/ieva-gramatuve.webp', alt: 'Ieva Jēkabsone plāno uztura programmu' },
-  { href: '/pakalpojumi/vip-uztura-atbalsts', label: 'VIP uztura atbalsts', price: '1500 € / 6 mēneši', text: 'Prioritāra pieejamība un praktisks atbalsts reālās dzīves situācijās.', image: '/assets/images/ieva-consultant-portrait.webp', alt: 'Ieva Jēkabsone VIP uztura atbalstam' },
+  {
+    href: '/pakalpojumi/sakuma-konsultacija',
+    label: 'Sākuma konsultācija',
+    price: '49 €',
+    amount: '49',
+    text: 'Viena saruna: pārrunājam tavu situāciju, atbildu uz jautājumiem un pasaku, kāds ir tavs nākamais solis. Programma pēc tam nav obligāta.',
+    image: '/assets/images/ieva-jekabsone-uztura-pieraksti-kafejnica.webp',
+    alt: 'Ieva Jēkabsone kafejnīcā raksta uztura piezīmes blociņā — sākuma konsultācija, kurā pārrunājam tavu situāciju un nākamo soli',
+  },
+  {
+    href: '/pakalpojumi/30-dienu-uztura-programma',
+    label: '30 dienu programma',
+    price: '249 €',
+    amount: '249',
+    text: 'Pirmais mēnesis ar konkrētu plānu: trīs konsultācijas, 30 dienu ēdienkartes ar receptēm un iepirkumu saraksti katrai nedēļai.',
+    image: '/assets/images/ieva-iepirkumu-saraksts-darzeni-virtuve.webp',
+    alt: 'Ieva Jēkabsone virtuvē pieraksta nedēļas iepirkumu sarakstu blakus svaigiem dārzeņiem — 30 dienu uztura programma ar ēdienkartēm un iepirkumu sarakstiem',
+  },
+  {
+    href: '/pakalpojumi/90-dienu-uztura-programma',
+    label: '90 dienu programma',
+    price: '549 €',
+    amount: '549',
+    text: 'Trīs mēneši, kur katrs nākamais posms tiek pielāgots tavam progresam. Rezultāts — uztura kārtība, ko vari turpināt pats.',
+    image: '/assets/images/ieva-teja-un-gramata-kresla.webp',
+    alt: 'Ieva Jēkabsone lasa krēslā ar tējas krūzi un ogu bļodiņu — 90 dienu programma, kurā uztura sistēma tiek veidota pakāpeniski trīs mēnešos',
+  },
+  {
+    href: '/pakalpojumi/vip-uztura-atbalsts',
+    label: 'VIP uztura atbalsts',
+    price: '1500 € / 6 mēneši',
+    amount: '1500',
+    text: 'Seši mēneši ar prioritāru atbildi tajā pašā darba dienā un divām plāna korekcijām mēnesī. Trīs vietas gadā.',
+    image: '/assets/images/ieva-vasaras-pikniks-darza.webp',
+    alt: 'Ieva Jēkabsone vasaras piknikā dārzā — VIP uztura atbalstā arī svētki, ceļojumi un ģimenes maltītes kļūst par sarunas daļu',
+  },
 ];
 
 const jsonLd = {
@@ -15,24 +47,29 @@ const jsonLd = {
     '@type': 'Service',
     provider: { '@id': 'https://ievajekabsone.lv/#ieva' },
     name: service.label,
-    offers: { '@type': 'Offer', priceCurrency: 'EUR', url: `https://ievajekabsone.lv${service.href}` },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'EUR',
+      price: service.amount,
+      url: `https://ievajekabsone.lv${service.href}`,
+    },
     description: service.text,
   })),
 };
 ---
 
-<BaseLayout title="Uztura pakalpojumi — Ieva Jēkabsone" description="Sākuma uztura konsultācija, 30 vai 90 dienu programma un VIP uztura atbalsts. Izvēlies sadarbības dziļumu, kas der tavai situācijai." canonical="https://ievajekabsone.lv/pakalpojumi" jsonLd={jsonLd} activeNav="pakalpojumi">
+<BaseLayout title="Uztura pakalpojumi — Ieva Jēkabsone" description="Sākuma uztura konsultācija 49 €, 30 dienu programma 249 €, 90 dienu programma 549 € un VIP uztura atbalsts. Izvēlies to, kas der tavai situācijai." canonical="https://ievajekabsone.lv/pakalpojumi" jsonLd={jsonLd} activeNav="pakalpojumi">
   <Breadcrumbs items={[{ label: 'Sākums', href: '/' }, { label: 'Pakalpojumi' }]} />
 
   <section class="offer-hero">
     <div class="wrap offer-hero-grid">
       <div>
         <p class="offer-kicker">Pakalpojumi</p>
-        <h1>Nevis vēl viena diēta. <em>Plāns, kas iederas tavā ikdienā.</em></h1>
-        <p class="lede">Sākam ar tavu situāciju, mērķiem un paradumiem. Tad izvēlamies sadarbības dziļumu, kas palīdz ieviest pārmaiņas reālajā dzīvē.</p>
+        <h1>Uztura programmas <em>un cenas.</em></h1>
+        <p class="lede">Sākam ar tavu situāciju, mērķiem un paradumiem. Tad izvēlamies programmu, kas atbilst tavam mērķim.</p>
         <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-primary">Pieteikt sākuma konsultāciju — 49 € <span class="arrow">→</span></a>
       </div>
-      <figure class="offer-hero-photo"><img src="/assets/images/ieva-relaxed.webp" alt="Ieva Jēkabsone sarunā ar klienti" /></figure>
+      <figure class="offer-hero-photo"><img src="/assets/images/ieva-relaxed.webp" alt="Ieva Jēkabsone, ITEC sertificēta uztura konsultante — individuālas uztura programmas tiešsaistē latviešu un krievu valodā" loading="eager" /></figure>
     </div>
   </section>
 
@@ -40,12 +77,12 @@ const jsonLd = {
     <div class="wrap">
       <div class="offer-index-intro">
         <p class="offer-kicker">Izvēlies savu nākamo soli</p>
-        <h2>Viena skaidra ieeja. <em>Četri sadarbības līmeņi.</em></h2>
+        <h2>Viena ieeja. <em>Četri piedāvājumi.</em></h2>
       </div>
       <div class="offer-index-list">
         {services.map((service, index) => (
           <article class="offer-index-item">
-            <img src={service.image} alt={service.alt} loading="lazy" />
+            <img src={service.image} alt={service.alt} width="164" height="122" loading="lazy" />
             <div class="offer-index-copy">
               <span>{String(index + 1).padStart(2, '0')}</span>
               <h3><a href={service.href}>{service.label}</a></h3>
@@ -61,9 +98,14 @@ const jsonLd = {
   <section class="offer-note-section">
     <div class="wrap offer-note">
       <p class="offer-kicker">Kā izvēlēties</p>
-      <h2>Ja neesi droša, ar ko sākt, <em>sāc ar konsultāciju.</em></h2>
-      <p>49 € konsultācija dod laiku izrunāt mērķus, paradumus, dzīvesveidu un pašsajūtu. Ja 24 stundu laikā izvēlies programmu, šo summu ieskaitu tās cenā.</p>
+      <h2>Ja nezini, ar ko sākt, <em>sāc ar konsultāciju.</em></h2>
+      <p>49 € konsultācijā izrunājam tavus mērķus, paradumus, dzīvesveidu un pašsajūtu. Ja 24 stundu laikā izvēlies programmu, šo summu ieskaitu tās cenā.</p>
       <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-ghost">Uzzināt par sākuma konsultāciju <span class="arrow">→</span></a>
+
+      <p class="offer-disclaimer">
+        Programmās asinsanalīžu rādītājus apskatām tikai uztura un dzīvesveida kontekstā.
+        Diagnozes noteikšana, ārstēšana un medikamentu nozīmēšana pakalpojumos neietilpst.
+      </p>
     </div>
   </section>
 </BaseLayout>

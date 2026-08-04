@@ -11,15 +11,13 @@ const year = new Date().getFullYear();
           <span class="logo-mark">Ieva Jēkabsone</span>
           <span class="logo-sub">Uztura konsultante</span>
         </a>
-        <p class="footer-tag">Sava ķermeņa lietošanas instrukcija.</p>
-
-        <div class="footer-newsletter">
-          <label for="nl-email">Pievienojies newsletter</label>
-          <form id="footerNewsletterForm">
-            <input id="nl-email" type="email" placeholder="tavs@e-pasts.lv" required />
-            <button type="submit">Pievienoties</button>
-          </form>
-        </div>
+        <p class="footer-intro">
+          Individuāli uztura plāni tiešsaistē visā Latvijā un klātienē Rīgā.
+          Latviešu un krievu valodā.
+        </p>
+        <a href="/pakalpojumi/sakuma-konsultacija" class="footer-cta">
+          Pieteikt sākuma konsultāciju · 49 € <span class="arrow">→</span>
+        </a>
       </div>
 
       <div class="footer-col">
@@ -58,23 +56,9 @@ const year = new Date().getFullYear();
     <div class="footer-bottom">
       <span>© {year} Ieva Jēkabsone · ievajekabsone.lv</span>
       <div class="lang">
-        <a href="/" class="active">LV</a>
-        <a href="#">RU</a>
-        <span style="opacity:.4">|</span>
         <a href="/privatums">Privātums</a>
         <a href="/noteikumi">Noteikumi</a>
       </div>
     </div>
   </div>
 </footer>
-
-<script>
-  const form = document.getElementById('footerNewsletterForm') as HTMLFormElement | null;
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = form.querySelector('button');
-      if (btn) btn.textContent = 'Paldies →';
-    });
-  }
-</script>

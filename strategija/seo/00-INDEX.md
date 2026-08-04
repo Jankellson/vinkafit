@@ -15,6 +15,7 @@
 | [05-Tehniskais.md](05-Tehniskais.md) | Tehniskā SEO + schema checklist + statuss | Setup / audits |
 | [06-OffPage-Local-AEO.md](06-OffPage-Local-AEO.md) | Off-page/saites, lokālā SEO (GBP/NAP), AEO/GEO (AI redzamība) | Setup / autoritāte |
 | [07-Prioritates.md](07-Prioritates.md) | Pārskatītās prioritātes, ceļvedis (roadmap), prognoze, KPI | Plānošana |
+| [AUDIT-BRIEF.md](AUDIT-BRIEF.md) | Izpildāms brīfs on-page auditam (jaunai sesijai) | Pirms palaišanas / pēc lielām izmaiņām |
 
 ## Metode dzīvo skilos (NE šeit — atkārtoti lietojama)
 
@@ -35,6 +36,6 @@
 - Konkurenti (+ digitālo produktu audits) → [../1-Konkurenti.md](../1-Konkurenti.md)
 - Ievas balss/nostājas → `../../klients/IEVA-POZICIJA.md`
 - Tehniskie kods-noteikumi (image-SEO, YMYL, ABC šablons) → `../../ieva-astro/CLAUDE.md`
-- Vecā monolītā versija (arhīvs) → `../5-SEO-Strategija_OLD-2026-06-10.md`
+- Metode (atkārtoti lietojama, LV+RU) → `~/ai-projects/Brand-Marketing-Skills/skili/Skill-05-SEO-Strategija.md`
 
 > Marķieri visos failos: 🟢 CORE | 🟡 ADVANCED | 🔴 NEMĒRĶĒ/sarkanā līnija | 🥇/🥈 prioritāte.

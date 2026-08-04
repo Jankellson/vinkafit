@@ -1,5 +1,5 @@
 ---
-title: "5 uztura kļūdas, ko sievietes 30–50 pieļauj (un kā tās labot)"
+title: "5 uztura kļūdas (un kā tās labot)"
 description: "Kāpēc svars atgriežas pat pie 'pareizas' ēšanas? Ievas Jēkabsones perspektīva par 5 biežākajām kļūdām sievietēm 30–50 gadu vecumā."
 pubDate: 2026-05-01
 category: "Uzturs · Sievietēm 30–50"

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Lapa nav atrasta | Ieva Jēkabsone"
+  description="Šo lapu neizdevās atrast — tā ir dzēsta vai adresē ir kļūda. Ej uz sākumlapu vai meklē atbildi Uztura ABC sadaļā."
+  noindex={true}
+>
+
+  <section class="thanks-page">
+    <div class="wrap">
+      <div class="thanks-icon">404</div>
+      <h1>Šādas lapas <em>te nav.</em></h1>
+      <p>Vai nu adresē ir kļūda, vai lapa ir pārcelta citur. Nekas briesmīgs — zemāk ir ceļš tālāk.</p>
+      <p style="font-style:italic; color:var(--ink-soft); margin-top:24px;">
+        Ja meklēji ko konkrētu par uzturu, sāc ar Uztura ABC — tur ir 55 raksti, sakārtoti pa tēmām.
+      </p>
+
+      <div class="thanks-next">
+        <a href="/uztura-abc">→ Uztura ABC — zināšanu bāze</a>
+        <a href="/pakalpojumi">→ Pakalpojumi un cenas</a>
+        <a href="/kontakti">→ Sazināties ar Ievu</a>
+        <a href="/">← Atpakaļ uz sākumlapu</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

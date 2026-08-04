@@ -368,26 +368,31 @@ h2.section-title em{ color: var(--burgundy); font-style: italic; }
 /* ════════════════════════════════════════════════════════════
    TRUST STRIP
    ════════════════════════════════════════════════════════════ */
-.trust-strip{ background: var(--plum); color: var(--cream); padding: 28px 0; }
+.trust-strip{ background: var(--plum); color: var(--cream); padding: 40px 0; }
 .trust-strip-inner{
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-  gap: 24px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
+  display: flex; flex-wrap: wrap; align-items: stretch; justify-content: space-between;
+  gap: 28px;
 }
-.trust-item{ display: flex; align-items: center; gap: 12px; }
-.trust-item .num{
+.trust-item{ display: flex; flex-direction: column; gap: 8px; flex: 1 1 180px; }
+.trust-big{
   font-family: var(--serif); font-style: italic;
-  font-size: 22px; color: var(--gold);
-  letter-spacing: -.02em; text-transform: none;
+  font-size: clamp(30px, 3.2vw, 42px); line-height: 1;
+  color: var(--gold);
+  letter-spacing: -.02em;
 }
-.trust-sep{ width: 1px; height: 24px; background: rgba(235,192,126,.35); }
+.trust-cap{
+  font-family: var(--mono);
+  font-size: 11px; line-height: 1.5;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,248,242,.78);
+  max-width: 22ch;
+}
+.trust-sep{ width: 1px; align-self: stretch; background: rgba(235,192,126,.3); flex: 0 0 1px; }
 @media (max-width: 760px){
   .trust-sep{ display: none; }
-  .trust-strip-inner{ justify-content: flex-start; }
-  .trust-item{ flex: 0 0 calc(50% - 12px); }
+  .trust-strip-inner{ gap: 24px 20px; }
+  .trust-item{ flex: 0 0 calc(50% - 10px); }
+  .trust-big{ font-size: 26px; }
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -401,9 +406,34 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
    STAKES
    ════════════════════════════════════════════════════════════ */
 .stakes{ background: var(--ivory); position: relative; }
+/* 3 kolonnas: teksts · foto pilnā augstumā · saraksts. Foto stiepjas visas sekcijas garumā,
+   tāpēc kreisajā pusē nepaliek tukša vieta zem īsā teksta. */
 .stakes-grid{
-  display: grid; grid-template-columns: 1fr 1fr;
+  display: grid; grid-template-columns: 1fr 300px 1.15fr;
   gap: clamp(28px, 4vw, 56px); align-items: start;
+}
+.stakes-photo{
+  margin: 0; position: relative;
+  align-self: stretch;
+  overflow: hidden;
+  background: var(--cream-deep);
+}
+.stakes-photo::after{
+  content: ""; position: absolute; inset: 12px;
+  border: 1px solid var(--gold);
+  pointer-events: none; z-index: 2;
+}
+/* Absolūti — lai attēla dabiskais augstums nenosaka rindas augstumu;
+   figūra izstiepjas līdz garākajai kolonnai, foto to aizpilda. */
+.stakes-photo img{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 40%;
+}
+@media (max-width: 1100px){
+  .stakes-grid{ grid-template-columns: 1fr 1fr; }
+  .stakes-photo{ grid-column: 1; grid-row: 2; aspect-ratio: 4/5; align-self: start; }
+  .stakes-list{ grid-column: 2; grid-row: 1 / span 2; }
 }
 .stakes-left h2{ margin-bottom: 24px; }
 .stakes-left .lede{ margin-bottom: 0; }
@@ -421,7 +451,11 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
 .stake-body p{ margin: 0; color: var(--ink); font-size: 17px; }
 .stake-body p strong{ color: var(--plum); font-weight: 600; }
 
-@media (max-width: 800px){ .stakes-grid{ grid-template-columns: 1fr; } }
+@media (max-width: 800px){
+  .stakes-grid{ grid-template-columns: 1fr; }
+  .stakes-photo{ grid-column: 1; grid-row: auto; aspect-ratio: 16/10; }
+  .stakes-list{ grid-column: 1; grid-row: auto; }
+}
 
 /* ════════════════════════════════════════════════════════════
    VALUE GRID
@@ -485,9 +519,19 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
   color: var(--ink-soft);
 }
 .guide-credentials ul{ list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-.guide-credentials li{ display: flex; gap: 12px; align-items: center; }
+.guide-credentials li{ display: flex; gap: 12px; align-items: flex-start; line-height: 1.5; }
+.guide-note{
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 13px; line-height: 1.6;
+  letter-spacing: 0;
+  color: var(--ink-soft);
+  font-style: italic;
+}
 .guide-credentials .tick{
-  width: 14px; height: 14px;
+  width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px;
   border: 1px solid var(--burgundy);
   color: var(--burgundy);
   display: inline-flex; align-items: center; justify-content: center;
@@ -514,18 +558,23 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
 .plan-step{
   padding: 40px 32px;
   border-left: 1px solid rgba(235,192,126,.25);
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
 }
-.plan-step:first-child{ border-left: 0; padding-left: 0; }
+.plan-step:first-child{ border-left: 0; }
 .plan-step .num{
   font-family: var(--serif); font-style: italic;
   font-size: 14px; color: var(--gold);
   letter-spacing: .2em; text-transform: uppercase;
-  display: inline-flex; align-items: center; gap: 10px;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
-.plan-step .num::before{ content: ""; width: 28px; height: 1px; background: var(--gold); }
+.plan-step .bicon-disc{
+  --bi-disc: 92px;
+  margin-bottom: 22px;
+  background: var(--cream); border-color: rgba(235,192,126,.45);
+}
 .plan-step h3{ color: var(--cream); font-style: italic; font-size: 28px; margin-bottom: 16px; line-height: 1.15; }
-.plan-step p{ color: rgba(255,248,242,.7); font-size: 15px; margin: 0; line-height: 1.6; }
+.plan-step p{ color: rgba(255,248,242,.7); font-size: 15px; margin: 0; line-height: 1.6; max-width: 34ch; }
 .plan-cta{ display: flex; justify-content: center; margin-top: 64px; }
 .plan .btn-primary{ background: var(--gold); color: var(--plum); border-color: var(--gold); }
 .plan .btn-primary:hover{ background: var(--cream); border-color: var(--cream); }
@@ -617,47 +666,145 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
 .service-card .btn{ margin-top: 8px; align-self: flex-start; }
 
 @media (max-width: 980px){ .services-grid{ grid-template-columns: 1fr; } }
-
-/* ════════════════════════════════════════════════════════════
-   TESTIMONIALS
-   ════════════════════════════════════════════════════════════ */
-.testimonials{ background: var(--cream); }
-.test-grid{
-  display: grid; grid-template-columns: 1.1fr 1fr;
-  gap: clamp(40px, 6vw, 80px); align-items: stretch;
-}
-.test-image{ aspect-ratio: 4/5; }
-.test-stack{ display: flex; flex-direction: column; justify-content: center; }
-.test-card{
-  padding: 0 0 28px;
-  margin-bottom: 28px;
-  border-bottom: 1px solid var(--rule);
-}
-.test-card:last-child{ border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
-.test-card blockquote{
-  margin: 0 0 18px;
-  font-family: var(--serif); font-style: italic;
-  font-size: clamp(18px, 1.5vw, 22px);
-  line-height: 1.45;
-  color: var(--plum);
+/* VIP josla zem trim kartēm — ceturtais piedāvājums, citā formā, lai neaizēno pamata izvēli */
+.vip-banner{
+  display: grid; grid-template-columns: 1fr auto;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  margin-top: clamp(24px, 3vw, 40px);
+  padding: clamp(28px, 3vw, 40px) clamp(28px, 3.5vw, 48px) clamp(28px, 3vw, 40px) 166px;
   position: relative;
-  padding-left: 20px;
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--gold);
+  text-decoration: none;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
-.test-card blockquote::before{
-  content: "\201C";
-  position: absolute; left: -2px; top: -10px;
-  font-family: var(--serif);
-  font-size: 56px;
-  color: var(--gold);
-  line-height: 1;
-}
-.test-meta{
+.vip-banner:hover{ transform: translateY(-3px); box-shadow: 0 18px 44px rgba(58,20,36,.12); border-color: var(--gold-soft); border-left-color: var(--gold); }
+.vip-banner-label{
+  display: block;
   font-family: var(--mono); font-size: 11px;
   letter-spacing: .2em; text-transform: uppercase;
   color: var(--burgundy);
-  display: flex; gap: 14px; align-items: center;
+  margin-bottom: 12px;
 }
-.test-meta::before{ content: ""; width: 24px; height: 1px; background: var(--burgundy); }
+.vip-banner h3{
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(24px, 2.4vw, 32px); line-height: 1.15;
+  color: var(--plum);
+  margin-bottom: 10px;
+}
+.vip-banner-slots{
+  font-family: var(--sans); font-style: normal; font-weight: 500;
+  font-size: 14px; letter-spacing: 0;
+  color: var(--burgundy);
+  white-space: nowrap;
+}
+.vip-banner-points{
+  list-style: none; padding: 0; margin: 4px 0 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 28px;
+  max-width: 62ch;
+}
+.vip-banner-points li{
+  display: flex; gap: 10px;
+  font-size: 14px; line-height: 1.5;
+  color: var(--ink-soft);
+}
+.vip-banner-points li::before{ content: "—"; color: var(--gold-soft); flex-shrink: 0; }
+.vip-banner-points .vip-banner-wide{ grid-column: 1 / -1; }
+.vip-banner-wide strong{
+  display: block;
+  font-weight: 500;
+  color: var(--plum);
+  margin-bottom: 2px;
+}
+@media (max-width: 720px){ .vip-banner-points{ grid-template-columns: 1fr; } }
+/* Foto ir šaura vertikāla josla pie kreisās malas — neaizņem teksta kolonnu. */
+.vip-banner-photo{
+  margin: 0; overflow: hidden;
+  position: absolute; inset: 0 auto 0 0;
+  width: 118px;
+  background: var(--ivory);
+}
+.vip-banner-photo img{
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .7s cubic-bezier(.2,.7,.3,1);
+}
+.vip-banner:hover .vip-banner-photo img{ transform: scale(1.05); }
+@media (max-width: 720px){
+  .vip-banner-photo{ position: static; width: 100%; aspect-ratio: 16/9; }
+}
+@media (prefers-reduced-motion: reduce){
+  .vip-banner-photo img{ transition: none; }
+  .vip-banner:hover .vip-banner-photo img{ transform: none; }
+}
+.vip-banner-side{ display: flex; flex-direction: column; align-items: flex-end; gap: 4px; text-align: right; }
+.vip-banner-price{ font-family: var(--serif); font-style: italic; font-size: clamp(34px, 3.4vw, 46px); line-height: 1; color: var(--burgundy); }
+.vip-banner-term{ font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.vip-banner-link{
+  margin-top: 14px;
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--burgundy);
+  border-bottom: 1px solid var(--gold-soft);
+  padding-bottom: 3px;
+  white-space: nowrap;
+}
+.vip-banner:hover .vip-banner-link{ border-bottom-color: var(--burgundy); }
+@media (max-width: 720px){
+  .vip-banner{ grid-template-columns: 1fr; gap: 22px; padding-left: clamp(28px, 3.5vw, 48px); }
+  .vip-banner-side{ align-items: flex-start; text-align: left; grid-column: auto; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   KNOWLEDGE (bezmaksas saturs — Uztura ABC + blogs)
+   ════════════════════════════════════════════════════════════ */
+.knowledge{ background: var(--cream); }
+.know-grid{
+  display: grid; grid-template-columns: 1fr;
+  gap: clamp(18px, 2vw, 26px);
+}
+.know-card{
+  display: grid; grid-template-columns: minmax(0, 260px) 1fr;
+  background: #fff;
+  border: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.know-card:hover{ transform: translateY(-4px); box-shadow: 0 18px 40px rgba(58,20,36,.10); }
+.know-img{ aspect-ratio: 3/4; height: 100%; }
+.know-body{
+  padding: clamp(24px, 2.4vw, 36px);
+  display: flex; flex-direction: column; justify-content: center; gap: 12px;
+}
+.know-label{
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--burgundy);
+}
+.know-body h3{
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(22px, 2vw, 28px); line-height: 1.15;
+  color: var(--plum);
+}
+.know-body p{ font-size: 15px; line-height: 1.6; color: var(--ink); }
+.know-link{
+  margin-top: 6px;
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--burgundy);
+  border-bottom: 1px solid var(--gold-soft);
+  align-self: flex-start;
+  padding-bottom: 3px;
+}
+.know-card:hover .know-link{ border-bottom-color: var(--burgundy); }
+@media (max-width: 620px){
+  .know-card{ grid-template-columns: 1fr; }
+  .know-img{ aspect-ratio: 4/3; }
+}
 
 @media (max-width: 900px){
   .test-grid{ grid-template-columns: 1fr; }
@@ -695,9 +842,16 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
 }
 .leadmag-form-inner{ position: relative; z-index: 2; padding: 8px; }
 .leadmag-cover{
+  display: flex; align-items: center; gap: 14px;
   font-family: var(--mono); font-size: 10px;
   letter-spacing: .2em; color: var(--burgundy);
-  text-transform: uppercase; margin-bottom: 16px;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.leadmag-cover img{
+  width: 54px; height: 72px; flex-shrink: 0;
+  object-fit: cover; object-position: center 40%;
+  border: 1px solid var(--rule-gold);
+  box-shadow: 4px 4px 0 var(--cream-deep);
 }
 .leadmag-form h3{ font-style: italic; font-size: 26px; line-height: 1.15; color: var(--plum); margin-bottom: 8px; }
 .leadmag-form p.note{ font-size: 13px; color: var(--ink-soft); margin: 0 0 24px; }
@@ -822,41 +976,31 @@ footer{
   font-size: 14px;
 }
 .footer-grid{
-  display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 40px; padding-bottom: 56px;
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px clamp(32px, 4vw, 64px);
+  padding-bottom: 56px;
   border-bottom: 1px solid rgba(235,192,126,.2);
 }
+.footer-brand{ display: flex; flex-direction: column; align-items: flex-start; }
 .footer-brand .logo-mark{ color: var(--gold); font-size: 28px; }
 .footer-brand .logo-sub{ color: rgba(255,248,242,.5); margin-top: 6px; }
-.footer-tag{
-  font-family: var(--serif); font-style: italic;
-  color: var(--cream); font-size: 18px;
-  margin: 20px 0 24px; line-height: 1.3; max-width: 24ch;
+.footer-intro{
+  margin: 20px 0 24px;
+  font-size: 14px; line-height: 1.65;
+  color: rgba(255,248,242,.62);
+  max-width: 34ch;
 }
-.footer-newsletter input{
-  width: 100%; max-width: 320px;
-  padding: 14px 16px;
-  background: transparent;
-  border: 1px solid rgba(255,248,242,.25);
-  color: var(--cream); font-size: 14px;
+.footer-cta{
+  margin-top: auto;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  border: 1px solid rgba(235,192,126,.4);
+  padding: 12px 18px;
+  transition: background .25s ease, color .25s ease;
 }
-.footer-newsletter input:focus{ outline: 0; border-color: var(--gold); }
-.footer-newsletter form{ display: flex; gap: 8px; flex-wrap: wrap; max-width: 360px; }
-.footer-newsletter button{
-  padding: 14px 18px;
-  background: var(--gold); color: var(--plum);
-  border: 1px solid var(--gold);
-  font-family: var(--sans);
-  font-size: 12px; letter-spacing: .15em;
-  text-transform: uppercase; font-weight: 500;
-}
-.footer-newsletter button:hover{ background: var(--cream); border-color: var(--cream); }
-.footer-newsletter label{
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: .2em; text-transform: uppercase;
-  color: var(--gold); display: block; margin-bottom: 10px;
-}
-
+.footer-cta:hover{ background: var(--gold); color: var(--plum); border-color: var(--gold); }
 .footer-col h4{
   color: var(--gold);
   font-family: var(--mono); font-style: normal;
@@ -874,8 +1018,7 @@ footer{
   font-size: 11px; letter-spacing: .12em;
   color: rgba(255,248,242,.55);
 }
-.footer-bottom .lang{ display: flex; gap: 14px; }
-.footer-bottom .lang a.active{ color: var(--gold); }
+.footer-bottom .lang{ display: flex; gap: 20px; }
 
 @media (max-width: 900px){
   .footer-grid{ grid-template-columns: 1fr 1fr; }
@@ -931,11 +1074,7 @@ footer{
   padding: 32px 0 0;
   border-top: 1px solid var(--gold-soft);
 }
-.principle .num{
-  font-family: var(--serif); font-style: italic;
-  font-size: 48px; color: var(--burgundy);
-  line-height: 1; margin-bottom: 16px;
-}
+.principle .bicon{ --bi: 66px; margin-bottom: 22px; }
 .principle h3{ font-style: italic; font-size: 24px; line-height: 1.2; margin-bottom: 12px; }
 .principle p{ font-size: 15px; color: var(--ink-soft); margin: 0; line-height: 1.6; }
 @media (max-width: 800px){ .principles-grid{ grid-template-columns: 1fr; } }
@@ -1284,6 +1423,16 @@ footer{
 
 /* ─── EMPATHY LIST ─── */
 .about-empathy { padding: 80px 0; background: var(--ivory); }
+.empathy-top {
+  display: grid; grid-template-columns: 1fr 320px;
+  gap: clamp(32px, 5vw, 72px); align-items: center;
+}
+.empathy-top .section-head { max-width: 62ch; }
+@media (max-width: 900px) {
+  .empathy-top { grid-template-columns: 1fr; }
+  .empathy-top .side-photo { max-width: 380px; }
+}
+
 .empathy-list {
   list-style: none; padding: 0; margin: 56px 0 0;
   display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
@@ -1319,26 +1468,29 @@ footer{
 }
 .method-list li {
   display: grid;
-  grid-template-columns: 90px 1fr;
+  grid-template-columns: 140px 1fr;
   gap: 32px;
   padding: 36px 0;
   border-bottom: 1px solid rgba(132, 24, 62, 0.12);
   align-items: start;
 }
 .method-list li:last-child { border-bottom: none; }
+/* Ikona ir galvenā, numurs tikai orientieris — tāpēc numurs krietni mazāks. */
 .method-list .num {
-  font-family: var(--serif);
-  font-size: 48px;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--burgundy);
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: var(--gold-soft);
   line-height: 1;
 }
+.method-list .num .bicon { --bi: 64px; }
 .method-list h3 { font-family: var(--serif); font-size: 24px; margin: 0 0 10px; color: var(--ink); }
 .method-list p { margin: 0; line-height: 1.65; color: var(--ink-soft); font-size: 16px; }
 @media (max-width: 768px) {
-  .method-list li { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
-  .method-list .num { font-size: 36px; }
+  .method-list li { grid-template-columns: 1fr; gap: 14px; padding: 28px 0; }
+  .method-list .num .bicon { --bi: 52px; }
 }
 
 /* ─── NOT-FOR SECTION ─── */
@@ -1374,8 +1526,14 @@ footer{
 .credentials { padding: 96px 0; background: var(--cream); }
 .cert-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px; margin-top: 56px;
+}
+@media (max-width: 900px) { .cert-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
+@media (max-width: 560px) { .cert-grid { grid-template-columns: 1fr; } }
+.cert-extra {
+  margin: 28px 0 0; max-width: 68ch;
+  font-size: 15px; line-height: 1.65; color: var(--ink-soft);
 }
 .cert-card {
   margin: 0; background: var(--ivory);
@@ -1384,8 +1542,17 @@ footer{
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .cert-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(60, 18, 32, 0.12); }
-.cert-card img { width: 100%; height: 200px; object-fit: cover; display: block; background: var(--cream); }
-.cert-card figcaption { padding: 18px 20px; display: grid; gap: 4px; }
+/* `contain`, ne `cover` — dokumentu nedrīkst apgriezt, citādi tas vairs nav pierādījums. */
+/* `contain`, ne `cover` — dokumentu nedrīkst apgriezt, citādi tas vairs nav pierādījums.
+   `height: auto` ir OBLIGĀTS: bez tā `<img height="...">` atribūts pārraksta `aspect-ratio`
+   un A4 skenējums izstiepj karti 1700 px garumā. */
+.cert-card img {
+  width: 100%; height: auto; aspect-ratio: 4/3;
+  object-fit: contain; display: block;
+  background: #fff; padding: 12px;
+  border-bottom: 1px solid rgba(132, 24, 62, 0.1);
+}
+.cert-card figcaption { padding: 18px 20px; display: grid; gap: 5px; }
 .cert-card figcaption strong { font-family: var(--serif); font-size: 17px; color: var(--ink); font-weight: 500; }
 .cert-card figcaption span { font-size: 13px; color: var(--ink-soft); line-height: 1.4; }
 .cert-note {
@@ -1580,18 +1747,6 @@ footer{
 /* ─── COMPACT HERO VARIANT ─── */
 .page-hero--compact { padding-bottom: 28px; }
 
-/* ─── HERO STATS ─── */
-.abc-stats {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 18px;
-  flex-wrap: wrap;
-}
-.abc-stat { font-size: 14px; color: var(--ink-soft); }
-.abc-stat strong { color: var(--ink); font-weight: 700; }
-.abc-stat-sep { color: var(--gold); font-weight: 700; line-height: 1; }
-
 /* ════════════════════════════════════════════════
    ABC INDEX — full-width strip layout
    ════════════════════════════════════════════════ */
@@ -1633,17 +1788,17 @@ footer{
 }
 
 .abc-cat-icon {
-  width: 52px;
-  height: 52px;
+  width: 74px;
+  height: 74px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(132, 24, 62, 0.09);
+  background: #fff;
+  border: 1px solid var(--rule-gold);
   border-radius: 50%;
-  color: var(--burgundy);
   margin-bottom: 20px;
 }
-.abc-cat-icon svg { width: 24px; height: 24px; }
+.abc-cat-icon img { width: 70%; height: 70%; object-fit: contain; display: block; }
 
 .abc-cat-title {
   font-family: var(--serif);
@@ -1978,21 +2133,22 @@ footer{
 }
 
 .value-icon{
-  width: 58px; height: 58px;
+  width: 72px; height: 72px;
   border-radius: 50%;
   border: 1px solid var(--rule-gold);
-  background: var(--ivory);
+  background: #fff;
   display: inline-flex; align-items: center; justify-content: center;
-  color: var(--burgundy);
   flex-shrink: 0;
-  transition: background .35s, border-color .35s, color .35s, transform .35s;
+  transition: background .35s, border-color .35s, transform .35s;
 }
-.value-icon svg{ width: 27px; height: 27px; display: block; }
+.value-icon img{ width: 70%; height: 70%; object-fit: contain; display: block; }
 .value-card:hover .value-icon{
-  background: var(--burgundy);
-  border-color: var(--burgundy);
-  color: var(--gold);
+  background: var(--ivory);
+  border-color: var(--gold);
   transform: translateY(-3px);
+}
+@media (prefers-reduced-motion: reduce){
+  .value-card:hover .value-icon{ transform: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -2024,6 +2180,14 @@ footer{
 .offer-note { max-width: 780px; }
 .offer-note h2 { margin-bottom: 20px; }
 .offer-note p { max-width: 64ch; margin-bottom: 28px; }
+.offer-note .offer-disclaimer {
+  margin: 36px 0 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(132, 24, 62, .18);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.6;
+}
 .price-panel { padding: 32px; background: var(--plum); color: var(--cream); border-radius: 14px; box-shadow: 0 20px 44px rgba(60,18,32,.16); }
 .price-panel span { display: block; font-family: var(--mono); color: var(--gold); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
 .price-panel strong { display: block; font-family: var(--serif); font-size: 56px; line-height: 1; font-weight: 500; margin: 18px 0; }
@@ -2078,7 +2242,8 @@ footer{
 .sales-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid rgba(132,24,62,.2); }
 .sales-steps article { padding: 26px 32px 0 0; min-height: 210px; }
 .sales-steps article + article { padding-left: 32px; border-left: 1px solid rgba(132,24,62,.2); }
-.sales-steps span { display: block; min-height: 22px; color: var(--gold); font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+.sales-steps span { display: block; min-height: 22px; color: var(--gold-soft); font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+.sales-steps .bicon { --bi: 58px; margin-bottom: 18px; }
 .sales-steps h3 { font-family: var(--serif); color: var(--plum); font-size: 28px; font-weight: 500; line-height: 1.15; margin: 22px 0 12px; }
 .sales-steps p { margin: 0; color: var(--ink-soft); line-height: 1.7; }
 .sales-fit { padding: 100px 0; background: var(--ivory); }
@@ -2104,3 +2269,156 @@ footer{
 @media (max-width: 850px) { .offer-hero-grid, .service-hero-grid, .service-two-col, .service-provision { grid-template-columns: 1fr; gap: 38px; } .offer-hero-photo { justify-self: start; max-width: 360px; } .service-photo--hero { max-width: 520px; } .programme-grid, .vip-detail-grid { grid-template-columns: 1fr; } }
 @media (max-width: 850px) { .sales-situation-grid, .sales-fit-grid { grid-template-columns: 1fr; gap: 34px; } .sales-steps { grid-template-columns: 1fr; } .sales-steps article { min-height: auto; padding: 25px 0; } .sales-steps article + article { padding-left: 0; border-left: 0; border-top: 1px solid rgba(132,24,62,.16); } .sales-price-inner { display: block; } .sales-price .btn { margin-top: 30px; } }
 @media (max-width: 620px) { .offer-hero, .service-hero, .vip-hero { padding: 28px 0 62px; } .offer-index, .service-content, .programmes { padding: 64px 0; } .offer-index-item { grid-template-columns: 84px 1fr; gap: 16px; } .offer-index-item > img { width: 84px; height: 84px; } .offer-index-copy h3 { font-size: 22px; } .offer-index-action { grid-column: 2; align-items: flex-start; } .programme { padding: 30px 22px; } .service-callout, .vip-details, .offer-note-section { padding: 62px 0; } }
+
+/* ════════════════════════════════════════════════════════════
+   ZĪMOLA IKONAS UN FOTO BLOKI
+   Ievas ikonas (burgundija + zelts, caurspīdīgs fons) un
+   fotogrāfiju izkārtojumi, kas pārtrauc teksta blāķus.
+   ════════════════════════════════════════════════════════════ */
+
+/* Kaila zīmola ikona. Izmēru maina caur --bi. */
+.bicon{
+  width: var(--bi, 56px); height: var(--bi, 56px);
+  object-fit: contain; flex-shrink: 0; display: block;
+}
+
+/* Ikona uz apaļa krēma diska — uz tumša fona vai kā akcents. */
+.bicon-disc{
+  width: var(--bi-disc, 78px); height: var(--bi-disc, 78px);
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1px solid var(--rule-gold);
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.bicon-disc img{ width: 64%; height: 64%; object-fit: contain; display: block; }
+
+/* Asimetriska sānu fotogrāfija teksta sekcijās. */
+.side-photo{
+  position: relative;
+  margin: clamp(28px, 3.5vw, 44px) 0 0;   /* <figure> noklusētās sānu malas nost */
+  aspect-ratio: var(--ar, 4/5);
+  overflow: hidden;
+  background: var(--ivory);
+}
+.side-photo::after{
+  content: ""; position: absolute; inset: 12px;
+  border: 1px solid var(--gold);
+  pointer-events: none; z-index: 2;
+}
+.side-photo img{
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: var(--obj, center 30%);
+  transition: transform .7s cubic-bezier(.2,.7,.3,1);
+}
+.side-photo:hover img{ transform: scale(1.04); }
+
+/* Mazāks otrais attēls, kas pārklāj galvenā stūri. */
+.photo-stack{
+  position: absolute; z-index: 3;
+  margin: 0;
+  left: -38px; bottom: -38px;
+  width: clamp(104px, 11vw, 140px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 6px solid var(--cream);
+  box-shadow: 0 14px 34px rgba(60,18,32,.16);
+}
+.photo-stack img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 640px){
+  .photo-stack{ left: -8px; bottom: -14px; width: 100px; border-width: 4px; }
+}
+
+/* Pilna platuma fotojosla — pārtrauc "bilde pa kreisi / teksts pa labi" ritmu. */
+/* ── LAPU HERO AR ATTĒLU (par-mani, uztura-abc) ──────────────
+   Kopīga sistēma iekšējām lapām: teksts + fakti pa kreisi, vizuālis pa labi. */
+.phero{
+  padding: clamp(40px, 5vw, 72px) 0 clamp(48px, 6vw, 84px);
+  background: var(--cream);
+  position: relative; overflow: hidden;
+}
+.phero-grid{
+  display: grid; grid-template-columns: 1.15fr .85fr;
+  gap: clamp(36px, 5vw, 72px); align-items: center;
+}
+.phero h1{
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(34px, 4.6vw, 60px); line-height: 1.05;
+  letter-spacing: -.015em; margin: 18px 0 0;
+}
+.phero h1 em{ color: var(--burgundy); font-style: italic; }
+.phero .lede{ margin-top: 22px; }
+
+/* Fakti = trīs vienādas kartes, ne tabula. Skaitlis liels, paraksts parastā
+   sans, ne mono-uppercase — ar garumzīmēm tas 10 px izmērā nav lasāms. */
+.phero-facts{
+  list-style: none; margin: clamp(28px, 3.5vw, 44px) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.6vw, 22px);
+}
+.phero-facts li{
+  padding: 22px 20px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--gold-soft);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.phero-facts strong{
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(30px, 3vw, 40px); line-height: 1; color: var(--burgundy);
+}
+.phero-facts span{
+  font-size: 13.5px; line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+/* Izgriezums uz silta paneļa — kā .frame.cutout, bet ar zelta maliņu un parakstu. */
+.phero-photo{
+  margin: 0; position: relative;
+  aspect-ratio: 4/5;
+  background: linear-gradient(168deg, var(--ivory) 0%, var(--cream-deep) 100%);
+  overflow: hidden;
+}
+.phero-photo::before{
+  content: ""; position: absolute; inset: 14px;
+  border: 1px solid var(--gold);
+  pointer-events: none; z-index: 2;
+}
+.phero-photo img{
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: var(--obj, center 22%);
+}
+/* Izgriezumam (caurspīdīgs fons, daudz tukšuma sānos) — cover, lai figūra aizpilda paneli. */
+.phero-photo--cutout img{ object-fit: cover; object-position: center top; }
+.phero-photo figcaption{
+  position: absolute; z-index: 3; left: 0; bottom: 0;
+  padding: 14px 22px 16px;
+  background: var(--cream);
+  font-family: var(--mono); font-size: 10.5px;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft);
+  display: flex; align-items: baseline; gap: 12px;
+}
+.phero-photo figcaption .script{ font-size: 30px; text-transform: none; letter-spacing: 0; }
+
+@media (max-width: 900px){
+  .phero-grid{ grid-template-columns: 1fr; }
+  .phero-photo{ max-width: 380px; order: -1; }
+  .phero-facts{ grid-template-columns: 1fr; gap: 12px; }
+  .phero-facts li{ padding: 16px 18px; flex-direction: row; align-items: baseline; gap: 14px; }
+  .phero-facts strong{ font-size: 28px; flex: 0 0 auto; min-width: 56px; }
+}
+
+/* Bloga lapas hero ar attēlu blakus. */
+.blog-hero-grid{
+  display: grid; grid-template-columns: 1fr 300px;
+  gap: clamp(32px, 5vw, 72px); align-items: center;
+}
+@media (max-width: 900px){
+  .blog-hero-grid{ grid-template-columns: 1fr; }
+  .blog-hero-grid .side-photo{ max-width: 340px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .side-photo img{ transition: none; }
+  .side-photo:hover img{ transform: none; }
+}
