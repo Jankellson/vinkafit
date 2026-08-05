@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import SEOHead from '../components/SEOHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -72,6 +73,8 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
         })(window, document, "clarity", "script", CLARITY_ID);
       </script>
     )}
+
+    <ClientRouter />
   </head>
   <body>
     {!noNav && !minimalNav && <Header activeNav={activeNav} />}
@@ -89,5 +92,24 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
       <slot />
     </main>
     {!noFooter && <Footer />}
+
+    <script>
+      function initReveal() {
+        if (!('IntersectionObserver' in window)) return;
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('main section, .article-body > *').forEach((el) => {
+          el.classList.add('reveal');
+          io.observe(el);
+        });
+      }
+      document.addEventListener('astro:page-load', initReveal);
+    </script>
   </body>
 </html>

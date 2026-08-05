@@ -11,7 +11,7 @@ const jsonLd = {
       "jobTitle": "Uztura konsultante",
       "description": "ITEC sertificēta uztura konsultante Latvijā. Individuāla, zinātnē balstīta pieeja uzturam: pielāgošana, nevis aizliegumi. Palīdz saprast arī asinsanalīžu un uztura saistību.",
       "url": "https://ievajekabsone.lv/",
-      "email": "info@ievajekabsone.lv",
+      "email": "ieva.vinka@gmail.com",
       "sameAs": [
         "https://www.instagram.com/ieva.jekabsone/",
         "https://www.facebook.com/profile.php?id=100089137514285",
@@ -26,7 +26,7 @@ const jsonLd = {
       "name": "Ieva Jēkabsone — Uztura konsultācijas",
       "description": "Individuālas uztura konsultācijas un plāni tiešsaistē latviešu un krievu valodā. ITEC sertificēta uztura konsultante Latvijā.",
       "url": "https://ievajekabsone.lv/",
-      "email": "info@ievajekabsone.lv",
+      "email": "ieva.vinka@gmail.com",
       "founder": { "@id": "https://ievajekabsone.lv/#ieva" },
       "areaServed": ["Rīga", "Latvija"],
       "priceRange": "49 €–1500 €",
@@ -701,46 +701,33 @@ const jsonLd = {
 </BaseLayout>
 
 <script>
-  // FAQ accordion
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const q = item.querySelector('.faq-q');
-    if (!q) return;
-    q.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(o => o.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-      q.setAttribute('aria-expanded', String(!isOpen));
-    });
-  });
-  // Open first FAQ by default
-  faqItems[0]?.classList.add('open');
-  const firstQ = faqItems[0]?.querySelector('.faq-q');
-  if (firstQ) firstQ.setAttribute('aria-expanded', 'true');
-
-  // Scroll reveal
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
+  function initIndexPage() {
+    // FAQ accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const q = item.querySelector('.faq-q');
+      if (!q) return;
+      q.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(o => o.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+        q.setAttribute('aria-expanded', String(!isOpen));
       });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('section').forEach(s => {
-      s.classList.add('reveal');
-      io.observe(s);
     });
-  }
+    // Open first FAQ by default
+    faqItems[0]?.classList.add('open');
+    const firstQ = faqItems[0]?.querySelector('.faq-q');
+    if (firstQ) firstQ.setAttribute('aria-expanded', 'true');
 
-  // Lead magnet form
-  const lmForm = document.getElementById('leadmagForm') as HTMLFormElement | null;
-  if (lmForm) {
-    lmForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = lmForm.querySelector('button');
-      if (btn) btn.textContent = 'Paldies — pārbaudi e-pastu →';
-    });
+    // Lead magnet form
+    const lmForm = document.getElementById('leadmagForm') as HTMLFormElement | null;
+    if (lmForm) {
+      lmForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = lmForm.querySelector('button');
+        if (btn) btn.textContent = 'Paldies — pārbaudi e-pastu →';
+      });
+    }
   }
+  document.addEventListener('astro:page-load', initIndexPage);
 </script>

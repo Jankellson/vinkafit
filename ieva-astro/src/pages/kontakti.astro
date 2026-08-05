@@ -10,7 +10,7 @@ const jsonLd = {
     "@type": "Person",
     "@id": "https://ievajekabsone.lv/#ieva",
     "name": "Ieva Jēkabsone",
-    "email": "info@ievajekabsone.lv",
+    "email": "ieva.vinka@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Rīga",
@@ -49,7 +49,7 @@ const faqs = [
 
 <BaseLayout
   title="Kontakti — Ieva Jēkabsone, uztura konsultante"
-  description="Piesakies uztura konsultācijai. Sazināšos 24 stundu laikā. E-pasts: info@ievajekabsone.lv."
+  description="Piesakies uztura konsultācijai. Sazināšos 24 stundu laikā. E-pasts: ieva.vinka@gmail.com."
   canonical="https://ievajekabsone.lv/kontakti"
   jsonLd={jsonLd}
   activeNav="kontakti"
@@ -75,23 +75,10 @@ const faqs = [
       <div class="contact-info">
         <div class="eyebrow" style="margin-bottom:16px;">Tieši pa taisno</div>
 
-        <!-- Social icons — prominent, top position -->
-        <div class="social-icons-row">
-          <a href="https://www.instagram.com/ieva.jekabsone/" target="_blank" rel="noopener" class="social-btn social-btn--instagram" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="white" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="white" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2" fill="white"/></svg>
-          </a>
-          <a href="https://www.facebook.com/profile.php?id=100089137514285" target="_blank" rel="noopener" class="social-btn social-btn--facebook" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="https://www.tiktok.com/@ieva.jekabsone" target="_blank" rel="noopener" class="social-btn social-btn--tiktok" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/></svg>
-          </a>
-        </div>
-
         <ul class="contact-details">
           <li>
             <span class="label">E-pasts</span>
-            <span class="value"><a href="mailto:info@ievajekabsone.lv">info@ievajekabsone.lv</a></span>
+            <span class="value"><a href="mailto:ieva.vinka@gmail.com">ieva.vinka@gmail.com</a></span>
           </li>
           <li>
             <span class="label">Atrašanās</span>
@@ -106,6 +93,19 @@ const faqs = [
             <span class="value">24 h darbdienās</span>
           </li>
         </ul>
+
+        <!-- Social icons — below the details, so exit links never sit above the form -->
+        <div class="social-icons-row" id="socialRow">
+          <a href="https://www.instagram.com/ieva.jekabsone/" target="_blank" rel="noopener" class="social-btn social-btn--instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="white" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" fill="none" stroke="white" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2" fill="white"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100089137514285" target="_blank" rel="noopener" class="social-btn social-btn--facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@ieva.jekabsone" target="_blank" rel="noopener" class="social-btn social-btn--tiktok" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.85 4.85 0 0 1-1.01-.09z"/></svg>
+          </a>
+        </div>
 
         <blockquote class="contact-quote">
           <p>"Es atsakos no nemotivētiem klientiem. Bet, ja tu raksti — es tev atbildu. Vienmēr."</p>
@@ -122,8 +122,11 @@ const faqs = [
       </div>
 
       <!-- RIGHT: form -->
-      <form class="contact-form" id="contactForm" novalidate>
+      <form class="contact-form" id="contactForm">
         <div class="contact-form-inner">
+          <!-- Aizpilda skripts, kad adresē ir ?paka= — citādi paliek tukšs. -->
+          <aside class="applying-for" id="applyingFor" hidden></aside>
+
           <h2>Sazinies ar mani</h2>
           <p class="note">Aizpildi formu — sazināšos 24 stundu laikā.</p>
 
@@ -212,7 +215,7 @@ const faqs = [
       </div>
 
       <p class="faq-footer">
-        Neatradi atbildi? <a href="mailto:info@ievajekabsone.lv">Uzraksti tieši →</a>
+        Neatradi atbildi? <a href="mailto:ieva.vinka@gmail.com">Uzraksti tieši →</a>
       </p>
     </div>
   </section>
@@ -220,6 +223,7 @@ const faqs = [
 </BaseLayout>
 
 <script>
+function initContactPage() {
   // Auto-check hidden consent fields when primary consent is checked
   const primary = document.getElementById('c-consent-rules') as HTMLInputElement | null;
   const hidden1 = document.getElementById('c-consent-age') as HTMLInputElement | null;
@@ -234,27 +238,181 @@ const faqs = [
     });
   }
 
-  // Form success state
+  // ── Pieteikuma nosūtīšana ──────────────────────────────────────────────
+  // Kad būs īsts e-pasta serviss (Formspree / Google Business + API), ieliec te
+  // tā adresi — pārējais kods nav jāmaina. Tukšs = atveram apmeklētāja pasta
+  // programmu ar sagatavotu vēstuli.
+  const FORM_ENDPOINT = '';
+  const KONTAKTA_EPASTS = 'ieva.vinka@gmail.com';
+
   const form = document.getElementById('contactForm') as HTMLFormElement | null;
   if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    const btnLabel = submitBtn ? submitBtn.innerHTML : '';
+
+    const setStatus = (text: string, kind: 'error' | 'info') => {
+      let box = document.getElementById('formStatus');
+      if (!box) {
+        box = document.createElement('p');
+        box.id = 'formStatus';
+        box.setAttribute('role', 'status');
+        box.setAttribute('aria-live', 'polite');
+        submitBtn?.insertAdjacentElement('afterend', box);
+      }
+      box.className = kind === 'error' ? 'form-status form-status--error' : 'form-status';
+      box.textContent = text;
+    };
+
+    // Apstiprināta saņemšana — tikai tad, kad serveris tiešām atbildēja.
+    const showSent = () => {
       const h2 = form.querySelector('h2');
       const note = form.querySelector('p.note');
       const fields = document.getElementById('contactFields');
       if (h2) h2.textContent = 'Paldies!';
-      if (note) note.textContent = 'Saņēmu tavu ziņu. Atbildēšu 24 stundu laikā uz norādīto e-pastu.';
+      if (note) {
+        note.setAttribute('aria-live', 'polite');
+        note.textContent = 'Saņēmu tavu ziņu. Atbildēšu 24 stundu laikā uz norādīto e-pastu.';
+      }
       if (fields) (fields as HTMLElement).style.display = 'none';
+    };
+
+    // Pasta programmas ceļš. Pārlūks nepasaka, vai tā atvērās, tāpēc neapgalvojam,
+    // ka ziņa aizgāja, un NEKAD nedzēšam cilvēka uzrakstīto tekstu.
+    const showHandoff = (vestule: string, mailtoUrl: string) => {
+      const h2 = form.querySelector('h2');
+      const note = form.querySelector('p.note');
+      if (h2) h2.textContent = 'Vēl viens solis';
+      if (note) {
+        note.setAttribute('aria-live', 'polite');
+        note.textContent =
+          'Sagatavoju vēstuli tavā pasta programmā — tā vēl jānosūta. Ja tā neatvērās, nokopē tekstu un atsūti to pats.';
+      }
+
+      const fields = document.getElementById('contactFields');
+      if (fields) {
+        fields.querySelectorAll('input, textarea, select, button').forEach((el) => {
+          (el as HTMLInputElement).disabled = true;
+        });
+      }
+
+      if (document.getElementById('handoffBox')) return;
+      const box = document.createElement('div');
+      box.id = 'handoffBox';
+      box.className = 'handoff';
+      const ta = document.createElement('textarea');
+      ta.readOnly = true;
+      ta.rows = 7;
+      ta.value = `Kam: ${KONTAKTA_EPASTS}\n\n${vestule}`;
+      const kopet = document.createElement('button');
+      kopet.type = 'button';
+      kopet.className = 'btn btn-ghost';
+      kopet.textContent = 'Kopēt tekstu';
+      kopet.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(ta.value);
+          kopet.textContent = 'Nokopēts';
+        } catch {
+          ta.select();
+          kopet.textContent = 'Iezīmēts — spied Ctrl+C';
+        }
+      });
+      const saite = document.createElement('a');
+      saite.className = 'handoff-link';
+      saite.href = mailtoUrl;
+      saite.textContent = 'Atvērt pasta programmu vēlreiz';
+      box.append(ta, kopet, saite);
+      form.querySelector('.contact-form-inner')?.append(box);
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Pārlūka pārbaude — tukšu vai nepareizu lauku vairs nelaižam cauri.
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        setStatus('Lūdzu aizpildi iekrāsotos laukus.', 'error');
+        return;
+      }
+
+      const data = new FormData(form);
+      data.set('paka', new URLSearchParams(window.location.search).get('paka') || '');
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sūta…';
+      }
+
+      try {
+        if (FORM_ENDPOINT) {
+          const res = await fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            body: data,
+            headers: { Accept: 'application/json' },
+          });
+          if (!res.ok) throw new Error(String(res.status));
+          showSent();
+          return;
+        }
+
+        // Rezerves ceļš: sagatavota vēstule apmeklētāja pasta programmā.
+        const lines = [
+          `Vārds: ${data.get('name') || ''}`,
+          `E-pasts: ${data.get('email') || ''}`,
+          `Tālrunis: ${data.get('phone') || '—'}`,
+          `Interesē: ${data.get('service') || '—'}`,
+          '',
+          String(data.get('message') || ''),
+          '',
+          `Jaunumi: ${data.get('consent_newsletter') ? 'jā' : 'nē'}`,
+        ].join('\n');
+        const subject = `Pieteikums no mājaslapas — ${data.get('service') || 'jautājums'}`;
+        const mailtoUrl =
+          `mailto:${KONTAKTA_EPASTS}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines)}`;
+        showHandoff(lines, mailtoUrl);
+        window.location.href = mailtoUrl;
+      } catch {
+        setStatus(
+          `Neizdevās nosūtīt. Uzraksti tieši uz ${KONTAKTA_EPASTS} — atbildēšu tāpat.`,
+          'error',
+        );
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = btnLabel;
+        }
+      }
     });
   }
 
-  // Pre-select service from URL ?paka=
+  // Pre-select service from URL ?paka= un parāda, par ko tieši cilvēks piesakās.
   const params = new URLSearchParams(window.location.search);
   const paka = params.get('paka');
   if (paka) {
     const sel = document.getElementById('c-service') as HTMLSelectElement | null;
     if (sel) sel.value = paka;
+
+    const PIEDAVAJUMI: Record<string, { nosaukums: string; cena: string }> = {
+      'sakuma-konsultacija': { nosaukums: 'Sākuma konsultācija', cena: '49 €' },
+      '30-dienu-programma': { nosaukums: '30 dienu programma', cena: '249 €' },
+      '90-dienu-programma': { nosaukums: '90 dienu programma', cena: '549 €' },
+      'vip-uztura-atbalsts': { nosaukums: 'VIP uztura atbalsts', cena: '1500 € / 6 mēneši' },
+    };
+    const izvele = PIEDAVAJUMI[paka];
+    const panelis = document.getElementById('applyingFor');
+    if (izvele && panelis) {
+      const kredits =
+        paka === 'sakuma-konsultacija'
+          ? 'Ja 24 stundu laikā izvēlies programmu, šo summu ieskaitu tās cenā.'
+          : 'Sākam ar 49 € konsultāciju — ja 24 stundu laikā izvēlies šo, summu ieskaitu tās cenā.';
+      panelis.innerHTML =
+        `<span class="applying-for-label">Piesakies</span>` +
+        `<strong class="applying-for-name">${izvele.nosaukums}</strong>` +
+        `<span class="applying-for-price">${izvele.cena}</span>` +
+        `<p class="applying-for-note">${kredits}</p>`;
+      panelis.hidden = false;
+    }
   }
+}
+document.addEventListener('astro:page-load', initContactPage);
 </script>
 
 <style>
@@ -343,6 +501,30 @@ const faqs = [
 .consent-optional { font-size: 12px; color: var(--ink-soft); }
 .field-optional { font-size: 12px; color: var(--ink-soft); font-weight: 400; }
 .form-privacy { font-size: 12px; color: var(--ink-soft); margin: 14px 0 0; text-align: center; }
+
+/* .applying-for* stili dzīvo globals.css — skripts tos ievieto ar innerHTML,
+   un tādiem mezgliem Astro apjomotais data-astro-cid-* atribūts netiek pievienots. */
+
+/* Mobilajā forma iet pirmā — tā ir tas, pēc kā cilvēks atnāca */
+@media (max-width: 850px) {
+  .contact-grid { display: flex; flex-direction: column; }
+  .contact-form { order: -1; }
+}
+
+/* Nosūtīšanas atgriezeniskā saite (kļūda / statuss) */
+.form-status {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.form-status--error {
+  padding: 10px 12px;
+  border-left: 1px solid var(--burgundy);
+  background: var(--ivory);
+  color: var(--burgundy);
+}
+#contactForm button[type="submit"][disabled] { opacity: .6; cursor: progress; }
 
 /* ════════════ FAQ SECTION ════════════ */
 .contact-faq {

@@ -1,0 +1,4 @@
+# Pirms palaišanas: bloķē indeksēšanu uz ievajekabsone.pages.dev.
+# NOŅEM ŠO FAILU palaišanas dienā, kad pieslēdz ievajekabsone.lv.
+/*
+  X-Robots-Tag: noindex, nofollow

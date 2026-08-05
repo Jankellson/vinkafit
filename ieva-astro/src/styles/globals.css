@@ -12,6 +12,7 @@
   --plum:         #3c1220;
   --gold:         #ebc07e;
   --gold-soft:    #d9a85a;
+  --bronze:       #7d5410; /* tumšākā zelta pakāpe tekstam uz krēma — WCAG AA */
   --ink:          #2a1419;
   --ink-soft:     #5a3a40;
   --rule:         rgba(60,18,32,.14);
@@ -72,7 +73,6 @@ h1, h2, h3, h4{
 
 .display{
   font-family: var(--serif);
-  font-style: italic;
   font-weight: 500;
   font-size: clamp(38px, 5.6vw, 76px);
   line-height: 1.02;
@@ -82,7 +82,6 @@ h1, h2, h3, h4{
 .display em{ font-style: italic; color: var(--burgundy); font-weight: 500; }
 
 h2.section-title{
-  font-style: italic;
   font-size: clamp(30px, 4vw, 50px);
   line-height: 1.08;
 }
@@ -353,7 +352,6 @@ h2.section-title em{ color: var(--burgundy); font-style: italic; }
 .page-hero .eyebrow{ margin-bottom: 16px; }
 .page-hero h1{
   font-family: var(--serif);
-  font-style: italic;
   font-weight: 500;
   font-size: clamp(40px, 5.5vw, 72px);
   line-height: 1.04;
@@ -472,7 +470,7 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
   min-height: 260px;
 }
 .value-num{ font-family: var(--serif); font-style: italic; font-size: 38px; color: var(--gold-soft); line-height: 1; }
-.value-card h3{ font-style: italic; font-size: 22px; line-height: 1.2; }
+.value-card h3{ font-size: 22px; line-height: 1.2; }
 .value-card p{ color: var(--ink-soft); font-size: 15px; margin: auto 0 0; }
 @media (max-width: 980px){ .value-grid{ grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px){ .value-grid{ grid-template-columns: 1fr; } }
@@ -573,7 +571,7 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
   margin-bottom: 22px;
   background: var(--cream); border-color: rgba(235,192,126,.45);
 }
-.plan-step h3{ color: var(--cream); font-style: italic; font-size: 28px; margin-bottom: 16px; line-height: 1.15; }
+.plan-step h3{ color: var(--cream); font-size: 28px; margin-bottom: 16px; line-height: 1.15; }
 .plan-step p{ color: rgba(255,248,242,.7); font-size: 15px; margin: 0; line-height: 1.6; max-width: 34ch; }
 .plan-cta{ display: flex; justify-content: center; margin-top: 64px; }
 .plan .btn-primary{ background: var(--gold); color: var(--plum); border-color: var(--gold); }
@@ -589,7 +587,7 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
    ════════════════════════════════════════════════════════════ */
 .trust-signal{ background: var(--cream); }
 .trust-signal-inner{ max-width: 880px; margin: 0 auto; text-align: center; }
-.trust-signal h2{ font-style: italic; font-size: clamp(34px, 4vw, 56px); margin-bottom: 36px; }
+.trust-signal h2{ font-size: clamp(34px, 4vw, 56px); margin-bottom: 36px; }
 .trust-signal h2 em{ color: var(--burgundy); font-style: italic; }
 .trust-signal-body{
   font-family: var(--serif);
@@ -648,7 +646,7 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
   letter-spacing: .2em; text-transform: uppercase;
   color: var(--burgundy);
 }
-.service-card h3{ font-style: italic; font-size: 30px; line-height: 1.1; }
+.service-card h3{ font-size: 30px; line-height: 1.1; }
 .price{
   font-family: var(--serif); font-size: 28px; font-weight: 500;
   color: var(--plum); letter-spacing: -.02em;
@@ -690,7 +688,7 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
   margin-bottom: 12px;
 }
 .vip-banner h3{
-  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-family: var(--serif); font-weight: 500;
   font-size: clamp(24px, 2.4vw, 32px); line-height: 1.15;
   color: var(--plum);
   margin-bottom: 10px;
@@ -786,7 +784,7 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
   color: var(--burgundy);
 }
 .know-body h3{
-  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-family: var(--serif); font-weight: 500;
   font-size: clamp(22px, 2vw, 28px); line-height: 1.15;
   color: var(--plum);
 }
@@ -825,7 +823,7 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
   display: grid; grid-template-columns: 1.2fr 1fr;
   gap: clamp(40px, 6vw, 80px); align-items: center;
 }
-.leadmag h2{ color: var(--cream); font-style: italic; margin-bottom: 18px; }
+.leadmag h2{ color: var(--cream); margin-bottom: 18px; }
 .leadmag h2 em{ color: var(--gold); font-style: italic; }
 .leadmag .eyebrow{ color: var(--gold); }
 .leadmag .eyebrow::before{ background: var(--gold); }
@@ -853,7 +851,7 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
   border: 1px solid var(--rule-gold);
   box-shadow: 4px 4px 0 var(--cream-deep);
 }
-.leadmag-form h3{ font-style: italic; font-size: 26px; line-height: 1.15; color: var(--plum); margin-bottom: 8px; }
+.leadmag-form h3{ font-size: 26px; line-height: 1.15; color: var(--plum); margin-bottom: 8px; }
 .leadmag-form p.note{ font-size: 13px; color: var(--ink-soft); margin: 0 0 24px; }
 .leadmag-form .field{ display: block; margin-bottom: 14px; }
 .leadmag-form label{
@@ -954,7 +952,7 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
 .final .script{ color: var(--gold); font-size: 64px; display: block; margin-bottom: -8px; }
 .final h2{
   color: var(--cream);
-  font-family: var(--serif); font-style: italic;
+  font-family: var(--serif);
   font-size: clamp(36px, 4.5vw, 58px);
   line-height: 1.08; margin-bottom: 24px;
 }
@@ -1001,7 +999,7 @@ footer{
   transition: background .25s ease, color .25s ease;
 }
 .footer-cta:hover{ background: var(--gold); color: var(--plum); border-color: var(--gold); }
-.footer-col h4{
+.footer-col h2{
   color: var(--gold);
   font-family: var(--mono); font-style: normal;
   font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
@@ -1060,7 +1058,7 @@ footer{
   letter-spacing: .25em; text-transform: uppercase;
   color: var(--burgundy);
 }
-.story-step h3{ font-style: italic; font-size: 26px; line-height: 1.15; }
+.story-step h3{ font-size: 26px; line-height: 1.15; }
 .story-step p{ font-size: 15px; color: var(--ink-soft); margin: 0; }
 @media (max-width: 900px){ .story-grid{ grid-template-columns: 1fr; } }
 @media (max-width: 900px){ .about-intro-grid{ grid-template-columns: 1fr; } }
@@ -1075,7 +1073,7 @@ footer{
   border-top: 1px solid var(--gold-soft);
 }
 .principle .bicon{ --bi: 66px; margin-bottom: 22px; }
-.principle h3{ font-style: italic; font-size: 24px; line-height: 1.2; margin-bottom: 12px; }
+.principle h3{ font-size: 24px; line-height: 1.2; margin-bottom: 12px; }
 .principle p{ font-size: 15px; color: var(--ink-soft); margin: 0; line-height: 1.6; }
 @media (max-width: 800px){ .principles-grid{ grid-template-columns: 1fr; } }
 
@@ -1091,7 +1089,7 @@ footer{
 }
 .svc-detail:nth-child(even) .svc-detail-img{ order: 2; }
 .svc-detail-img{ aspect-ratio: 4/5; }
-.svc-detail h2{ font-style: italic; font-size: clamp(32px, 3.6vw, 48px); margin-bottom: 16px; }
+.svc-detail h2{ font-size: clamp(32px, 3.6vw, 48px); margin-bottom: 16px; }
 .svc-detail h2 em{ color: var(--burgundy); font-style: italic; }
 .svc-detail .meta{
   display: flex; gap: 24px; flex-wrap: wrap;
@@ -1169,7 +1167,7 @@ footer{
   pointer-events: none;
 }
 .contact-form-inner{ position: relative; z-index: 2; padding: 4px; }
-.contact-form h2{ font-style: italic; font-size: 28px; line-height: 1.15; margin-bottom: 8px; color: var(--plum); }
+.contact-form h2{ font-size: 28px; line-height: 1.15; margin-bottom: 8px; color: var(--plum); }
 .contact-form p.note{ font-size: 14px; color: var(--ink-soft); margin: 0 0 24px; }
 .contact-form .field{ display: block; margin-bottom: 14px; }
 .contact-form label{
@@ -1217,7 +1215,7 @@ footer{
   border-bottom: 1px solid var(--rule);
 }
 .article-head h1{
-  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-family: var(--serif); font-weight: 500;
   font-size: clamp(36px, 5vw, 64px);
   line-height: 1.05;
   color: var(--plum);
@@ -1247,7 +1245,7 @@ footer{
 }
 .article-body p{ margin: 0 0 22px; }
 .article-body h2{
-  font-family: var(--serif); font-style: italic;
+  font-family: var(--serif);
   font-size: clamp(28px, 3vw, 40px);
   line-height: 1.15;
   margin: 56px 0 24px;
@@ -1255,10 +1253,11 @@ footer{
 }
 .article-body h2 em{ color: var(--burgundy); font-style: italic; }
 .article-body h3{
-  font-family: var(--serif); font-style: italic;
+  font-family: var(--serif);
   font-size: 24px; line-height: 1.2;
   margin: 40px 0 16px; color: var(--plum);
 }
+.article-body h3 em{ color: var(--burgundy); font-style: italic; }
 .article-body ul, .article-body ol{ padding-left: 0; list-style: none; margin: 0 0 22px; }
 .article-body ul li, .article-body ol li{
   padding: 10px 0 10px 28px;
@@ -1317,7 +1316,7 @@ footer{
   letter-spacing: .25em; text-transform: uppercase;
   color: var(--burgundy);
 }
-.ieva-note-head h4{ font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--plum); margin: 4px 0 0; }
+.ieva-note-head h4{ font-family: var(--serif); font-size: 18px; color: var(--plum); margin: 4px 0 0; }
 .ieva-note p{
   font-family: var(--serif); font-style: italic;
   font-size: 17px; line-height: 1.55;
@@ -1358,10 +1357,11 @@ footer{
 }
 .article-cta-inner{ position: relative; z-index: 2; }
 .article-cta h3{
-  color: var(--cream); font-style: italic;
+  color: var(--cream);
   font-size: clamp(24px, 2.6vw, 32px); line-height: 1.15;
   margin-bottom: 12px;
 }
+.article-cta h3 em{ color: var(--gold); font-style: italic; }
 .article-cta p{ color: rgba(255,248,242,.85); margin: 0 0 24px; font-size: 16px; }
 .article-cta .btn-primary{ background: var(--gold); color: var(--plum); border-color: var(--gold); }
 .article-cta .btn-primary:hover{ background: var(--cream); border-color: var(--cream); }
@@ -1407,7 +1407,7 @@ footer{
   letter-spacing: .25em; text-transform: uppercase;
   color: var(--burgundy);
 }
-.post-card h3{ font-style: italic; font-size: 22px; line-height: 1.15; }
+.post-card h3{ font-size: 22px; line-height: 1.15; }
 .post-card p{ color: var(--ink-soft); font-size: 14px; margin: 0; }
 .post-card .read{
   font-family: var(--mono); font-size: 11px;
@@ -1982,7 +1982,6 @@ footer{
 /* ─── HERO PĀRSTRĀDE ─── */
 .hero-h1 {
   font-family: var(--serif);
-  font-style: italic;
   font-weight: 500;
   font-size: clamp(44px, 6vw, 78px);
   line-height: 1.02;
@@ -2169,13 +2168,130 @@ footer{
 .offer-index-list { border-top: 1px solid rgba(132, 24, 62, .18); }
 .offer-index-item { display: grid; grid-template-columns: 164px 1fr 210px; gap: 32px; align-items: center; padding: 24px 0; border-bottom: 1px solid rgba(132, 24, 62, .18); }
 .offer-index-item > img { width: 164px; height: 122px; object-fit: cover; border-radius: 10px; }
-.offer-index-copy span { font-family: var(--mono); color: var(--gold); font-size: 12px; }
+.offer-index-copy span { font-family: var(--mono); color: var(--bronze); font-size: 12px; }
 .offer-index-copy h3 { font-family: var(--serif); font-size: 28px; font-weight: 500; margin: 5px 0 8px; color: var(--plum); }
 .offer-index-copy h3 a { color: inherit; text-decoration: none; }
+/* Visa rinda ir klikšķa mērķis — mazā "Skatīt piedāvājumu" saite bija 143×23 px. */
+.offer-index-item { position: relative; }
+.offer-index-copy h3 a::after { content: ""; position: absolute; inset: 0; }
+.offer-index-item:hover .offer-index-copy h3 a { color: var(--burgundy); }
+.offer-index-copy h3 a:focus-visible { outline: 2px solid var(--burgundy); outline-offset: 4px; }
+/* Ieteicamais sākums — fons un nozīmīte, nevis krāsaina maliņa. */
+.offer-index-item--start { background: var(--cream-deep); }
+.offer-index-item--start > img { margin-left: 18px; }
+.offer-index-item--start .offer-index-action { padding-right: 18px; }
+/* Specifiskāks par `.offer-index-copy p`, citādi tas pārraksta krāsu uz --ink-soft. */
+.offer-index-copy .offer-index-badge {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: var(--burgundy);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
 .offer-index-copy p, .offer-note p, .service-content p, .vip-details p { color: var(--ink-soft); line-height: 1.7; margin: 0; }
 .offer-index-action { display: flex; align-items: flex-end; flex-direction: column; gap: 14px; }
-.offer-index-action strong { color: var(--plum); font-size: 16px; }
-.offer-index-action a { color: var(--burgundy); text-decoration: none; font-size: 14px; font-weight: 600; }
+.offer-index-action strong { color: var(--plum); font-family: var(--serif); font-size: 22px; font-weight: 500; }
+.offer-index-action a { color: var(--burgundy); text-decoration: none; font-size: 14px; font-weight: 600; padding: 11px 0; }
+/* "Par ko piesakies" — panelis kontaktu formā. Globāls, nevis lapā apjomots:
+   skripts saturu ievieto ar innerHTML, un tie mezgli nesaņem Astro cid atribūtu. */
+.applying-for {
+  margin: 0 0 24px;
+  padding: 18px 20px;
+  background: var(--plum);
+  color: var(--cream);
+  border-radius: 10px;
+}
+.applying-for-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.applying-for-name { display: block; font-family: var(--serif); font-size: 24px; font-weight: 500; margin-top: 6px; }
+.applying-for-price { display: block; font-family: var(--serif); font-size: 32px; margin-top: 2px; }
+.applying-for-note { margin: 10px 0 0; font-size: 13px; line-height: 1.6; color: rgba(252, 251, 247, .82); }
+
+/* Rezerves ceļš, ja pasta programma neatvērās — teksts paliek pieejams. */
+.handoff { margin-top: 20px; }
+.handoff textarea {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--plum);
+  background: var(--cream);
+  border: 1px solid rgba(132, 24, 62, .28);
+  border-radius: 8px;
+  padding: 12px;
+  resize: vertical;
+}
+.handoff .btn { margin-top: 12px; }
+.handoff-link { display: inline-block; margin-top: 12px; margin-left: 14px; font-size: 14px; color: var(--burgundy); }
+
+/* Uzticības josla — pierādījums tur, kur prasa naudu. */
+.trust-wrap { padding-bottom: 8px; }
+.trust-row {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin: 28px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid rgba(132, 24, 62, .18);
+}
+.trust-row li {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+}
+@media (max-width: 620px) {
+  .trust-row { gap: 8px 0; flex-direction: column; }
+}
+
+/* Noslēguma CTA — lapa vairs nebeidzas ar juridisko atrunu. */
+.sales-cta-strip { padding: 72px 0; background: var(--ivory); border-top: 1px solid rgba(132, 24, 62, .18); }
+.sales-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.sales-cta-inner h2 { font-family: var(--serif); font-size: clamp(28px, 3.4vw, 40px); line-height: 1.14; font-weight: 500; color: var(--plum); margin: 0 0 10px; }
+.sales-cta-inner h2 em { color: var(--burgundy); font-style: italic; }
+.sales-cta-inner p { color: var(--ink-soft); line-height: 1.7; margin: 0; max-width: 52ch; }
+
+/* Mobilā noturīgā poga — konversijas ceļš vienmēr sniedzams ar īkšķi. */
+.sales-sticky { display: none; }
+@media (max-width: 620px) {
+  .sales-cta-strip { padding: 54px 0; }
+  .sales-sticky {
+    display: block;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 40;
+    padding: 15px 16px calc(15px + env(safe-area-inset-bottom));
+    background: var(--plum);
+    color: var(--cream);
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+  }
+  /* Atkāpe tikai lapām, kurām tiešām ir noturīgā poga. */
+  body:has(.sales-sticky) { padding-bottom: 64px; }
+}
+@media (max-width: 620px) and (prefers-reduced-motion: no-preference) {
+  .sales-sticky { transition: background-color .2s ease; }
+}
+.sales-sticky:focus-visible { outline: 2px solid var(--gold); outline-offset: -4px; }
+
 .offer-note-section { padding: 82px 0; background: var(--ivory); }
 .offer-note { max-width: 780px; }
 .offer-note h2 { margin-bottom: 20px; }
@@ -2242,7 +2358,8 @@ footer{
 .sales-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid rgba(132,24,62,.2); }
 .sales-steps article { padding: 26px 32px 0 0; min-height: 210px; }
 .sales-steps article + article { padding-left: 32px; border-left: 1px solid rgba(132,24,62,.2); }
-.sales-steps span { display: block; min-height: 22px; color: var(--gold-soft); font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+/* Soļu numuri nes secības nozīmi, tāpēc tiem jāiztur WCAG AA (--gold-soft deva 2.09:1). */
+.sales-steps span { display: block; min-height: 22px; color: var(--bronze); font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
 .sales-steps .bicon { --bi: 58px; margin-bottom: 18px; }
 .sales-steps h3 { font-family: var(--serif); color: var(--plum); font-size: 28px; font-weight: 500; line-height: 1.15; margin: 22px 0 12px; }
 .sales-steps p { margin: 0; color: var(--ink-soft); line-height: 1.7; }
@@ -2268,7 +2385,7 @@ footer{
 .sales-faq-list details p { max-width: 66ch; margin: 0; padding: 0 0 24px; color: var(--ink-soft); line-height: 1.75; }
 @media (max-width: 850px) { .offer-hero-grid, .service-hero-grid, .service-two-col, .service-provision { grid-template-columns: 1fr; gap: 38px; } .offer-hero-photo { justify-self: start; max-width: 360px; } .service-photo--hero { max-width: 520px; } .programme-grid, .vip-detail-grid { grid-template-columns: 1fr; } }
 @media (max-width: 850px) { .sales-situation-grid, .sales-fit-grid { grid-template-columns: 1fr; gap: 34px; } .sales-steps { grid-template-columns: 1fr; } .sales-steps article { min-height: auto; padding: 25px 0; } .sales-steps article + article { padding-left: 0; border-left: 0; border-top: 1px solid rgba(132,24,62,.16); } .sales-price-inner { display: block; } .sales-price .btn { margin-top: 30px; } }
-@media (max-width: 620px) { .offer-hero, .service-hero, .vip-hero { padding: 28px 0 62px; } .offer-index, .service-content, .programmes { padding: 64px 0; } .offer-index-item { grid-template-columns: 84px 1fr; gap: 16px; } .offer-index-item > img { width: 84px; height: 84px; } .offer-index-copy h3 { font-size: 22px; } .offer-index-action { grid-column: 2; align-items: flex-start; } .programme { padding: 30px 22px; } .service-callout, .vip-details, .offer-note-section { padding: 62px 0; } }
+@media (max-width: 620px) { .offer-hero, .service-hero, .vip-hero { padding: 28px 0 62px; } .offer-index, .service-content, .programmes { padding: 64px 0; } .offer-index-item { grid-template-columns: 84px 1fr; gap: 16px; } .offer-index-item > img { width: 84px; height: 84px; } .offer-index-copy h3 { font-size: 22px; } .offer-index-action { grid-column: 2; align-items: flex-start; } .programme { padding: 30px 22px; } .service-callout, .vip-details, .offer-note-section { padding: 62px 0; } .offer-index-item--start > img { margin-left: 0; } .offer-index-item--start { padding-left: 14px; padding-right: 14px; } .offer-index-item--start .offer-index-action { padding-right: 0; } }
 
 /* ════════════════════════════════════════════════════════════
    ZĪMOLA IKONAS UN FOTO BLOKI
@@ -2342,7 +2459,7 @@ footer{
   gap: clamp(36px, 5vw, 72px); align-items: center;
 }
 .phero h1{
-  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-family: var(--serif); font-weight: 500;
   font-size: clamp(34px, 4.6vw, 60px); line-height: 1.05;
   letter-spacing: -.015em; margin: 18px 0 0;
 }

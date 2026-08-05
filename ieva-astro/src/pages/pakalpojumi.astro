@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import TrustRow from '../components/TrustRow.astro';
 
 const services = [
   {
@@ -8,6 +9,7 @@ const services = [
     label: 'Sākuma konsultācija',
     price: '49 €',
     amount: '49',
+    recommended: true,
     text: 'Viena saruna: pārrunājam tavu situāciju, atbildu uz jautājumiem un pasaku, kāds ir tavs nākamais solis. Programma pēc tam nav obligāta.',
     image: '/assets/images/ieva-jekabsone-uztura-pieraksti-kafejnica.webp',
     alt: 'Ieva Jēkabsone kafejnīcā raksta uztura piezīmes blociņā — sākuma konsultācija, kurā pārrunājam tavu situāciju un nākamo soli',
@@ -69,7 +71,16 @@ const jsonLd = {
         <p class="lede">Sākam ar tavu situāciju, mērķiem un paradumiem. Tad izvēlamies programmu, kas atbilst tavam mērķim.</p>
         <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-primary">Pieteikt sākuma konsultāciju — 49 € <span class="arrow">→</span></a>
       </div>
-      <figure class="offer-hero-photo"><img src="/assets/images/ieva-relaxed.webp" alt="Ieva Jēkabsone, ITEC sertificēta uztura konsultante — individuālas uztura programmas tiešsaistē latviešu un krievu valodā" loading="eager" /></figure>
+      <figure class="offer-hero-photo"><img src="/assets/images/ieva-relaxed.webp" alt="Ieva Jēkabsone, ITEC sertificēta uztura konsultante — individuālas uztura programmas tiešsaistē latviešu un krievu valodā" width="1023" height="1537" loading="eager" /></figure>
+    </div>
+  </section>
+
+  <section class="offer-note-section">
+    <div class="wrap offer-note">
+      <p class="offer-kicker">Kā izvēlēties</p>
+      <h2>Ja nezini, ar ko sākt, <em>sāc ar konsultāciju.</em></h2>
+      <p>49 € konsultācijā izrunājam tavus mērķus, paradumus, dzīvesveidu un pašsajūtu. Ja 24 stundu laikā izvēlies programmu, šo summu ieskaitu tās cenā.</p>
+      <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-ghost">Uzzināt par sākuma konsultāciju <span class="arrow">→</span></a>
     </div>
   </section>
 
@@ -81,31 +92,35 @@ const jsonLd = {
       </div>
       <div class="offer-index-list">
         {services.map((service, index) => (
-          <article class="offer-index-item">
+          <article class:list={['offer-index-item', service.recommended && 'offer-index-item--start']}>
             <img src={service.image} alt={service.alt} width="164" height="122" loading="lazy" />
             <div class="offer-index-copy">
               <span>{String(index + 1).padStart(2, '0')}</span>
               <h3><a href={service.href}>{service.label}</a></h3>
+              {service.recommended && <p class="offer-index-badge">Sāc šeit</p>}
               <p>{service.text}</p>
             </div>
             <div class="offer-index-action"><strong>{service.price}</strong><a href={service.href}>Skatīt piedāvājumu <span aria-hidden="true">→</span></a></div>
           </article>
         ))}
       </div>
-    </div>
-  </section>
 
-  <section class="offer-note-section">
-    <div class="wrap offer-note">
-      <p class="offer-kicker">Kā izvēlēties</p>
-      <h2>Ja nezini, ar ko sākt, <em>sāc ar konsultāciju.</em></h2>
-      <p>49 € konsultācijā izrunājam tavus mērķus, paradumus, dzīvesveidu un pašsajūtu. Ja 24 stundu laikā izvēlies programmu, šo summu ieskaitu tās cenā.</p>
-      <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-ghost">Uzzināt par sākuma konsultāciju <span class="arrow">→</span></a>
+      <TrustRow />
 
       <p class="offer-disclaimer">
         Programmās asinsanalīžu rādītājus apskatām tikai uztura un dzīvesveida kontekstā.
         Diagnozes noteikšana, ārstēšana un medikamentu nozīmēšana pakalpojumos neietilpst.
       </p>
+    </div>
+  </section>
+
+  <section class="sales-cta-strip">
+    <div class="wrap sales-cta-inner">
+      <div>
+        <h2>Nezini, kuru izvēlēties? <em>Sāc ar sarunu.</em></h2>
+        <p>49 € konsultācijā izrunājam tavu situāciju. Ja 24 stundu laikā izvēlies programmu, summu ieskaitu tās cenā.</p>
+      </div>
+      <a class="btn btn-primary" href="/kontakti?paka=sakuma-konsultacija">Pieteikt konsultāciju — 49 € <span class="arrow">→</span></a>
     </div>
   </section>
 </BaseLayout>

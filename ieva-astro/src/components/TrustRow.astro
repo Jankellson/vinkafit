@@ -1,0 +1,14 @@
+---
+// Uzticības josla piedāvājumu lapām. Visi fakti jau publicēti sākumlapā
+// (index.astro "guide-credentials") un kontaktu lapā — šeit tie tikai nonāk
+// tur, kur cilvēks izlemj par maksājumu. Neko nepievieno, ko nevar pierādīt.
+const fakti = [
+  'ITEC sertificēta uztura konsultante',
+  'Vairāk nekā 50 klienti individuālajā darbā',
+  'Konsultācijas latviski un krieviski, tiešsaistē',
+];
+---
+
+<ul class="trust-row">
+  {fakti.map((fakts) => <li>{fakts}</li>)}
+</ul>

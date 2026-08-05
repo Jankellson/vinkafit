@@ -205,23 +205,26 @@ const current = breadcrumbs[breadcrumbs.length - 1];
 </style>
 
 <script>
-  // Dinamiskais top — novietojas tieši zem galvenās .nav joslas
-  function setAnavTop() {
-    const siteNav = document.querySelector<HTMLElement>('header.nav, .nav');
-    const anav    = document.getElementById('article-nav');
-    if (!anav) return;
-    const h = siteNav ? siteNav.offsetHeight : 0;
-    anav.style.top = `${h}px`;
-  }
+  function initArticleNav() {
+    // Dinamiskais top — novietojas tieši zem galvenās .nav joslas
+    function setAnavTop() {
+      const siteNav = document.querySelector<HTMLElement>('header.nav, .nav');
+      const anav    = document.getElementById('article-nav');
+      if (!anav) return;
+      const h = siteNav ? siteNav.offsetHeight : 0;
+      anav.style.top = `${h}px`;
+    }
 
-  setAnavTop();
-  window.addEventListener('resize', setAnavTop, { passive: true });
+    setAnavTop();
+    window.addEventListener('resize', setAnavTop, { passive: true });
 
-  // Shadow on scroll
-  const anav = document.getElementById('article-nav');
-  if (anav) {
-    window.addEventListener('scroll', () => {
-      anav.classList.toggle('is-scrolled', window.scrollY > 8);
-    }, { passive: true });
+    // Shadow on scroll
+    const anav = document.getElementById('article-nav');
+    if (anav) {
+      window.addEventListener('scroll', () => {
+        anav.classList.toggle('is-scrolled', window.scrollY > 8);
+      }, { passive: true });
+    }
   }
+  document.addEventListener('astro:page-load', initArticleNav);
 </script>

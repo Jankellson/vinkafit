@@ -80,22 +80,25 @@ const serviceLinks = [
 </header>
 
 <script>
-  const navToggle = document.getElementById('navToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
+  function initHeader() {
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-  if (navToggle && mobileMenu) {
-    navToggle.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-      mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-    });
+    if (navToggle && mobileMenu) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+      });
 
-    mobileMenu.querySelectorAll('a').forEach(a =>
-      a.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        mobileMenu.setAttribute('aria-hidden', 'true');
-      })
-    );
+      mobileMenu.querySelectorAll('a').forEach(a =>
+        a.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+        })
+      );
+    }
   }
+  document.addEventListener('astro:page-load', initHeader);
 </script>

@@ -150,21 +150,3 @@ const jsonLd = [
   </article>
 
 </BaseLayout>
-
-<script>
-  // Scroll reveal for article sections
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.article-body > *').forEach(el => {
-      el.classList.add('reveal');
-      io.observe(el);
-    });
-  }
-</script>

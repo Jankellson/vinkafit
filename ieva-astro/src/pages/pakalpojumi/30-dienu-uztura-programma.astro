@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import TrustRow from '../../components/TrustRow.astro';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -44,5 +45,8 @@ const jsonLd = {
 
   <section class="sales-price"><div class="wrap sales-price-inner"><div><p class="offer-kicker">Cena un nākamais solis</p><h2>30 dienu programma — <em>249 €.</em></h2><p>Vispirms piesakies 49 € sākuma konsultācijai. Ja 24 stundu laikā izvēlies 30 dienu programmu, konsultācijas maksu ieskaitu cenā, un programmas atlikums ir 200 €.</p></div><a class="btn btn-primary" href="/kontakti?paka=30-dienu-programma">Sākt ar konsultāciju <span class="arrow">→</span></a></div></section>
 
+  <div class="wrap trust-wrap"><TrustRow /></div>
   <section class="sales-faq"><div class="wrap"><p class="offer-kicker">Bieži jautājumi</p><h2>Viss svarīgais <em>pirms pieteikšanās.</em></h2><div class="sales-faq-list"><details><summary>Vai programma ir tikai svara samazināšanai?</summary><p>Nē. Tā ir piemērota arī tad, ja gribi sakārtot ēšanas paradumus, ikdienas ritmu vai saprast, kā veidot sev piemērotākas maltītes.</p></details><details><summary>Vai analīzes ir obligātas?</summary><p>Nē. Sākam ar to informāciju, kas tev jau ir. Ja ir iesniegti analīžu rezultāti, tos apskatām uztura un dzīvesveida kontekstā.</p></details><details><summary>Vai 30 dienās viss būs atrisināts?</summary><p>Nē. 30 dienas ir konkrēts starts. Ja tev svarīgi nostiprināt paradumus ilgākā laikā, piemērotāka var būt 90 dienu programma.</p></details></div><p class="service-disclaimer">Asinsanalīžu rezultāti tiek apskatīti tikai uztura un dzīvesveida kontekstā. Pakalpojums neietver diagnozes noteikšanu, ārstēšanu vai medikamentu nozīmēšanu.</p></div></section>
+  <section class="sales-cta-strip"><div class="wrap sales-cta-inner"><div><h2>Sākam ar sarunu, <em>tad ar plānu.</em></h2><p>Vispirms 49 € konsultācija. Ja 24 stundu laikā izvēlies šo programmu, summu ieskaitu tās cenā.</p></div><a class="btn btn-primary" href="/kontakti?paka=30-dienu-programma">Pieteikt konsultāciju — 49 € <span class="arrow">→</span></a></div></section>
+  <a class="sales-sticky" href="/kontakti?paka=30-dienu-programma">Pieteikt konsultāciju — 49 €</a>
 </BaseLayout>

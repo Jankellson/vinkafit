@@ -1080,6 +1080,7 @@ const jsonLd = {
 </style>
 
 <script>
+function initArticlePage() {
   // Dinamisks TOC top — zem .nav + article-nav
   function setTocTop() {
     const anav = document.getElementById('article-nav');
@@ -1125,5 +1126,6 @@ const jsonLd = {
     { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
   );
   headings.forEach(h => observer.observe(h));
-
+}
+document.addEventListener('astro:page-load', initArticlePage);
 </script>
