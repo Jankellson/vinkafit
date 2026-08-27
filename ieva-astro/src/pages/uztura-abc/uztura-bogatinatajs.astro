@@ -24,7 +24,7 @@ const nextArticle = {
 };
 
 const tocItems = [
-  { id: "kad-vajag",        label: "Kad bagātinātāji tiešām vajadzīgi" },
+  { id: "kad-vajag",        label: "Kad uztura bagātinātāji tiešām vajadzīgi" },
   { id: "partika-vispirms", label: "Pārtika vispirms: ko tablete neaizstāj" },
   { id: "biezakie",         label: "Biežākie deficīti un kuri der" },
   { id: "devas-drosiba",    label: "Devas un drošība: kad vairāk kaitē" },
@@ -36,11 +36,11 @@ const tocItems = [
 const faqItems = [
   {
     q: "Vai uztura bagātinātāji jālieto profilaktiski, ja jūtos vesels?",
-    a: "Pārsvarā nē. Ja uzturs ir daudzveidīgs un asinsanalīzes ir kārtībā, vairums bagātinātāju nedod papildu labumu — organisms tik un tā izvada lieko. Izņēmums ir vielas, ko mūsu apstākļos grūti uzņemt pietiekami: ziemā Latvijā D vitamīns ir pamatots gandrīz visiem, jo no oktobra līdz martam āda saulē to praktiski neražo (NIH ODS). Pārējais — pēc vajadzības, ne pēc reklāmas."
+    a: "Pārsvarā nē. Ja uzturs ir daudzveidīgs un asinsanalīzes ir kārtībā, vairums uztura bagātinātāju nedod papildu labumu — organisms tik un tā izvada lieko. Izņēmums ir vielas, ko mūsu apstākļos grūti uzņemt pietiekami: ziemā Latvijā D vitamīns ir pamatots gandrīz visiem, jo no oktobra līdz martam āda saulē to praktiski neražo (NIH ODS). Pārējais — pēc vajadzības, ne pēc reklāmas."
   },
   {
     q: "Vai labāk uzņemt vitamīnus no pārtikas vai no tabletes?",
-    a: "No pārtikas. Vesela pārtika dod ne tikai vienu vielu, bet šķiedru, olbaltumvielas un veselu kompleksu vielu, kas strādā kopā un labāk uzsūcas. Tablete to neatdarina. Bagātinātājs ir paredzēts trūkuma aizpildīšanai, ne kvalitatīva uztura aizstāšanai. Vispirms saliec uzturu, tad skaties, kas tiešām vēl iztrūkst."
+    a: "No pārtikas. Vesela pārtika dod ne tikai vienu vielu, bet šķiedru, olbaltumvielas un veselu kompleksu vielu, kas strādā kopā un labāk uzsūcas. Tablete to neatdarina. Uztura bagātinātājs ir paredzēts trūkuma aizpildīšanai, ne kvalitatīva uztura aizstāšanai. Vispirms saliec uzturu, tad skaties, kas tiešām vēl iztrūkst."
   },
   {
     q: "Cik D vitamīna jālieto ziemā?",
@@ -51,7 +51,7 @@ const faqItems = [
     a: "Tikai pēc tam, kad asinsanalīze (feritīns un hemoglobīns) apstiprina trūkumu. Nogurums var būt no daudz kā — miega, stresa, B12 vai D vitamīna trūkuma. Dzelzs bez vajadzības var kaitēt: tā uzkrājas un lielās devās rada gremošanas traucējumus un oksidatīvo slodzi (NIH ODS). Šī ir tieši tā situācija, kur asinsanalīze pasargā no nevajadzīgas un pat kaitīgas lietošanas."
   },
   {
-    q: "Vai vegāniem obligāti jālieto bagātinātāji?",
+    q: "Vai vegāniem obligāti jālieto uztura bagātinātāji?",
     a: "B12 — jā, tas praktiski nav iegūstams no augu valsts un tā trūkums ir nopietns (NIH ODS). Bieži arī D vitamīns, omega-3 (no aļģēm) un dzelzs ir jāuzrauga. Augu valsts uzturs var būt pilnvērtīgs, bet tieši šos rādītājus vajag regulāri pārbaudīt analīzēs. Vairāk — rakstā par vegāna uzturu."
   },
   {
@@ -137,8 +137,8 @@ const jsonLd = {
         <h1>Uztura bagātinātāji: kad tie vajadzīgi, <em>kādi</em> un kādās devās</h1>
         <p class="ip-lede">
           Veikala plaukts ir pilns ar solījumiem, bet lielākā daļa cilvēku pērk to, kas nav vajadzīgs,
-          un nelieto to, kas tiešām palīdzētu. Šeit ir godīga kārtība: pārtika vispirms, analīze otrā,
-          tablete tikai tad, kad ir reāls iemesls.
+          un nelieto to, kas tiešām palīdzētu. Šeit ir godīga secība: vispirms pārtika, tad analīzes,
+          tablete — tikai tad, kad ir īsts iemesls.
         </p>
       </div>
     </div>
@@ -149,10 +149,10 @@ const jsonLd = {
         <div class="ip-quickans">
           <div class="ip-quickans-label">Īsā atbilde</div>
           <p>
-            Bagātinātājs ir <strong>trūkuma aizpildītājs, ne uztura aizstājējs</strong>. Lielākajai daļai
-            Latvijā ziemā pamatots ir <strong>D vitamīns</strong>; pārējais — <strong>tikai pēc vajadzības</strong>,
-            ko vislabāk parāda asinsanalīze. Vairāk nenozīmē labāk: taukos šķīstošie vitamīni un dzelzs
-            lielās devās <strong>uzkrājas un var kaitēt</strong>.
+            Uztura bagātinātājs ir <strong>trūkuma aizpildītājs, ne uztura aizstājējs</strong>. Lielākajai daļai
+            cilvēku Latvijā ziemā pamatots ir <strong>D vitamīns</strong>; pārējais — <strong>tikai pēc vajadzības</strong>,
+            kuru vislabāk parāda asinsanalīze. Vairāk nenozīmē labāk: lielās devās taukos šķīstošie
+            vitamīni un dzelzs <strong>uzkrājas organismā un var kaitēt</strong>.
           </p>
         </div>
       </div>
@@ -227,11 +227,11 @@ const jsonLd = {
       <div class="ip-tldr">
         <span class="ip-tldr-label">Īsumā</span>
         <p>
-          Uztura bagātinātāji aizpilda trūkumu, ne aizstāj kvalitatīvu uzturu. Veselam cilvēkam ar
+          Uztura bagātinātāji aizpilda trūkumu, nevis aizstāj kvalitatīvu uzturu. Veselam cilvēkam ar
           daudzveidīgu uzturu vairums no tiem nedod papildu labumu. Pamatotākais izņēmums Latvijā ir
           D vitamīns ziemā, jo no oktobra līdz martam āda saulē to praktiski neražo (NIH ODS). Pārējais —
-          B12, dzelzs, omega-3, magnijs — pēc reālas vajadzības, ko vislabāk parāda asinsanalīze. Taukos
-          šķīstošie vitamīni (A, D, E, K) un dzelzs uzkrājas, tāpēc “vairāk” var kaitēt.
+          B12, dzelzs, omega-3, magnijs — pēc īstas vajadzības, kuru vislabāk parāda asinsanalīze. Taukos
+          šķīstošie vitamīni (A, D, E, K) un dzelzs uzkrājas, tāpēc "vairāk" var kaitēt.
         </p>
       </div>
 
@@ -239,7 +239,7 @@ const jsonLd = {
       <aside class="ip-takeaways" aria-label="Galvenās atziņas">
         <h2>💡 Galvenās atziņas</h2>
         <ul>
-          <li>Pārtika vispirms — bagātinātājs aizpilda robu, ko uzturs reāli nesedz.</li>
+          <li>Pārtika vispirms — uztura bagātinātājs aizpilda robu, kuru uzturs nesedz.</li>
           <li>D vitamīns ziemā Latvijā ir pamatots gandrīz visiem (ziemeļu platums, maz saules).</li>
           <li>Dzelzs un B12 lieto pēc asinsanalīzes, ne pēc nogurumam “uz labu laimi”.</li>
           <li>Taukos šķīstošie vitamīni (A, D, E, K) uzkrājas — lielas devas var būt toksiskas.</li>
@@ -250,35 +250,35 @@ const jsonLd = {
       </aside>
 
       <!-- ─── Section 1 ─────────────────────────── -->
-      <h2 id="kad-vajag">Kad bagātinātāji tiešām vajadzīgi</h2>
+      <h2 id="kad-vajag">Kad uztura bagātinātāji tiešām vajadzīgi</h2>
 
       <p class="ip-answer">
         Uztura bagātinātājs ir vajadzīgs tad, kad konkrētu vielu ar ikdienas uzturu nevar uzņemt
         pietiekami — un to apstiprina vai nu skaidri apstākļi (piem., ziema Latvijā D vitamīnam, augu
         valsts uzturs B12), vai asinsanalīze, kas rāda trūkumu. Visos pārējos gadījumos veselam cilvēkam
-        ar daudzveidīgu uzturu lielākā daļa bagātinātāju nedod nekādu papildu labumu.
+        ar daudzveidīgu uzturu lielākā daļa uztura bagātinātāju nedod nekādu papildu labumu.
       </p>
 
       <p>
         Es redzu divas galējības. Vieni nelieto neko un brīnās, kāpēc ziemā nav spēka, lai gan dzīvo
-        valstī, kur pusgadu praktiski nav saules. Otri lieto piecas pudelītes no rīta “profilaksei”, bet
-        lielākā daļa no tā vienkārši aiziet kanalizācijā vai, sliktākajā gadījumā, uzkrājas. Patiesība ir
-        pa vidu un ir vienkārša: bagātinātājs ir <strong>instruments konkrētam trūkumam</strong>, ne
+        valstī, kur pusgadu praktiski nav saules. Otri lieto piecas kapsulas no rīta “profilaksei”, bet
+        lielākā daļa no tām vienkārši aiziet kanalizācijā vai, sliktākajā gadījumā, uzkrājas. Patiesība
+        ir pa vidu, un tā ir vienkārša: uztura bagātinātājs ir <strong>instruments konkrētam trūkumam</strong>, ne
         ikdienas paradums “katram gadījumam”.
       </p>
 
       <p>
-        Tāpēc pirmais jautājums nekad nav “kuru bagātinātāju nopirkt”. Pirmais jautājums ir “kā izskatās
-        mans uzturs un ko tas reāli nesedz”. Lielākā daļa cilvēku, kas saliek uzturu kārtībā, atklāj, ka
+        Tāpēc pirmais jautājums nekad nav “kuru uztura bagātinātāju nopirkt”. Pirmais jautājums ir “kā izskatās
+        mans uzturs un ko tas patiesībā nesedz”. Lielākā daļa cilvēku, kas saliek uzturu kārtībā, atklāj, ka
         vajadzīgs ir daudz mazāk, nekā likās — bieži tikai D vitamīns ziemā un varbūt vēl viena lieta pēc
         analīzes.
       </p>
 
-      <!-- SVG decision flow: uzturs → analīze → bagātinātājs -->
+      <!-- SVG decision flow: uzturs → analīze → uztura bagātinātājs -->
       <figure class="ip-figure">
         <figcaption class="ip-figure-cap">Pareizā kārtība: trīs soļi pirms tabletes</figcaption>
         <svg viewBox="0 0 660 220" role="img" xmlns="http://www.w3.org/2000/svg">
-          <title>Lēmuma kārtība bagātinātājiem: vispirms uzturs, tad asinsanalīze, un tikai tad bagātinātājs pareizā devā</title>
+          <title>Lēmuma kārtība uztura bagātinātājiem: vispirms uzturs, tad asinsanalīze, un tikai tad bagātinātājs pareizā devā</title>
           <!-- Step 1 -->
           <rect x="20" y="64" width="180" height="92" rx="6" fill="#84183e"/>
           <text x="110" y="92" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#fcfbf7" text-anchor="middle">1 · Uzturs</text>
@@ -295,7 +295,7 @@ const jsonLd = {
           <path d="M426 110 L456 110" stroke="#d9a85a" stroke-width="2.5" marker-end="url(#ar)"/>
           <!-- Step 3 -->
           <rect x="460" y="64" width="180" height="92" rx="6" fill="#3c1220"/>
-          <text x="550" y="92" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ebc07e" text-anchor="middle">3 · Bagātinātājs</text>
+          <text x="550" y="92" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ebc07e" text-anchor="middle">3 · Uztura bagātinātājs</text>
           <text x="550" y="116" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,248,242,.85)" text-anchor="middle">Tikai tagad —</text>
           <text x="550" y="132" font-family="system-ui, sans-serif" font-size="11" fill="rgba(255,248,242,.85)" text-anchor="middle">pareizā devā</text>
           <defs>
@@ -304,7 +304,7 @@ const jsonLd = {
             </marker>
           </defs>
         </svg>
-        <p class="ip-figure-note">Bagātinātājs ir trešais solis, ne pirmais. Lielākā daļa cilvēku sāk no labā gala — un pērk lieko.</p>
+        <p class="ip-figure-note">Uztura bagātinātājs ir trešais solis, ne pirmais. Lielākā daļa cilvēku sāk no labā gala — un pērk lieko.</p>
       </figure>
 
       {/* ─── Video Explainer (pēc 1. sekcijas) ── */}
@@ -322,8 +322,8 @@ const jsonLd = {
 
       <p class="ip-answer">
         Vesela pārtika dod ne tikai vienu vielu, bet veselu kompleksu — vitamīnus, minerālvielas, šķiedru
-        un olbaltumvielas, kas strādā kopā un labāk uzsūcas. Tablete to neatdarina. Tāpēc bagātinātājs ir
-        domāts robam, ko uzturs reāli nesedz, ne kvalitatīva uztura aizstāšanai vai sliktas ēšanas labošanai.
+        un olbaltumvielas, kas strādā kopā un labāk uzsūcas. Tablete to neatdarina. Tāpēc uztura bagātinātājs ir
+        domāts robam, kuru uzturs tiešām nesedz, ne kvalitatīva uztura aizstāšanai vai sliktas ēšanas labošanai.
       </p>
 
       <p>
@@ -334,29 +334,29 @@ const jsonLd = {
       </p>
 
       <p>
-        Tas nenozīmē, ka bagātinātāji ir slikti. Tas nozīmē, ka tie ir <strong>otrais solis, ne pirmais</strong>.
+        Tas nenozīmē, ka uztura bagātinātāji ir slikti. Tas nozīmē, ka tie ir <strong>otrais solis, ne pirmais</strong>.
         Ja uzturā trūkst zivju, zaļumu un olbaltumvielu, tad pirmais darbs ir to salabot — un bieži vien tieši
         tas atrisina to “noguruma” problēmu, kuras dēļ cilvēks gāja pirkt vitamīnus. Kā praktiski sabalansēt
-        šķīvi, skaties <a href="/uztura-abc/skivja-metode">šķīvja metodes rakstā</a>.
+        šķīvi, skaties <a href="/uztura-abc/skivja-metode-papildu-olbaltumvielas">šķīvja metodes rakstā</a>.
       </p>
 
       <div class="ip-callout ip-callout--insight">
         <div class="ip-callout-icon">🥗</div>
         <div>
-          Vienkāršs tests: ja apēstu vairāk zivju, olu, zaļumu un riekstu, vai man tas bagātinātājs vēl
+          Vienkāršs tests: ja apēstu vairāk zivju, olu, zaļumu un riekstu, vai man tas uztura bagātinātājs vēl
           būtu vajadzīgs? Bieži atbilde ir “nē”. Daži trūkumi (D vitamīns ziemā, B12 vegāniem) ir izņēmumi —
           tos ar pārtiku vien Latvijas apstākļos grūti aizpildīt.
         </div>
       </div>
 
       <!-- ─── Section 3 ─────────────────────────── -->
-      <h2 id="biezakie">Biežākie deficīti un kuri bagātinātāji der</h2>
+      <h2 id="biezakie">Biežākie deficīti un kuri uztura bagātinātāji der</h2>
 
       <p class="ip-answer">
-        Mūsu apstākļos visbiežāk reāli pietrūkst piecu lietu: D vitamīna (ziemā gandrīz visiem), B12
+        Mūsu apstākļos visbiežāk pietrūkst tieši piecu lietu: D vitamīna (ziemā gandrīz visiem), B12
         (vegāniem un daļai vecāku cilvēku), dzelzs (sievietēm ar stiprām mēnešreizēm), omega-3 (tiem, kas
         neēd treknas zivis) un dažkārt magnija. Pārējais lielākoties ir mārketings. Zemāk — normas un kad
-        bagātinātājs tiešām der.
+        uztura bagātinātājs tiešām der.
       </p>
 
       <div class="ip-table-wrap">
@@ -366,7 +366,7 @@ const jsonLd = {
               <th>Viela</th>
               <th>Kam visbiežāk trūkst</th>
               <th>Dienas norma (pieaugušajam)</th>
-              <th>Kad bagātinātājs der</th>
+              <th>Kad uztura bagātinātājs der</th>
             </tr>
           </thead>
           <tbody>
@@ -407,19 +407,19 @@ const jsonLd = {
       <p>
         Normas balstītas EFSA references vērtībās un NIH Uztura bagātinātāju biroja (ODS) datos. Pievērs
         uzmanību kolonnai “kad der” — tā ir svarīgākā. Pati norma nenozīmē, ka tev tā jāuzņem no tabletes;
-        tā nozīmē, cik vajag kopā, no pārtikas un bagātinātāja kopā.
+        tā nozīmē, cik vajag kopā, no pārtikas un uztura bagātinātāja kopā.
       </p>
 
       <div class="ip-factgrid">
         <div class="ip-factcard">
           <span class="ip-factcard-icon" aria-hidden="true">☀️</span>
           <h3>D vitamīns — ziemas izņēmums</h3>
-          <p>Latvija ir tālu ziemeļos. No oktobra līdz martam saules leņķis ir par zemu, lai āda ražotu D vitamīnu, tāpēc bagātinātājs ziemā ir pamatots gandrīz visiem (NIH ODS). Vasarā bieži pietiek ar sauli un pārtiku.</p>
+          <p>Latvija ir tālu ziemeļos. No oktobra līdz martam saules leņķis ir par zemu, lai āda ražotu D vitamīnu, tāpēc uztura bagātinātājs ziemā ir pamatots gandrīz visiem (NIH ODS). Vasarā bieži pietiek ar sauli un pārtiku.</p>
         </div>
         <div class="ip-factcard">
           <span class="ip-factcard-icon" aria-hidden="true">🌱</span>
           <h3>B12 — vegānu obligātais</h3>
-          <p>B12 praktiski nav augu valstī, un tā trūkums skar nervu sistēmu un asinsainu. Vegāniem tas ir nevis ieteikums, bet nepieciešamība. Vairāk — <a href="/uztura-abc/vegana-bogatinatajs">par bagātinātājiem vegāniem</a>.</p>
+          <p>B12 praktiski nav augu valstī, un tā trūkums skar nervu sistēmu un asinsainu. Vegāniem tas ir nevis ieteikums, bet nepieciešamība. Vairāk — <a href="/uztura-abc/vegana-bogatinatajs">par uztura bagātinātājiem vegāniem</a>.</p>
         </div>
         <div class="ip-factcard">
           <span class="ip-factcard-icon" aria-hidden="true">🩸</span>
@@ -463,7 +463,7 @@ const jsonLd = {
         Vēl viena lieta, ko cilvēki nepamana — mijiedarbība ar zālēm. Piemēram, K vitamīns ietekmē asins
         šķidrināšanas zāļu darbību, kalcijs un dzelzs var traucēt cits cita un dažu medikamentu uzsūkšanos.
         Ja lieto regulāras zāles vai ir hroniska saslimšana (nieru, vairogdziedzera problēmas, grūtniecība),
-        bagātinātājus saskaņo ar ārstu — ne tāpēc, ka tie ir bīstami, bet tāpēc, ka konteksts maina atbildi.
+        uztura bagātinātājus saskaņo ar ārstu — ne tāpēc, ka tie ir bīstami, bet tāpēc, ka konteksts maina atbildi.
       </p>
 
       <!-- Ieva E-E-A-T note -->
@@ -483,7 +483,7 @@ const jsonLd = {
         <p>
           Es neizrakstu zāles un nediagnosticēju — tas ir ārsta darbs. Ko es daru: skatos cilvēka uzturu un
           asinsanalīzes un palīdzu saprast, kur tiešām ir robs un kā to aizpildīt, vispirms ar pārtiku. Bieži
-          cilvēks atnāk ar maisiņu bagātinātāju, un izrādās, ka puse no tiem nav vajadzīga, bet tieši tas, kas
+          cilvēks atnāk ar maisiņu uztura bagātinātāju, un izrādās, ka puse no tiem nav vajadzīga, bet tieši tas, kas
           palīdzētu — D vitamīns vai dzelzs pēc analīzes — pietrūkst. Ja redzu, ka rādītājs ir nopietni zems,
           es sūtu pie ārsta pēc stiprākas devas. Mans uzdevums ir, lai tu netērē naudu nevajadzīgajam un atrod
           to, kas tev tiešām pietrūkst.
@@ -496,7 +496,7 @@ const jsonLd = {
 
       <p class="ip-answer">
         Vienīgais drošais veids, kā zināt, kā trūkst, ir asinsanalīze. Tā ir lētākais solis no visiem — bieži
-        lētāka par mēnesi nevajadzīgu bagātinātāju — un tā vienlaikus pasargā no diviem kļūdām: lietot to, kas
+        lētāka par mēnesi nevajadzīgu uztura bagātinātāju — un tā vienlaikus pasargā no diviem kļūdām: lietot to, kas
         nav vajadzīgs, un nelietot to, kas tiešām pietrūkst. Pēc rādītājiem var izvēlēties tieši to vielu un
         devu, ne minēt.
       </p>
@@ -505,7 +505,7 @@ const jsonLd = {
         Tieši šeit ir mans darba akcents. Cilvēks bieži saka “man nav spēka, nesaprotu kāpēc” — un atbilde ne
         reti ir konkrēta vitamīna trūkums, ko redz analīzē. Es palīdzu saprast, ko rāda rādītāji un kā uzturs
         tos var mainīt. Tas nav medicīnisks atšifrējums — tas ir veids, kā ieraudzīt robu un aizpildīt to ar
-        pārtiku un, kur vajag, ar pareizo bagātinātāju.
+        pārtiku un, kur vajag, ar pareizo uztura bagātinātāju.
       </p>
 
       <p>
@@ -535,7 +535,7 @@ const jsonLd = {
 
       <ol class="ip-steps">
         <li>
-          <strong>Sāc ar uzturu un analīzi.</strong> Vispirms salabo ēdienu, tad pārbaudi rādītājus — tā zini, ko tiešām pirkt.
+          <strong>Sāc ar uzturu un analīzi.</strong> Vispirms sakārto uzturu, tad pārbaudi rādītājus — tā zini, ko tiešām pirkt.
         </li>
         <li>
           <strong>Izvēlies mērķtiecīgi.</strong> Viena viela, kuras trūkst, ir labāk nekā multivitamīns ar mazumiņu no visa.
@@ -549,10 +549,10 @@ const jsonLd = {
       </ol>
 
       <p>
-        Un galvenais — bagātinātājs nestrādā tukšumā. Tas ir papildinājums uzturam, kas jau ir kārtībā. Kā
-        salikt to uzturu nedēļas griezumā, lai vielas reāli būtu šķīvī, skaties
-        <a href="/uztura-abc/nedelas-edienkarte">nedēļas ēdienkartes plānošanas rakstā</a>, bet cik daudz
-        olbaltumvielu, tauku un ogļhidrātu vajag — <a href="/uztura-abc/makrouzturvielas">makrouzturvielu rakstā</a>.
+        Un galvenais — uztura bagātinātājs viens pats nestrādā. Tas ir papildinājums uzturam, kas jau ir
+        kārtībā. Kā salikt uzturu nedēļas griezumā, lai vielas tiešām būtu šķīvī, lasi
+        <a href="/uztura-abc/nedelas-edienkarte">rakstā par nedēļas ēdienkartes plānošanu</a>. Cik daudz
+        olbaltumvielu, tauku un ogļhidrātu vajag, lasi <a href="/uztura-abc/makrouzturvielas">rakstā par makrouzturvielām</a>.
       </p>
 
       <!-- ─── Internal links ─────────────────────── -->
@@ -571,7 +571,7 @@ const jsonLd = {
             <span class="ip-related-arrow">→</span>
             Omega-3 taukskābes: avoti, norma un kad nepieciešami papildinātāji
           </a>
-          <a href="/uztura-abc/skivja-metode" class="ip-related-link">
+          <a href="/uztura-abc/skivja-metode-papildu-olbaltumvielas" class="ip-related-link">
             <span class="ip-related-arrow">→</span>
             Šķīvja metode: kā sabalansēt katru ēdienreizi
           </a>

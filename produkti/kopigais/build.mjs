@@ -5,7 +5,7 @@
 // Produktā mainās tikai `data.mjs` — saturs un `product` konfigurācija (vāks, nosaukumi).
 // Dizains, aprēķins un fonti dzīvo šeit, vienā vietā, lai trīs produkti nesāktu atšķirties.
 import { calcAll, shoppingFor, planAverage, N as NUTR } from "./uzturvertibas.mjs";
-import { C, pamataStils } from "./pamata-stils.mjs";
+import { C, pamataStils, KONSULT_URL } from "./pamata-stils.mjs";
 import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { dirname, join } from "node:path";
@@ -186,7 +186,7 @@ function toc() {
     "Vispārīgie ieteikumi",
     "1. iepirkums — pamatprodukti", "1. iepirkums — svaigie produkti 1.–5. dienai", "2. iepirkums — svaigie produkti 6.–10. dienai",
     "Pagatavo vienreiz, ēd divreiz",
-    `${days.length} dienu ēdienreižu plāns`, "Ja kaut kas negaršo — ar ko aizstāt", "Aizstāšana — graudi, dārzeņi, augļi", "Ja jāatsakās no produktu grupas", "Biežākie jautājumi", "Pašsajūtas dienasgrāmata",
+    `${days.length} dienu ēdienreižu plāns`, "Ja kaut kas negaršo — ar ko aizstāt", "Aizstāšana — graudi, dārzeņi, augļi", "Ja jāatsakās no produktu grupas", "Biežākie jautājumi", "Pašsajūtas dienasgrāmata", "Vēlies personalizētu plānu?",
   ];
   return `<section class="page sect">
     <h2 class="sect-h">Saturs</h2>
@@ -266,8 +266,9 @@ function about() {
     pievienotas sešas ēdamkarotes eļļas — tie ir ap 700 kcal, ko neviens neieskaita.
     Trīsdesmit gramos riekstu ir ap 175 kcal, bet visā 200 g pakā — virs tūkstoša.
     Tieši tāpēc pirmajās dienās ir vērts svērt un skaitīt: ne tāpēc, lai to darītu mūžīgi,
-    bet lai tu ieraudzītu, kur patiesībā aiziet kalorijas. Vēlāk dārzeņus un putru vari likt
-    no acs, bet riekstus, sēklas un eļļu turpini svērt.</p>
+    bet lai tu ieraudzītu, kur patiesībā aiziet kalorijas. Sver visu, ko ēd — gaļu, zivi,
+    graudaugus, sieru, krējumu, sviestu, eļļu, riekstus, sēklas. No acs vari likt tikai
+    lapu salātus un zaļumus.</p>
 
     <p>Un vēl viens godīgs brīdinājums: ar ātru rezultātu mēs nestrādājam. Šīs desmit dienas
     nav mērķis, bet sākums — vieta, kur redzēt, kā izskatās sabalansēta diena, un saprast,
@@ -326,8 +327,8 @@ function shoppingPantry() {
   return shopStep(1,
     "1. iepirkums · 1. no 2 lapām",
     `Pamatprodukti visām ${days.length} dienām`,
-    `<b>Divi iepirkumi</b>, ne viens milzīgs. Pirmajā reizē paņem šo lapu un nākamo —
-     viss šeit labi stāv, un otrreiz to pirkt nevajadzēs.`,
+    `<b>Divi iepirkumi</b>, ne viens milzīgs. Pirmajā reizē pērc no šī saraksta un nākamā.
+     Pamatprodukti uzglabājas ilgi, tāpēc otrreiz tos pirkt nevajadzēs.`,
     "Pērc vienreiz", "Sausā bakaleja, olas un ilgi stāvoši dārzeņi", false,
     tally([...DAYS_1, ...DAYS_2], isPantry));
 }
@@ -336,7 +337,7 @@ function shoppingFresh1() {
   return shopStep(2,
     "1. iepirkums · 2. no 2 lapām",
     "Svaigie produkti 1.–5. dienai",
-    `Tā pati iepirkuma otrā daļa. Šie produkti ir ātrbojīgi, tāpēc te ir tikai pirmās
+    `Tā pati iepirkuma otrā daļa. Šie produkti ātrāk bojājas, tāpēc te ir tikai pirmās
      piecas dienas — pārējo nopirksi pēc piecām dienām.`,
     "Svaigie produkti", "Gaļa, zivs, piena produkti, zaļumi", true,
     tally(DAYS_1, isFresh),
@@ -495,6 +496,18 @@ function journalPage() {
       <thead><tr><th>Diena</th><th>Ūdens — 8 glāzes</th><th>Miegs (h)</th><th>Enerģija 1–5</th><th>Izsalkums 1–5</th><th>Piezīmes</th></tr></thead>
       <tbody>${rows}</tbody>
     </table>
+  </section>`;
+}
+
+function ctaPage() {
+  return `<section class="page sect">
+    <h2 class="sect-h">Vēlies personalizētu plānu?</h2>
+    <p class="lead">Šis plāns ir sākumpunkts. Ja gribi individuālu pieeju — savām vēlmēm, veselības
+    situācijai un mērķim — pieteicies sākuma konsultācijai.</p>
+    <div class="cta-box">
+      <p><b>Sākuma konsultācija</b> — stunda, kurā izrunājam tavu situāciju, ēšanas paradumus un mērķi. 49 €.</p>
+      <a class="btn-cta" href="${KONSULT_URL}">Pieteikties konsultācijai →</a>
+    </div>
   </section>`;
 }
 
@@ -771,13 +784,14 @@ ${swapsPage2()}
 ${dietSwapsPage()}
 ${faqPage()}
 ${journalPage()}
+${ctaPage()}
 </body>
 </html>`;
 
 mkdirSync(join(productDir, "dist"), { recursive: true });
 writeFileSync(join(productDir, "dist", "index.html"), html, "utf8");
 console.log("OK -> dist/index.html  (" + (html.length / 1024).toFixed(0) + " KB, " + (document_pages()) + " lapas)");
-// vāks + saturs + 5 ievadsadaļas + 2 iepirkumi + meal-prep + dienas + 3 noslēguma
+// vāks + saturs + 5 ievadsadaļas + 2 iepirkumi + meal-prep + dienas + 4 noslēguma
 /* Lapu skaits nāk no gatavā HTML, ne no roku saskaitītas summas — tā tas nevar novecot. */
 function document_pages() { return (html.match(/<section class="page/g) || []).length; }
 

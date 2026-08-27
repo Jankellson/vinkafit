@@ -5,7 +5,7 @@
 // Kāpēc atsevišķs no build.mjs: uztura plānam ir dienas, ēdienreizes, iepirkumu saraksts un
 // aprēķins; ceļvedim nekā no tā nav. Kopīgais — zīmols un drukas modelis — nāk no
 // pamata-stils.mjs, tāpēc abi izskatās pēc vienas sērijas, nedublējot izkārtojumu.
-import { C, pamataStils } from "./pamata-stils.mjs";
+import { C, pamataStils, KONSULT_URL } from "./pamata-stils.mjs";
 import { writeFileSync, mkdirSync, readFileSync } from "node:fs";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { dirname, join } from "node:path";
@@ -97,6 +97,18 @@ function parManiPage() {
   </section>`;
 }
 
+function ctaPage() {
+  return `<section class="page sect">
+    <h2 class="sect-h">Vēlies personalizētu pieeju?</h2>
+    <p class="lead">Šis ceļvedis parāda biežākās kļūdas. Ja gribi risinājumu savai konkrētajai
+    situācijai — pieteicies sākuma konsultācijai.</p>
+    <div class="cta-box">
+      <p><b>Sākuma konsultācija</b> — stunda, kurā izrunājam tavu situāciju, ēšanas paradumus un mērķi. 49 €.</p>
+      <a class="btn-cta" href="${KONSULT_URL}">Pieteikties konsultācijai →</a>
+    </div>
+  </section>`;
+}
+
 const css = `
 ${pamataStils}
 
@@ -165,6 +177,7 @@ ${introPage()}
 ${kludas.map(kludasPage).join("\n")}
 ${ricibaPage()}
 ${parManiPage()}
+${ctaPage()}
 </body>
 </html>`;
 

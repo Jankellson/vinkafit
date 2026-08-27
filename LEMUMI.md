@@ -1,5 +1,9 @@
 # Lēmumu žurnāls
 
+- **2026-08-27 E-pasta pakalpojums maina no Zoho uz Namecheap Private Email — PRETRUNA ar 2026-07-28 ierakstu.** 2026-07-28 lēmums teica Zoho Mail (~1 €/mēn). Faktiski Namecheap Private Email `ievajekabsone.lv` domēnam jau ir apmaksāts (derīgs 2026-08-06 – 2027-08-06). DNS ieraksti (2× MX + 1× TXT) tagad pievienoti, gaida savienošanos ar Cloudflare. Kad savienojies, jāizveido pastkaste. `STATUSS.md` un `../ieva-astro/CLAUDE.md` (ja min Zoho) jāatjauno.
+
+- **2026-08-27 Publiskā adrese ir `info@ievajekabsone.lv` — ATCEĻ 2026-07-28 lēmumu, kas noteica `ieva@`.** Jaunais galīgais lēmums (Jānis). Visos checkout/thank you tekstos un Astro kodā (ja tur ir `ieva@` vai `info@` atsauces) jānomaina uz `info@ievajekabsone.lv`.
+
 - **2026-08-02 Lead magnets NEDUBLĒ jau publicēto rakstu.** Rakstā par šķīvja metodi jau ir „piecas kļūdas" — bet tās ir kļūdas šķīvja SASTĀVĀ (augļi dārzeņu vietā, baltie graudi, izlaisti tauki). Ceļvedī „5 uztura kļūdas" ir kļūdas PIEEJĀ (skaita mūžīgi vai nekad, ņem sveša cilvēka plānu, neskaita eļļu, izmet produktu grupas, gaida rezultātu divās nedēļās). **Ja abi saraksti sakristu, cilvēkam nebūtu iemesla atdot e-pastu par to, ko var izlasīt lapā par brīvu.** Šis ir tests katram nākamajam lead magnetam.
 
 - **2026-08-02 Ceļveža nosaukumā nav „sievietes 30–50", un CTA ir 49 €.** `strategija/6F-Email-Marketing.md` abus raksta citādi, bet tas ir vecāks par diviem lēmumiem: auditorija paplašināta (`ieva-astro/CLAUDE.md`, 2026-06-10) un cena mainīta (`PRODUCT.md`). **Stratēģijas dokumenti nav patiesības avots, kad tie runā pretī produktam un kodam.** 6F fails jāatjauno vai jāatzīmē kā novecojis.

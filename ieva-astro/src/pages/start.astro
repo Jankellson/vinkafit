@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Bezmaksas ceļvedis — 5 biežākās uztura kļūdas"
-  description="Lejupielādē bezmaksas PDF ceļvedi — 5 uztura kļūdas, ko sievietes 30–50 pieļauj (un kā tās labot). Sūtīšu uz tavu e-pastu."
+  description="Lejupielādē bezmaksas PDF ceļvedi — 5 uztura kļūdas, kuru dēļ svars stāv uz vietas (un kā tās labot). Sūtīšu uz tavu e-pastu."
   canonical="https://ievajekabsone.lv/start"
   noindex={true}
   noNav={true}
@@ -21,7 +21,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="logo-sub">Uztura konsultante · LV</span>
         </a>
 
-        <h1>5 uztura kļūdas, ko sievietes 30–50 pieļauj <em>(un kā tās labot).</em></h1>
+        <h1>5 uztura kļūdas, kuru dēļ svars stāv uz vietas <em>(un kā tās labot).</em></h1>
 
         <p class="start-lede">
           Bezmaksas ceļvedis — 8 minūtes lasīšanai. Sūtīšu tieši uz tavu e-pastu.
@@ -44,13 +44,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <!-- RIGHT — forma -->
-      <form class="start-form" id="startForm">
+      <form class="start-form" method="post" action="https://systeme.io/embedded/43938776/subscription">
         <h2>Saņem savu ceļvedi</h2>
         <p class="note">Bez surogātpasta. Atrakstīties 1 klikšķī.</p>
 
         <div class="field">
           <label for="s-name">Vārds</label>
-          <input id="s-name" name="name" type="text" placeholder="Tavs vārds" required />
+          <input id="s-name" name="surname" type="text" placeholder="Tavs vārds" required />
         </div>
 
         <div class="field">
@@ -61,8 +61,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <button class="btn btn-primary" type="submit">Nosūtīt man ceļvedi <span class="arrow">→</span></button>
 
         <p class="fine">
-          Reģistrējoties piekrīti <a href="/privatums" style="color:var(--burgundy);">privātuma politikai</a>.<br>
-          Pievienosies 2 000+ sievietēm newsletter sarakstā.
+          Reģistrējoties piekrīti <a href="/privatums" style="color:var(--burgundy);">privātuma politikai</a>.
         </p>
       </form>
 
@@ -74,16 +73,3 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 
 </BaseLayout>
-
-<script>
-  function initStartPage() {
-    const form = document.getElementById('startForm') as HTMLFormElement | null;
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        window.location.href = '/paldies-abonentam';
-      });
-    }
-  }
-  document.addEventListener('astro:page-load', initStartPage);
-</script>

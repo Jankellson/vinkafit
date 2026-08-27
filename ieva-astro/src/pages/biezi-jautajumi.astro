@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const canonical = 'https://ievajekabsone.lv/biezi-jautajumi';
+const title = 'Bieži uzdotie jautājumi — uztura konsultācijas un programmas | Ieva Jēkabsone';
+const description = 'Atbildes uz biežākajiem jautājumiem par uztura konsultāciju, 30 un 90 dienu programmām, VIP atbalstu, asinsanalīzēm un darba metodi ar Ievu Jēkabsoni.';
+
+const groups = [
+  {
+    title: 'Par sākuma konsultāciju un pieteikšanos',
+    items: [
+      {
+        q: 'Kā notiek konsultācija?',
+        a: 'Parasti tiešsaistē — video zvanā, latviešu vai krievu valodā, tāpēc varam strādāt neatkarīgi no atrašanās vietas. Pēc pieteikuma un apmaksas atsūti anketu par savu veselību, ikdienu un mērķiem — tā ļauj man jau iepriekš sagatavoties. Pēc tam sazinos ar tevi personīgi, lai vienotos par ērtāko laiku. Ja vēlies tikties klātienē, arī tas ir iespējams — pasaki to pieteikumā.',
+      },
+      {
+        q: 'Vai varu atcelt vai pārcelt konsultāciju?',
+        a: 'Jā, ja paziņo vismaz 24 stundas iepriekš. Pārcelt vari vienu reizi bez maksas — vienkārši uzraksti man uz e-pastu vai kā tikām vienojušies. Vēlāka atcelšana vai neierašanās bez brīdinājuma netiek atmaksāta, jo tas ir laiks, ko rezervēju tikai tev.',
+      },
+      {
+        q: 'Neesmu pārliecināts, vai man vispār vajag konsultāciju.',
+        a: 'Tieši tam ir sākuma konsultācija par 49 €. Nav jāzina uzreiz, vai gribi 30 dienu, 90 dienu programmu vai vienkārši padomu — pastāsti savu situāciju, un kopā noskaidrojam, vai un kā varu palīdzēt. Ja pēc konsultācijas 24 stundu laikā izvēlies programmu, šo summu ieskaitu tās cenā, tāpēc nekas nepazūd.',
+      },
+      {
+        q: 'Vai konsultācija der grūtniecēm vai barojošām māmiņām?',
+        a: 'Grūtniecēm — tikai ar ārsta atļauju, un konsultācija tad ir informatīva, ne medicīniska; grūtniecība ir stāvoklis, kur uztura izmaiņas vienmēr jāsaskaņo ar ginekologu. Barojošām māmiņām — jā, strādāju ar individuālu pieeju, kas ņem vērā papildu enerģijas un uzturvielu vajadzības zīdīšanas periodā.',
+      },
+      {
+        q: 'Vai šis ir kārtējais PDF plāns ar pārtikas tabulu?',
+        a: 'Nē. Darbs sākas individuāli ar tevi — tavu situāciju, ēšanas paradumiem, dzīvesveidu un, ja vajag, arī analīžu rādītājiem. Gatava tabula, ko var lejupielādēt jebkurš, nekad neaizstās plānu, kas ņem vērā, kā TU reāli dzīvo, strādā un ēd.',
+      },
+      {
+        q: 'Cik maksā uztura konsultācija?',
+        a: 'Sākuma konsultācija maksā 49 €. Ja 24 stundu laikā pēc tās izvēlies turpināt ar 30 dienu (249 €) vai 90 dienu (549 €) programmu, šie 49 € tiek ieskaitīti izvēlētās programmas cenā — tātad konsultācijas maksa nekad nav zaudēta nauda, ja izlemj turpināt.',
+      },
+    ],
+  },
+  {
+    title: 'Par 30, 90 dienu programmām un VIP atbalstu',
+    items: [
+      {
+        q: 'Vai 30 dienu programma ir tikai svara samazināšanai?',
+        a: 'Nē. Tā ir piemērota arī tad, ja gribi sakārtot ēšanas paradumus, ikdienas ritmu vai saprast, kā veidot sev piemērotākas maltītes — svara zaudēšana ir viens no iespējamiem mērķiem, ne vienīgais. Programma ietver trīs konsultācijas (sākuma, analīžu un plāna, noslēguma) un pielāgotu ēdienkarti.',
+      },
+      {
+        q: 'Vai analīzes ir obligātas, lai pieteiktos programmai?',
+        a: 'Nē. Sākam ar to informāciju, kas tev jau ir. Ja ir iesniegti analīžu rezultāti, tos apskatām uztura un dzīvesveida kontekstā, lai plāns būtu precīzāks, bet tas nav priekšnoteikums — daudzi klienti sāk bez tiem.',
+      },
+      {
+        q: 'Vai 30 dienās viss būs atrisināts?',
+        a: '30 dienas ir konkrēts starts, ne brīnumrisinājums. Tas dod pietiekami daudz laika, lai iemācītos jaunus paradumus un redzētu pirmās izmaiņas, bet ilgtermiņa rezultātam bieži vajadzīgs vairāk laika. Ja tev svarīgi nostiprināt paradumus ilgākā periodā, piemērotāka var būt 90 dienu programma.',
+      },
+      {
+        q: 'Vai 90 dienu programmā katram mēnesim būs jauna ēdienkarte?',
+        a: 'Jā. Programma sastāv no trim secīgiem 30 dienu posmiem, un katru nākamo posmu pielāgoju, ņemot vērā iepriekšējā posma pieredzi — kas strādāja, kas nē, kā mainījusies tava pašsajūta. Tas nozīmē, ka plāns attīstās kopā ar tevi, nevis paliek statisks visus 90 dienus.',
+      },
+      {
+        q: 'Kāda ir atšķirība starp 90 dienu programmu un VIP atbalstu?',
+        a: '90 dienu programma dod skaidru, regulāru procesu ar trim posmiem un noteiktu konsultāciju skaitu. VIP ir sešu mēnešu sadarbība ar prioritāru pieejamību, vairāk konsultācijām, praktisku atbalstu ikdienas situācijās (piemēram, restorāna izvēlnē vai ceļojumā) un piekļuvi maziem digitālajiem materiāliem, kas tiek izdoti VIP laikā.',
+      },
+      {
+        q: 'Vai VIP atbalstā visiem jautājumiem būs tūlītēja atbilde?',
+        a: 'Prioritāra atbilde tiek sniegta tajā pašā darba dienā iepriekš saskaņotā laikā, ne acumirklī jebkurā diennakts stundā. Tā ir apzināta darba robeža — tā ļauj sniegt kvalitatīvas, pārdomātas atbildes, nevis ātras un virspusējas, un tev vienmēr zināt, kad atbilde pienāks.',
+      },
+      {
+        q: 'Vai VIP ietver visus nākotnes kursus un lielās programmas?',
+        a: 'Nē. VIP ietver mazos digitālos materiālus, kas izdoti VIP laikā — piemēram, ceļvežus, darba lapas, e-grāmatas, recepšu krājumus un kontrolsarakstus. Lielās programmas, kursi un personalizētie pakalpojumi, kas izdoti ārpus VIP perioda, nav automātiski iekļauti.',
+      },
+      {
+        q: 'Kā izvēlēties starp sākuma konsultāciju, 30, 90 dienu programmu un VIP?',
+        a: 'Ja neesi pārliecināts, sāc ar sākuma konsultāciju — tur kopā izvērtējam, kāds atbalsta līmenis tev tiešām vajadzīgs. Vienkārši sakot: konsultācija der, ja gribi virzienu; 30 dienas — ja gribi konkrētu startu; 90 dienas — ja gribi nostiprinātus paradumus ar pakāpenisku pielāgošanu; VIP — ja gribi ilgtermiņa, prioritāru atbalstu ar praktisku palīdzību ikdienā.',
+      },
+    ],
+  },
+  {
+    title: 'Par darba metodi',
+    items: [
+      {
+        q: 'Vai man būs jāatsakās no saviem mīļākajiem ēdieniem?',
+        a: 'Nē. Strādāju ar pielāgošanu, ne aizliegumiem — tas ir mans pamatprincips. Mīļākajiem ēdieniem meklējam vietu tavā ikdienā: citā daudzumā, citā brīdī vai nedaudz citādā veidā. Aizliegumi ir viena no biežākajām kļūdām uztura plānos, jo cilvēks agri vai vēlu "norauj" un atgriežas vecajos ieradumos — plāns, ko nevar izturēt, nav plāns.',
+      },
+      {
+        q: 'Kādus rezultātus var sagaidīt?',
+        a: 'Atkarīgs no mērķa un sākumpunkta. Tipiskākais: labāka enerģija un skaidrāka izpratne par savu ēšanu jau 2–4 nedēļu laikā. Svara izmaiņas ir individuālas un parasti redzamas 4–8 nedēļās ar regulāru sadarbību. Neesmu trenere ar garantijām — esmu speciāliste ar pārbaudītu procesu, un godīgi pasaku, ja tavs mērķis nav reālistisks noteiktā laika periodā.',
+      },
+      {
+        q: 'Vai strādājat arī ar vīriešiem, ne tikai sievietēm?',
+        a: 'Jā. Strādāju ar plašu klientu loku — sievietēm, vīriešiem, sportistiem, vegāniem un ģimenēm, ne tikai ar vienu konkrētu grupu. Uztura principi (individuāla pieeja, pielāgošana, sīkumu skaitīšana) darbojas neatkarīgi no dzimuma — atšķiras tikai konkrētie skaitļi un mērķi.',
+      },
+      {
+        q: 'Vai plāns der arī veģetāriešiem vai vegāniem?',
+        a: 'Jā. Plāns vienmēr veidots pēc tavas reālās ēšanas — ja neēd gaļu vai dzīvnieku produktus vispār, to ņemu vērā jau anketā, un olbaltumvielu, dzelzs un B12 avoti tiek pielāgoti attiecīgi (pākšaugi, tofu, sēklas, sojas produkti).',
+      },
+      {
+        q: 'Kāda ir atšķirība starp uztura konsultantu un dietologu?',
+        a: 'Dietologs Latvijā ir medicīnas nozares speciālists, kas var strādāt ar medicīniskām diagnozēm (piemēram, diabētu, nieru slimībām) klīniskā vidē. Uztura konsultants sniedz izglītojošu un atbalstošu pakalpojumu par ikdienas uzturu, paradumiem un dzīvesveidu — bet nenosaka diagnozes, neārstē un nenozīmē medikamentus. Ja tev ir aktīva medicīniska diagnoze, uztura konsultācija var papildināt ārsta norādījumus, bet ne aizstāt tos.',
+      },
+    ],
+  },
+  {
+    title: 'Par veselību un drošību',
+    items: [
+      {
+        q: 'Man ir veselības problēma — vai varat palīdzēt?',
+        a: 'Pastāsti savu situāciju sākuma konsultācijā, un godīgi pateikšu, vai varu palīdzēt. Ja nevaru, ieteikšu, pie kāda speciālista vērsties, vai aicināšu vispirms parunāt ar ģimenes ārstu. Neesmu ārste — diagnozes nenosaku un medikamentus nenozīmēju, bet varu palīdzēt ar to, kā uzturs un ikdienas paradumi iekļaujas tavā kopējā situācijā.',
+      },
+      {
+        q: 'Kā notiek darbs ar asinsanalīzēm?',
+        a: 'Tu atsūti savus jau esošos rezultātus, un pārrunājam, kā uzturs un ikdienas paradumi var būt saistīti ar laboratorijas rādītājiem. To izmantoju, lai sagatavotu tev pielāgotus uztura un dzīvesveida ieteikumus — piemēram, ja redzu rādītājus, kas var būt saistīti ar dzelzs vai B12 līmeni. Diagnozes noteikšana, ārstēšana un medikamentu nozīmēšana šajā pakalpojumā neietilpst — analīzes pasūtīt un interpretēt medicīniski var tikai ārsts.',
+      },
+      {
+        q: 'Vai konsultācija aizstāj ārstu vai dietologu?',
+        a: 'Nē. Uztura konsultante sniedz izglītojošu un atbalstošu pakalpojumu — ne medicīnisku diagnozi vai ārstēšanu. Ja ir aktīva slimība, konsultāciju var kombinēt ar ārsta norādījumiem, bet ne aizstāt tos. Vienmēr godīgi pasaku, ja tava situācija prasa vispirms medicīnisku izmeklēšanu.',
+      },
+      {
+        q: 'Vai der, ja man ir vairogdziedzera problēmas, diabēts vai cita hroniska saslimšana?',
+        a: 'Atkarīgs no situācijas — pastāsti to sākuma konsultācijā, un izvērtēju, vai un kā varu droši palīdzēt. Daudzos gadījumos uztura pielāgošana var papildināt ārsta noteikto ārstēšanu, bet aktīvas medicīniskas diagnozes vienmēr jāsaskaņo ar ārstējošo ārstu — es to nenoteikšu un neaizstāšu.',
+      },
+    ],
+  },
+];
+
+const allFaqItems = groups.flatMap((g) => g.items);
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: allFaqItems.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Sākums', item: 'https://ievajekabsone.lv/' },
+      { '@type': 'ListItem', position: 2, name: 'Bieži uzdotie jautājumi', item: canonical },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} jsonLd={jsonLd} activeNav="biezi-jautajumi">
+  <Breadcrumbs items={[{ label: 'Sākums', href: '/' }, { label: 'Bieži uzdotie jautājumi' }]} />
+
+  <section class="page-hero page-hero--compact">
+    <div class="wrap">
+      <div class="eyebrow">Bieži uzdotie jautājumi</div>
+      <h1>Viss, kas jāzina <em>pirms pieteikšanās.</em></h1>
+      <p class="lede">
+        Atbildes uz jautājumiem, ko dzirdu visbiežāk — par konsultāciju, programmām,
+        darba metodi un drošību. Ja atbildi neatrodi, uzraksti tieši uz
+        <a href="mailto:ieva.vinka@gmail.com">ieva.vinka@gmail.com</a> vai
+        <a href="/kontakti">kontaktu lapā</a>.
+      </p>
+    </div>
+  </section>
+
+  {groups.map((group) => (
+    <section class="sales-faq">
+      <div class="wrap">
+        <h2>{group.title}</h2>
+        <div class="sales-faq-list">
+          {group.items.map((item) => (
+            <details>
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="sales-cta-strip">
+    <div class="wrap sales-cta-inner">
+      <div>
+        <h2>Nākamais solis ir <em>viena saruna.</em></h2>
+        <p>Pēc tās zināsi, ar ko sākt — arī tad, ja programma nav vajadzīga.</p>
+      </div>
+      <a class="btn btn-primary" href="/pakalpojumi/sakuma-konsultacija">Pieteikt konsultāciju — 49 € <span class="arrow">→</span></a>
+    </div>
+  </section>
+</BaseLayout>

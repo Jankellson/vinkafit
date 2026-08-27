@@ -1,5 +1,84 @@
 # STATUSS — vienotais darāmo saraksts (todo/done)
 
+## 2026-08-27 — Sākuma konsultācijas checkout pilnībā gatavs un notestēts; FAQ lapa, lead magnet forma salabota
+
+**Sākuma konsultācija (49 €) tagad ir reāli pērkama.** Systeme.io: funnel `Sakuma-konsultacija`
+(Order Form + Thank You), Stripe live savienots, kartes maksājums strādā, Klarna/Multibanco
+izslēgti (Funnel settings, ne Stripe konfigurācija — tas ir funnel-specifisks slēdzis).
+Business name Stripe pusē salabots (bija „VinkaFit", tagad „Ieva Jēkabsone"; pamanīts arī
+otrs, nesaistīts, novecojis Stripe konts ar tagu „Squarespace" — neietekmē, bet nav aizvērts).
+**Notestēts ar reālu 1 € pirkumu (kupons, tagad izdzēsts) un refundēts.**
+
+Visas „Pieteikt konsultāciju" pogas (`sakuma-konsultacija.astro`, `pakalpojumi.astro`) tagad
+ved TIEŠI uz `https://pirkt.ievajekabsone.lv/1c583d0d` — vairs ne uz `/kontakti` kontaktformu.
+
+**30/90 dienu un VIP — apzināta izvēle NEBŪVĒT Systeme funnel.** Free plāns ļauj 3 funnels ×
+15 soļi, un šie produkti tāpat prasa personisku sarunu pirms pirkuma (klients jau ir bijis uz
+sākuma konsultāciju). CTA paliek uz `/kontakti?paka=...`; Ieva pēc sarunas izraksta rēķinu ar
+**Stripe Invoicing** (manuāli, nav automātisks solis).
+
+**Jauna lapa `/biezi-jautajumi`** — FAQPage + BreadcrumbList schema, 21 jautājums/atbilde,
+savākti no jau esošā (apstiprinātā) satura vietnē + izvērsti garāki/praktiskāki AI meklētāju
+labad. Saite pievienota kājenē.
+
+**Lead magnet forma (bezmaksas ceļvedis „5 uztura kļūdas") salabota — iepriekš bija FAKE.**
+Gan `start.astro`, gan `index.astro` lead magnet sekcijā forma tikai pāradresēja uz „paldies"
+lapu, neko nesaglabājot. Tagad abas ir reālas HTML formas (`method="post"
+action="https://systeme.io/embedded/43938776/subscription"`, lauki `surname` + `email`),
+kas kontaktu saglabā Systeme CRM. **Pirmais mēģinājums (Systeme "Popup form" skripts)
+nestrādāja — tas atveras tikai pēc klikšķa, ne uzreiz; pareizais risinājums ir "Inline form"
+HTML, ko Ieva atrada un iedeva.**
+
+**Blogs tagad tukšs — apzināti.** Abi vecie raksti (`5-uztura-kludas.md`,
+`kapec-svars-atgriezas.md`) dzēsti pēc Jāņa lēmuma („labāk nekādu bloga rakstu nevajag").
+`blog/index.astro` jau bija iebūvēts tukšais stāvoklis „Raksti drīz parādīsies" — nekas
+papildu nebija jātaisa. Saite `paldies-abonentam.astro` uz dzēsto rakstu noņemta.
+
+**E-pasts: Namecheap Private Email DNS pievienots Cloudflare, gaida aktivizāciju** (līdz 4 h).
+Jaunais lēmums: publiskā adrese būs **`info@ievajekabsone.lv`** (nevis `ieva@`, kā bija
+2026-07-28 — sk. `LEMUMI.md` 2026-08-27 ierakstu). **Kamēr pastkaste nav aktīva, kodā PAGAIDĀM
+atpakaļ `ieva.vinka@gmail.com`** (Jāņa lēmums) — jānomaina uz `info@`, kad Namecheap statuss
+rāda „Activated".
+
+**`.sales-fit-note` CSS salabots** — kastīte iepriekš stiepās pilnā augstumā ar tukšu vietu
+apakšā (`align-self: stretch`), tagad `align-self: start` + burgundijas kreisā mala, izskatās
+pēc īsta callout bloka, ne tukšas kastes.
+
+**Izveidots `ieva-astro/public/assets/images/ieva-logo.png`** — precīzs header logo kā PNG
+(Playfair Display kursīvā, burgundijas krāsā, caurspīdīgs fons), Systeme.io lapu vajadzībām.
+
+- [ ] **E-pasta automatizācija priekš lead magnet vēl NAV izveidota.** Cilvēks tagad var
+      pieteikties formā, bet **nekas viņam netiek nosūtīts** — nav email campaign/workflow,
+      kas nosūta PDF saiti. Jāizveido Systeme.io: Email campaign ar 1. e-pastu (saite uz
+      failu) + automation „Funnel form subscribed → Subscribe to campaign" (sk. Systeme
+      dokumentāciju: help.systeme.io/article/284).
+- [ ] Kad Namecheap e-pasts aktivizējas: izveidot pastkasti `info@ievajekabsone.lv`, tad
+      kodā nomainīt `ieva.vinka@gmail.com` atpakaļ uz `info@ievajekabsone.lv` (meklēt visā
+      `src/` mapē).
+- [ ] Astro vietne PATI VĒL NAV publiskota uz `ievajekabsone.lv` — viss līdz šim ir testēts
+      lokāli (`localhost`) vai Systeme apakšdomēnā. Vajag: GitHub push (repo jau ir,
+      `github.com/Jankellson/vinkafit`) + Cloudflare Pages projekts + custom domain.
+      **Šis ir vienīgais reālais bloķētājs pirms publiskas palaišanas.**
+- [ ] Git: šīs sesijas izmaiņas vēl nav commitotas.
+- [ ] Funnel 2 (3 PDF produkti: 10 dienu, vasaras, vegānais plāns) — **cenas vēl nav
+      apstiprinātas** (`PRODUKTI-STRATEGIJA.md` dod tikai melnraksta diapazonu €9–19).
+      Jāapstiprina ar Ievu pirms Systeme iestatīšanas.
+- [ ] Vecais Stripe konts ar tagu „Squarespace"/„VinkaFit.lv" — pārbaudīt, vai vajadzīgs, ja
+      nē, aizvērt, lai nesajauc ar reālo („Systeme.io") kontu.
+
+## 2026-08-24 — PDF faili augšupielādēti Systeme.io
+
+Produktu PDF faili ir augšupielādēti Systeme.io platformā (sadaļā „Your files"). **Vēl NAV**
+izveidoti pārdodami produkti — nav ne cenas, ne order form (maksājumu lapas), ne „paldies"
+lapas ar lejupielādes saiti. Tātad nekas vēl nav pērkams.
+
+- [ ] Katram PDF: order form ar cenu (Digital product) + Thank you lapa ar saiti uz failu
+      (viens funnels, vairākas order forms — sk. sarunu par Systeme.io struktūru).
+- [ ] Pirmais reālais produkts pēc plāna (`STATUSS.md` 2026-07-28 ieraksts, solis 10):
+      49 € sākuma konsultācija ar booking calendar, ne PDF komplekts.
+- [ ] Checkout teksti jāpārtulko latviski (order form, thank you lapa, e-pasta veidne).
+- [ ] Astro pogas/saites jāsavieno ar konkrētajām order form URL adresēm.
+
 ## 2026-08-02 — Bezmaksas ceļvedis „5 uztura kļūdas" gatavs
 
 **`produkti/5-kludas/` — 9 lapas, 1,26 MB.** Vāks ar Ievas foto, ievads, piecas kļūdu lapas,

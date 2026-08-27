@@ -57,4 +57,12 @@ thead{display:table-header-group}
 .callout p+p{margin-top:8px}
 .callout p b{color:var(--burgundy)}
 .callout.warn{border-left-color:var(--burgundy)}
+
+/* Pieteikšanās poga — konsultācijas saite visos produktos. */
+.btn-cta{display:inline-block;background:var(--burgundy);color:var(--cream);text-decoration:none;font-weight:600;font-size:14.5px;padding:13px 28px;border-radius:30px;margin-top:6px}
+.cta-box{text-align:center;background:var(--panel);border:1px solid var(--panel-line);border-radius:16px;padding:30px 24px;margin:20px 0}
+.cta-box p{max-width:52ch;margin:0 auto 16px;color:var(--ink-soft);font-size:14.5px}
+.cta-box p b{color:var(--burgundy)}
 `;
+
+export const KONSULT_URL = "https://ievajekabsone.lv/pakalpojumi/sakuma-konsultacija/";

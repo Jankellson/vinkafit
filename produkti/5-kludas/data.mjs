@@ -28,15 +28,15 @@ export const product = {
   pdfName: "5-Uztura-Kludas",
   cover: "ieva-consultant-portrait.webp",
   coverKicker: "Bezmaksas ceļvedis",
-  coverTag: "Piecas kļūdas, ko redzu klientu ikdienā gandrīz katru nedēļu. Pie katras — kas notiek patiesībā un ko darīt vietā.",
+  coverTag: "Piecas uztura kļūdas, kuras bieži redzu klientu ikdienā — kas notiek patiesībā un kā tās izlabot.",
   readTime: "8 minūtes lasīšanai",
 };
 
 export const intro = {
   h: "Kāpēc es to rakstu",
   p: [
-    "Es esmu Ieva Jēkabsone, uztura konsultante. Lielākā daļa cilvēku, kas pie manis atnāk, nav neko darījuši nepareizi aiz slinkuma. Viņi ir mēģinājuši — bieži vairākas reizes — un katru reizi kaut kas nostrādājis mēnesi, tad beidzies.",
-    "Kļūdas gandrīz vienmēr atkārtojas tās pašas piecas. Tās nav lielas. Tieši tāpēc tās ir grūti pamanīt pašam: katra atsevišķi izskatās pēc sīkuma, un kopā tās izšķir rezultātu.",
+    "Es esmu Ieva Jēkabsone, uztura konsultante. Lielākā daļa manu klientu nav slinki. Viņi ir mēģinājuši — bieži vairākas reizes — un katru reizi kaut kas nostrādājis neilgu laiku, tad beidzies.",
+    "Gandrīz vienmēr atkārtojas tās pašas piecas kļūdas. Tās nav lielas. Tieši tāpēc tās ir grūti pamanīt pašam: katra atsevišķi izskatās pēc sīkuma, un kopā tās izšķir rezultātu.",
     "Šajā ceļvedī nav aizliegumu un nav brīnumdiētu. Ir piecas situācijas, kuras tu, iespējams, atpazīsi, un pie katras — konkrēts nākamais solis.",
   ],
   callout: ["Ko šis ceļvedis nedara", "Tas nav individuāls uztura plāns. Es tevi neredzu, nezinu tavu vecumu, aktivitāti vai veselības situāciju. Tāpēc te ir principi, ne devas. Ja tev ir hroniska saslimšana, tu esi grūtniece vai lieto medikamentus, par izmaiņām uzturā vispirms parunā ar ārstu."],
@@ -51,10 +51,10 @@ export const kludas = [
     nestrada: "Skaitīšana nav mērķis. Tā ir mācību rīks, un tam ir beigu datums. Ja tu nekad neesi nosvēris 30 g riekstu vai ielējis eļļu ar karoti, tad „pēc sajūtas“ nozīmē „pēc paraduma“. Bet, ja tu skaiti trešo gadu, tu vairs nemācies — tu tikai uztraucies.",
     dari: [
       "Skaiti divas nedēļas, ne mūžīgi. Mērķis ir ieraudzīt, ne kontrolēt.",
-      "Sver tikai to, kur kļūda maksā: eļļu, riekstus, sēklas, riekstu sviestu, sierus.",
-      "Dārzeņus, putru un augļus pēc tam liec no acs. Tur kļūda ir dažas kalorijas.",
+      "Sākumā sver visu, ko ēd — gaļu, zivi, graudaugus, sieru, krējumu, sviestu, eļļu, riekstus, sēklas, riekstu sviestu u.t.t. Tieši šeit precizitāte nosaka, vai skaitītais atbilst realitātei.",
+      "No acs vari likt tikai lapu salātus un zaļumus — tur kļūda ir dažas kalorijas, ne desmitiem.",
     ],
-    callout: ["Cik maksā viena kustība ar roku", "Ēdamkarote olīveļļas ir 122 kcal. 30 g mandeļu — 175 kcal. Vesela 200 g paka — vairāk nekā 1000 kcal. Sauja nav mērvienība: vienam tā ir 20 g, otram 50."],
+    callout: ["Cik kaloriju paslēpjas vienā karotē vai saujā", "Ēdamkarote olīveļļas ir 122 kcal. 30 g mandeļu — 175 kcal. Vesela 200 g paka — vairāk nekā 1000 kcal. Sauja nav mērvienība: vienam tā ir 20 g, otram 50."],
   },
   {
     n: 2,
@@ -78,7 +78,7 @@ export const kludas = [
       "Riekstus nosver un liec bļodiņā. No pakas neviens neapstājas laikā.",
       "Mērci pagatavo mājās: jogurts, sinepes, citrons. Veikala mērcē eļļa ir pirmajā vietā.",
     ],
-    callout: ["Sīkumi skaitās, bet ne visi", "Gurķis, salātlapa un burkāns — tos vari neskaitīt. Eļļu, riekstus, sēklas, sierus un mērces — skaiti. Kalorijas nav vienmērīgi izklātas pa šķīvi; tās sabiezē dažos produktos."],
+    callout: ["Sīkumi skaitās, bet ne visi", "Gurķis, salātlapa un burkāns — tos vari neskaitīt. Eļļu, riekstus, sēklas, sierus un mērces — skaiti. Kalorijas nav vienmērīgi izklātas pa šķīvi; tās koncentrējas dažos produktos."],
   },
   {
     n: 4,
@@ -114,15 +114,15 @@ export const riciba = {
     ["Nosver trīs lietas", "Eļļu, riekstus un sieru. Vienu reizi. Pēc tam tu zināsi, kā izskatās porcija, un vairs nebūs jāsver."],
     ["Izvēlies vienu maltīti, ko sakārtot", "Ne visu dienu. Piemēram, brokastis: olbaltumviela, dārzenis un pilngraudu ogļhidrāts. Kad tas turas divas nedēļas, ķeries pie nākamās."],
   ],
-  callout: ["Ja gribi, lai kāds paskatās kopā ar tevi", "Sākuma konsultācija maksā 49 €. Tā ir stunda, kurā izrunājam tavu situāciju, mērķi un to, ko rāda tavas analīzes, ja tādas ir. Pēc tās tu zini savu nākamo soli — arī tad, ja tālāk turpini pats. Ja divdesmit četru stundu laikā izvēlies 30 vai 90 dienu programmu, konsultācijas maksu ieskaitu programmas cenā."],
+  callout: ["Ja vēlies manu palīdzību", "Sākuma konsultācija maksā 49 €. Tā ir stunda, kurā izrunājam tavu situāciju, ēšanas paradumus, iepriekšējo pieredzi, mērķi un to, ko rāda tavas analīzes, ja tādas ir. Pēc tās tu zini savu nākamo soli — arī tad, ja tālāk turpini pats. Ja divdesmit četru stundu laikā izvēlies 30 vai 90 dienu programmu, konsultācijas maksu ieskaitu programmas cenā."],
 };
 
 export const parMani = {
   h: "Par mani",
   p: [
-    "Esmu Ieva Jēkabsone, uztura konsultante. Ikdienā strādāju arī par skolotāju, un tas iespaido to, kā es strādāju ar klientiem: man ir svarīgi, lai tu saproti, kāpēc kaut kas jādara, ne tikai izpildi sarakstu.",
+    "Esmu Ieva Jēkabsone, uztura konsultante. Man ir svarīgi, lai tu saproti, kāpēc kaut kas jādara, ne tikai izpildi sarakstu.",
     "Ticu, ka uzturu maina mazi soļi, ne aizliegumi. Negribu, lai tu badojies vai skaiti katru kumosu. Gribu, lai tu saproti, kāpēc ēd tā, kā ēd, un lai tas der tavai ikdienai.",
-    "Ja kaut ko nezinu, es to arī pasaku. Nepatiesa informācija par uzturu var kādam kaitēt, un tas ir vienīgais, ko es savā vārdā nepieļauju.",
+    "Ja kaut ko nezinu, es to pasaku. Mans uzdevums ir palīdzēt tev saprast, kas notiek, un sasniegt to, ko vēlies.",
   ],
   saites: [
     ["Sākuma konsultācija", "49 €, viena stunda"],

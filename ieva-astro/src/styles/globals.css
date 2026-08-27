@@ -422,11 +422,11 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
   pointer-events: none; z-index: 2;
 }
 /* Absolūti — lai attēla dabiskais augstums nenosaka rindas augstumu;
-   figūra izstiepjas līdz garākajai kolonnai, foto to aizpilda. */
+   figūra izstiepjas līdz garākajai kolonnai. contain, lai foto redzams pilnībā, necērtot malas. */
 .stakes-photo img{
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; object-position: center 40%;
+  object-fit: contain; object-position: center;
 }
 @media (max-width: 1100px){
   .stakes-grid{ grid-template-columns: 1fr 1fr; }
@@ -694,9 +694,14 @@ section{ padding: clamp(48px, 6vw, 88px) 0; }
   margin-bottom: 10px;
 }
 .vip-banner-slots{
-  font-family: var(--sans); font-style: normal; font-weight: 500;
-  font-size: 14px; letter-spacing: 0;
-  color: var(--burgundy);
+  display: inline-block;
+  font-family: var(--mono); font-style: normal; font-weight: 500;
+  font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--plum);
+  background: var(--gold-soft, var(--gold));
+  border-radius: 999px;
+  padding: 5px 12px;
+  margin-bottom: 6px;
   white-space: nowrap;
 }
 .vip-banner-points{
@@ -1040,27 +1045,6 @@ footer{
 .about-intro-grid .pullquote{ margin-bottom: 32px; }
 .about-intro-grid .figure{ position: relative; aspect-ratio: 3/4; }
 
-.story{ background: var(--ivory); }
-.story-grid{
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--rule);
-  margin-top: 48px;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-.story-step{
-  background: var(--cream);
-  padding: 40px 32px;
-  display: flex; flex-direction: column; gap: 16px;
-}
-.story-step .chapter{
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: .25em; text-transform: uppercase;
-  color: var(--burgundy);
-}
-.story-step h3{ font-size: 26px; line-height: 1.15; }
-.story-step p{ font-size: 15px; color: var(--ink-soft); margin: 0; }
-@media (max-width: 900px){ .story-grid{ grid-template-columns: 1fr; } }
 @media (max-width: 900px){ .about-intro-grid{ grid-template-columns: 1fr; } }
 
 .principles{ background: var(--cream); }
@@ -2364,8 +2348,10 @@ footer{
 .sales-steps h3 { font-family: var(--serif); color: var(--plum); font-size: 28px; font-weight: 500; line-height: 1.15; margin: 22px 0 12px; }
 .sales-steps p { margin: 0; color: var(--ink-soft); line-height: 1.7; }
 .sales-fit { padding: 100px 0; background: var(--ivory); }
-.sales-fit-note { align-self: stretch; padding: 34px; background: var(--cream); border-radius: 14px; }
-.sales-fit-note p:not(.offer-kicker) { color: var(--ink-soft); line-height: 1.75; margin: 0 0 24px; }
+.sales-fit-note { align-self: start; padding: 30px 34px; background: var(--cream); border-left: 3px solid var(--burgundy); border-radius: 4px; }
+.sales-fit-note .offer-kicker { display: flex; align-items: center; gap: 10px; }
+.sales-fit-note .offer-kicker::before { content: ''; width: 18px; height: 18px; flex: none; background: var(--burgundy); mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E") center / contain no-repeat; }
+.sales-fit-note p:not(.offer-kicker) { color: var(--ink-soft); line-height: 1.75; margin: 10px 0 0; }
 .sales-fit-note a { color: var(--burgundy); font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(132,24,62,.25); }
 .sales-price { padding: 82px 0; background: var(--plum); }
 .sales-price-inner { display: flex; align-items: end; justify-content: space-between; gap: 48px; }
