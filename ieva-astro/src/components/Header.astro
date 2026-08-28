@@ -5,7 +5,6 @@ interface Props {
 const { activeNav } = Astro.props;
 
 const navLinks = [
-  { href: '/', label: 'Sākums', key: 'sakums' },
   { href: '/par-mani', label: 'Par mani', key: 'par-mani' },
   { href: '/uztura-abc', label: 'Uztura ABC', key: 'uztura-abc' },
   { href: '/blog', label: 'Blogs', key: 'blog' },
@@ -29,14 +28,7 @@ const serviceLinks = [
     </a>
 
     <nav class="nav-links" aria-label="Galvenā navigācija">
-      {navLinks.map(link => (
-        <a
-          href={link.href}
-          class={activeNav === link.key ? 'active' : ''}
-        >
-          {link.label}
-        </a>
-      ))}
+      <a href={navLinks[0].href} class={activeNav === navLinks[0].key ? 'active' : ''}>{navLinks[0].label}</a>
       <details class="nav-services">
         <summary class={activeNav === 'pakalpojumi' ? 'active' : ''}>Pakalpojumi <span aria-hidden="true">⌄</span></summary>
         <div class="nav-services-menu">
@@ -47,10 +39,21 @@ const serviceLinks = [
           ))}
         </div>
       </details>
+      {navLinks.slice(1).map(link => (
+        <a
+          href={link.href}
+          class={activeNav === link.key ? 'active' : ''}
+        >
+          {link.label}
+        </a>
+      ))}
     </nav>
 
     <div class="nav-cta">
-      <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-primary">Sākuma konsultācija <span class="arrow">→</span></a>
+      <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-primary nav-cta-link">
+        <span class="cta-full">Sākuma konsultācija</span><span class="cta-short">Konsultācija</span>
+        <span class="arrow">→</span>
+      </a>
       <button class="nav-toggle" id="navToggle" aria-label="Atvērt izvēlni" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M3 7h18M3 12h18M3 17h18"/>
@@ -62,9 +65,7 @@ const serviceLinks = [
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <div class="wrap">
       <ul>
-        {navLinks.map(link => (
-          <li><a href={link.href}>{link.label}</a></li>
-        ))}
+        <li><a href={navLinks[0].href}>{navLinks[0].label}</a></li>
         <li>
           <details class="mobile-services">
             <summary>Pakalpojumi <span aria-hidden="true">+</span></summary>
@@ -73,8 +74,10 @@ const serviceLinks = [
             </div>
           </details>
         </li>
+        {navLinks.slice(1).map(link => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
       </ul>
-      <a href="/pakalpojumi/sakuma-konsultacija" class="btn btn-primary">Sākuma konsultācija — 49 € <span class="arrow">→</span></a>
     </div>
   </div>
 </header>
