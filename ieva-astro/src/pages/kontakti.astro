@@ -181,6 +181,8 @@ const faqs = [
               </label>
             </div>
 
+            <div id="turnstileWidget" aria-label="Drošības pārbaude"></div>
+
             <button class="btn btn-primary" type="submit">Nosūtīt ziņu <span class="arrow">→</span></button>
             <p class="form-privacy">
               Tava informācija paliek pie manis. Bez surogātpasta. Bez trešajām pusēm.
@@ -239,16 +241,26 @@ function initContactPage() {
   }
 
   // ── Pieteikuma nosūtīšana ──────────────────────────────────────────────
-  // Kad būs īsts e-pasta serviss (Formspree / Google Business + API), ieliec te
-  // tā adresi — pārējais kods nav jāmaina. Tukšs = atveram apmeklētāja pasta
-  // programmu ar sagatavotu vēstuli.
-  const FORM_ENDPOINT = '';
+  const FORM_ENDPOINT = '/api/contact';
+  const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
   const KONTAKTA_EPASTS = 'ieva.vinka@gmail.com';
 
   const form = document.getElementById('contactForm') as HTMLFormElement | null;
   if (form) {
     const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
     const btnLabel = submitBtn ? submitBtn.innerHTML : '';
+
+    const turnstileWidget = document.getElementById('turnstileWidget');
+    if (turnstileWidget && TURNSTILE_SITE_KEY) {
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      script.async = true;
+      script.onload = () => {
+        const turnstile = (window as Window & { turnstile?: { render: (element: HTMLElement, options: Record<string, string>) => void } }).turnstile;
+        if (turnstile) turnstile.render(turnstileWidget as HTMLElement, { sitekey: TURNSTILE_SITE_KEY, theme: 'light' });
+      };
+      document.head.append(script);
+    }
 
     const setStatus = (text: string, kind: 'error' | 'info') => {
       let box = document.getElementById('formStatus');
@@ -343,16 +355,15 @@ function initContactPage() {
       }
 
       try {
-        if (FORM_ENDPOINT) {
-          const res = await fetch(FORM_ENDPOINT, {
-            method: 'POST',
-            body: data,
-            headers: { Accept: 'application/json' },
-          });
-          if (!res.ok) throw new Error(String(res.status));
-          showSent();
-          return;
-        }
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+        });
+        const result = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(result.error || String(res.status));
+        showSent();
+        return;
 
         // Rezerves ceļš: sagatavota vēstule apmeklētāja pasta programmā.
         const lines = [
@@ -370,9 +381,11 @@ function initContactPage() {
           `mailto:${KONTAKTA_EPASTS}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines)}`;
         showHandoff(lines, mailtoUrl);
         window.location.href = mailtoUrl;
-      } catch {
+      } catch (error) {
         setStatus(
-          `Neizdevās nosūtīt. Uzraksti tieši uz ${KONTAKTA_EPASTS} — atbildēšu tāpat.`,
+          error instanceof Error && error.message
+            ? error.message
+            : `Neizdevās nosūtīt. Uzraksti tieši uz ${KONTAKTA_EPASTS} — atbildēšu tāpat.`,
           'error',
         );
         if (submitBtn) {
