@@ -2359,7 +2359,7 @@ footer{
 .sales-steps h3 { font-family: var(--serif); color: var(--plum); font-size: 28px; font-weight: 500; line-height: 1.15; margin: 22px 0 12px; }
 .sales-steps p { margin: 0; color: var(--ink-soft); line-height: 1.7; }
 .sales-fit { padding: 100px 0; background: var(--ivory); }
-.sales-fit-note { align-self: start; padding: 30px 34px; background: var(--cream); border-left: 3px solid var(--burgundy); border-radius: 4px; }
+.sales-fit-note { align-self: start; padding: 30px 34px; background: var(--cream); border-radius: 12px; box-shadow: 0 1px 2px rgba(60,18,32,.05); }
 .sales-fit-note .offer-kicker { display: flex; align-items: center; gap: 10px; }
 .sales-fit-note .offer-kicker::before { content: ''; width: 18px; height: 18px; flex: none; background: var(--burgundy); mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' y1='16' x2='12' y2='12'/%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'/%3E%3C/svg%3E") center / contain no-repeat; }
 .sales-fit-note p:not(.offer-kicker) { color: var(--ink-soft); line-height: 1.75; margin: 10px 0 0; }
