@@ -33,7 +33,9 @@ const {
   noFooter,
 } = Astro.props;
 
-const GA_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+// Measurement ID nav slepens; fallback nodrošina, ka Pages deploy sāk vākt datus
+// arī tad, ja PUBLIC_GA_MEASUREMENT_ID vēl nav ievadīts Cloudflare panelī.
+const GA_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || 'G-807WDRDGZP';
 const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
 ---
 
@@ -50,13 +52,21 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
       noindex={noindex}
     />
 
-    {/* Google Analytics 4 — tikai ja GA_ID uzstādīts */}
+    {/* Google Analytics 4 — ar Consent Mode. Analītika sākas tikai pēc piekrišanas. */}
     {GA_ID && GA_ID !== 'G-XXXXXXXXXX' && (
       <>
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
         <script define:vars={{ GA_ID }}>
           window.dataLayer = window.dataLayer || [];
           function gtag(){ dataLayer.push(arguments); }
+          window.gtag = gtag;
+          gtag('consent', 'default', {
+            analytics_storage: 'denied',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            wait_for_update: 500,
+          });
           gtag('js', new Date());
           gtag('config', GA_ID, { anonymize_ip: true });
         </script>
@@ -93,6 +103,17 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
     </main>
     {!noFooter && <Footer />}
 
+    <aside id="cookieConsent" class="cookie-banner" aria-label="Sīkfailu izvēle" role="dialog" aria-live="polite" hidden>
+      <p>
+        Izmantoju analītiskos sīkfailus, lai saprastu, kā mājaslapa tiek izmantota un to uzlabotu.
+        <a href="/privatums">Vairāk privātuma politikā</a>.
+      </p>
+      <div class="cookie-actions">
+        <button class="cookie-decline" type="button" data-cookie-choice="reject">Noraidīt</button>
+        <button class="cookie-accept" type="button" data-cookie-choice="accept">Piekrītu</button>
+      </div>
+    </aside>
+
     <script>
       function initReveal() {
         if (!('IntersectionObserver' in window)) return;
@@ -110,6 +131,44 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
         });
       }
       document.addEventListener('astro:page-load', initReveal);
+
+      const consentKey = 'ieva-cookie-consent-v1';
+      const banner = document.getElementById('cookieConsent');
+      const updateConsent = (choice: 'granted' | 'denied') => {
+        window.gtag?.('consent', 'update', {
+          analytics_storage: choice,
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+        });
+      };
+      const savedConsent = localStorage.getItem(consentKey);
+      if (savedConsent === 'accepted') updateConsent('granted');
+      if (!savedConsent && banner) {
+        banner.hidden = false;
+        requestAnimationFrame(() => banner.classList.add('is-visible'));
+      }
+      banner?.addEventListener('click', (event) => {
+        const button = (event.target as Element).closest<HTMLButtonElement>('[data-cookie-choice]');
+        if (!button) return;
+        const accepted = button.dataset.cookieChoice === 'accept';
+        localStorage.setItem(consentKey, accepted ? 'accepted' : 'rejected');
+        updateConsent(accepted ? 'granted' : 'denied');
+        banner.classList.remove('is-visible');
+        window.setTimeout(() => { banner.hidden = true; }, 350);
+      });
+
+      document.addEventListener('click', (event) => {
+        const link = (event.target as Element).closest<HTMLAnchorElement>('a[href]');
+        if (!link) return;
+        const url = new URL(link.href, window.location.href);
+        if (url.hostname === 'pirkt.ievajekabsone.lv') {
+          window.gtag?.('event', 'checkout_link_clicked', {
+            link_text: link.textContent?.trim().slice(0, 100) || 'checkout',
+            page_path: window.location.pathname,
+          });
+        }
+      });
     </script>
   </body>
 </html>

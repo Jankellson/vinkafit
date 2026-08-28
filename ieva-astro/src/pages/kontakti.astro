@@ -362,6 +362,10 @@ function initContactPage() {
         });
         const result = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(result.error || String(res.status));
+        window.gtag?.('event', 'contact_form_submitted', {
+          form_type: 'contact',
+          service: String(data.get('service') || 'not_specified').slice(0, 80),
+        });
         showSent();
         return;
 
