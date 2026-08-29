@@ -170,6 +170,21 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
         window.setTimeout(() => { banner.hidden = true; }, 350);
       });
 
+      // Ceļvedis (bezmaksas lead magnet) forma sākumlapā un /start izmanto Systeme.io
+      // iegulto skriptu, kas balstās uz `document.currentScript` — tas strādā TIKAI pilnas
+      // lapas ielādes laikā. Astro ClientRouter (SPA pārejas) skriptu ievieto no jauna
+      // dinamiski, kur `currentScript` vairs nav uzticams — forma klusi neparādās (arī
+      // pārlūka atpakaļ/uz priekšu pogas iet caur SPA pāreju, tāpēc labo lifecycle
+      // notikuma līmenī, ne tikai klikšķu klausītājā). Tāpēc navigācija UZ "/" vai "/start"
+      // vienmēr iet caur pilnu pārlādi.
+      const RELOAD_PATHS = new Set(['/', '/start']);
+      document.addEventListener('astro:before-preparation', (event) => {
+        if (RELOAD_PATHS.has(event.to.pathname)) {
+          event.preventDefault();
+          window.location.href = event.to.href;
+        }
+      });
+
       document.addEventListener('click', (event) => {
         const link = (event.target as Element).closest<HTMLAnchorElement>('a[href]');
         if (!link) return;

@@ -1,5 +1,29 @@
 # STATUSS — vienotais darāmo saraksts (todo/done)
 
+## 2026-08-29 (2) — Salabota lead magnet forma, kas klusi nestrādāja pēc iekšējas navigācijas
+
+**Bug:** Ceļveža ("5 uztura kļūdas") pieteikšanās forma sākumlapā (`#start`) un `/start`
+lapā dažreiz nerādījās vispār — cilvēks redzēja tikai virsrakstu "Saņem savu ceļvedi" bez
+e-pasta lauka, un pieteikums NEnonāca Systeme CRM. Strādāja tikai pēc pilnas lapas pārlādes
+(F5), ne pēc klikšķina uz saiti.
+
+**Cēlonis:** Systeme.io iegultais skripts (`<script id="form-script-tag-25249110">`)
+izmanto `document.currentScript`, lai atrastu savu pozīciju DOM un ievietotu iframe blakus.
+Šis pārlūka API strādā TIKAI sākotnējās HTML parsēšanas laikā. Astro `<ClientRouter />`
+(SPA pārejas starp lapām) skriptu pēc navigācijas ievieto no jauna dinamiski — tur
+`document.currentScript` vairs neuzticami norāda uz pareizo skriptu, un vendor kods klusi
+neko neievieto (bez kļūdas konsolē, tāpēc pamanīt bija grūti).
+
+**Labojums** (`src/layouts/BaseLayout.astro`): pievienots `astro:before-preparation`
+notikuma klausītājs — ja navigācijas mērķis ir `/` vai `/start`, SPA pāreja tiek atcelta
+un aizstāta ar parastu `window.location.href` pilnu pārlādi. Aptver visus navigācijas
+veidus (klikšķi UZ šīm lapām no jebkuras vietas + pārlūka atpakaļ/uz priekšu pogas), ne
+tikai konkrētas saites — nav jāatrod un jāatzīmē katra saite manuāli.
+
+**Pārbaudīts** lokāli (dev serverī): SPA klikšķis no `/par-mani` uz `/` un uz `/start`
+tagad izraisa reālu pilnu pārlādi (apstiprināts ar `window` sentinel mainīgo, kas
+pazuda), un abās lapās iframe ar formu parādās korekti (`iframeCount: 1`).
+
 ## 2026-08-29 — PageSpeed Insights: mobilais Performance 67 → labots render-blocking + oversized attēli
 
 Analizēju `pagespeed.web.dev` rezultātu (mobile 67/100 Performance; Accessibility/Best
