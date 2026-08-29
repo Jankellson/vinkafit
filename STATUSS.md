@@ -18,11 +18,35 @@ Practices/SEO jau 100). Divi lielākie punkti:
 `npm run build` un `npm run check:images` iet cauri bez kļūdām. Vizuāli pārbaudīts
 lokālajā preview — attēli un fonti ielādējas pareizi, izkārtojums nemainījās.
 
-**Nav vēl salabots (mazāka vērtība, atstāts):** "Reduce unused JavaScript" (~70 KiB, drīzāk
-Astro ClientRouter/view-transitions), "1 non-composited animation" (nediagnosticēts bez
-reāla Chrome trace) — abi zem lielākā sviras punkta, neaiztiku bez skaidra iemesla.
+**Otrā caurlaide (tajā pašā dienā), pēc atkārtota PageSpeed testa (mobile 73, desktop
+~90+):** vēl aizvien 261 KiB (desktop) / 116 KiB (mobile) "improve image delivery" un 70 KiB
+"unused JavaScript". Salaboti abi:
 
-**Nav commitots/pushots — Jānis vēl nav apstiprinājis deploy.**
+1. **Attēli joprojām 2-3× lielāki par reāli izmērīto "displayed dimensions"** no PSI
+   pārskata (ne tikai CSS-aprēķinātu minējumu). Vēlreiz pārmērogoti ciešāk (piem.
+   `ieva-vakarinas-majas-virtuve.webp` 700→320px platumā, 72→21 KiB) + **7 zīmola ikonas**
+   (`ieva-uztura-*-ikona.webp`, 200×200), kas visur renderējas ≤92px — pārmērogotas uz
+   180px. Kopā vēl ~130 KiB.
+2. **Google Tag Manager (`gtag.js`, ~70 KiB) ielādējās visiem apmeklētājiem uzreiz**, kaut
+   analītika tik un tā sākas tikai pēc piekrišanas (Consent Mode "denied" pēc noklusējuma).
+   `BaseLayout.astro`: skripta `<script src=gtag.js>` tags vairs neierakstās statiski —
+   `window.__loadGtagScript()` to ievieto DOM tikai tad, kad `localStorage` jau ir
+   "accepted" vai lietotājs uzspiež "Piekrītu" cookie banerī. Rezultātā liela daļa
+   apmeklējumu (arī pats Lighthouse tests, kas nekad neklikšķina "Piekrītu") šo JS vispār
+   neielādē.
+3. **Sīkfailu banera ARIA labota** (`role="dialog"` → `role="region"`) — PSI jaunā
+   "Agentic Browsing" kategorija atzīmēja, ka `dialog` role neder ne-modālam baneriem
+   (nebloķē pārējo lapu, tāpēc nav "dialogs").
+
+Pārbaudīts: `npm run build` + `npm run check:images` tīri; attēlu ielāde un GA
+atlikšanas loģika pārbaudīta ar reālu GA ID testa build (dev serverī `.env` placeholder
+`G-XXXXXXXXXX` GA vienmēr izslēdz, kā jau bija iepriekš — normāli).
+
+**Nav vēl salabots (mazāka vērtība, apzināti atstāts):** "1 non-composited animation" un
+"forced reflow ~54ms" — abi nediagnosticējami bez reāla Chrome trace ieraksta, zem
+proporcijas sliekšņa vērtībai, ko tie dotu.
+
+**Commitots un pushots uz `master` (Cloudflare Pages auto-deploy).**
 
 ## 2026-08-27 — Sākuma konsultācijas checkout pilnībā gatavs un notestēts; FAQ lapa, lead magnet forma salabota
 

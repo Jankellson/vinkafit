@@ -52,25 +52,33 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
       noindex={noindex}
     />
 
-    {/* Google Analytics 4 — ar Consent Mode. Analītika sākas tikai pēc piekrišanas. */}
+    {/* Google Analytics 4 — ar Consent Mode. gtag.js skripts (70+ KiB) ielādējas TIKAI
+        tad, kad lietotājs jau piekritis (localStorage) vai piekrīt tagad (skat. zemāk
+        cookie banera skriptu) — nevis visiem apmeklētājiem uzreiz, kā bija iepriekš. */}
     {GA_ID && GA_ID !== 'G-XXXXXXXXXX' && (
-      <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
-        <script define:vars={{ GA_ID }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){ dataLayer.push(arguments); }
-          window.gtag = gtag;
-          gtag('consent', 'default', {
-            analytics_storage: 'denied',
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
-            wait_for_update: 500,
-          });
-          gtag('js', new Date());
-          gtag('config', GA_ID, { anonymize_ip: true });
-        </script>
-      </>
+      <script define:vars={{ GA_ID }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag('consent', 'default', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          wait_for_update: 500,
+        });
+        gtag('js', new Date());
+        gtag('config', GA_ID, { anonymize_ip: true });
+
+        window.__loadGtagScript = function () {
+          if (document.getElementById('gtag-script')) return;
+          const s = document.createElement('script');
+          s.id = 'gtag-script';
+          s.async = true;
+          s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+          document.head.appendChild(s);
+        };
+      </script>
     )}
 
     {/* Microsoft Clarity — tikai ja CLARITY_ID uzstādīts */}
@@ -103,7 +111,7 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
     </main>
     {!noFooter && <Footer />}
 
-    <aside id="cookieConsent" class="cookie-banner" aria-label="Sīkfailu izvēle" role="dialog" aria-live="polite" hidden>
+    <aside id="cookieConsent" class="cookie-banner" aria-label="Sīkfailu izvēle" role="region" aria-live="polite" hidden>
       <p>
         Izmantoju analītiskos sīkfailus, lai saprastu, kā mājaslapa tiek izmantota un to uzlabotu.
         <a href="/privatums">Vairāk privātuma politikā</a>.
@@ -143,7 +151,10 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
         });
       };
       const savedConsent = localStorage.getItem(consentKey);
-      if (savedConsent === 'accepted') updateConsent('granted');
+      if (savedConsent === 'accepted') {
+        updateConsent('granted');
+        window.__loadGtagScript?.();
+      }
       if (!savedConsent && banner) {
         banner.hidden = false;
         requestAnimationFrame(() => banner.classList.add('is-visible'));
@@ -154,6 +165,7 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
         const accepted = button.dataset.cookieChoice === 'accept';
         localStorage.setItem(consentKey, accepted ? 'accepted' : 'rejected');
         updateConsent(accepted ? 'granted' : 'denied');
+        if (accepted) window.__loadGtagScript?.();
         banner.classList.remove('is-visible');
         window.setTimeout(() => { banner.hidden = true; }, 350);
       });
