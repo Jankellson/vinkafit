@@ -10,7 +10,7 @@ const jsonLd = {
     "@type": "Person",
     "@id": "https://ievajekabsone.lv/#ieva",
     "name": "Ieva Jēkabsone",
-    "email": "ieva.vinka@gmail.com",
+    "email": "info@ievajekabsone.lv",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Rīga",
@@ -49,7 +49,7 @@ const faqs = [
 
 <BaseLayout
   title="Kontakti — Ieva Jēkabsone, uztura konsultante"
-  description="Piesakies uztura konsultācijai. Sazināšos 24 stundu laikā. E-pasts: ieva.vinka@gmail.com."
+  description="Piesakies uztura konsultācijai. Sazināšos 24 stundu laikā. E-pasts: info@ievajekabsone.lv."
   canonical="https://ievajekabsone.lv/kontakti"
   jsonLd={jsonLd}
   activeNav="kontakti"
@@ -78,7 +78,7 @@ const faqs = [
         <ul class="contact-details">
           <li>
             <span class="label">E-pasts</span>
-            <span class="value"><a href="mailto:ieva.vinka@gmail.com">ieva.vinka@gmail.com</a></span>
+            <span class="value"><a href="mailto:info@ievajekabsone.lv">info@ievajekabsone.lv</a></span>
           </li>
           <li>
             <span class="label">Atrašanās</span>
@@ -217,7 +217,7 @@ const faqs = [
       </div>
 
       <p class="faq-footer">
-        Neatradi atbildi? <a href="mailto:ieva.vinka@gmail.com">Uzraksti tieši →</a>
+        Neatradi atbildi? <a href="mailto:info@ievajekabsone.lv">Uzraksti tieši →</a>
       </p>
     </div>
   </section>
@@ -243,7 +243,7 @@ function initContactPage() {
   // ── Pieteikuma nosūtīšana ──────────────────────────────────────────────
   const FORM_ENDPOINT = '/api/contact';
   const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
-  const KONTAKTA_EPASTS = 'ieva.vinka@gmail.com';
+  const KONTAKTA_EPASTS = 'info@ievajekabsone.lv';
 
   const form = document.getElementById('contactForm') as HTMLFormElement | null;
   if (form) {
