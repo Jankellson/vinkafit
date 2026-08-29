@@ -34,11 +34,10 @@ HTML, ko Ieva atrada un iedeva.**
 `blog/index.astro` jau bija iebūvēts tukšais stāvoklis „Raksti drīz parādīsies" — nekas
 papildu nebija jātaisa. Saite `paldies-abonentam.astro` uz dzēsto rakstu noņemta.
 
-**E-pasts: Namecheap Private Email DNS pievienots Cloudflare, gaida aktivizāciju** (līdz 4 h).
-Jaunais lēmums: publiskā adrese būs **`info@ievajekabsone.lv`** (nevis `ieva@`, kā bija
-2026-07-28 — sk. `LEMUMI.md` 2026-08-27 ierakstu). **Kamēr pastkaste nav aktīva, kodā PAGAIDĀM
-atpakaļ `ieva.vinka@gmail.com`** (Jāņa lēmums) — jānomaina uz `info@`, kad Namecheap statuss
-rāda „Activated".
+**E-pasts `info@ievajekabsone.lv` AKTIVIZĒTS un darbojas** (2026-08-29). Namecheap Private
+Email pastkaste izveidota; visas atsauces kodā (kontakti, sākumlapa, FAQ, footer, par-mani,
+privātuma un lietošanas noteikumu lapas — 7 faili) nomainītas no pagaidu `ieva.vinka@gmail.com`
+uz galīgo `info@ievajekabsone.lv`. Publiskota, commitota, pushota.
 
 **`.sales-fit-note` CSS salabots** — kastīte iepriekš stiepās pilnā augstumā ar tukšu vietu
 apakšā (`align-self: stretch`), tagad `align-self: start` + burgundijas kreisā mala, izskatās
@@ -52,13 +51,9 @@ pēc īsta callout bloka, ne tukšas kastes.
       kas nosūta PDF saiti. Jāizveido Systeme.io: Email campaign ar 1. e-pastu (saite uz
       failu) + automation „Funnel form subscribed → Subscribe to campaign" (sk. Systeme
       dokumentāciju: help.systeme.io/article/284).
-- [ ] Kad Namecheap e-pasts aktivizējas: izveidot pastkasti `info@ievajekabsone.lv`, tad
-      kodā nomainīt `ieva.vinka@gmail.com` atpakaļ uz `info@ievajekabsone.lv` (meklēt visā
-      `src/` mapē).
-- [ ] Astro vietne PATI VĒL NAV publiskota uz `ievajekabsone.lv` — viss līdz šim ir testēts
-      lokāli (`localhost`) vai Systeme apakšdomēnā. Vajag: GitHub push (repo jau ir,
-      `github.com/Jankellson/vinkafit`) + Cloudflare Pages projekts + custom domain.
-      **Šis ir vienīgais reālais bloķētājs pirms publiskas palaišanas.**
+- [x] E-pasts aktivizēts, kods nomainīts uz `info@ievajekabsone.lv` visur (2026-08-29).
+- [x] Astro vietne publiskota uz `ievajekabsone.lv` (Cloudflare Pages, savienots ar
+      `github.com/Jankellson/vinkafit`, auto-deploy pēc katra push uz `master`).
 - [ ] Git: šīs sesijas izmaiņas vēl nav commitotas.
 - [ ] Funnel 2 (3 PDF produkti: 10 dienu, vasaras, vegānais plāns) — **cenas vēl nav
       apstiprinātas** (`PRODUKTI-STRATEGIJA.md` dod tikai melnraksta diapazonu €9–19).
