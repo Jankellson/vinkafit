@@ -1,5 +1,29 @@
 # STATUSS — vienotais darāmo saraksts (todo/done)
 
+## 2026-08-29 — PageSpeed Insights: mobilais Performance 67 → labots render-blocking + oversized attēli
+
+Analizēju `pagespeed.web.dev` rezultātu (mobile 67/100 Performance; Accessibility/Best
+Practices/SEO jau 100). Divi lielākie punkti:
+
+1. **Google Fonts bloķēja renderēšanu (est. 2100 ms).** `SEOHead.astro` fontu `<link
+   rel="stylesheet">` bija sinhrons. Pārtaisīts uz preload+swap paternu (`media="print"
+   onload="this.media='all'"` + `<noscript>` fallback) — teksts rādās uzreiz ar fallback
+   fontu, Google fonti pielaikojas, kad ielādējušies.
+2. **4 attēli bija 3–10× lielāki par renderēto izmēru (kopā ~228 KiB atkritums).** Hero
+   portrets (`ieva-consultant-portrait.webp`, LCP elements) un trīs foto sadaļās "guide"/
+   "stakes" bija augšupielādēti pilnā izšķirtspējā, kaut renderējas 100–400px platumā.
+   Pārmērogoti uz 2× renderēto izmēru ar `sharp` (piem. `photo-stack` attēls 135→23 KiB).
+   Hero attēlam papildus `fetchpriority="high"`, jo tas ir LCP elements.
+
+`npm run build` un `npm run check:images` iet cauri bez kļūdām. Vizuāli pārbaudīts
+lokālajā preview — attēli un fonti ielādējas pareizi, izkārtojums nemainījās.
+
+**Nav vēl salabots (mazāka vērtība, atstāts):** "Reduce unused JavaScript" (~70 KiB, drīzāk
+Astro ClientRouter/view-transitions), "1 non-composited animation" (nediagnosticēts bez
+reāla Chrome trace) — abi zem lielākā sviras punkta, neaiztiku bez skaidra iemesla.
+
+**Nav commitots/pushots — Jānis vēl nav apstiprinājis deploy.**
+
 ## 2026-08-27 — Sākuma konsultācijas checkout pilnībā gatavs un notestēts; FAQ lapa, lead magnet forma salabota
 
 **Sākuma konsultācija (49 €) tagad ir reāli pērkama.** Systeme.io: funnel `Sakuma-konsultacija`
