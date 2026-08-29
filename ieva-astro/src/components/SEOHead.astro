@@ -61,13 +61,27 @@ const fullTitle =
 <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
 
-<!-- Google Fonts -->
+<!-- Google Fonts — ielādē asinhroni (preload + swap uz stylesheet), lai fontu
+     CSS pieprasījums nebloķē pirmo renderēšanu (render-blocking request). -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
+  rel="preload"
+  as="style"
   href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-  rel="stylesheet"
 />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+  />
+</noscript>
 
 <!-- JSON-LD structured data -->
 {jsonLd && (
