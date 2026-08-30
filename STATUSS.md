@@ -1,5 +1,40 @@
 # STATUSS — vienotais darāmo saraksts (todo/done)
 
+## 2026-08-29 (3) — Favicon bug (bija Astro noklusējuma ikona), WebSite schema, SEO reality-check
+
+**Favicon bug, atrasts un salabots.** Google meklēšanas rezultātos rādījās Astro projekta
+noklusējuma logo (rozā/melns "raķetes" simbols), ne Ievas burgundijas "I" monogramma.
+Cēlonis: `SEOHead.astro` `<link>` tagi norāda uz `/assets/images/favicon.svg` (pareizais,
+zīmola) un `/favicon.ico`, bet **pats `/favicon.ico` fails saknē nekad netika aizstāts** —
+palika `astro create` scaffold noklusējums no maija. Google favicon fetcher pēc
+dokumentētas konvencijas pārbauda `/favicon.ico` saknē NEATKARĪGI no `<link>` tagiem, tāpēc
+rādīja veco. Salabots: `/favicon.ico` un `/favicon.svg` (sakne) pārģenerēti no reālās
+zīmola ikonas (`sharp` + Pillow, multi-size ICO 16/32/48/64px). Papildus pievienots
+`apple-touch-icon.png` (180×180) mobilo ierīču grāmatzīmēm/sākuma ekrānam.
+**Animēts favicon — apzināti NĒ:** Google meklēšanas rezultātos animācija netiek rādīta
+(vienalga statisks kadrs), un pārlūka cilnē tas biežāk lasās kā "spama/kazino" signāls,
+ne uzticamības signāls — YMYL veselības zīmolam tas strādā pret mērķi.
+
+**Title/description pārbaudīti visās 25 lapās** — jau unikāli un aprakstoši katrā (iepriekšējā
+sesijā jau izdarīts labi), nekas nebija jālabo. **"Domēns divreiz" Google rezultātā** (kas
+lietotājam lika domāt, ka title jāmaina) faktiski bija cits mehānisms: Google zem virsraksta
+rāda "vietnes nosaukumu" (bold uzraksts) + URL — un jaunām/maz autoritatīvām vietnēm Google
+bieži rāda pašu domēnu kā vietnes nosaukumu, nevis zīmola vārdu, kamēr nav pietiekami
+signālu. Labots pareizajā vietā — pievienota **`WebSite` JSON-LD** (`index.astro`) ar
+`"name": "Ieva Jēkabsone"`, kas ir Google oficiāli dokumentētais mehānisms šī nosaukuma
+kontrolei (uzticamāks par `og:site_name` vien). **Rezultāts parādīsies pēc Google
+pārindeksēšanas — dienas/nedēļas, ne uzreiz.**
+
+**"uztura konsultants" ranžēšanas jautājums — nav bug, ir laika jautājums.** Mājaslapa
+aktivizēta ~nedēļu (e-pasts, checkout — sk. ierakstus augstāk 2026-08-27/29). Domēnam
+nulle autoritātes, nulle backlinks. Ranžēt top-20 lapās par konkurētspējīgu nacionālu
+2-vārdu terminu nedēļas laikā nav reālistiski neatkarīgi no on-page kvalitātes — tas ir
+normāli, ne kļūda. `site:ievajekabsone.lv` rāda vietni ir indeksēta (7+ lapas) — indeksācija
+NAV problēma. Prioritāte pēc `local-seo` skill sviras secības: **Google Business Profile**
+(ja vēl nav — tas ranžē Maps/lokālajā packā neatkarīgi no domēna autoritātes, ātrāk par
+organisko meklēšanu) → atsauksmes → esošais Uztura ABC saturs jau der long-tail vārdiem
+("cik ūdens dienā vajag" u.tml.), kur konkurence mazāka. Jautāts Jānim, vai GBP jau iestatīts.
+
 ## 2026-08-29 (2) — Salabota lead magnet forma, kas klusi nestrādāja pēc iekšējas navigācijas
 
 **Bug:** Ceļveža ("5 uztura kļūdas") pieteikšanās forma sākumlapā (`#start`) un `/start`
