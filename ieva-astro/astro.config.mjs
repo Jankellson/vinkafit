@@ -10,6 +10,11 @@ const noindexPages = ['/start', '/paldies', '/paldies-abonentam'];
 // https://astro.build/config
 export default defineConfig({
   site: 'https://ievajekabsone.lv',
+  // Vecs, nepareizi uzrakstīts slugs ("bogatinatajs" -> "bagatinataji") — patur redirect,
+  // ja kāds jau paspējis to saglabāt vai indeksēt.
+  redirects: {
+    '/uztura-abc/uztura-bogatinatajs': '/uztura-abc/uztura-bagatinataji',
+  },
   integrations: [
     react(),
     sitemap({
