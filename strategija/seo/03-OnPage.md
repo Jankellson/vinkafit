@@ -8,7 +8,102 @@
 (1) URL slug · (2) H1 sākums · (3) meta description pirmie ~10 vārdi · (4) 1. teikums. Viena lapa = viens primārais
 atslēgvārds. ⚠️ Divas lapas NEDRĪKST mērķēt vienu atslēgvārdu (kanibalizācija).
 
-## Per-lapa tracker
+## 🔵 Audits 2026-09-05 — pilns 15-lapu audits, precīzāka metode
+
+> Šis audits aizstāj 2026-07-28 "4 vietu" tabulas zemāk ar precīzāku metodi un
+> pārbaudīja arī lietas, ko jūlija audits neaptvēra (Google Business Profile,
+> schema validācija ar īstu rīku, page speed, interlinking, H2). Vecās tabulas
+> paliek vēsturei, bet **šī sadaļa ir aktuālā patiesība**.
+
+### Metode (lieto nākamajā auditā — sk. arī atjaunoto `AUDIT-BRIEF.md`)
+
+**Četras vietas, stingrāka pakāpe.** Katram no 4 elementiem (title / H1 / meta / pirmie
+~100 vārdi) vērtējums nav binārs ✅/❌, bet **PASS / WEAK / PARTIAL / MISSING**:
+- PASS — atslēgvārda vārdi ir blakus (pieļauta 1 pārtraukšana, ja frāze abās pusēs paliek vesela)
+- WEAK — visi vārdi klāt, bet apgrieztā secībā vai izklaidēti
+- PARTIAL — vismaz viens vārds trūkst (nosauc kurš)
+- MISSING — atslēgvārds pēc būtības nav klāt
+- **Absence sit scatter:** ja kaut viens vārds trūkst, tas vienmēr ir PARTIAL, lai cik "tuvu" izklausās pārējais.
+
+**⚠️ Vissvarīgākā jaunā atziņa — NEATkārto atslēgvārdu piespiedu kārtā.** Pirmajā
+kārtā (H1 tieši virs lede, kas arī satur to pašu frāzi) sanāca izskatīties pēc spama —
+Jānis to pamanīja uzreiz pēc screenshot. Labojums: **atslēgvārds parādās TIKAI DIVREIZ
+uz visu lapu** — vienreiz title/H1 līmenī, vienreiz tālāk lejā tekstā (citā sekcijā,
+ne blakus rindā). H2 līmenī atslēgvārdu **NEspiež katrā** apakšvirsrakstā — tas pat nav
+punktots šajā audita metodē (izslēgts apzināti, tāpat kā attēlu alt teksts, schema,
+saites, lasāmība — sk. sadaļu zemāk "kas apzināti IZSLĒGTS").
+
+**Atslēgvārda piešķiršana — vaicā TIEŠI, nemini.** Pirms audita katrai lapai, kurai
+nav pašsaprotama atslēgvārda, jautā lietotājam **blind**: "ko tu ierakstītu Google,
+lai atrastu šo lapu" — PIRMS parādi savu minējumu. Ja lapai ir reāli GSC dati
+(Search Console vaicājumi), tie ir uzticamāki par minējumu. Ja lapas darbs ir
+uzticība/konversija, ne meklēšana (piem. "Par mani"), pasaki to skaidri un jautā,
+vai vispār vērts piešķirt atslēgvārdu.
+
+**Kas apzināti IZSLĒGTS no šī audita** (nav punktots, neaiztiec bez atsevišķa iemesla):
+H2/H3 apakšvirsraksti, attēlu alt teksts, backlinki, lasāmība, vārdu skaits.
+
+**Kas PAPILDUS pārbaudīts šoreiz** (ārpus 4-vietu metodes, bet reāli svarīgi):
+| Pārbaude | Kā | Kāpēc |
+|---|---|---|
+| Schema (JSON-LD) | `validator.schema.org` pret DZĪVO lapu (4 lapu tipi) | Acu pārbaude nesaista kļūdas; validators to dara reāli, bez pieteikšanās |
+| Google Business Profile | Google Maps/Search meklējums bez pieteikšanās + Ievas pašas ekrānuzņēmums | On-page teksts nekad neieved Maps 3-pack — to nosaka atsauksmes un profila pilnība |
+| Page speed | PageSpeed Insights pret dzīvo lapu (mobile + desktop) | Prasa reālu tīklu/renderēšanu, nevar simulēt lokāli |
+| Interlinking | Header/footer/kontakti/visu pakalpojumu lapu manuāla izsekošana | Vai lapa saņem saites un vai tās ved uz konversiju |
+| Alt teksti | Izlases pārbaude visās lapās, ne tikai tajās, kur skatījāmies cita iemesla dēļ | Viegli palaist garām lapas, kas nav SEO fokusā (start, paldies) |
+
+### Rezultāti — 15 auditētās lapas (2026-09-05, pirms/pēc labojumiem)
+
+| Lapa | Atslēgvārds | Score pirms | Statuss pēc labojuma |
+|---|---|---|---|
+| `/` | uztura konsultante Rīga | 12/100 | ✅ izlabots (title/H1/lede) |
+| `/pakalpojumi` | individuāls uztura plāns | 8/100 | ✅ izlabots |
+| `/par-mani` | uztura konsultante | 80/100 | ✅ izlabots (First-100 robs) |
+| `/uztura-abc` (hub) | uztura pamati | 48/100 | ✅ izlabots (title/H1) |
+| `/uztura-abc/makrouzturvielas` | makrouzturvielas | 100/100 | — jau perfekts |
+| `/uztura-abc/uztura-bagatinataji` (bij. `uztura-bogatinatajs`, slugs salabots) | uztura bagātinātāji | 100/100 | — jau perfekts |
+| `/uztura-abc/skivja-metode-papildu-olbaltumvielas` | šķīvja metode | 78/100 | ✅ izlabots (meta+TL;DR+H2) |
+| `/uztura-abc/esanas-biezums` | ēšanas biežums | 75/100 | ✅ izlabots (meta+TL;DR) |
+| `/uztura-abc/partikas-etiketes` | pārtikas etiķetes | 80/100 | ✅ izlabots (lede) |
+| `/uztura-abc/udens-daudzums` | ūdens daudzums | 26/100 | ✅ izlabots (title/H1/meta/lede) |
+| `/uztura-abc/nedelas-edienkarte` | ēdienkartes plānošana | 52/100 | ✅ izlabots (title/meta/lede/H2) |
+| `/pakalpojumi/sakuma-konsultacija` | sākuma konsultācija | 55/100 | ✅ izlabots (title/H1/meta) |
+| `/pakalpojumi/30-dienu-uztura-programma` | 30 dienu uztura programma | 33/100 | ✅ izlabots (title/H1/lede) |
+| `/pakalpojumi/90-dienu-uztura-programma` | individuāls uztura plāns | 80/100 | ✅ izlabots (lede) |
+| `/pakalpojumi/vip-uztura-atbalsts` | VIP uztura atbalsts | 85/100 | ✅ izlabots (lede) |
+
+**Modelis, kas atkārtojās 6+ lapās: "sinonīmu dreifs".** Title/H1/meta bieži jau
+satur pareizo atslēgvārdu, bet raksta pamatteksts tālāk lieto sinonīmu — "šķīvja
+**modelis**" nevis "metode", "**norma**"/"daudz" nevis "daudzums", "**biežāka**"
+(īpv.) nevis "biežums" (lietv.), "**plāns**" nevis "programma". Google to nesoda
+tieši, bet zaudē atkārtojuma iespēju. Pārbaudi šo pirmo, jo tas ir lēts labot.
+
+### Citi šī audita atradumi
+
+- **Google Business Profile eksistē, verificēts, bet 0 atsauksmju.** Tas ir lielāks
+  svira "uztura konsultante Rīga" tipa meklējumiem nekā jebkurš on-page labojums —
+  konkurenti lokālajā trijniekā ir ar 5–193 atsauksmēm. **Ievas darāmais**, ne kods.
+- **Tirgus termins ir "uztura speciālists", ne "uztura konsultante"** — visi konkurenti
+  un "Lietotāji meklē arī" ieteikumi Google lieto "speciālists". Nav mainīts zīmols
+  (Ieva apzināti izvēlējusies "konsultante"), bet der pieminēt "speciālists" kā
+  sinonīmu 1-2 vietās (FAQ, par-mani), lai noķertu abus meklējumus.
+- **Privātuma politika nosauca nepareizu hostingu** (Vercel, ne Cloudflare) — VDAR
+  precizitātes kļūda, salabota.
+- **URL slugā bija drukas kļūda**: `uztura-bogatinatajs` → `uztura-bagatinataji`
+  (pareizā vārda "bagātinātāji" ASCII forma). Pārsaukts, saites atjaunotas, 301
+  redirect pievienots `public/_redirects` (Cloudflare Pages).
+- **Schema validēta ar `validator.schema.org`** (nevis tikai izlasīta) — 0 kļūdu,
+  0 brīdinājumu visos 4 pārbaudītajos lapu tipos (Person/LocalBusiness/WebSite/FAQPage,
+  Article, Service, ProfilePage).
+- **Page speed jau labs** pirms šī audita — Desktop 99/100/100/100, Mobile 77
+  (dragged down by throttled-4G FCP/LCP, nav problēma ar 0 apmeklētājiem).
+- **Interlinking labi izdomāts**: header/footer CTA vienmēr uz sākuma konsultāciju,
+  30/90/VIP lapas apzināti ved uz `/kontakti` (ne tiešo checkout), jo visiem
+  jāsāk ar 49€ konsultāciju vispirms — pārbaudīts, tā ir apzināta uzbūve, ne kļūda.
+
+---
+
+## Per-lapa tracker (jūlija audits — vēsturisks, sk. septembra sadaļu augšā aktuālajam stāvoklim)
 
 > Statuss: ✅ izdarīts / kārtībā · ❌ trūkst / jālabo · ⚠️ ir, bet vājš · — neattiecas.
 > **Audits veikts 2026-07-28** (kods `src/`, salīdzināts ar `dist/`).

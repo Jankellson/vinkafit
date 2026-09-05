@@ -1,8 +1,8 @@
 ---
 type: task-brief
 title: On-page SEO audits — ieva-astro
-description: Izpildāms brīfs jaunai sesijai. Auditē visas 23 lapas, ieraksti rezultātu 03-OnPage.md.
-updated: 2026-07-28
+description: Izpildāms brīfs jaunai sesijai. Auditē visas lapas, ieraksti rezultātu 03-OnPage.md.
+updated: 2026-09-05
 ---
 
 # AUDITA BRĪFS — Ievas lapa, on-page SEO
@@ -10,17 +10,23 @@ updated: 2026-07-28
 > **Kā palaist:** jaunā čatā ieraksti:
 > `Izpildi Projekti/VinkaFit-Ieva/strategija/seo/AUDIT-BRIEF.md`
 
+> ⚠️ **2026-09-05: metode atjaunota pēc pilna audita cikla.** Pirms sāc, izlasi
+> `03-OnPage.md` sadaļu **"🔵 Audits 2026-09-05"** — tur ir precīzāka PASS/WEAK/PARTIAL/MISSING
+> pakāpe, brīdinājums pret atslēgvārda piespiešanu (izskatās pēc spama), un noteikums
+> vaicāt atslēgvārdu lietotājam BLIND, nevis minēt. Šis fails zemāk apraksta VECĀKU,
+> vienkāršāku metodi (2026-07-28) — der kā konteksts, bet sekot precīzākajai.
+
 ---
 
 ## 0. Konteksts (izlasi pirms sākt)
 
 | | |
 |---|---|
-| **Klients** | Ieva Jēkabsone — uztura konsultante, sievietes 30–50, LV (+RU nākotnē) |
-| **Projekts** | `Projekti/VinkaFit-Ieva/ieva-astro` — Astro 6 + Sanity + React |
-| **Domēns** | `ievajekabsone.lv` — **vēl NAV dzīvs** (HTTP 000). Auditē KODU un `dist/`, ne tiešsaisti |
-| **Statuss** | Pirms palaišanas. Nav hostinga, nav GSC datu |
-| **Lapu skaits** | 23 |
+| **Klients** | Ieva Jēkabsone — uztura konsultante, plašs klientu loks (ne tikai sievietes 30-50, sk. `ieva-astro/CLAUDE.md`), LV+RU |
+| **Projekts** | `Projekti/VinkaFit-Ieva/ieva-astro` — Astro 6 + React (Sanity izņemts 2026-07-28) |
+| **Domēns** | `ievajekabsone.lv` — **DZĪVS kopš 2026-08-28**, mitināts Cloudflare Pages. Var auditēt tieši dzīvo lapu (schema validators, PageSpeed u.c. rīki prasa dzīvu URL) |
+| **Statuss** | Palaists, ~0 apmeklētāju, GSC dati minimāli (dažas impresijas) |
+| **Lapu skaits** | 25 (uztura-abc raksti: 7 publicēti no 55 plānotiem) |
 
 **Metode NEDZĪVO šeit.** Lieto:
 - `seo-strategy-router` **Step 5** — on-page audita čeklists (A–F sadaļas)
@@ -33,13 +39,22 @@ Neatkārto šo failu saturu. Atver un lieto.
 
 ---
 
-## 1. ⛔ Stingrā kārtula
+## 1. ⛔ Stingrā kārtula (atjaunota — lapa tagad ir dzīva)
 
-**AUDITĒ. NELABO.**
+**AUDITĒ pirms LABO. Labo TIKAI localhost. NEKOMITĒ uz Cloudflare bez apstiprinājuma.**
 
-Šī sesija tikai konstatē un ieraksta. Nemaini nevienu `.astro` failu. Labošana ir atsevišķs solis, ko Jānis apstiprina pēc audita.
+1. Vispirms izej cauri visām lapām un ieraksti atradumus (kā vienmēr).
+2. Sagatavo konkrētus labojumus (precīzs teksts, ne tikai "trūkst kw") un pārbaudi
+   tos ar `latviesu-valoda` skill PIRMS ieraksti failā.
+3. Labo lokāli, `npm run build` + `npm run check:images` jāiet cauri bez kļūdām.
+4. Parādi rezultātu localhost (`npm run dev`, screenshot vai pārlūks) un ĻAUJ
+   Jānim/Ievai apskatīties, PIRMS commit.
+5. Tikai pēc skaidra "jā, pushojam" — commit un push uz `master` (Cloudflare Pages
+   deployo automātiski, ~1-2 min). Pēc push pārbaudi dzīvo lapu, apstiprini, ka
+   deploy tiešām nomainīja saturu (title tags mainās uzreiz redzami).
 
-Ja atrodi kaut ko, kas izskatās pēc 5 sekunžu labojuma — **tāpat neaiztiec.** Ieraksti sarakstā.
+Ja atrodi kaut ko, kas izskatās pēc "5 sekunžu labojuma" — tāpat vispirms ieraksti
+un pārbaudi kopainu (piem. vai atslēgvārds jau parādās 2x tuvumā — nesaspiedi).
 
 ---
 
@@ -114,7 +129,7 @@ Reāli lietotie tipi: `Person`(20) `ListItem`(22) `Question`/`Answer`(10) `WebPa
 /uztura-abc/                           /uztura-abc/partikas-etiketes/
 /uztura-abc/esanas-biezums/            /uztura-abc/skivja-metode/
 /uztura-abc/makrouzturvielas/          /uztura-abc/udens-daudzums/
-/uztura-abc/nedelas-edienkarte/        /uztura-abc/uztura-bogatinatajs/
+/uztura-abc/nedelas-edienkarte/        /uztura-abc/uztura-bagatinataji/
 ```
 
 ### Blogs (3)
