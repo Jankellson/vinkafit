@@ -1,5 +1,66 @@
 # STATUSS — vienotais darāmo saraksts (todo/done)
 
+## 2026-09-07 — Jauns Uztura ABC raksts: "Cukura aizstājēji" (8. raksts sadaļā)
+
+**`/uztura-abc/cukura-aizstataji`** — nākamais rindā no `uztura-abc.astro` saraksta ("Uztura pamati",
+`available: false` → tagad `true`). Salīdzina stīviju, eritrolu, ksilītu, aspartāmu un sukralozi:
+kalorijas, EFSA drošās devas (ADI), un kuram katrs neder.
+
+**YMYL brīdinājumi iekļauti precīzi, ar avotiem** (Ievas redlīnija — nekādi nepatiesi/pārspīlēti
+apgalvojumi par uzturu): 2023. g. Cleveland Clinic/*Nature Medicine* pētījums par eritrolu un
+sirds-asinsvadu risku (novērojumu pētījums, ne pierādīta cēloņsakarība — tā arī pasniegts);
+2023. g. IARC/JECFA kopīgais paziņojums par aspartāmu (2B klasifikācija + nemainīta droša deva);
+fenilketonūrijas brīdinājums aspartāmam; ksilīta toksicitāte suņiem.
+
+**Interaktīvs rīks** — "Kurš saldinātājs der tev?": 5 prioritātes (cepšana, jutīgas zarnas, sirds
+risks, PKU, mājdzīvnieks) filtrē/iekrāso salīdzinājuma tabulu. Sākotnējā versijā bija datu kļūda
+(eritrols nepareizi iezīmējās kā "jāizvairās" arī suņa filtram, kaut gan bīstams suņiem ir tikai
+ksilīts) — pamanīts un salabots pirms publicēšanas, pārbaudot katru filtru caur JS konsoli.
+
+**Ķēde atjaunota:** `nedelas-edienkarte.astro` (bija ķēdes gals, `nextArticle: null`) tagad
+norāda uz jauno rakstu. Bloks numurs 08 (turpina 01–07 secību).
+
+Hero + OG attēli ģenerēti (`gen:image` + `gen:og`, Nano Banana Pro, bez teksta foto → SVG teksts
+virsū). `npm run build` + `check:images` tīri. Latviešu valodas skripts tīrs (nav anglicismu;
+"nezināmie vārdi" ir tikai ķīmijas termini un angļu avotu nosaukumi, kā jau citos rakstos).
+Vizuāli pārbaudīts pārlūkā — hero, TOC, FAQ akordeons, interaktīvais filtrs viss strādā.
+
+**Atlikuši sarakstā** (`available: false`): šķiedra uzturā, omega-3 taukskābes.
+
+**Nav vēl commitots/pushots — gaida apstiprinājumu.**
+
+## 2026-09-04 — Jauns produkts: rudens 10 dienu uztura plāns
+
+**Izveidots `produkti/rudens-plans/`** — ceturtais PDF produkts pēc tās pašas metodes
+(`produkti/PDF-PRODUKTU-METODE.md`), bāzēts uz `vasaras-plans` struktūru. 50 receptes (10
+dienas × 5 ēdienreizes) ar rudenī tipiskiem, viegli pieejamiem produktiem: ķirbis, āboli,
+bumbieri, plūmes, brūklenes, bietes, sarkanais un baltais kāposts, selerija, puravs,
+šampinjoni, briseles kāposti. `kopigais/uzturvertibas.mjs` papildināts ar trim jaunām
+uzturvērtībām (plūmes, sarkanais kāposts, brūklenes) un attiecīgajiem iepirkumu-saraksta
+nosaukumiem. **Visas pārbaudes iztur**: `parbaude.mjs rudens-plans` → kcal 1382–1597, vidēji
+1487, katrā ēdienreizē ≥11 g olbaltumvielu; `build.mjs` → 27 lapas; `pdf.mjs` → PDF
+izveidots un vizuāli pārbaudīts (fonti, izkārtojums, iepirkumu saraksts, aizstāšanas tabula —
+viss korekti). Jaunais teksts izgājis `latviesu-valoda` pārbaudi tīri (0 anglicismu).
+**Labota 1. dienas vakariņu recepte pēc Jāņa pārbaudes** — sākotnējā "Silta biešu un
+sarkanā kāposta zupa ar olu" nebija īsta zupa (nebija buljona pamata, vārīta ola blakus
+neder zupā). Pārtaisīta uz "Silta biešu-kāpostu zupa ar vistu": sīpolu/ķiploku apcep,
+vistas fileja un sakņu dārzeņi vāras kopā ar lauru lapu, nobeigumā sāls + citronu sula +
+krējuma mala. Ola izņemta. Pārbaudīts (`parbaude.mjs` iztur, 27 lapas, vizuāli pārbaudīts).
+
+**Vāka foto trūkst** — nav vēl ģenerēts. Prompts pievienots
+`strategija/10-Vizualie-Promti.md` (sadaļa 1.4). Jānis ģenerēs ar `npm run gen:image` un
+ieliks `ieva-astro/public/assets/images/produktu-vaki/` ar nosaukumu
+`vinka-fit-10-dienu-rudens-uztura-plans-vaks-luxury-01.webp` (ceļš jau data.mjs).
+
+**Blakusatklājums: `vasaras-plans` un `veganais-plans` PAŠREIZ NEIZTUR savu pašu
+`parbaude.mjs`** — abi jau publicētie, pārdodamie produkti. `vasaras-plans`: 4 ēdienreizes
+zem 11 g olbaltumvielu (1./otras "Ābols ar mandelēm" — tikai 5 g; 1./launags "Rīsu galetes ar
+zemesriekstu sviestu un ogām" — 5 g; 3./launags "Kivi ar mandelēm" — 5 g; 7./launags
+"Avokado maizīte" — 4 g) + katalogā trūkst "Kivi". `veganais-plans`: 8./launags "Hummuss ar
+dārzeņu nūjiņām" — tikai 7 g. Cēlonis: šīs receptes ir auglis/dārzenis + rieksti/hummuss BEZ
+piena/olu komponenta — tas nekad nesasniedz 11 g. Nav manis izraisīts (pārbaudīts ar `git
+stash` pirms maniem labojumiem — kļūdas jau bija). Nav labots, jo ārpus šī uzdevuma tvēruma.
+
 ## 2026-08-29 (3) — Favicon bug (bija Astro noklusējuma ikona), WebSite schema, SEO reality-check
 
 **Favicon bug, atrasts un salabots.** Google meklēšanas rezultātos rādījās Astro projekta

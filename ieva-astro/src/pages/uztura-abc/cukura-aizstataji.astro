@@ -1,0 +1,1279 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleNav from '../../components/ArticleNav.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
+
+// ─── NotebookLM-generated multimedia ─────────────────────
+// Šie tukšumi tiks aizpildīti, kad NotebookLM video + infografikas gatavas.
+// Pagaidām: false = sloti netiek rādīti lapā.
+const videoId: string | null      = null;  // YouTube ID, piem. "dQw4w9WgXcQ"
+const videoTitle: string          = 'Cukura aizstājēji vienkārši — kurš der tavai situācijai';
+const videoDuration: string       = '5:30';
+
+const title = "Cukura aizstājēji: stīvija, eritrols, ksilīts un citi";
+const description = "Cukura aizstājēji salīdzinājumā: stīvija, eritrols, ksilīts, aspartāms un sukraloze. Kalorijas, drošās devas un kuram tie neder.";
+const canonical = "https://ievajekabsone.lv/uztura-abc/cukura-aizstataji";
+
+const prevArticle = {
+  href:  '/uztura-abc/nedelas-edienkarte',
+  label: 'Nedēļas ēdienkarte',
+  full:  'Nedēļas ēdienkartes plānošana: struktūra un piemēri',
+};
+const nextArticle = null;
+
+const tocItems = [
+  { id: "kas-ir",          label: "Kas ir cukura aizstājēji" },
+  { id: "divas-grupas",    label: "Divas grupas — intensīvie saldinātāji un polioli" },
+  { id: "stevija",         label: "Stīvija — augu izcelsmes, bez kalorijām" },
+  { id: "eritrols-ksilits",label: "Eritrols un ksilīts — cukura spirti" },
+  { id: "aspartams-sukraloze", label: "Aspartāms un sukraloze — sintētiskie" },
+  { id: "salidzinajums",   label: "Kurš der tavai situācijai" },
+  { id: "drosas-devas",    label: "Drošās devas — kas ir ADI" },
+  { id: "miti",            label: "Biežākās kļūdas" },
+  { id: "faq",             label: "Bieži uzdotie jautājumi" },
+];
+
+const faqItems = [
+  {
+    q: "Vai cukura aizstājēji ir droši lietošanai katru dienu?",
+    a: "Ikvienam ES atļautajam saldinātājam EFSA ir noteikusi pieļaujamo dienas devu (ADI) — daudzumu, ko var lietot katru dienu visu mūžu bez riska. Parastā ikdienas lietošanā (tēja, kafija, jogurts) šīs devas praktiski nesasniedz. Izņēmums ir eritrols lielās devās un cilvēki ar fenilketonūriju attiecībā uz aspartāmu — par tiem vairāk rakstā."
+  },
+  {
+    q: "Vai eritrols ir bīstams sirdij?",
+    a: "2023. gada pētījums (Cleveland Clinic, Nature Medicine) atrada saistību starp augstu eritrola līmeni asinīs un lielāku sirdslēkmes un insulta risku trīs gadu laikā. Tas ir novērojumu pētījums, ne pierādīts cēloņsakarīgs mehānisms, un EFSA drošības atzinums pagaidām nav mainīts. Ja tev ir sirds un asinsvadu riska faktori, tas ir iemesls ar eritrolu nepārspīlēt, ne pilnībā to izslēgt bez ārsta padoma."
+  },
+  {
+    q: "Kāpēc ksilīts ir bīstams suņiem, bet cilvēkiem ne?",
+    a: "Suņu organisms uz ksilītu reaģē pavisam citādi — tas izraisa strauju insulīna izdalīšanos un var novest pie bīstami zema cukura līmeņa un aknu bojājuma jau nelielā devā. Cilvēka organisms ksilītu metabolizē citādi, un tas ir drošs EFSA noteiktās devās. Ja mājās ir suns, žāvējamo gumiju vai konfektes ar ksilītu turi tam nepieejamas."
+  },
+  {
+    q: "Vai stīvija ir labākā izvēle, jo tā ir \"dabīga\"?",
+    a: "Dabīga izcelsme pati par sevi nepadara vielu drošāku vai labāku — svarīgas ir devas un pierādījumi, ne vārds uz iepakojuma. Stīvija tiešām ir laba izvēle vairumam: bez kalorijām, izturīga pret karstumu, plaši pētīta. Bet izvēli der balstīt uz konkrēto lietojumu (cepšana, jutīgas zarnas, garšas preference), ne tikai uz \"dabīgs\" uzrakstu."
+  },
+  {
+    q: "Vai aspartāms izraisa vēzi?",
+    a: "2023. gadā PVO vēža izpētes aģentūra (IARC) aspartāmu klasificēja kā \"iespējami kancerogēnu\" (2B grupa) — tajā pašā grupā, kur, piemēram, marinēti dārzeņi. Tā ir vājāko pierādījumu kategorija, ne pierādīta cēloņsakarība. Tajā pašā dienā PVO/FAO ekspertu komiteja (JECFA) apstiprināja, ka pašreizējā pieļaujamā deva (40 mg/kg dienā) paliek droša. Cilvēkiem ar fenilketonūriju aspartāms jāizslēdz cita iemesla dēļ — tas satur fenilalanīnu."
+  },
+  {
+    q: "Kurš saldinātājs der cepšanai un vārīšanai?",
+    a: "Stīvija, eritrols un sukraloze iztur karstumu bez garšas vai struktūras zuduma. Aspartāms sadalās augstā temperatūrā un zaudē saldumu, tāpēc cepšanai neder — to lieto aukstos vai vieglā siltumā gatavotos ēdienos."
+  },
+  {
+    q: "Vai cukura aizstājēji palīdz zaudēt svaru?",
+    a: "Tie samazina kaloriju un cukura daudzumu konkrētajā produktā, kas var palīdzēt kopējā kaloriju bilancē. Bet paši par sevi tie svaru nezaudē — ja saldinātu dzērienu aizstāj ar saldinātu, bet joprojām ēd kaloriju pārpalikumā no citiem avotiem, rezultāta nebūs. Der skatīties uz visu ēdienkarti, ne uz vienu maiņu."
+  },
+  {
+    q: "Vai polioli (eritrols, ksilīts) rada vēdera uzpūšanos?",
+    a: "Lielākās devās — jā, jo tie nav pilnībā uzsūcami zarnās. ES regula pieprasa brīdinājumu \"pārmērīga lietošana var izraisīt caureju\" produktiem, kuros polioli veido vairāk par 10% no sastāva. Eritrols šajā ziņā ir maigāks par ksilītu, jo lielākā daļa no tā izdalās neizmainītā veidā, pirms sasniedz resno zarnu."
+  }
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "url": canonical,
+      "datePublished": "2026-09-07",
+      "dateModified": "2026-09-07",
+      "author": {
+        "@type": "Person",
+        "name": "Ieva Jēkabsone",
+        "@id": "https://ievajekabsone.lv/#ieva",
+        "jobTitle": "Uztura konsultante",
+        "url": "https://ievajekabsone.lv/par-mani"
+      },
+      "publisher": { "@type": "Person", "name": "Ieva Jēkabsone", "@id": "https://ievajekabsone.lv/#ieva" },
+      "image": "https://ievajekabsone.lv/images/raksti/cukura-aizstataji/cukura-aizstataji-hero.webp",
+      "inLanguage": "lv",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": canonical }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqItems.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Sākums", "item": "https://ievajekabsone.lv/" },
+        { "@type": "ListItem", "position": 2, "name": "Uztura ABC", "item": "https://ievajekabsone.lv/uztura-abc" },
+        { "@type": "ListItem", "position": 3, "name": "Cukura aizstājēji", "item": canonical }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogImage="/images/raksti/cukura-aizstataji/cukura-aizstataji-og.webp"
+  jsonLd={jsonLd}
+  activeNav="uztura-abc"
+>
+
+  <ArticleNav
+    breadcrumbs={[
+      { label: 'Sākums',     href: '/' },
+      { label: 'Uztura ABC', href: '/uztura-abc' },
+      { label: 'Cukura aizstājēji' },
+    ]}
+    prev={prevArticle}
+    next={nextArticle}
+  />
+
+  <!-- ══ ARTICLE HERO — ŽURNĀLA VĀKS ═══════════════════════════ -->
+  <section class="ip-cover">
+    <div class="ip-cover-media">
+      <img
+        class="ip-cover-img"
+        src="/images/raksti/cukura-aizstataji/cukura-aizstataji-hero.webp"
+        alt="Mazas bļodiņas ar dažādiem cukura aizstājējiem — baltiem kristāliem un stīvijas lapām — uz gaiša koka galda"
+        width="1200" height="630"
+        loading="eager"
+      />
+      <div class="ip-cover-scrim" aria-hidden="true"></div>
+      <div class="ip-cover-inner wrap">
+        <div class="ip-eyebrow">Uztura pamati · Bloks 08</div>
+        <h1>Cukura aizstājēji: kurš <em>tiešām</em> der tev</h1>
+        <p class="ip-lede">
+          Stīvija, eritrols, ksilīts, aspartāms, sukraloze — visi saucas "cukura aizstājējs",
+          bet tie ir pavisam dažādi. Kalorijas, drošās devas un kuram katrs neder.
+        </p>
+      </div>
+    </div>
+
+    <!-- Light strip below: quick answer + stats -->
+    <div class="ip-cover-strip">
+      <div class="wrap ip-cover-strip-grid">
+        <div class="ip-quickans">
+          <div class="ip-quickans-label">Īsā atbilde</div>
+          <p>
+            Visi ES atļautie saldinātāji ir <strong>EFSA izvērtēti un droši</strong> noteiktās devās.
+            Izvēle atkarīga no lietojuma: <strong>stīvija un sukraloze</strong> der cepšanai,
+            <strong>eritrols</strong> — mīkstākai gremošanai, <strong>aspartāms</strong> — aukstiem dzērieniem.
+            Fenilketonūrijas gadījumā aspartāms jāizslēdz.
+          </p>
+        </div>
+        <div class="ip-cover-stats-wrap">
+          <div class="ip-stats">
+            <div class="ip-stat"><strong>0 kcal</strong><span>gramā — stīvija, eritrols*</span></div>
+            <div class="ip-stat"><strong>4</strong><span>mg/kg — stīvijas ADI/dienā*</span></div>
+            <div class="ip-stat"><strong>40</strong><span>mg/kg — aspartāma ADI/dienā*</span></div>
+            <div class="ip-stat"><strong>&gt;10%</strong><span>polioli = obligāts brīdinājums*</span></div>
+          </div>
+          <p class="ip-stats-note">* EFSA un ES regula 1169/2011; sk. avotus raksta beigās</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MAIN LAYOUT: TOC + CONTENT ═══════════════════════════ -->
+  <div class="ip-wrap wrap">
+
+    <!-- LEFT: sidebar — Ieva card (static) + sticky TOC -->
+    <aside class="ip-sidebar" aria-label="Satura rādītājs">
+
+      <!-- STATIC: Ieva info card — scrolls away -->
+      <div class="ip-toc-ieva">
+        <img
+          src="/assets/images/ieva-portrait.webp"
+          alt="Ieva Jēkabsone"
+          class="ip-toc-ieva-img"
+          width="80" height="80"
+        />
+        <div class="ip-toc-ieva-name">Ieva Jēkabsone</div>
+        <div class="ip-toc-ieva-role">Uztura konsultante</div>
+        <p class="ip-toc-ieva-bio">
+          Palīdzu saprast, kas uzturā kaitē un kas palīdz.
+          Bez stingrām diētām un kaloriju skaitīšanas.
+        </p>
+        <div class="ip-toc-socials">
+          <a href="https://www.instagram.com/ieva.jekabsone/" target="_blank" rel="noopener"
+             class="ip-toc-social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100089137514285" target="_blank" rel="noopener"
+             class="ip-toc-social" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@ieva.jekabson" target="_blank" rel="noopener"
+             class="ip-toc-social" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.73a4.85 4.85 0 0 1-1.01-.04z"/>
+            </svg>
+          </a>
+        </div>
+        <a href="/pakalpojumi" class="ip-toc-cta">Piesakies konsultācijai →</a>
+      </div>
+
+      <!-- STICKY: table of contents only -->
+      <div class="ip-toc">
+        <div class="ip-toc-inner">
+          <div class="ip-toc-label">Saturs</div>
+          <nav>
+            <ol class="ip-toc-list">
+              {tocItems.map(item => (
+                <li><a href={`#${item.id}`} class="ip-toc-link">{item.label}</a></li>
+              ))}
+            </ol>
+          </nav>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- RIGHT: article content -->
+    <article class="ip-content">
+
+      <!-- ─── TL;DR (LLM citation-bait) ──────────── -->
+      <div class="ip-tldr">
+        <span class="ip-tldr-label">Īsumā</span>
+        <p>
+          Cukura aizstājēji dalās divās grupās: intensīvie saldinātāji (stīvija, aspartāms, sukraloze —
+          gandrīz bez kalorijām, ļoti saldi mazā devā) un cukura spirti jeb polioli (eritrols, ksilīts —
+          mazāk kaloriju nekā cukuram, bet lielās devās var radīt vēdera diskomfortu). Visi ES atļautie
+          ir EFSA izvērtēti droši noteiktās devās (ADI). Izņēmumi: fenilketonūrijas gadījumā jāizvairās
+          no aspartāma, un jaunāki pētījumi rosina piesardzību ar eritrolu cilvēkiem ar sirds un asinsvadu
+          riska faktoriem. Ksilīts ir bīstams suņiem.
+        </p>
+      </div>
+
+      <!-- ─── Key Takeaways ─────────────────────── -->
+      <aside class="ip-takeaways" aria-label="Galvenās atziņas">
+        <h2>💡 Galvenās atziņas</h2>
+        <ul>
+          <li>Divas grupas: intensīvie saldinātāji (stīvija, aspartāms, sukraloze) un polioli (eritrols, ksilīts).</li>
+          <li>ES regula eritrolam nosaka 0 kcal/g marķējumam; pārējiem poliolu vidēji ap 2,4 kcal/g (ES 1169/2011).</li>
+          <li>Stīvijas ADI ir 4 mg/kg dienā, aspartāma — 40 mg/kg, sukralozes — 15 mg/kg (EFSA).</li>
+          <li>Polioli virs 10% sastāvā prasa obligātu brīdinājumu par caurejas efektu (ES 1169/2011).</li>
+          <li>2023. gada pētījums saistīja augstu eritrola līmeni asinīs ar lielāku sirds un asinsvadu risku (Nature Medicine).</li>
+          <li>Aspartāms nedrīkst fenilketonūrijas gadījumā; satur fenilalanīnu.</li>
+          <li>Ksilīts ir toksisks suņiem — turi tālāk no mājdzīvniekiem.</li>
+        </ul>
+      </aside>
+
+      <!-- ─── Section 1 ─────────────────────────── -->
+      <h2 id="kas-ir">Kas ir cukura aizstājēji</h2>
+
+      <p class="ip-answer">
+        Cukura aizstājēji ir vielas, kas dod saldu garšu ar mazāk kaloriju vai bez tām — atšķirībā
+        no parastā cukura, kas dod 4 kcal gramā. Eiropas Savienībā katru saldinātāju pirms atļaušanas
+        izvērtē Eiropas Pārtikas nekaitīguma iestāde (EFSA), un tas iepakojumā parādās ar E numuru.
+      </p>
+
+      <p>
+        Vārds "aizstājējs" maldina domāt, ka tie visi ir vienādi. Patiesībā tā ir liela un dažāda
+        grupa — no augu izcelsmes vielām līdz sintētiski ražotām molekulām, un katrai ir sava ķīmija,
+        deva un lietošanas gadījums. Tālāk sadalu tos pa grupām, lai skaidrāk.
+      </p>
+
+      {/* ─── NotebookLM Video Explainer (pēc 1. sekcijas) ── */}
+      {videoId && (
+        <VideoEmbed
+          videoId={videoId}
+          title={videoTitle}
+          duration={videoDuration}
+          label="Video skaidrojums"
+        />
+      )}
+
+      <!-- ─── Section 2 ─────────────────────────── -->
+      <h2 id="divas-grupas">Divas grupas — intensīvie saldinātāji un polioli</h2>
+
+      <p class="ip-answer">
+        <strong>Intensīvie saldinātāji</strong> (stīvija, aspartāms, sukraloze) ir simtiem reižu
+        saldāki par cukuru, tāpēc vajag pavisam nedaudz — kalorijas praktiski nulle.
+        <strong>Polioli</strong> jeb cukura spirti (eritrols, ksilīts) ir tuvāk cukuram pēc salduma
+        un tilpuma, tāpēc der cepšanai tāpat kā cukuru, bet uzsūcas citādi un dod mazāk kaloriju.
+      </p>
+
+      <div class="ip-prop-grid">
+        <div class="ip-prop-card ip-prop-card--veg">
+          <div class="ip-prop-frac">A</div>
+          <h3>Intensīvie saldinātāji</h3>
+          <p>
+            Stīvija, aspartāms, sukraloze. Simtiem reižu saldāki par cukuru — lieto pilienos vai
+            mazās tabletēs, ne karotēs.
+          </p>
+          <div class="ip-prop-examples">
+            <strong>Kalorijas:</strong> praktiski nulle, jo deva ir tik maza.
+          </div>
+        </div>
+        <div class="ip-prop-card ip-prop-card--grain">
+          <div class="ip-prop-frac">B</div>
+          <h3>Polioli (cukura spirti)</h3>
+          <p>
+            Eritrols, ksilīts. Saldums un tilpums tuvāks cukuram — der aizstāt karote pret karoti
+            cepot un vārot.
+          </p>
+          <div class="ip-prop-examples">
+            <strong>Kalorijas:</strong> eritrols — 0 kcal/g marķējumam; ksilīts — ap 2,4 kcal/g.
+          </div>
+        </div>
+      </div>
+
+      <div class="ip-callout ip-callout--tip">
+        <div class="ip-callout-icon">💡</div>
+        <div>
+          <strong>Vienkāršais orientieris:</strong> ja recepte prasa "1 glāzi cukura", meklē poliolu
+          (eritrolu vai eritrola-stīvijas maisījumu) — tas aizstājas apjoma ziņā līdzīgi. Ja gribi
+          tikai pāris pilienu saldumam tējā, der intensīvais saldinātājs.
+        </div>
+      </div>
+
+      <!-- ─── Section 3 ─────────────────────────── -->
+      <h2 id="stevija">Stīvija — augu izcelsmes, bez kalorijām</h2>
+
+      <p class="ip-answer">
+        Stīvija (E960) ir izvilkums no Dienvidamerikas auga <em>Stevia rebaudiana</em> lapām. Tā ir
+        bez kalorijām, izturīga pret karstumu un EFSA noteiktā droša deva ir <strong>4 mg uz kg
+        ķermeņa svara dienā</strong> (steviola glikozīdu ekvivalentā). 70 kg cilvēkam tas ir aptuveni
+        280 mg — daudz vairāk, nekā ikdienā reāli izlieto tējā vai kafijā.
+      </p>
+
+      <p>
+        Stīvijas mīnuss daudziem ir pēcgarša — nedaudz rūgtena vai lakricai līdzīga, īpaši lielākā
+        devā. Tāpēc veikalos bieži pārdod stīvijas un eritrola maisījumus: eritrols dod tilpumu un
+        maigāku garšu, stīvija — saldumu.
+      </p>
+
+      <!-- Ieva E-E-A-T note -->
+      <div class="ieva-note">
+        <div class="ieva-note-head">
+          <img
+            src="/assets/images/ieva-consultant-portrait.webp"
+            alt="Ieva Jēkabsone"
+            class="ieva-note-avatar ieva-note-avatar--lg"
+            width="72" height="72"
+          />
+          <div>
+            <div class="label">Autores piezīme</div>
+            <h4>Ieva Jēkabsone</h4>
+          </div>
+        </div>
+        <p>
+          Klienti bieži jautā, kurš saldinātājs ir "labākais". Es neatbildu ar vienu vārdu — jautāju
+          pretī: vai cepsi, vai zarnas ir jutīgas, vai ir kāds veselības stāvoklis. Stīvija ir laba
+          noklusētā izvēle vairumam, bet "dabīgs" pats par sevi nenozīmē "labāks par citiem" — svarīga
+          ir deva un tas, vai konkrētais variants der tavai situācijai.
+        </p>
+        <span class="sig">Ieva</span>
+      </div>
+
+      <!-- ─── Section 4 ─────────────────────────── -->
+      <h2 id="eritrols-ksilits">Eritrols un ksilīts — cukura spirti</h2>
+
+      <p class="ip-answer">
+        Eritrols (E968) un ksilīts (E967) ir polioli — dabā sastopami cukura spirti, ko rūpnieciski
+        ražo lielākos daudzumos. ES marķējuma regula eritrolam nosaka <strong>0 kcal/g</strong>, jo
+        lielākā daļa izdalās neizmainītā veidā, pirms sasniedz resno zarnu. Ksilītam vidējā vērtība
+        ir ap <strong>2,4 kcal/g</strong> — mazāk nekā cukura 4 kcal/g, bet ne nulle.
+      </p>
+
+      <p>
+        Abi lielākās devās var izraisīt vēdera uzpūšanos, gāzes vai caurejas efektu, jo daļa no tiem
+        nesagremojas tievajās zarnās un nonāk resnajā zarnā. Tāpēc ES regula pieprasa brīdinājumu
+        "pārmērīga lietošana var izraisīt caurejas efektu" produktiem, kuros polioli veido vairāk par
+        10% no sastāva. Eritrols šajā ziņā ir maigāks par ksilītu.
+      </p>
+
+      <div class="ip-callout ip-callout--warning">
+        <div class="ip-callout-icon">🐕</div>
+        <div>
+          <strong>Ja mājās ir suns:</strong> ksilīts suņiem ir toksisks jau nelielā devā — izraisa
+          strauju insulīna izdalīšanos, bīstami zemu cukura līmeni un var bojāt aknas. Konfektes,
+          košļājamā gumija un cepumi ar ksilītu jātur tālāk no mājdzīvniekiem.
+        </div>
+      </div>
+
+      <div class="ip-callout ip-callout--warning">
+        <div class="ip-callout-icon">❤️</div>
+        <div>
+          <strong>Sirds un asinsvadu riska faktori:</strong> 2023. gada pētījums (Cleveland Clinic,
+          <em>Nature Medicine</em>) atrada saistību starp augstu eritrola līmeni asinīs un lielāku
+          sirdslēkmes, insulta un nāves risku trīs gadu laikā. Tas ir novērojumu pētījums — ne
+          pierādīta cēloņsakarība, un EFSA drošības atzinums pagaidām paliek spēkā. Bet, ja tev ir
+          sirds un asinsvadu riska faktori, tas ir iemesls ar eritrolu nepārspīlēt un pārrunāt to ar
+          ārstu, ne panika.
+        </div>
+      </div>
+
+      <!-- ─── Section 5 ─────────────────────────── -->
+      <h2 id="aspartams-sukraloze">Aspartāms un sukraloze — sintētiskie</h2>
+
+      <p class="ip-answer">
+        Aspartāms (E951) un sukraloze (E955) ir laboratoriski ražoti saldinātāji, katrs ar savu EFSA
+        noteikto drošo devu: aspartāmam <strong>40 mg/kg</strong> dienā, sukralozei —
+        <strong>15 mg/kg</strong> dienā. Abi ir plaši lietoti bezalkoholiskajos dzērienos un "bez
+        cukura" produktos jau vairākas desmitgades.
+      </p>
+
+      <p>
+        Galvenā praktiskā atšķirība: sukraloze iztur augstu temperatūru, tāpēc der cepšanai un
+        vārīšanai. Aspartāms karstumā sadalās un zaudē saldumu — tāpēc to lieto aukstos dzērienos un
+        ēdienos, kas negatavojas.
+      </p>
+
+      <div class="ip-callout ip-callout--warning">
+        <div class="ip-callout-icon">⚠️</div>
+        <div>
+          <strong>Fenilketonūrija (PKU):</strong> aspartāms satur fenilalanīnu, tāpēc cilvēkiem ar šo
+          retu iedzimto vielmaiņas traucējumu tas ir jāizslēdz pilnībā. Tāpēc uz visiem produktiem ar
+          aspartāmu ES ir obligāts uzraksts "satur fenilalanīna avotu".
+        </div>
+      </div>
+
+      <p>
+        2023. gadā PVO Starptautiskā vēža izpētes aģentūra (IARC) aspartāmu klasificēja kā "iespējami
+        kancerogēnu cilvēkiem" (2B grupa) — tajā pašā, vājāko pierādījumu grupā, kur, piemēram,
+        marinēti dārzeņi. Tajā pašā dienā PVO un FAO kopīgā ekspertu komiteja (JECFA) apstiprināja, ka
+        pašreizējā drošā deva 40 mg/kg dienā paliek nemainīta. Praktiski: ikdienas lietošanā (dažas
+        bundžas dzēriena dienā) šo devu nesasniedz.
+      </p>
+
+      <!-- ─── Section 6 ─────────────────────────── -->
+      <h2 id="salidzinajums">Kurš der tavai situācijai</h2>
+
+      <p class="ip-answer">
+        Nav viena "labākā" saldinātāja — atbilde atkarīga no tā, ko ar to darīsi. Izvēlies savu
+        prioritāti zemāk, un tabula parāda, kuri saldinātāji der vislabāk.
+      </p>
+
+      <!-- ─── "Kurš der tavai situācijai" interaktīvais rīks ───────────── -->
+      <div class="interactive-tool ip-sweet" data-tool="sweetener-fit">
+        <div class="ip-sweet-head">
+          <div class="ip-sweet-eyebrow">Interaktīvs rīks · ~15 sekundes</div>
+          <h3>Kurš saldinātājs der tev?</h3>
+          <p>Izvēlies, kas tev vissvarīgāk — tabula iezīmē labākās un mazāk piemērotās izvēles.</p>
+        </div>
+
+        <div class="ip-sweet-filters" role="group" aria-label="Izvēlies prioritāti">
+          <button type="button" class="ip-sweet-btn is-active" data-priority="all">Visi</button>
+          <button type="button" class="ip-sweet-btn" data-priority="baking">Cepšu / vāru karstumā</button>
+          <button type="button" class="ip-sweet-btn" data-priority="gut">Jutīgas zarnas</button>
+          <button type="button" class="ip-sweet-btn" data-priority="heart">Sirds un asinsvadu risks</button>
+          <button type="button" class="ip-sweet-btn" data-priority="pku">Fenilketonūrija</button>
+          <button type="button" class="ip-sweet-btn" data-priority="pets">Mājās ir suns</button>
+        </div>
+
+        <div class="ip-table-wrap ip-sweet-table-wrap">
+          <table class="ip-table ip-sweet-table">
+            <thead>
+              <tr>
+                <th>Saldinātājs</th>
+                <th>Kalorijas</th>
+                <th>EFSA ADI</th>
+                <th>Piezīme</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-good="baking gut pets" data-caution="" data-avoid="">
+                <td>Stīvija (E960)</td>
+                <td>0 kcal/g</td>
+                <td>4 mg/kg/dienā</td>
+                <td>Var būt viegli rūgtena pēcgarša</td>
+              </tr>
+              <tr data-good="gut pets" data-caution="baking" data-avoid="pku">
+                <td>Aspartāms (E951)</td>
+                <td>~0 kcal (mazā devā)</td>
+                <td>40 mg/kg/dienā</td>
+                <td>Sadalās karstumā; satur fenilalanīnu</td>
+              </tr>
+              <tr data-good="baking gut pets" data-caution="" data-avoid="">
+                <td>Sukraloze (E955)</td>
+                <td>~0 kcal (mazā devā)</td>
+                <td>15 mg/kg/dienā</td>
+                <td>Iztur augstu temperatūru</td>
+              </tr>
+              <tr data-good="baking pets" data-caution="gut heart" data-avoid="">
+                <td>Eritrols (E968)</td>
+                <td>0 kcal/g (ES marķējums)</td>
+                <td>Nav skaitliskas ADI*</td>
+                <td>2023. g. pētījums — piesardzība sirds riskiem</td>
+              </tr>
+              <tr data-good="baking" data-caution="gut" data-avoid="pets">
+                <td>Ksilīts (E967)</td>
+                <td>~2,4 kcal/g</td>
+                <td>Nav skaitliskas ADI*</td>
+                <td>Toksisks suņiem — bīstami mājās ar mājdzīvnieku</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="ip-sweet-summary" id="sweet-summary"></p>
+
+        <p class="ip-sweet-note"><small>* EFSA eritrolam un ksilītam nav noteikusi skaitlisku ADI, jo abi tiek uzskatīti par pašregulējošiem — lielā devā organisms pats ierobežo uzņemšanu ar gremošanas diskomfortu, pirms tiek sasniegts kaitīgs līmenis. Tas nav "nav ierobežojumu" — tas nozīmē, ka praktiskais ierobežotājs ir panesamība, ne noteikts skaitlis. Avoti: <a href="https://www.efsa.europa.eu/en/topics/topic/food-additives" target="_blank" rel="noopener">EFSA</a>. Orientieris, ne medicīnisks ieteikums.</small></p>
+      </div>
+
+      <!-- ─── Section 7 ─────────────────────────── -->
+      <h2 id="drosas-devas">Drošās devas — kas ir ADI</h2>
+
+      <p class="ip-answer">
+        ADI (pieļaujamā dienas deva) ir daudzums, ko cilvēks var uzņemt katru dienu visa mūža garumā
+        bez veselības riska — to nosaka ar 100-kārtīgu drošības rezervi virs devas, kurā pētījumos
+        nekonstatē nekādu ietekmi. Praktiski tas nozīmē: ikdienas lietošanā (tēja, kafija, "bez
+        cukura" dzēriens) šīs devas nesasniedz pat cilvēki, kas saldinātājus lieto bieži.
+      </p>
+
+      <div class="ip-statcards">
+        <div class="ip-statcard">
+          <span class="ip-statcard-num">4 mg/kg</span>
+          <span class="ip-statcard-label">stīvijas ADI dienā</span>
+          <a href="https://www.efsa.europa.eu/en/topics/topic/food-additives" target="_blank" rel="noopener"><small>Avots: EFSA</small></a>
+        </div>
+        <div class="ip-statcard">
+          <span class="ip-statcard-num">40 mg/kg</span>
+          <span class="ip-statcard-label">aspartāma ADI dienā</span>
+          <a href="https://www.efsa.europa.eu/en/topics/topic/food-additives" target="_blank" rel="noopener"><small>Avots: EFSA</small></a>
+        </div>
+        <div class="ip-statcard">
+          <span class="ip-statcard-num">15 mg/kg</span>
+          <span class="ip-statcard-label">sukralozes ADI dienā</span>
+          <a href="https://www.efsa.europa.eu/en/topics/topic/food-additives" target="_blank" rel="noopener"><small>Avots: EFSA</small></a>
+        </div>
+        <div class="ip-statcard">
+          <span class="ip-statcard-num">&gt;10%</span>
+          <span class="ip-statcard-label">poliolu sastāvā = obligāts brīdinājums</span>
+          <a href="https://eur-lex.europa.eu/legal-content/LV/TXT/?uri=CELEX:32011R1169" target="_blank" rel="noopener"><small>Avots: ES 1169/2011</small></a>
+        </div>
+      </div>
+
+      <!-- ─── Section 8 ─────────────────────────── -->
+      <h2 id="miti">Biežākās kļūdas</h2>
+
+      <p class="ip-answer">
+        Trīs kļūdas atkārtojas visbiežāk: uzskatīt "dabīgu" par automātiski drošāku, domāt, ka
+        cukura aizstājēji paši par sevi liek zaudēt svaru, un baidīties no visiem saldinātājiem pēc
+        vienas negatīvas ziņas par vienu no tiem.
+      </p>
+
+      <ol class="ip-mistakes">
+        <li>
+          <div class="ip-mistake-num">01</div>
+          <div>
+            <strong>"Dabīgs nozīmē drošāks."</strong>
+            Stīvija ir augu izcelsmes, bet tas pats par sevi nepadara to drošāku par EFSA izvērtētu
+            sintētisku saldinātāju. Drošību nosaka pētījumi un deva, ne izcelsme.
+          </div>
+        </li>
+        <li>
+          <div class="ip-mistake-num">02</div>
+          <div>
+            <strong>"Cukura aizstājēji paši par sevi liek zaudēt svaru."</strong>
+            Tie samazina kaloriju konkrētajā produktā. Ja pārējā ēdienkarte paliek kaloriju
+            pārpalikumā, rezultāta nebūs — svarīga ir visa diena, ne viena maiņa.
+          </div>
+        </li>
+        <li>
+          <div class="ip-mistake-num">03</div>
+          <div>
+            <strong>"Viena slikta ziņa nozīmē — visi saldinātāji ir bīstami."</strong>
+            Eritrola pētījums neattiecas uz stīviju vai sukralozi — tās ir dažādas vielas ar dažādu
+            ķīmiju. Vispārinājums no viena atklājuma uz visu grupu ir maldinošs.
+          </div>
+        </li>
+      </ol>
+
+      <!-- ─── Internal links ─────────────────────── -->
+      <div class="ip-related">
+        <div class="ip-related-label">Saistītās tēmas</div>
+        <div class="ip-related-links">
+          <a href="/uztura-abc/partikas-etiketes" class="ip-related-link">
+            <span class="ip-related-arrow">→</span>
+            Pārtikas etiķetes: kā lasīt sastāvdaļu sarakstu un E vielas
+          </a>
+          <a href="/uztura-abc/makrouzturvielas" class="ip-related-link">
+            <span class="ip-related-arrow">→</span>
+            Makrouzturvielas: normas un labākie avoti
+          </a>
+          <a href="/uztura-abc" class="ip-related-link">
+            <span class="ip-related-arrow">→</span>
+            Visi Uztura ABC raksti
+          </a>
+        </div>
+      </div>
+
+      <!-- ─── FAQ ───────────────────────────────── -->
+      <h2 id="faq">Bieži uzdotie jautājumi</h2>
+
+      <div class="faq-list" style="margin-top: 0; border-top: 1px solid var(--rule);">
+        {faqItems.map((item) => (
+          <div class="faq-item">
+            <button class="faq-q" type="button">
+              <span>{item.q}</span>
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a">
+              <div class="faq-a-inner"><p>{item.a}</p></div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- ─── Sources ───────────────────────────── -->
+      <div class="ip-sources">
+        <div class="ip-sources-label">Avoti un atsauces</div>
+        <ol class="ip-sources-list">
+          <li>European Food Safety Authority (EFSA). <em>Scientific Opinion on the safety of steviol glycosides.</em> EFSA Journal, 2010. <a href="https://www.efsa.europa.eu/en/topics/topic/food-additives" target="_blank" rel="noopener">efsa.europa.eu</a></li>
+          <li>European Food Safety Authority (EFSA). <em>Re-evaluation of aspartame (E 951) as a food additive.</em> EFSA Journal, 2013. <a href="https://www.efsa.europa.eu/en/topics/topic/food-additives" target="_blank" rel="noopener">efsa.europa.eu</a></li>
+          <li>European Food Safety Authority (EFSA). <em>Re-evaluation of sucralose (E 955).</em> EFSA Journal. <a href="https://www.efsa.europa.eu/en/topics/topic/food-additives" target="_blank" rel="noopener">efsa.europa.eu</a></li>
+          <li>Eiropas Parlaments un Padome. <em>Regula (ES) Nr. 1169/2011 par pārtikas produktu informācijas sniegšanu patērētājiem</em> (Annex III un XIV — polioli, energoetivērtība). <a href="https://eur-lex.europa.eu/legal-content/LV/TXT/?uri=CELEX:32011R1169" target="_blank" rel="noopener">eur-lex.europa.eu</a></li>
+          <li>Witkowski M, Nemet I, Alamri H, et al. <em>The artificial sweetener erythritol and cardiovascular event risk.</em> Nature Medicine, 2023;29:710–718. <a href="https://www.nature.com/articles/s41591-023-02223-9" target="_blank" rel="noopener">nature.com</a></li>
+          <li>International Agency for Research on Cancer (IARC) / WHO. <em>Aspartame hazard and risk assessment results released.</em> Joint IARC/JECFA statement, 14 July 2023. <a href="https://www.who.int/news/item/14-07-2023-aspartame-hazard-and-risk-assessment-results-released" target="_blank" rel="noopener">who.int</a></li>
+          <li>Harvard T.H. Chan School of Public Health. <em>The Nutrition Source — Artificial Sweeteners.</em> <a href="https://nutritionsource.hsph.harvard.edu/carbohydrates/artificial-sweeteners/" target="_blank" rel="noopener">nutritionsource.hsph.harvard.edu</a></li>
+        </ol>
+        <p class="ip-sources-updated">Pēdējo reizi atjaunots: 2026-09-07 · Autore: Ieva Jēkabsone</p>
+      </div>
+
+      <!-- ─── CTA ───────────────────────────────── -->
+      <div class="article-cta">
+        <div class="article-cta-inner">
+          <h3>Zini saldinātājus. <em>Kā tas iekļaujas tavā ēdienkartē?</em></h3>
+          <p>
+            Vispārīgā informācija ir sākums. Konsultācijā kopā paskatāmies uz tavu ikdienu un veselības
+            stāvokli, lai atrastu risinājumu, kas der tieši tev — bez aizliegumiem un bez bailēm no
+            burta E.
+          </p>
+          <a href="/pakalpojumi" class="btn btn-primary">Apskatīt konsultācijas <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <!-- ─── Article prev/next footer ──────────────── -->
+      <footer class="ip-nav-footer">
+        {prevArticle ? (
+          <a href={prevArticle.href} class="ip-nav-card ip-nav-card--prev">
+            <span class="ip-nav-arrow">←</span>
+            <div class="ip-nav-card-text">
+              <span class="ip-nav-hint">Iepriekšējā</span>
+              <span class="ip-nav-title">{prevArticle.full ?? prevArticle.label}</span>
+            </div>
+          </a>
+        ) : (
+          <a href="/uztura-abc" class="ip-nav-card ip-nav-card--back">
+            <span class="ip-nav-arrow">←</span>
+            <div class="ip-nav-card-text">
+              <span class="ip-nav-hint">Visi raksti</span>
+              <span class="ip-nav-title">Uztura ABC</span>
+            </div>
+          </a>
+        )}
+        {nextArticle ? (
+          <a href={nextArticle.href} class="ip-nav-card ip-nav-card--next">
+            <div class="ip-nav-card-text">
+              <span class="ip-nav-hint">Nākamā tēma</span>
+              <span class="ip-nav-title">{nextArticle.full ?? nextArticle.label}</span>
+            </div>
+            <span class="ip-nav-arrow">→</span>
+          </a>
+        ) : (
+          <a href="/uztura-abc" class="ip-nav-card ip-nav-card--back" style="border-right:0; border-left:3px solid var(--gold);">
+            <div class="ip-nav-card-text">
+              <span class="ip-nav-hint">Nākamā tēma</span>
+              <span class="ip-nav-title">Drīzumā — atgriezies pie visiem rakstiem</span>
+            </div>
+            <span class="ip-nav-arrow">→</span>
+          </a>
+        )}
+      </footer>
+
+    </article><!-- /.ip-content -->
+  </div><!-- /.ip-wrap -->
+
+</BaseLayout>
+
+<!-- ══ SCOPED STYLES ══════════════════════════════════════════ -->
+<style>
+
+/* ─── Hero — ŽURNĀLA VĀKS ───────────────────────────────── */
+.ip-cover { background: var(--cream); }
+.ip-cover-media {
+  position: relative;
+  width: 100%;
+  min-height: clamp(380px, 52vw, 580px);
+  display: flex; align-items: flex-end;
+  overflow: hidden;
+}
+.ip-cover-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center right;
+  display: block;
+}
+.ip-cover-scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(30,8,15,.85) 0%, rgba(30,8,15,.58) 42%, rgba(30,8,15,.06) 78%),
+    linear-gradient(0deg, rgba(30,8,15,.55) 0%, rgba(30,8,15,0) 45%);
+}
+.ip-cover-inner {
+  position: relative;
+  width: 100%;
+  padding-top: clamp(40px,6vw,72px);
+  padding-bottom: clamp(36px,5vw,60px);
+}
+.ip-cover .ip-eyebrow {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: .26em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.ip-cover .ip-eyebrow::after { content: ""; height: 1px; width: 46px; background: var(--gold); opacity: .75; }
+.ip-cover h1 {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(32px,4.6vw,60px); line-height: 1.06;
+  color: var(--cream); margin: 0 0 18px; letter-spacing: -.02em;
+  max-width: 20ch;
+  text-shadow: 0 2px 26px rgba(0,0,0,.4);
+}
+.ip-cover h1 em { color: var(--gold); font-style: italic; }
+.ip-cover .ip-lede {
+  font-size: clamp(15px,1.25vw,18px); line-height: 1.6;
+  color: rgba(255,248,242,.92); max-width: 48ch; margin: 0;
+  text-shadow: 0 1px 16px rgba(0,0,0,.35);
+}
+
+/* Light strip below cover — quick answer + stats */
+.ip-cover-strip {
+  background: var(--ivory);
+  border-bottom: 1px solid var(--rule-gold);
+  padding: clamp(24px,3vw,38px) 0;
+}
+.ip-cover-strip-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(24px,4vw,56px); align-items: center;
+}
+.ip-quickans {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--burgundy);
+  padding: 18px 24px; margin: 0;
+  box-shadow: 0 4px 18px rgba(60,18,32,.05);
+}
+.ip-quickans-label {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--burgundy); margin-bottom: 8px;
+}
+.ip-quickans p { margin: 0; font-size: 15.5px; color: var(--ink); line-height: 1.6; }
+
+/* Key stats — elegantas zelta līnijas */
+.ip-stats { display: grid; grid-template-columns: repeat(4, 1fr); }
+.ip-stat {
+  padding: 12px 14px 0 0;
+  border-top: 2px solid var(--gold-soft);
+  margin-right: 14px;
+}
+.ip-stat:last-child { margin-right: 0; }
+.ip-stat strong {
+  display: block; font-family: var(--serif); font-style: italic;
+  font-size: clamp(22px,2.4vw,32px); color: var(--burgundy);
+  line-height: 1; margin-bottom: 6px;
+}
+.ip-stat span { font-size: 11.5px; color: var(--ink-soft); line-height: 1.3; display: block; white-space: normal; }
+.ip-stats-note { font-size: 11px; color: var(--ink-soft); opacity: .8; margin: 12px 0 0; font-family: var(--sans); }
+
+/* ─── Two-column layout ────────────────────────────────── */
+.ip-wrap {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: clamp(32px,4vw,56px);
+  align-items: start;
+  padding-top: clamp(48px,6vw,80px);
+  padding-bottom: clamp(64px,8vw,100px);
+}
+.ip-wrap > * { min-width: 0; }
+
+.ip-sidebar { align-self: stretch; }
+
+/* ─── TOC ─────────────────────────────────────────────── */
+.ip-toc { position: sticky; top: 116px; margin-top: 20px; }
+.ip-toc-inner {
+  background: #fff;
+  border: 1px solid var(--rule);
+  padding: 24px;
+}
+.ip-toc-label {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 16px;
+}
+.ip-toc-list { list-style: none; padding: 0; margin: 0; }
+.ip-toc-list li { border-bottom: 1px solid var(--rule); }
+.ip-toc-link {
+  display: block; padding: 10px 0;
+  font-size: 13px; line-height: 1.4; color: var(--ink-soft);
+  transition: color .2s;
+}
+.ip-toc-link:hover,
+.ip-toc-link.active { color: var(--burgundy); }
+.ip-toc-link.active { font-weight: 600; }
+
+/* ─── TOC Ieva sidebar card ──────────────────────────── */
+.ip-toc-ieva {
+  margin-top: 24px; padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 6px;
+}
+.ip-toc-ieva-img {
+  width: 88px; height: 88px;
+  border-radius: 50%; object-fit: cover; object-position: center 15%;
+  border: 3px solid var(--gold);
+  margin-bottom: 4px;
+}
+.ip-toc-ieva-name {
+  font-family: var(--serif); font-style: italic;
+  font-size: 17px; color: var(--plum);
+}
+.ip-toc-ieva-role {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.ip-toc-ieva-bio {
+  font-size: 12.5px; color: var(--ink-soft);
+  line-height: 1.55; margin: 4px 0 8px;
+}
+.ip-toc-socials {
+  display: flex; gap: 8px; justify-content: center;
+  margin-bottom: 12px;
+}
+.ip-toc-social {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--cream); border: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-soft); transition: background .15s, color .15s;
+}
+.ip-toc-social:hover { background: var(--burgundy); color: #fff; border-color: var(--burgundy); }
+.ip-toc-social svg { width: 16px; height: 16px; }
+.ip-toc-cta {
+  display: block; width: 100%;
+  padding: 10px 14px; text-align: center;
+  background: var(--burgundy); color: #fff;
+  font-family: var(--sans); font-size: 12px;
+  letter-spacing: .1em; text-transform: uppercase;
+  transition: background .15s;
+  border-radius: 2px;
+}
+.ip-toc-cta:hover { background: var(--plum); }
+
+/* ─── Article content ─────────────────────────────────── */
+.ip-content {
+  font-size: clamp(16px,1.1vw,18px);
+  line-height: 1.78;
+  color: var(--ink);
+  max-width: 820px;
+}
+.ip-content p { margin: 0 0 22px; }
+.ip-content h2 {
+  font-family: var(--serif); font-style: normal; font-weight: 600;
+  font-size: clamp(26px,2.6vw,36px);
+  line-height: 1.2; margin: 72px 0 22px;
+  color: var(--plum);
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--burgundy);
+  position: relative;
+}
+.ip-content h2::before {
+  content: "";
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 60px; height: 2px;
+  background: var(--gold);
+}
+.ip-content h2 em { color: var(--burgundy); font-style: italic; }
+.ip-content h3 {
+  font-family: var(--serif); font-style: normal; font-weight: 600;
+  margin: 28px 0 10px; color: var(--plum);
+  text-transform: uppercase; letter-spacing: .04em; font-size: 13px;
+}
+.ip-content a { color: var(--burgundy); border-bottom: 1px solid var(--burgundy); }
+
+/* ─── TL;DR ───────────────────────────────────────────── */
+.ip-tldr {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--gold);
+  padding: 20px 24px;
+  margin: 0 0 28px;
+}
+.ip-tldr-label {
+  display: inline-block;
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--burgundy); margin-bottom: 8px;
+}
+.ip-tldr p { margin: 0; font-size: 16px; line-height: 1.7; color: var(--ink); }
+
+/* ─── Key Takeaways ───────────────────────────────────── */
+.ip-takeaways {
+  background: #fbf7ef;
+  border: 1px solid var(--rule);
+  padding: 26px 28px;
+  margin: 0 0 40px;
+  border-radius: 3px;
+}
+.ip-takeaways h2 {
+  font-family: var(--serif); font-style: normal; font-weight: 600;
+  font-size: 20px; margin: 0 0 14px; color: var(--plum);
+  border: 0; padding: 0;
+}
+.ip-takeaways h2::before { display: none; }
+.ip-takeaways ul { margin: 0; padding-left: 22px; }
+.ip-takeaways li { font-size: 15px; line-height: 1.6; margin-bottom: 9px; color: var(--ink); }
+
+/* ─── CITE clear-answer block ─────────────────────────── */
+.ip-answer {
+  background: rgba(132,24,62,.05);
+  border-left: 3px solid var(--burgundy);
+  padding: 16px 22px;
+  margin: 0 0 24px !important;
+  font-size: clamp(15px,1.05vw,17px);
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+/* ─── Proportion / example cards ──────────────────────── */
+.ip-prop-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin: 32px 0;
+}
+.ip-prop-card {
+  padding: 26px 24px 22px; border: 1px solid var(--rule);
+  background: #fff;
+  transition: box-shadow .2s, transform .2s;
+}
+.ip-prop-card:hover { box-shadow: 0 6px 24px rgba(42,20,25,.08); transform: translateY(-2px); }
+.ip-prop-card--veg     { border-top: 5px solid #6aaa64; }
+.ip-prop-card--grain   { border-top: 5px solid #e8c06d; }
+.ip-prop-card--protein { border-top: 5px solid #c4526e; }
+.ip-prop-card--fat     { border-top: 5px solid #6aaa64; }
+.ip-prop-frac {
+  font-family: var(--serif); font-style: italic;
+  font-size: 40px; line-height: 1; color: var(--plum);
+  margin-bottom: 8px;
+}
+.ip-prop-card h3 { font-size: 16px; margin: 0 0 10px; font-style: normal; font-weight: 600; color: var(--plum); text-transform: none; letter-spacing: 0; }
+.ip-prop-card p { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 14px; }
+.ip-prop-examples { font-size: 13px; color: var(--ink-soft); background: #f3ece0; padding: 10px 12px; border-radius: 2px; }
+
+/* ─── Callout boxes ──────────────────────────────────── */
+.ip-callout {
+  display: flex; gap: 16px; padding: 20px 24px;
+  margin: 28px 0; border-radius: 2px;
+  font-size: 15px; line-height: 1.6;
+}
+.ip-callout--tip { background: #e8f5e5; border-left: 3px solid #6aaa64; }
+.ip-callout--insight { background: #eef3fb; border-left: 3px solid #5a7fc7; }
+.ip-callout--warning { background: #fff4e5; border-left: 3px solid #e8a020; }
+.ip-callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.ip-callout a { color: var(--burgundy); border-bottom: 1px solid currentColor; }
+
+/* ─── Mistakes / myths list ──────────────────────────── */
+.ip-mistakes { list-style: none; padding: 0; margin: 24px 0; }
+.ip-mistakes li {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 18px 0; border-bottom: 1px solid var(--rule);
+}
+.ip-mistake-num {
+  font-family: var(--serif); font-style: italic;
+  font-size: 28px; line-height: 1;
+  color: var(--burgundy);
+  min-width: 48px; flex-shrink: 0;
+  padding-top: 2px;
+}
+.ip-mistakes li strong {
+  display: block; margin-bottom: 6px;
+  font-size: 17px; color: var(--plum);
+}
+
+/* ─── Comparison table ───────────────────────────────── */
+.ip-table-wrap { overflow-x: auto; margin: 28px 0; border: 1px solid var(--rule); }
+.ip-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.ip-table th, .ip-table td {
+  padding: 14px 18px; text-align: left;
+  border-bottom: 1px solid var(--rule);
+}
+.ip-table th {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--cream); background: var(--plum);
+  font-weight: 500;
+}
+.ip-table th:nth-child(2) { background: var(--burgundy); }
+.ip-table tr:nth-child(even) td { background: #fff; }
+.ip-table td:first-child {
+  color: var(--ink-soft); font-size: 13px;
+  font-family: var(--sans); letter-spacing: .04em;
+}
+.ip-table td:nth-child(2) { color: var(--ink); }
+
+/* ─── Stat cards ─────────────────────────────────────── */
+.ip-statcards {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; margin: 32px 0;
+}
+.ip-statcard {
+  background: var(--plum); color: var(--cream);
+  padding: 20px 18px; border-radius: 3px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.ip-statcard-num {
+  font-family: var(--serif); font-style: italic;
+  font-size: 26px; color: var(--gold); line-height: 1;
+}
+.ip-statcard-label { font-size: 12.5px; line-height: 1.45; color: rgba(255,248,242,.8); flex-grow: 1; }
+.ip-statcard a { color: rgba(255,248,242,.55); border: 0; }
+.ip-statcard a:hover { color: var(--gold); }
+
+/* ─── "Kurš saldinātājs der tev" (interactive) ────────── */
+.ip-sweet {
+  margin: 36px 0 40px;
+  background: var(--plum); color: var(--cream);
+  border-radius: 4px; padding: clamp(24px,3vw,36px);
+}
+.ip-sweet-eyebrow {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px;
+}
+.ip-sweet-head h3 {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(22px,2.4vw,30px); line-height: 1.15;
+  color: var(--cream); margin: 0 0 10px;
+  text-transform: none; letter-spacing: 0;
+}
+.ip-sweet-head p { font-size: 14.5px; line-height: 1.6; color: rgba(255,248,242,.78); margin: 0 0 22px; }
+.ip-sweet-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.ip-sweet-btn {
+  font-family: var(--sans); font-size: 13px;
+  padding: 9px 16px; border-radius: 999px;
+  border: 1px solid rgba(235,192,126,.4);
+  background: rgba(255,255,255,.06); color: rgba(255,248,242,.85);
+  cursor: pointer; transition: background .15s, border-color .15s, color .15s;
+}
+.ip-sweet-btn:hover { border-color: var(--gold); }
+.ip-sweet-btn.is-active { background: var(--gold); color: var(--plum); border-color: var(--gold); font-weight: 600; }
+.ip-sweet-table-wrap { margin: 0 0 20px; border-color: rgba(235,192,126,.25); }
+.ip-sweet-table th { background: rgba(255,255,255,.1); color: var(--gold); }
+.ip-sweet-table th:nth-child(2) { background: rgba(255,255,255,.1); }
+.ip-sweet-table td { background: rgba(255,255,255,.04); color: rgba(255,248,242,.92); border-color: rgba(235,192,126,.18); }
+.ip-sweet-table tr:nth-child(even) td { background: rgba(255,255,255,.07); }
+.ip-sweet-table td:first-child { color: var(--gold); font-weight: 600; }
+.ip-sweet-table tr.is-dim td { opacity: .35; }
+.ip-sweet-table tr.is-avoid td { background: rgba(196,82,110,.22); }
+.ip-sweet-table tr.is-caution td { background: rgba(232,160,32,.16); }
+.ip-sweet-summary {
+  margin: 0 0 12px; padding: 14px 18px;
+  background: rgba(235,192,126,.12);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 3px 3px 0;
+  font-size: 14.5px; line-height: 1.6; color: rgba(255,248,242,.92);
+  min-height: 1.6em;
+}
+.ip-sweet-note { margin: 16px 0 0; }
+.ip-sweet-note small { color: rgba(255,248,242,.45); font-size: 11.5px; line-height: 1.5; }
+.ip-sweet-note a { color: rgba(235,192,126,.8); border-bottom: 1px solid rgba(235,192,126,.4); }
+
+/* ─── Related links ──────────────────────────────────── */
+.ip-related { background: #fff; padding: 24px 28px; margin: 48px 0 0; border: 1px solid var(--rule); }
+.ip-related-label {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 16px;
+}
+.ip-related-links { display: flex; flex-direction: column; gap: 2px; }
+.ip-related-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 0; border-bottom: 1px dashed var(--rule);
+  font-size: 15px; color: var(--plum); transition: color .2s;
+}
+.ip-related-link:last-child { border-bottom: 0; }
+.ip-related-link:hover { color: var(--burgundy); }
+.ip-related-arrow { color: var(--gold); font-size: 18px; flex-shrink: 0; }
+
+/* ─── Sources ────────────────────────────────────────── */
+.ip-sources { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--rule); }
+.ip-sources-label {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 16px;
+}
+.ip-sources-list { padding: 0; margin: 0; list-style: none; counter-reset: sources; }
+.ip-sources-list li {
+  counter-increment: sources;
+  position: relative; padding: 12px 0 12px 40px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13.5px; line-height: 1.65; color: var(--ink);
+}
+.ip-sources-list li::before {
+  content: counter(sources, decimal-leading-zero);
+  position: absolute; left: 0; top: 12px;
+  font-family: var(--serif); font-style: italic;
+  font-size: 18px; color: var(--burgundy);
+}
+.ip-sources-list a { color: var(--burgundy); border-bottom: 1px solid currentColor; }
+.ip-sources-updated { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); margin-top: 12px; letter-spacing: .05em; }
+
+/* ─── Prev / Next article footer ─────────────────────── */
+.ip-nav-footer {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  margin-top: 64px; padding-top: 32px; border-top: 2px solid var(--rule);
+}
+.ip-nav-card {
+  display: flex; align-items: center; gap: 16px;
+  padding: 24px 22px; background: #fff;
+  border: 1px solid var(--rule); text-decoration: none;
+  transition: background .15s, border-color .15s; min-width: 0;
+}
+.ip-nav-card:hover { background: var(--cream); border-color: var(--gold); }
+.ip-nav-card--prev { border-left: 3px solid var(--gold); }
+.ip-nav-card--next { border-left: 3px solid var(--gold); justify-content: space-between; }
+.ip-nav-card--back { border-right: 3px solid var(--rule); }
+.ip-nav-arrow { font-size: 22px; color: var(--gold); flex-shrink: 0; transition: transform .2s; }
+.ip-nav-card--prev:hover .ip-nav-arrow { transform: translateX(-3px); }
+.ip-nav-card--next:hover .ip-nav-arrow { transform: translateX(3px); }
+.ip-nav-card-text { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.ip-nav-hint {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft);
+}
+.ip-nav-title {
+  font-family: var(--serif); font-size: 15px; line-height: 1.35;
+  color: var(--plum);
+  overflow: hidden; text-overflow: ellipsis;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  transition: color .15s;
+}
+.ip-nav-card:hover .ip-nav-title { color: var(--burgundy); }
+
+/* ─── Responsive ─────────────────────────────────────── */
+@media (max-width: 860px) {
+  .ip-cover-strip-grid { grid-template-columns: 1fr; }
+  .ip-cover h1 { max-width: none; }
+}
+@media (max-width: 1024px) {
+  .ip-wrap { grid-template-columns: 1fr; }
+  .ip-sidebar { display: none; }
+  .ip-prop-grid { grid-template-columns: 1fr; }
+  .ip-statcards { grid-template-columns: repeat(2, 1fr); }
+  .ip-nav-footer { grid-template-columns: 1fr; gap: 2px; }
+}
+@media (max-width: 640px) {
+  .ip-stats { grid-template-columns: repeat(2, 1fr); max-width: 320px; gap: 12px 0; }
+  .ip-stat { padding: 12px 16px 12px 0; margin-right: 16px; }
+  .ip-statcards { grid-template-columns: 1fr 1fr; }
+  .ip-nav-card { padding: 18px 16px; gap: 12px; }
+  .ip-nav-title { font-size: 14px; }
+  .ip-sweet-filters { gap: 6px; }
+  .ip-sweet-btn { padding: 7px 12px; font-size: 12px; }
+}
+</style>
+
+<script>
+function initArticlePage() {
+  // Dinamisks TOC top — zem .nav + article-nav
+  function setTocTop() {
+    const anav = document.getElementById('article-nav');
+    const toc  = document.querySelector<HTMLElement>('.ip-toc');
+    if (!toc) return;
+    if (anav) {
+      const anavTop    = parseFloat(anav.style.top) || 0;
+      const anavHeight = anav.offsetHeight;
+      toc.style.top = `${anavTop + anavHeight + 12}px`;
+    } else {
+      const nav = document.querySelector<HTMLElement>('header.nav, .nav');
+      toc.style.top = `${(nav ? nav.offsetHeight : 0) + 12}px`;
+    }
+  }
+  setTocTop();
+  window.addEventListener('resize', setTocTop, { passive: true });
+
+  // FAQ accordion
+  document.querySelectorAll<HTMLElement>('.faq-item').forEach(item => {
+    const btn = item.querySelector<HTMLButtonElement>('.faq-q');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Sticky TOC — highlight active section on scroll
+  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.ip-toc-link');
+  const headings = document.querySelectorAll<HTMLElement>('.ip-content h2[id]');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          tocLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    },
+    { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+  );
+  headings.forEach(h => observer.observe(h));
+
+  // ─── "Kurš saldinātājs der tev" — priority filter ────
+  (function () {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.ip-sweet-btn');
+    const rows = document.querySelectorAll<HTMLTableRowElement>('.ip-sweet-table tbody tr');
+    const summary = document.getElementById('sweet-summary');
+    if (!buttons.length || !rows.length) return;
+
+    const MESSAGES: Record<string, string> = {
+      all: 'Izvēlies prioritāti augšā, lai redzētu, kuri saldinātāji der vislabāk.',
+      baking: 'Cepšanai un vārīšanai der stīvija, sukraloze un eritrols — visi iztur karstumu. Aspartāms karstumā zaudē saldumu.',
+      gut: 'Jutīgām zarnām vislabāk der stīvija, aspartāms vai sukraloze — tie neietekmē gremošanu. Ar eritrolu un ksilītu lielākās devās uzmanies (iespējams caurejas efekts).',
+      heart: 'Ja ir sirds un asinsvadu riska faktori, eritrolam der pievērst piesardzību (2023. g. pētījums) — pārrunā to ar ārstu. Stīvija, aspartāms un sukraloze šajā ziņā nav pētītas ar tādu pašu atradni.',
+      pku: 'Fenilketonūrijas gadījumā aspartāms jāizslēdz pilnībā — tas satur fenilalanīnu. Pārējie šajā rakstā minētie saldinātāji fenilalanīnu nesatur.',
+      pets: 'Ja mājās ir suns, ksilīts ir jāizslēdz pilnībā — tas suņiem ir toksisks jau nelielā devā. Pārējie saldinātāji suņiem nav zināmi tikpat bīstami, bet mājdzīvniekiem cukura aizstājējus vispār nevajag dot.',
+    };
+
+    function apply(priority: string) {
+      buttons.forEach(b => b.classList.toggle('is-active', b.dataset.priority === priority));
+
+      rows.forEach(row => {
+        row.classList.remove('is-dim', 'is-avoid', 'is-caution');
+        if (priority === 'all') return;
+
+        const good    = (row.dataset.good    || '').split(' ').filter(Boolean);
+        const caution = (row.dataset.caution || '').split(' ').filter(Boolean);
+        const avoid   = (row.dataset.avoid   || '').split(' ').filter(Boolean);
+
+        if (avoid.includes(priority)) row.classList.add('is-avoid');
+        else if (caution.includes(priority)) row.classList.add('is-caution');
+        else if (!good.includes(priority)) row.classList.add('is-dim');
+      });
+
+      if (summary) summary.textContent = MESSAGES[priority] || MESSAGES.all;
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => apply(btn.dataset.priority || 'all'));
+    });
+
+    apply('all');
+  })();
+}
+document.addEventListener('astro:page-load', initArticlePage);
+</script>
