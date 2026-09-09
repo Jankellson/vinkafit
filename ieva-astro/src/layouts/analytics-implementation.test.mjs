@@ -4,11 +4,12 @@ import { readFile } from 'node:fs/promises';
 
 const layoutPath = new URL('./BaseLayout.astro', import.meta.url);
 
-test('loads Cloudflare Web Analytics beacon without a cookie consent gate', async () => {
+test('does not ship a client-side analytics script or a cookie consent gate', async () => {
   const layout = await readFile(layoutPath, 'utf8');
 
-  assert.match(layout, /PUBLIC_CF_BEACON_TOKEN/);
-  assert.match(layout, /static\.cloudflareinsights\.com\/beacon\.min\.js/);
+  // Cloudflare Web Analytics is injected automatically server-side (proxied zone) —
+  // no beacon script, no consent banner needed.
   assert.doesNotMatch(layout, /id="cookieConsent"/);
   assert.doesNotMatch(layout, /googletagmanager\.com/);
+  assert.doesNotMatch(layout, /cloudflareinsights\.com/);
 });

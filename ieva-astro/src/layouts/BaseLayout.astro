@@ -33,7 +33,6 @@ const {
   noFooter,
 } = Astro.props;
 
-const CF_BEACON_TOKEN = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
 ---
 
@@ -50,14 +49,8 @@ const CLARITY_ID = import.meta.env.PUBLIC_CLARITY_PROJECT_ID;
       noindex={noindex}
     />
 
-    {/* Cloudflare Web Analytics — cookiju nelieto, tāpēc nav vajadzīga piekrišana. */}
-    {CF_BEACON_TOKEN && (
-      <script
-        defer
-        src="https://static.cloudflareinsights.com/beacon.min.js"
-        data-cf-beacon={`{"token": "${CF_BEACON_TOKEN}"}`}
-      ></script>
-    )}
+    {/* Web Analytics: Cloudflare to ievieto automātiski servera pusē (zona ir proxied),
+        tāpēc šeit nav vajadzīgs nekāds skripts vai tokens. */}
 
     {/* Microsoft Clarity — tikai ja CLARITY_ID uzstādīts */}
     {CLARITY_ID && CLARITY_ID !== 'your_clarity_id_here' && (
