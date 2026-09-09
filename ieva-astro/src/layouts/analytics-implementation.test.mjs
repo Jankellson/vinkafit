@@ -4,12 +4,11 @@ import { readFile } from 'node:fs/promises';
 
 const layoutPath = new URL('./BaseLayout.astro', import.meta.url);
 
-test('loads the configured GA4 property only after an analytics consent choice', async () => {
+test('loads Cloudflare Web Analytics beacon without a cookie consent gate', async () => {
   const layout = await readFile(layoutPath, 'utf8');
 
-  assert.match(layout, /G-807WDRDGZP/);
-  assert.match(layout, /analytics_storage:\s*'denied'/);
-  assert.match(layout, /id="cookieConsent"/);
-  assert.match(layout, /data-cookie-choice="accept"/);
-  assert.match(layout, /data-cookie-choice="reject"/);
+  assert.match(layout, /PUBLIC_CF_BEACON_TOKEN/);
+  assert.match(layout, /static\.cloudflareinsights\.com\/beacon\.min\.js/);
+  assert.doesNotMatch(layout, /id="cookieConsent"/);
+  assert.doesNotMatch(layout, /googletagmanager\.com/);
 });
